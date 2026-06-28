@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#18181b"/>
+  <rect x="300" y="220" width="200" height="160" rx="16" fill="none" stroke="#a1a1aa" stroke-width="4"/>
+  <line x1="380" y1="260" x2="420" y2="260" stroke="#a1a1aa" stroke-width="4" stroke-linecap="round"/>
+  <line x1="340" y1="290" x2="460" y2="290" stroke="#a1a1aa" stroke-width="4" stroke-linecap="round"/>
+  <line x1="340" y1="320" x2="460" y2="320" stroke="#a1a1aa" stroke-width="4" stroke-linecap="round"/>
+  <line x1="370" y1="350" x2="430" y2="350" stroke="#a1a1aa" stroke-width="4" stroke-linecap="round"/>
+  <text x="400" y="420" font-family="system-ui, sans-serif" font-size="14" fill="#71717a" text-anchor="middle">Project Image</text>
+</svg>

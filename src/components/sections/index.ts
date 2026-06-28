@@ -1,0 +1,10 @@
+export { HeroSection } from "./hero";
+export { AboutSection } from "./about";
+export { SkillsSection } from "./skills";
+export { ExperienceSection } from "./experience";
+export { ProjectsSection } from "./projects";
+export { WritingSection } from "./writing";
+export { TestimonialsSection } from "./testimonials";
+export { ContactSection } from "./contact";
+export { FooterSection } from "./footer";
+export { GitHubReposSection } from "./github-repos";
