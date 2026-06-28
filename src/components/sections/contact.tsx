@@ -106,12 +106,12 @@ function ContactSection() {
               </div>
 
               <a
-                href="mailto:hello@alexmorgan.dev"
+                href="mailto:toromadeadesina@gmail.com"
                 className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Send email to hello@alexmorgan.dev"
+                aria-label="Send email to toromadeadesina@gmail.com"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                hello@alexmorgan.dev
+                toromadeadesina@gmail.com
               </a>
 
               <div className="flex items-center gap-1 pt-2" role="list" aria-label="Social media links">
