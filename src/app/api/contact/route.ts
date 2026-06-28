@@ -40,7 +40,7 @@ async function sendEmail(payload: ContactBody): Promise<boolean> {
       },
       body: JSON.stringify({
         from: `Portfolio Contact <onboarding@resend.dev>`,
-        to: [process.env.CONTACT_EMAIL ?? "hello@alexmorgan.dev"],
+        to: [process.env.CONTACT_EMAIL ?? "toromadeadesina@gmail.com"],
         subject: `Portfolio Contact: ${payload.subject}`,
         html: `
           <h2>New Contact Submission</h2>
