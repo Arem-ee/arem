@@ -112,14 +112,14 @@ function Navbar() {
         {isOpen && (
           <motion.div
             id="mobile-menu"
-            className="border-t md:hidden"
+            className="absolute left-0 right-0 top-full border-b bg-background/95 backdrop-blur-md md:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <Container size="xl">
               <motion.div
