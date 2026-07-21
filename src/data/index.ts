@@ -238,6 +238,18 @@ export const projects: Project[] = [
     liveUrl: "https://boho-dwarf-46414877.figma.site",
     featured: true,
   },
+  {
+    title: "Aremco — Business Landing Page",
+    slug: "aremco",
+    description:
+      "A clean, professional landing page for Aremco Heating, Cooling & Construction — establishing brand presence and generating leads.",
+    image: "/images/projects/aremco.jpg",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    category: "Frontend",
+    metrics: "Live business site",
+    liveUrl: "https://aremco-seven.vercel.app",
+    featured: true,
+  },
 ];
 
 export const skillCategories: SkillCategory[] = [

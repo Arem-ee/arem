@@ -15,6 +15,7 @@ export const assets = {
     "redact": "https://picsum.photos/seed/redact-privacy/1200/630",
     "ergo-automotive": "https://picsum.photos/seed/ergo-automotive/1200/630",
     "mobile-landing-page": "https://picsum.photos/seed/mobile-landing/1200/630",
+    "aremco": "https://picsum.photos/seed/aremco-business/1200/630",
   } as Record<string, string>,
 
   blog: {

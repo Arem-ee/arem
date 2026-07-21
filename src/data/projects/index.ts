@@ -673,6 +673,52 @@ export const projectDetails: ProjectDetail[] = [
       "The gap between Figma design and implementation is smallest when design tokens are treated as source of truth in both tools",
     ],
   },
+  {
+    title: "Aremco — Business Landing Page",
+    slug: "aremco",
+    description:
+      "A clean, professional landing page for Aremco Heating, Cooling & Construction — establishing brand presence and generating leads.",
+    image: "/images/projects/aremco.jpg",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    category: "Frontend",
+    metrics: "Live business site",
+    liveUrl: "https://aremco-seven.vercel.app",
+    featured: true,
+    problem:
+      "Aremco needed an online presence to establish credibility and generate leads. The business had no website and relied entirely on word-of-mouth. Without a digital footprint, potential customers couldn't find them online or verify their services before reaching out.",
+    goals: [
+      "Create a professional online presence for a local service business",
+      "Make the site fast and mobile-friendly for on-the-go homeowners",
+      "Keep the tech stack simple and maintainable",
+      "Provide clear contact paths to drive phone calls and inquiries",
+    ],
+    architecture:
+      "Built with Next.js for static generation — the site is pre-rendered at build time for instant load. Tailwind CSS handles styling with a minimal footprint.",
+    technicalDecisions: [
+      {
+        decision: "Static generation over SSR",
+        rationale:
+          "A business landing page has no dynamic content that changes per-user. Static generation produces HTML files served directly from the CDN edge — zero server cost, instant load, and perfect Lighthouse scores out of the box.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "Convincing a traditional business owner that a website is worth the investment",
+        solution:
+          "Focused on tangible business outcomes — appearing in Google searches, being findable on mobile, and looking professional enough to justify premium pricing.",
+      },
+    ],
+    results: [
+      "Professional online presence for a local HVAC and construction business",
+      "Fast-loading static site with zero ongoing server costs",
+      "Mobile-first design for homeowners searching on their phones",
+      "Clear contact paths to drive qualified leads",
+    ],
+    lessonsLearned: [
+      "Not every project needs micro-frontends or CRDTs — a well-built static site is sometimes the most impactful thing you can ship",
+      "For local businesses, the design and copy matter more than the technology — clarity and trust convert better than animations",
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
