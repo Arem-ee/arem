@@ -15,16 +15,16 @@ export const assets = {
   } as Record<string, string>,
 
   blog: {
-    "cutting-checkout-abandonment": "https://picsum.photos/seed/cutting-checkout-abandonment/1200/630",
-    "building-real-time-sync-crdts": "https://picsum.photos/seed/building-real-time-sync-crdts/1200/630",
-    "performance-budgets-that-work": "https://picsum.photos/seed/performance-budgets-that-work/1200/630",
-    "designing-apis-frontend-developers-love": "https://picsum.photos/seed/designing-apis-frontend-developers-love/1200/630",
-    "architecture-checkout-flow": "https://picsum.photos/seed/architecture-checkout-flow/1200/630",
-    "scaling-frontend-teams": "https://picsum.photos/seed/scaling-frontend-teams/1200/630",
-    "accessibility-is-infrastructure": "https://picsum.photos/seed/accessibility-is-infrastructure/1200/630",
-    "what-nobody-tells-you-about-micro-frontends": "https://picsum.photos/seed/what-nobody-tells-you-about-micro-frontends/1200/630",
-    "building-plugin-platform-lessons": "https://picsum.photos/seed/building-plugin-platform-lessons/1200/630",
-    "ci-pipeline-performance-regressions": "https://picsum.photos/seed/ci-pipeline-performance-regressions/1200/630",
+    "cutting-checkout-abandonment": "https://picsum.photos/seed/payment-checkout/1200/630",
+    "building-real-time-sync-crdts": "https://picsum.photos/seed/network-sync/1200/630",
+    "performance-budgets-that-work": "https://picsum.photos/seed/speed-performance/1200/630",
+    "designing-apis-frontend-developers-love": "https://picsum.photos/seed/code-developer/1200/630",
+    "architecture-checkout-flow": "https://picsum.photos/seed/server-architecture/1200/630",
+    "scaling-frontend-teams": "https://picsum.photos/seed/team-collaboration/1200/630",
+    "accessibility-is-infrastructure": "https://picsum.photos/seed/accessibility-design/1200/630",
+    "what-nobody-tells-you-about-micro-frontends": "https://picsum.photos/seed/modular-blocks/1200/630",
+    "building-plugin-platform-lessons": "https://picsum.photos/seed/puzzle-plugins/1200/630",
+    "ci-pipeline-performance-regressions": "https://picsum.photos/seed/pipeline-automation/1200/630",
   } as Record<string, string>,
 
   avatars: {
