@@ -12,6 +12,9 @@ export const assets = {
     "accessibility-audit-tool": "/images/projects/a11y-tool.jpg",
     "performance-monitoring-cli": "/images/projects/perf-cli.jpg",
     "ecommerce-accelerator": "/images/projects/ecommerce.jpg",
+    "redact": "https://picsum.photos/seed/redact-privacy/1200/630",
+    "ergo-automotive": "https://picsum.photos/seed/ergo-automotive/1200/630",
+    "mobile-landing-page": "https://picsum.photos/seed/mobile-landing/1200/630",
   } as Record<string, string>,
 
   blog: {

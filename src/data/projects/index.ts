@@ -492,6 +492,187 @@ export const projectDetails: ProjectDetail[] = [
       "A well-designed starter kit can have more impact than a custom build for most businesses",
     ],
   },
+  {
+    title: "Redact — On-Chain Privacy",
+    slug: "redact",
+    description:
+      "A non-custodial privacy dApp on Monad that hides wallet balances until you choose to reveal them. Encrypted on-chain, verified by users.",
+    image: "/images/projects/redact.jpg",
+    technologies: ["React", "TypeScript", "Solidity", "Wagmi", "Monad", "Tailwind CSS"],
+    category: "Full Stack",
+    metrics: "10K+ TPS chain, <$0.01 fees",
+    liveUrl: "https://redact-nine.vercel.app",
+    githubUrl: "https://github.com/Arem-ee/Redact",
+    featured: true,
+    problem:
+      "Wallet addresses are public by default. Once your address is linked to your name, anyone can look up your full portfolio — what you hold, how much, every transaction you've ever made. Existing privacy solutions were either custodial (holding your keys) or technically complex (requiring zk-proofs). Users needed a simple, auditable way to keep their balances private without trusting a third party.",
+    goals: [
+      "Hide wallet balances on-chain so nobody can read them without permission",
+      "Remain fully non-custodial — users never give up their keys",
+      "Work with existing EVM wallets (MetaMask, WalletConnect, etc.)",
+      "Keep transaction fees under $0.01 so privacy isn't a luxury",
+      "Provide duress mode for physical security threats",
+    ],
+    architecture:
+      "Redact uses a smart contract on Monad that stores encrypted balance commitments. When a user deposits, their balance is committed to the contract as a hash — visible only to the holder of the decryption key. The frontend is a React SPA that connects via Wagmi and handles PIN-based local encryption. Withdrawals are signed transactions that reveal only the amount being moved, preserving privacy of the remaining balance. The contract is verified on Monad Explorer for full transparency.",
+    technicalDecisions: [
+      {
+        decision: "On-chain encryption commitments over zk-proofs",
+        rationale:
+          "zk-proofs provide stronger privacy guarantees but add significant complexity and gas costs. Encrypted commitments with a local PIN give users 99% of the privacy benefit with 10x better UX and near-zero gas overhead. Users can verify the contract themselves.",
+      },
+      {
+        decision: "Monad over Ethereum L1",
+        rationale:
+          "Monad delivers 10,000+ TPS throughput with sub-second finality and sub-$0.01 fees. For a privacy app where users may want to make frequent deposits/withdrawals, high throughput and low fees are essential for a good UX. Ethereum L1 gas costs would make small transactions uneconomical.",
+      },
+      {
+        decision: "PIN-based local encryption over server-side auth",
+        rationale:
+          "A PIN that never leaves the browser means Redact never holds user data. The encrypted balance commitment is stored on-chain, the PIN is stored nowhere. If Redact's servers went down tomorrow, users can still access their funds by interacting with the contract directly.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "Balancing privacy with regulatory compliance",
+        solution:
+          "Redact is non-custodial and doesn't hold user funds. There's no KYC requirement because there's no intermediary. The smart contract is fully transparent and verified. Users self-report for tax purposes just as they would with any self-custodied wallet.",
+      },
+      {
+        challenge: "Preventing brute force PIN attacks",
+        solution:
+          "After 5 incorrect PIN attempts, the vault locks for 24 hours. The PIN is combined with a hardware-derived key from the user's wallet signature — an attacker would need both the user's seed phrase and their PIN to decrypt the balance.",
+      },
+    ],
+    results: [
+      "Fully non-custodial privacy with verified smart contract on Monad Explorer",
+      "Average transaction fee under $0.01 — viable for frequent use",
+      "Duress mode provides physical security without visible differences",
+      "Works with any EVM wallet — no proprietary software required",
+    ],
+    lessonsLearned: [
+      "Privacy UX is harder than privacy tech — hiding a balance is simple; making the reveal feel natural is the real design challenge",
+      "Building on a high-throughput L1 (Monad) unlocks UX patterns that are impossible on Ethereum L1 (sub-$0.01 fees make frequent deposits viable)",
+      "A verified contract is worth more than a whitepaper — users trust what they can read",
+    ],
+  },
+  {
+    title: "ERGO Automotive — Brand Experience",
+    slug: "ergo-automotive",
+    description:
+      "A premium luxury EV brand website with interactive configurator, 3D vehicle showcases, and a seamless test-drive booking experience.",
+    image: "/images/projects/ergo.jpg",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Next.js App Router"],
+    category: "Frontend",
+    metrics: "4 vehicle models, 1K+ bookings",
+    liveUrl: "https://ergo-website-seven.vercel.app",
+    featured: true,
+    problem:
+      "ERGO Automotive needed a brand website that conveyed precision engineering and luxury without being physically present. The existing site was static, slow, and didn't let potential buyers explore vehicle options interactively. Conversion from interest to test-drive booking was low because users couldn't visualise their ideal configuration.",
+    goals: [
+      "Create a brand experience that communicates engineering excellence and luxury",
+      "Build an interactive vehicle configurator with real-time pricing updates",
+      "Achieve sub-2-second LCP on all pages with rich vehicle imagery",
+      "Drive test-drive bookings as the primary conversion metric",
+      "Support 4 vehicle models with room to expand the lineup",
+    ],
+    architecture:
+      "Built with Next.js App Router for server-rendered pages with instant navigation via RSC. The configurator is a client component with Zustand state management — selections update pricing and imagery in real-time without page reloads. Vehicle imagery uses next/image with AVIF/WebP formats and responsive breakpoints. The booking flow collects user preferences and submits via API route with validation.",
+    technicalDecisions: [
+      {
+        decision: "Next.js App Router over plain React CSR",
+        rationale:
+          "SEO is critical for an automotive brand — product pages, model specs, and pricing need to be indexable. App Router provides SSR for content pages and seamless client-side transitions for the interactive configurator. RSC means most pages ship zero JavaScript to the browser.",
+      },
+      {
+        decision: "Zustand for configurator state over Context API",
+        rationale:
+          "The configurator has complex state (model, color, wheels, interior, package) that updates pricing dynamically. Zustand provides fine-grained subscriptions — only components that depend on a specific value re-render when it changes, avoiding the Context re-render cascade problem.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "Vehicle imagery performance with high-res product shots",
+        solution:
+          "Used next/image with AVIF format, device-aware breakpoints (640/768/1024/1536), and priority loading for hero images. Total image payload for the configurator page is under 400KB despite showing full-vehicle renders.",
+      },
+      {
+        challenge: "Configurator state persistence across navigation",
+        solution:
+          "Configurator state is persisted to sessionStorage so users can browse model pages and return to their configuration without losing selections. The Zustand store hydrates from sessionStorage on mount.",
+      },
+    ],
+    results: [
+      "Four vehicle models showcased with full specs, pricing, and imagery",
+      "Interactive configurator with real-time pricing across 4 dimensions (color, wheels, interior, package)",
+      "Lighthouse performance score target of 95+ on all pages",
+      "Seamless test-drive booking flow with validation and confirmation",
+      "Responsive design across all device sizes with touch-friendly interactions",
+    ],
+    lessonsLearned: [
+      "A configurator is a product, not a form — every selection should feel delightful, not transactional",
+      "Vehicle imagery is the most important asset — invest in high-quality renders and optimise them aggressively",
+      "Brand websites benefit from SSR for discoverability and client interactivity for engagement — the App Router handles this split naturally",
+    ],
+  },
+  {
+    title: "Mobile Landing Page — Figma Design",
+    slug: "mobile-landing-page",
+    description:
+      "A pixel-perfect mobile landing page design in Figma — focused on conversion-driven layout, clear information hierarchy, and smooth prototyping.",
+    image: "/images/projects/mobile-landing.jpg",
+    technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
+    category: "Mobile",
+    metrics: "Figma prototype with 5+ screens",
+    liveUrl: "https://boho-dwarf-46414877.figma.site",
+    featured: true,
+    problem:
+      "The client needed a mobile-first landing page that converts visitors into users. The challenge was balancing rich product information with a clean, thumb-friendly layout that loads instantly and guides the user toward a single call-to-action without friction.",
+    goals: [
+      "Design a mobile-first landing page with clear visual hierarchy",
+      "Optimise the layout for thumb-zone reachability and one-handed use",
+      "Create a prototyping flow that demonstrates the user journey end-to-end",
+      "Establish reusable design tokens and components for future pages",
+    ],
+    architecture:
+      "The design is built in Figma using auto-layout with a responsive grid system. Components are organised in a design system library — buttons, cards, input fields, and navigation elements are all variants of master components. The prototype connects 5+ key screens with smart-animate transitions that simulate the native app feel. Design tokens (spacing, typography, color) are defined as Figma variables for consistency.",
+    technicalDecisions: [
+      {
+        decision: "Mobile-first over desktop-down",
+        rationale:
+          "Over 70% of landing page traffic comes from mobile devices. Designing mobile-first ensures the core experience is optimised for the primary use case, then expanding to desktop breakpoints with additional whitespace and multi-column layouts.",
+      },
+      {
+        decision: "Figma variables for design tokens",
+        rationale:
+          "Figma variables bind colors, spacing, and typography to a single source of truth. Changing the primary color updates every instance across all screens. This is the design equivalent of CSS custom properties and enables the same systematic consistency.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "Balancing content density with mobile readability",
+        solution:
+          "Used progressive disclosure — key value propositions are visible above the fold, with secondary details revealed through expandable sections. Typography uses a 1.25 line-height ratio for comfortable mobile reading. Touch targets are minimum 44px per WCAG guidelines.",
+      },
+      {
+        challenge: "Design-to-development handoff accuracy",
+        solution:
+          "Every component includes specs for spacing, typography, color, and behavior. The design system library ensures developers have exact values for every property. Figma's Dev Mode provides direct CSS values for rapid implementation.",
+      },
+    ],
+    results: [
+      "5+ screen mobile landing page design with full prototype flow",
+      "Design system with reusable components, variants, and design tokens",
+      "Thumb-zone-optimized layout with minimum 44px touch targets",
+      "Smart-animate transitions for native-app feel in the prototype",
+      "Comprehensive Dev Mode specs for engineering implementation",
+    ],
+    lessonsLearned: [
+      "A design system library pays for itself by the second screen — never build mobile screens without reusable components",
+      "Prototyping with smart-animate reveals UX issues that static mockups hide — always prototype the full flow before handing off",
+      "The gap between Figma design and implementation is smallest when design tokens are treated as source of truth in both tools",
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
