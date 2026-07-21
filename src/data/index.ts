@@ -201,6 +201,43 @@ export const projects: Project[] = [
     liveUrl: "https://ecommerce-starter.nexlayer.app",
     githubUrl: "https://github.com/alexmorgan/ecommerce-accelerator",
   },
+  {
+    title: "Redact — On-Chain Privacy",
+    slug: "redact",
+    description:
+      "A non-custodial privacy dApp on Monad that hides wallet balances until you choose to reveal them. Encrypted on-chain, verified by users.",
+    image: "/images/projects/redact.jpg",
+    technologies: ["React", "TypeScript", "Solidity", "Wagmi", "Monad"],
+    category: "Full Stack",
+    metrics: "10K+ TPS chain, <$0.01 fees",
+    liveUrl: "https://redact-nine.vercel.app",
+    githubUrl: "https://github.com/Arem-ee/Redact",
+    featured: true,
+  },
+  {
+    title: "ERGO Automotive — Brand Experience",
+    slug: "ergo-automotive",
+    description:
+      "A premium luxury EV brand website with interactive configurator, 3D vehicle showcases, and a seamless test-drive booking experience.",
+    image: "/images/projects/ergo.jpg",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    category: "Frontend",
+    metrics: "4 vehicle models, 1K+ bookings",
+    liveUrl: "https://ergo-website-seven.vercel.app",
+    featured: true,
+  },
+  {
+    title: "Mobile Landing Page — Figma Design",
+    slug: "mobile-landing-page",
+    description:
+      "A pixel-perfect mobile landing page design in Figma — focused on conversion-driven layout, clear information hierarchy, and smooth prototyping.",
+    image: "/images/projects/mobile-landing.jpg",
+    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    category: "Mobile",
+    metrics: "Figma prototype with 5+ screens",
+    liveUrl: "https://boho-dwarf-46414877.figma.site",
+    featured: true,
+  },
 ];
 
 export const skillCategories: SkillCategory[] = [
