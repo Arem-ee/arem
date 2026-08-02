@@ -47,8 +47,9 @@ export const favorites: Favorite[] = [
   {
     icon: "Goal",
     image: "/images/projects/cr7.png",
+    imagePosition: "top",
     title: "Football",
-    line: "CR7 set the standard: relentless, disciplined, and clutch in every final. I carry that energy into every sprint and every ship.",
+    line: "CR7 set the standard: relentless, disciplined, and clutch in every final. Suiii! I carry that energy into every sprint and every ship.",
     funFact: "Kicked a ball before I wrote a line of code and the order still holds.",
   },
   {

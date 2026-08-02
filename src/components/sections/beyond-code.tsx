@@ -86,7 +86,9 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
                 src={favorite.image}
                 alt={favorite.title}
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                  favorite.imagePosition === "top" ? "object-top origin-top" : ""
+                }`}
               />
               <span className="absolute left-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-background/90 text-foreground shadow-sm backdrop-blur">
                 <Icon className="h-4 w-4" />

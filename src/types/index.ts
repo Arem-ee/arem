@@ -44,6 +44,7 @@ export interface Strength {
 export interface Favorite {
   icon: string;
   image: string;
+  imagePosition?: "center" | "top";
   title: string;
   line: string;
   funFact: string;
