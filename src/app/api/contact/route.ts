@@ -27,7 +27,7 @@ function isRateLimited(ip: string): boolean {
 async function sendEmail(payload: ContactBody): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.warn("RESEND_API_KEY not configured — skipping email send");
+    console.warn("RESEND_API_KEY not configured – skipping email send");
     return true;
   }
 

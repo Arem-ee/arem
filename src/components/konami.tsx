@@ -79,7 +79,7 @@ function Konami() {
         >
           <div className="flex items-center gap-2 rounded-full border bg-card px-5 py-2.5 text-sm font-medium shadow-lg">
             <Sparkles className="h-4 w-4 text-amber-500" />
-            Cheat code accepted — dev powers restored.
+            Cheat code accepted – dev powers restored.
           </div>
         </motion.div>
       )}

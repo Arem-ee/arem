@@ -1,14 +1,31 @@
 "use client";
 
 import * as React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { Goal, Clapperboard, Music2, BookOpen, Gamepad2, RotateCw } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { SpotifyNowPlaying } from "@/components/spotify-now-playing";
 import { FadeIn } from "@/components/animations";
 import { favorites } from "@/data";
+import { getFavoriteImage } from "@/data/assets";
 import type { Favorite } from "@/types";
+
+const favoriteIcons: Record<string, LucideIcon> = {
+  Goal,
+  Clapperboard,
+  Music2,
+  BookOpen,
+  Gamepad2,
+};
 
 function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }) {
   const [flipped, setFlipped] = React.useState(false);
@@ -16,11 +33,11 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), {
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), {
     stiffness: 200,
     damping: 20,
   });
-  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-8, 8]), {
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-6, 6]), {
     stiffness: 200,
     damping: 20,
   });
@@ -35,6 +52,8 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
     mx.set(0);
     my.set(0);
   };
+
+  const Icon = favoriteIcons[favorite.icon] ?? Goal;
 
   return (
     <motion.div
@@ -51,39 +70,52 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
         onPointerLeave={onPointerLeave}
         className="block w-full cursor-pointer text-left"
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        aria-label={`${favorite.title} — click to flip`}
+        aria-label={`${favorite.title} - click to flip`}
       >
         <motion.div
-          className="relative h-44 rounded-xl border bg-card p-5 shadow-sm transition-shadow group-hover:shadow-md"
+          className="relative overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow group-hover:shadow-md"
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
           style={{ transformStyle: "preserve-3d" }}
         >
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center"
-            style={{ backfaceVisibility: "hidden", transform: "translateZ(40px)" }}
+            className="relative flex flex-col"
+            style={{ backfaceVisibility: "hidden", transform: "translateZ(30px)" }}
           >
-            <span className="text-4xl" aria-hidden="true">
-              {favorite.emoji}
-            </span>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-              {favorite.title}
-            </h3>
-            <p className="max-w-[240px] text-sm leading-relaxed text-foreground/80">
-              {favorite.line}
-            </p>
-            <span className="mt-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 opacity-0 transition-opacity group-hover:opacity-100">
-              Click to flip
-            </span>
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+              <Image
+                src={getFavoriteImage(favorite.image)}
+                alt={favorite.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+              />
+              <span className="absolute left-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-background/90 text-foreground shadow-sm backdrop-blur">
+                <Icon className="h-4 w-4" />
+              </span>
+            </div>
+            <div className="flex flex-1 flex-col gap-1.5 p-4">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                {favorite.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-foreground/85">
+                {favorite.line}
+              </p>
+              <span className="mt-auto inline-flex items-center gap-1 pt-2 text-[11px] font-medium uppercase tracking-wider text-muted-foreground/60 opacity-0 transition-opacity group-hover:opacity-100">
+                <RotateCw className="h-3 w-3" />
+                Flip for a fun fact
+              </span>
+            </div>
           </div>
 
           <div
-            className="absolute inset-0 flex items-center justify-center rounded-xl bg-secondary px-5 text-center"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary p-5 text-center"
             style={{
               backfaceVisibility: "hidden",
-              transform: "rotateY(180deg) translateZ(40px)",
+              transform: "rotateY(180deg) translateZ(30px)",
             }}
           >
+            <Icon className="h-6 w-6 text-secondary-foreground" />
             <p className="text-sm leading-relaxed text-secondary-foreground">
               {favorite.funFact}
             </p>
@@ -102,7 +134,7 @@ function BeyondCodeSection() {
           <SectionTitle
             label="Beyond the code"
             title="What I'm into off the clock."
-            description="A few favourites that keep the balance — click a card to flip it."
+            description="A few role models and favourites that keep the balance - click a card to flip it."
             className="mb-12"
           />
         </FadeIn>

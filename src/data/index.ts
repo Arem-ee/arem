@@ -26,7 +26,7 @@ export const strengths: Strength[] = [
   {
     title: "System Design",
     description:
-      "Architecting scalable, resilient systems that handle millions of users without breaking a sweat — from monoliths to micro-frontends.",
+      "Architecting scalable, resilient systems that handle millions of users without breaking a sweat – from monoliths to micro-frontends.",
     icon: "Layers",
   },
   {
@@ -45,33 +45,38 @@ export const strengths: Strength[] = [
 
 export const favorites: Favorite[] = [
   {
-    emoji: "⚽",
+    icon: "Football",
+    image: "football",
     title: "Football",
-    line: "Sunday league striker, armchair tactician.",
-    funFact: "Kicked a ball before I wrote a line of code — the order still holds.",
+    line: "CR7 set the standard: relentless, disciplined, and clutch in every final. I carry that energy into every sprint and every ship.",
+    funFact: "Kicked a ball before I wrote a line of code and the order still holds.",
   },
   {
-    emoji: "🍿",
+    icon: "Clapperboard",
+    image: "movies",
     title: "Movies",
-    line: "Iron Man taught me that a great suit is 10% tech, 90% iteration.",
-    funFact: "Can quote the entire elevator scene from Iron Man 1. Not sorry.",
+    line: "Tony Stark is the ultimate engineer-hero. Suit up, build the thing, then upgrade it. I relate more than I should.",
+    funFact: "I can quote the entire first Iron Man. I will not apologise.",
   },
   {
-    emoji: "🎵",
+    icon: "Music2",
+    image: "music",
     title: "Music",
-    line: "Afrobeats in the build queue, lo-fi in the bug hunt.",
+    line: "Afrobeats is the soundtrack to the build. Burna, Wizkid, and Rema keep the energy high and the commits coming.",
     funFact: "Shipping features with Burna Boy on repeat is a documented workflow.",
   },
   {
-    emoji: "📚",
+    icon: "BookOpen",
+    image: "books",
     title: "Books",
-    line: "Clean architecture by day, good sci-fi by night.",
-    funFact: "My favourite read this year: books on systems — and a few on spaceships.",
+    line: "Books are the cheat codes. Clean architecture by day, sci-fi by night; there is always another level to unlock.",
+    funFact: "My favourite reads this year: books on systems, and a few on spaceships.",
   },
   {
-    emoji: "🎮",
+    icon: "Gamepad2",
+    image: "games",
     title: "Games",
-    line: "FIFA for the win streak, Factorio for the engineering itch.",
+    line: "FIFA for the winning mindset, Factorio for the pure joy of optimisation. Both are systems thinking in disguise.",
     funFact: "My Factorio factory ships more belts than most startups ship features.",
   },
 ];
@@ -83,11 +88,11 @@ export const experiences: Experience[] = [
     companyUrl: "https://propeida.com",
     duration: "2025 \u2014 Present",
     summary:
-      "Founded and leading Propeida, a computer-based testing (CBT) platform built for exam reliability at scale. I own the product vision, architecture, and engineering — from the testing engine to the candidate experience.",
+      "Founded and leading Propeida, a computer-based testing (CBT) platform built for exam reliability at scale. I own the product vision, architecture, and engineering – from the testing engine to the candidate experience.",
     achievements: [
-      "Architected and built the full-stack CBT platform — authoring tools, proctoring flows, and real-time result scoring for high-stakes examinations",
+      "Architected and built the full-stack CBT platform – authoring tools, proctoring flows, and real-time result scoring for high-stakes examinations",
       "Designed the platform around reliability and fairness, with automatic grading, instant result delivery, and audit trails for every session",
-      "Led every stage from zero to launch — product strategy, UI/UX, infrastructure, and go-to-market",
+      "Led every stage from zero to launch – product strategy, UI/UX, infrastructure, and go-to-market",
       "Built the entire codebase as a solo engineer, prioritising clean architecture and maintainability for a growing team",
     ],
   },
@@ -96,12 +101,12 @@ export const experiences: Experience[] = [
     company: "Self-employed",
     duration: "2024 \u2014 Present",
     summary:
-      "Delivering production-grade web products for startups and businesses — from Web3 dApps to brand and business websites. Each engagement is scoped, designed, built, and shipped end-to-end.",
+      "Delivering production-grade web products for startups and businesses – from Web3 dApps to brand and business websites. Each engagement is scoped, designed, built, and shipped end-to-end.",
     achievements: [
       "Built Redact, a non-custodial on-chain privacy dApp on Monad with encrypted balance hiding and verified smart contracts",
-      "Designed and developed ERGO Automotive's brand experience — an interactive configurator and multi-model showcase with sub-2s load times",
-      "Shipped client landing pages focused on conversion — including Aremco Heating, Cooling & Construction's business site",
-      "Delivered 20+ projects across landing pages, e-commerce, and Web3 — consistently hitting 90+ Lighthouse scores",
+      "Designed and developed ERGO Automotive's brand experience – an interactive configurator and multi-model showcase with sub-2s load times",
+      "Shipped client landing pages focused on conversion – including Aremco Heating, Cooling & Construction's business site",
+      "Delivered 20+ projects across landing pages, e-commerce, and Web3 – consistently hitting 90+ Lighthouse scores",
     ],
   },
   {
@@ -109,11 +114,11 @@ export const experiences: Experience[] = [
     company: "Self-employed",
     duration: "2024",
     summary:
-      "Started freelancing while studying — building responsive websites and design-to-code implementations for small businesses and personal brands.",
+      "Started freelancing while studying – building responsive websites and design-to-code implementations for small businesses and personal brands.",
     achievements: [
       "Converted Figma designs into pixel-perfect, responsive Next.js and Tailwind CSS implementations",
       "Built fast, mobile-first landing pages for local businesses looking to establish an online presence",
-      "Developed a repeatable client workflow — discovery, design review, build, and handoff — used in every engagement since",
+      "Developed a repeatable client workflow – discovery, design review, build, and handoff – used in every engagement since",
     ],
   },
 ];
@@ -123,7 +128,7 @@ export const projects: Project[] = [
     title: "Pageon Checkout Redesign",
     slug: "stripe-checkout-redesign",
     description:
-      "Complete redesign of Pageon's payment checkout experience — serving millions of transactions daily across 35+ countries.",
+      "Complete redesign of Pageon's payment checkout experience – serving millions of transactions daily across 35+ countries.",
     image: "/images/projects/pageon-checkout.jpg",
     technologies: ["React", "TypeScript", "Micro-Frontends", "Pageon API", "AWS"],
     category: "Full Stack",
@@ -198,7 +203,7 @@ export const projects: Project[] = [
     title: "Performance Monitoring CLI",
     slug: "performance-monitoring-cli",
     description:
-      "CLI tool for running performance budgets in CI — catches regressions before they ship to production.",
+      "CLI tool for running performance budgets in CI – catches regressions before they ship to production.",
     image: "/images/projects/perf-cli.jpg",
     technologies: ["Node.js", "TypeScript", "Commander", "Lighthouse", "Docker"],
     category: "DevOps",
@@ -218,7 +223,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/alexmorgan/ecommerce-accelerator",
   },
   {
-    title: "Redact — On-Chain Privacy",
+    title: "Redact – On-Chain Privacy",
     slug: "redact",
     description:
       "A non-custodial privacy dApp on Monad that hides wallet balances until you choose to reveal them. Encrypted on-chain, verified by users.",
@@ -231,7 +236,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "ERGO Automotive — Brand Experience",
+    title: "ERGO Automotive – Brand Experience",
     slug: "ergo-automotive",
     description:
       "A premium luxury EV brand website with interactive configurator, 3D vehicle showcases, and a seamless test-drive booking experience.",
@@ -243,10 +248,10 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Mobile Landing Page — Figma Design",
+    title: "Mobile Landing Page – Figma Design",
     slug: "mobile-landing-page",
     description:
-      "A pixel-perfect mobile landing page design in Figma — focused on conversion-driven layout, clear information hierarchy, and smooth prototyping.",
+      "A pixel-perfect mobile landing page design in Figma – focused on conversion-driven layout, clear information hierarchy, and smooth prototyping.",
     image: "/images/projects/mobile-landing.jpg",
     technologies: ["Figma", "UI/UX Design", "Prototyping"],
     category: "Mobile",
@@ -255,10 +260,10 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Aremco — Business Landing Page",
+    title: "Aremco – Business Landing Page",
     slug: "aremco",
     description:
-      "A clean, professional landing page for Aremco Heating, Cooling & Construction — establishing brand presence and generating leads.",
+      "A clean, professional landing page for Aremco Heating, Cooling & Construction – establishing brand presence and generating leads.",
     image: "/images/projects/aremco.jpg",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     category: "Frontend",
@@ -294,7 +299,7 @@ export const articles: Article[] = [
     date: "2025-02-10",
     readingTime: "9 min read",
     summary:
-      "The technical and product decisions behind one of the highest-impact redesigns I led — and what we learned about checkout psychology along the way.",
+      "The technical and product decisions behind one of the highest-impact redesigns I led – and what we learned about checkout psychology along the way.",
   },
   {
     title: "Building a Real-Time Sync Engine With CRDTs",
@@ -302,7 +307,7 @@ export const articles: Article[] = [
     date: "2024-12-18",
     readingTime: "12 min read",
     summary:
-      "Lessons from building Canvo's real-time collaboration layer from scratch — CRDT selection, conflict resolution, and scaling to 10K concurrent users.",
+      "Lessons from building Canvo's real-time collaboration layer from scratch – CRDT selection, conflict resolution, and scaling to 10K concurrent users.",
   },
   {
     title: "Performance Budgets That Actually Work",
@@ -310,7 +315,7 @@ export const articles: Article[] = [
     date: "2024-10-05",
     readingTime: "7 min read",
     summary:
-      "How we established and enforced performance budgets at Nexlayer — from CI gates to team culture changes that stuck.",
+      "How we established and enforced performance budgets at Nexlayer – from CI gates to team culture changes that stuck.",
   },
   {
     title: "Designing APIs Frontend Developers Love",
@@ -318,7 +323,7 @@ export const articles: Article[] = [
     date: "2024-08-22",
     readingTime: "8 min read",
     summary:
-      "What I've learned about API design from shipping platforms consumed by thousands of developers — consistency, ergonomics, and the human side of APIs.",
+      "What I've learned about API design from shipping platforms consumed by thousands of developers – consistency, ergonomics, and the human side of APIs.",
   },
   {
     title: "The Architecture of a Million-Dollar Checkout Flow",
@@ -334,15 +339,15 @@ export const articles: Article[] = [
     date: "2024-04-30",
     readingTime: "10 min read",
     summary:
-      "What I learned growing frontend teams from 5 to 50 engineers — org design, code ownership, and maintaining velocity without sacrificing quality.",
+      "What I learned growing frontend teams from 5 to 50 engineers – org design, code ownership, and maintaining velocity without sacrificing quality.",
   },
   {
-    title: "Accessibility Is Not a Feature — It's Infrastructure",
+    title: "Accessibility Is Not a Feature – It's Infrastructure",
     slug: "accessibility-is-infrastructure",
     date: "2024-03-12",
     readingTime: "6 min read",
     summary:
-      "How we treated accessibility as platform infrastructure at Pageon — automated audits, component contracts, and the shift from reactive fixes to proactive design.",
+      "How we treated accessibility as platform infrastructure at Pageon – automated audits, component contracts, and the shift from reactive fixes to proactive design.",
   },
   {
     title: "What Nobody Tells You About Micro-Frontends",
@@ -350,7 +355,7 @@ export const articles: Article[] = [
     date: "2024-01-28",
     readingTime: "9 min read",
     summary:
-      "The hard lessons from shipping micro-frontends in production — shared dependency hell, performance overhead, and when not to use them.",
+      "The hard lessons from shipping micro-frontends in production – shared dependency hell, performance overhead, and when not to use them.",
   },
   {
     title: "Building a Plugin Platform: Lessons From Canvo",
@@ -358,7 +363,7 @@ export const articles: Article[] = [
     date: "2023-11-15",
     readingTime: "8 min read",
     summary:
-      "What went into designing Canvo's plugin API — sandboxing, security, developer experience, and growing an ecosystem from zero to 800 plugins.",
+      "What went into designing Canvo's plugin API – sandboxing, security, developer experience, and growing an ecosystem from zero to 800 plugins.",
   },
   {
     title: "Why Your CI Pipeline Should Fail on Performance Regressions",
@@ -397,6 +402,6 @@ export const testimonials: Testimonial[] = [
     role: "CTO, Linear",
     avatar: "/images/avatars/marcus.jpg",
     review:
-      "One of the strongest system thinkers I've worked with. Arem approaches problems at the right level of abstraction — never over-engineering, but never cutting corners. Every system he's touched has been measurably better after his involvement.",
+      "One of the strongest system thinkers I've worked with. Arem approaches problems at the right level of abstraction – never over-engineering, but never cutting corners. Every system he's touched has been measurably better after his involvement.",
   },
 ];

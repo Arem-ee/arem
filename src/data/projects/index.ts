@@ -5,7 +5,7 @@ export const projectDetails: ProjectDetail[] = [
     title: "Pageon Checkout Redesign",
     slug: "stripe-checkout-redesign",
     description:
-      "Complete redesign of Pageon's payment checkout experience — serving millions of transactions daily across 35+ countries.",
+      "Complete redesign of Pageon's payment checkout experience – serving millions of transactions daily across 35+ countries.",
     image: "/images/projects/pageon-checkout.jpg",
     technologies: ["React", "TypeScript", "Micro-Frontends", "Pageon API", "AWS"],
     category: "Full Stack",
@@ -33,7 +33,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         decision: "XState state machines for payment flows",
         rationale:
-          "Payment flows have complex states (pending, confirmed, failed, disputed, refunded). A state machine makes every transition explicit, testable, and visualisable — catching edge cases that imperative code would miss.",
+          "Payment flows have complex states (pending, confirmed, failed, disputed, refunded). A state machine makes every transition explicit, testable, and visualisable – catching edge cases that imperative code would miss.",
       },
       {
         decision: "CSS custom properties for theming",
@@ -59,16 +59,16 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     results: [
-      "Checkout abandonment dropped from 38% to 22% globally — a 42% relative reduction",
-      "WCAG accessibility score improved from 68 to 97 — highest in the payments industry",
+      "Checkout abandonment dropped from 38% to 22% globally – a 42% relative reduction",
+      "WCAG accessibility score improved from 68 to 97 – highest in the payments industry",
       "Scaled to handle 15,000+ transactions per second during Black Friday peak",
       "Integration time for new merchants reduced from 2 weeks to 2 days",
       "Payment method coverage expanded from 5 to 35+ countries with zero core code changes",
     ],
     lessonsLearned: [
       "Treating accessibility as a CI gate rather than a QA phase is the only way to maintain standards at scale",
-      "Micro-frontends add real overhead — you need strong shared conventions, monitoring, and a good design system to make them work",
-      "Payment method modules should be treated as products, not features — each has unique UX, compliance, and performance requirements",
+      "Micro-frontends add real overhead – you need strong shared conventions, monitoring, and a good design system to make them work",
+      "Payment method modules should be treated as products, not features – each has unique UX, compliance, and performance requirements",
     ],
   },
   {
@@ -84,7 +84,7 @@ export const projectDetails: ProjectDetail[] = [
     githubUrl: "https://github.com/alexmorgan",
     featured: true,
     problem:
-      "Roamly's products were built with inconsistent UI patterns — every team had their own buttons, modals, and form controls. Design reviews were slow, accessibility was inconsistent, and engineers spent 40% of their time rebuilding the same components. The legacy LESS codebase was increasingly unmaintainable.",
+      "Roamly's products were built with inconsistent UI patterns – every team had their own buttons, modals, and form controls. Design reviews were slow, accessibility was inconsistent, and engineers spent 40% of their time rebuilding the same components. The legacy LESS codebase was increasingly unmaintainable.",
     goals: [
       "Create a single source of truth for UI components used across all of Roamly's products",
       "Reduce UI development time by 50% or more",
@@ -107,7 +107,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         decision: "Canvo-to-code design token pipeline",
         rationale:
-          "Instead of manually copying design values, we built a Canvo plugin that exports design tokens as JSON. A build step generates CSS custom properties, JavaScript constants, and themed values — ensuring design and code never drift apart.",
+          "Instead of manually copying design values, we built a Canvo plugin that exports design tokens as JSON. A build step generates CSS custom properties, JavaScript constants, and themed values – ensuring design and code never drift apart.",
       },
     ],
     challenges: [
@@ -119,20 +119,20 @@ export const projectDetails: ProjectDetail[] = [
       {
         challenge: "Bundle size bloat from importing too much",
         solution:
-          "Implemented automatic tree-shaking at the component level. Introduced a linter rule that flags full-library imports and suggests specific imports. Added bundle size budgets to CI — any PR that increases gzip size by more than 5KB triggers a review.",
+          "Implemented automatic tree-shaking at the component level. Introduced a linter rule that flags full-library imports and suggests specific imports. Added bundle size budgets to CI – any PR that increases gzip size by more than 5KB triggers a review.",
       },
     ],
     results: [
       "Reduced UI development time by 55% across all product teams",
       "Adopted by 200+ engineers across 12 product teams within 6 months",
       "12 design tokens synced bi-directionally between Canvo and code via the plugin pipeline",
-      "100% of components pass WCAG 2.1 AA — product-wide a11y compliance rose from 52% to 89%",
+      "100% of components pass WCAG 2.1 AA – product-wide a11y compliance rose from 52% to 89%",
       "Component reuse rate increased from 20% to 85%",
     ],
     lessonsLearned: [
-      "A design system is a product, not a project — it requires dedicated investment, product management, and ongoing maintenance",
-      "Documentation matters more than the components themselves — well-documented components get adopted; undocumented ones get reimplemented",
-      "Involve designers in component reviews, not just engineers — the best design systems are co-owned",
+      "A design system is a product, not a project – it requires dedicated investment, product management, and ongoing maintenance",
+      "Documentation matters more than the components themselves – well-documented components get adopted; undocumented ones get reimplemented",
+      "Involve designers in component reviews, not just engineers – the best design systems are co-owned",
     ],
   },
   {
@@ -148,7 +148,7 @@ export const projectDetails: ProjectDetail[] = [
     githubUrl: "https://github.com/alexmorgan",
     featured: true,
     problem:
-      "Canvo's plugin data was static — when one user ran a plugin, others couldn't see the changes in real-time. This limited collaborative workflows. Existing solutions for real-time sync either required a central server (breaking offline editing) or had complex conflict resolution.",
+      "Canvo's plugin data was static – when one user ran a plugin, others couldn't see the changes in real-time. This limited collaborative workflows. Existing solutions for real-time sync either required a central server (breaking offline editing) or had complex conflict resolution.",
     goals: [
       "Provide real-time multi-user editing for plugin-generated content",
       "Support 10,000+ concurrent editors on a single document",
@@ -161,7 +161,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         decision: "CRDTs (Yjs) over Operational Transform (OT)",
         rationale:
-          "CRDTs eliminate the need for a central ordering server. Every client can process edits independently and merge them deterministically. This means true offline support with automatic resolution — no conflicts when two users edit the same paragraph offline and reconnect.",
+          "CRDTs eliminate the need for a central ordering server. Every client can process edits independently and merge them deterministically. This means true offline support with automatic resolution – no conflicts when two users edit the same paragraph offline and reconnect.",
       },
       {
         decision: "Go for the WebSocket relay server",
@@ -194,9 +194,9 @@ export const projectDetails: ProjectDetail[] = [
       "Total infrastructure cost under $800/month at peak load",
     ],
     lessonsLearned: [
-      "CRDTs eliminate entire categories of bugs that plague OT systems — the complexity is worth the investment",
-      "WebSocket connection management at scale requires careful load balancing — a single poorly configured proxy can bring down the entire system",
-      "Offline support is a feature users don't notice until it's missing — invest in it early",
+      "CRDTs eliminate entire categories of bugs that plague OT systems – the complexity is worth the investment",
+      "WebSocket connection management at scale requires careful load balancing – a single poorly configured proxy can bring down the entire system",
+      "Offline support is a feature users don't notice until it's missing – invest in it early",
     ],
   },
   {
@@ -212,10 +212,10 @@ export const projectDetails: ProjectDetail[] = [
     githubUrl: "https://github.com/vercel/next.js",
     featured: true,
     problem:
-      "Next.js cold builds on large projects (e.g., e-commerce sites with 10K+ pages) could take 15-30 minutes. This was the #1 developer experience complaint. The existing cache was a simple file hash that invalidated too aggressively — any change to any file invalidated the entire cache.",
+      "Next.js cold builds on large projects (e.g., e-commerce sites with 10K+ pages) could take 15-30 minutes. This was the #1 developer experience complaint. The existing cache was a simple file hash that invalidated too aggressively – any change to any file invalidated the entire cache.",
     goals: [
       "Reduce cold-start build times by at least 40%",
-      "Make incremental builds work correctly — no stale output",
+      "Make incremental builds work correctly – no stale output",
       "Maintain backward compatibility with existing Next.js projects",
       "Keep the cache implementation simple enough for community contribution",
     ],
@@ -225,7 +225,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         decision: "Module-level DAG over file-level hashing",
         rationale:
-          "File-level cache invalidation is too coarse — changing an import adds a new edge to the dependency graph but doesn't invalidate the importer's output. Module-level tracking with transitive dependency hashing ensures correctness while maximising cache hits.",
+          "File-level cache invalidation is too coarse – changing an import adds a new edge to the dependency graph but doesn't invalidate the importer's output. Module-level tracking with transitive dependency hashing ensures correctness while maximising cache hits.",
       },
       {
         decision: "SQLite for cache persistence",
@@ -242,25 +242,25 @@ export const projectDetails: ProjectDetail[] = [
       {
         challenge: "Handling CSS module and image imports correctly",
         solution:
-          "CSS modules generate side-effectful output that depends on class name hashing. Image imports generate optimised assets with content hashes. We added special handling for these asset types — tracking both the module dependency AND the generated side-effect output in the cache DAG.",
+          "CSS modules generate side-effectful output that depends on class name hashing. Image imports generate optimised assets with content hashes. We added special handling for these asset types – tracking both the module dependency AND the generated side-effect output in the cache DAG.",
       },
       {
         challenge: "Cache invalidation during framework upgrades",
         solution:
-          "When Next.js itself is upgraded, all cached outputs from the previous version must be invalidated. We include the Next.js version hash in every cache key — a framework upgrade triggers a clean rebuild automatically.",
+          "When Next.js itself is upgraded, all cached outputs from the previous version must be invalidated. We include the Next.js version hash in every cache key – a framework upgrade triggers a clean rebuild automatically.",
       },
     ],
     results: [
       "Cold-start build times reduced by 43% for projects with 5K+ pages",
       "Incremental rebuilds during development 60% faster than the previous implementation",
       "Cache hit rate of 78% on average across all Nexlayer deployments",
-      "Adopted as the default caching strategy in Next.js 15 — serving 500K+ weekly active developers",
+      "Adopted as the default caching strategy in Next.js 15 – serving 500K+ weekly active developers",
       "Community contributions added support for Turbopack integration within 3 months of open-sourcing the design",
     ],
     lessonsLearned: [
-      "Caching is never as simple as it first seems — CSS modules, image assets, and framework upgrades all have subtle edge cases",
-      "Measure cache hit rates in production before optimising — most teams optimise the wrong thing first",
-      "A well-designed cache should be invisible — if users are thinking about it, the design is wrong",
+      "Caching is never as simple as it first seems – CSS modules, image assets, and framework upgrades all have subtle edge cases",
+      "Measure cache hit rates in production before optimising – most teams optimise the wrong thing first",
+      "A well-designed cache should be invisible – if users are thinking about it, the design is wrong",
     ],
   },
   {
@@ -278,7 +278,7 @@ export const projectDetails: ProjectDetail[] = [
       "Canvo users wanted to extend the editor with custom functionality, but there was no developer API. Building a plugin platform meant designing an API that was powerful enough for complex plugins, safe enough to run untrusted code, and simple enough that developers could build their first plugin in an afternoon.",
     goals: [
       "Launch a plugin API that enables 500+ community plugins within the first year",
-      "Ensure plugin execution is secure — no access to the host document without explicit permission",
+      "Ensure plugin execution is secure – no access to the host document without explicit permission",
       "Make the developer onboarding experience under 30 minutes from idea to first working plugin",
       "Support both free and paid plugin distribution through the Canvo Community",
     ],
@@ -288,7 +288,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         decision: "GraphQL over REST for the plugin API",
         rationale:
-          "Plugins have wildly different data needs — a colour palette plugin needs different data than a code export plugin. GraphQL lets each plugin request exactly what it needs, reducing payload size and improving performance. The single endpoint also simplifies client setup.",
+          "Plugins have wildly different data needs – a colour palette plugin needs different data than a code export plugin. GraphQL lets each plugin request exactly what it needs, reducing payload size and improving performance. The single endpoint also simplifies client setup.",
       },
       {
         decision: "Sandboxed iframe with explicit permission model",
@@ -310,20 +310,20 @@ export const projectDetails: ProjectDetail[] = [
       {
         challenge: "API versioning and backward compatibility",
         solution:
-          "The GraphQL schema is versioned at the field level — deprecated fields are marked with @deprecated but never removed without 6 months notice. A plugin's requested API version is stored at publish time, and the runtime adapts to provide the appropriate schema version.",
+          "The GraphQL schema is versioned at the field level – deprecated fields are marked with @deprecated but never removed without 6 months notice. A plugin's requested API version is stored at publish time, and the runtime adapts to provide the appropriate schema version.",
       },
     ],
     results: [
-      "800+ community plugins published within the first year — exceeding the goal by 60%",
+      "800+ community plugins published within the first year – exceeding the goal by 60%",
       "Plugins adopted by 40% of monthly active users within 6 months",
       "Automated review pipeline processes 95% of submissions without manual intervention",
       "Plugin ecosystem estimated to save users 2M+ hours per year through automation and workflow enhancements",
       "Developer NPS of 72 for the plugin developer experience",
     ],
     lessonsLearned: [
-      "Platform API design is about saying no — every capability you expose constrains your future evolution",
-      "Developer experience is the product for a platform — invest disproportionately in onboarding, documentation, and error messages",
-      "A permission model is a product decision, not just a security decision — too restrictive and nobody builds; too permissive and you can't sleep at night",
+      "Platform API design is about saying no – every capability you expose constrains your future evolution",
+      "Developer experience is the product for a platform – invest disproportionately in onboarding, documentation, and error messages",
+      "A permission model is a product decision, not just a security decision – too restrictive and nobody builds; too permissive and you can't sleep at night",
     ],
   },
   {
@@ -337,11 +337,11 @@ export const projectDetails: ProjectDetail[] = [
     metrics: "WCAG 97 score",
     githubUrl: "https://github.com/alexmorgan",
     problem:
-      "Accessibility was being caught too late in the development process — issues discovered during QA required significant rework. Manual audits were slow and inconsistent. The checkout's WCAG score was 68, failing basic compliance standards.",
+      "Accessibility was being caught too late in the development process – issues discovered during QA required significant rework. Manual audits were slow and inconsistent. The checkout's WCAG score was 68, failing basic compliance standards.",
     goals: [
       "Lift WCAG 2.1 AA score from 68 to 95+",
-      "Make accessibility testing automatic in CI — every PR checked before merge",
-      "Provide actionable, developer-friendly reports — not just a score",
+      "Make accessibility testing automatic in CI – every PR checked before merge",
+      "Provide actionable, developer-friendly reports – not just a score",
       "Create a reusable tool that works across all of Pageon's customer-facing surfaces",
     ],
     architecture:
@@ -350,7 +350,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         decision: "Playwright over Cypress for accessibility scanning",
         rationale:
-          "Playwright supports multiple browser engines (Chromium, Firefox, WebKit) — important because accessibility support varies by browser. It also handles shadow DOM natively, which was critical for our Web Component-based checkout.",
+          "Playwright supports multiple browser engines (Chromium, Firefox, WebKit) – important because accessibility support varies by browser. It also handles shadow DOM natively, which was critical for our Web Component-based checkout.",
       },
       {
         decision: "axe-core over custom rules",
@@ -376,35 +376,35 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     results: [
-      "WCAG score improved from 68 to 97 — highest in the payments industry",
-      "Accessibility testing integrated into every PR — zero regressions shipped in 18 months",
+      "WCAG score improved from 68 to 97 – highest in the payments industry",
+      "Accessibility testing integrated into every PR – zero regressions shipped in 18 months",
       "95% of accessibility issues caught during development rather than QA",
       "Tool adopted by 4 additional Pageon teams for their surfaces",
       "Reduced manual QA time for accessibility audits by 80%",
     ],
     lessonsLearned: [
-      "Automated testing catches about 40% of accessibility issues — you still need manual testing (screen readers, keyboard navigation, zoom)",
+      "Automated testing catches about 40% of accessibility issues – you still need manual testing (screen readers, keyboard navigation, zoom)",
       "The biggest impact comes from making accessibility part of the development workflow, not a separate QA phase",
-      "Team culture beats tooling every time — find ways to make accessibility visible and celebrated",
+      "Team culture beats tooling every time – find ways to make accessibility visible and celebrated",
     ],
   },
   {
     title: "Performance Monitoring CLI",
     slug: "performance-monitoring-cli",
     description:
-      "CLI tool for running performance budgets in CI — catches regressions before they ship to production.",
+      "CLI tool for running performance budgets in CI – catches regressions before they ship to production.",
     image: "/images/projects/perf-cli.jpg",
     technologies: ["Node.js", "TypeScript", "Commander", "Lighthouse", "Docker"],
     category: "DevOps",
     metrics: "3K+ GitHub stars",
     githubUrl: "https://github.com/alexmorgan/perf-monitor",
     problem:
-      "Performance regressions were being discovered in production by real users. Teams had no standard way to enforce performance budgets in CI. Lighthouse reports were run manually and inconsistently — if at all.",
+      "Performance regressions were being discovered in production by real users. Teams had no standard way to enforce performance budgets in CI. Lighthouse reports were run manually and inconsistently – if at all.",
     goals: [
       "Run Lighthouse performance audits automatically in CI on every PR",
       "Compare results against a baseline and fail the build if budgets are exceeded",
       "Provide clear, actionable reports showing exactly which metrics regressed",
-      "Make configuration simple — a single JSON file in the project root",
+      "Make configuration simple – a single JSON file in the project root",
     ],
     architecture:
       "A Node.js CLI built with Commander.js that wraps Lighthouse in headless Chrome mode. It compares PR results against the main branch baseline and posts a formatted report as a PR comment. Configuration is a `perf.config.json` file with metric thresholds, device profiles (mobile/desktop), and paths to test.",
@@ -428,15 +428,15 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     results: [
-      "3,000+ stars on GitHub — adopted by teams at Shopify, Nexlayer, and Auth0",
+      "3,000+ stars on GitHub – adopted by teams at Shopify, Nexlayer, and Auth0",
       "Used internally to enforce budgets across 15+ frontend repositories",
       "Average performance regression detection time reduced from 2 weeks (post-deploy) to under 10 minutes (in CI)",
       "Zero performance-related production incidents in the year following adoption",
     ],
     lessonsLearned: [
-      "Performance budgets only work if the team agrees on them — involve engineers in setting the thresholds",
-      "A passing build is a commitment — once you enforce budgets in CI, every team member is responsible for performance",
-      "The 5% threshold rule prevents noise while catching real regressions — tune it for your specific stack",
+      "Performance budgets only work if the team agrees on them – involve engineers in setting the thresholds",
+      "A passing build is a commitment – once you enforce budgets in CI, every team member is responsible for performance",
+      "The 5% threshold rule prevents noise while catching real regressions – tune it for your specific stack",
     ],
   },
   {
@@ -487,13 +487,13 @@ export const projectDetails: ProjectDetail[] = [
       "Open-source community with 40+ contributors and 600+ GitHub stars",
     ],
     lessonsLearned: [
-      "Inventory management at scale requires distributed locking — don't underestimate this until it fails in production",
-      "SEO is a first-class feature, not an afterthought — product pages must be structured for rich search results from day one",
+      "Inventory management at scale requires distributed locking – don't underestimate this until it fails in production",
+      "SEO is a first-class feature, not an afterthought – product pages must be structured for rich search results from day one",
       "A well-designed starter kit can have more impact than a custom build for most businesses",
     ],
   },
   {
-    title: "Redact — On-Chain Privacy",
+    title: "Redact – On-Chain Privacy",
     slug: "redact",
     description:
       "A non-custodial privacy dApp on Monad that hides wallet balances until you choose to reveal them. Encrypted on-chain, verified by users.",
@@ -505,16 +505,16 @@ export const projectDetails: ProjectDetail[] = [
     githubUrl: "https://github.com/Arem-ee/Redact",
     featured: true,
     problem:
-      "Wallet addresses are public by default. Once your address is linked to your name, anyone can look up your full portfolio — what you hold, how much, every transaction you've ever made. Existing privacy solutions were either custodial (holding your keys) or technically complex (requiring zk-proofs). Users needed a simple, auditable way to keep their balances private without trusting a third party.",
+      "Wallet addresses are public by default. Once your address is linked to your name, anyone can look up your full portfolio – what you hold, how much, every transaction you've ever made. Existing privacy solutions were either custodial (holding your keys) or technically complex (requiring zk-proofs). Users needed a simple, auditable way to keep their balances private without trusting a third party.",
     goals: [
       "Hide wallet balances on-chain so nobody can read them without permission",
-      "Remain fully non-custodial — users never give up their keys",
+      "Remain fully non-custodial – users never give up their keys",
       "Work with existing EVM wallets (MetaMask, WalletConnect, etc.)",
       "Keep transaction fees under $0.01 so privacy isn't a luxury",
       "Provide duress mode for physical security threats",
     ],
     architecture:
-      "Redact uses a smart contract on Monad that stores encrypted balance commitments. When a user deposits, their balance is committed to the contract as a hash — visible only to the holder of the decryption key. The frontend is a React SPA that connects via Wagmi and handles PIN-based local encryption. Withdrawals are signed transactions that reveal only the amount being moved, preserving privacy of the remaining balance. The contract is verified on Monad Explorer for full transparency.",
+      "Redact uses a smart contract on Monad that stores encrypted balance commitments. When a user deposits, their balance is committed to the contract as a hash – visible only to the holder of the decryption key. The frontend is a React SPA that connects via Wagmi and handles PIN-based local encryption. Withdrawals are signed transactions that reveal only the amount being moved, preserving privacy of the remaining balance. The contract is verified on Monad Explorer for full transparency.",
     technicalDecisions: [
       {
         decision: "On-chain encryption commitments over zk-proofs",
@@ -541,23 +541,23 @@ export const projectDetails: ProjectDetail[] = [
       {
         challenge: "Preventing brute force PIN attacks",
         solution:
-          "After 5 incorrect PIN attempts, the vault locks for 24 hours. The PIN is combined with a hardware-derived key from the user's wallet signature — an attacker would need both the user's seed phrase and their PIN to decrypt the balance.",
+          "After 5 incorrect PIN attempts, the vault locks for 24 hours. The PIN is combined with a hardware-derived key from the user's wallet signature – an attacker would need both the user's seed phrase and their PIN to decrypt the balance.",
       },
     ],
     results: [
       "Fully non-custodial privacy with verified smart contract on Monad Explorer",
-      "Average transaction fee under $0.01 — viable for frequent use",
+      "Average transaction fee under $0.01 – viable for frequent use",
       "Duress mode provides physical security without visible differences",
-      "Works with any EVM wallet — no proprietary software required",
+      "Works with any EVM wallet – no proprietary software required",
     ],
     lessonsLearned: [
-      "Privacy UX is harder than privacy tech — hiding a balance is simple; making the reveal feel natural is the real design challenge",
+      "Privacy UX is harder than privacy tech – hiding a balance is simple; making the reveal feel natural is the real design challenge",
       "Building on a high-throughput L1 (Monad) unlocks UX patterns that are impossible on Ethereum L1 (sub-$0.01 fees make frequent deposits viable)",
-      "A verified contract is worth more than a whitepaper — users trust what they can read",
+      "A verified contract is worth more than a whitepaper – users trust what they can read",
     ],
   },
   {
-    title: "ERGO Automotive — Brand Experience",
+    title: "ERGO Automotive – Brand Experience",
     slug: "ergo-automotive",
     description:
       "A premium luxury EV brand website with interactive configurator, 3D vehicle showcases, and a seamless test-drive booking experience.",
@@ -577,17 +577,17 @@ export const projectDetails: ProjectDetail[] = [
       "Support 4 vehicle models with room to expand the lineup",
     ],
     architecture:
-      "Built with Next.js App Router for server-rendered pages with instant navigation via RSC. The configurator is a client component with Zustand state management — selections update pricing and imagery in real-time without page reloads. Vehicle imagery uses next/image with AVIF/WebP formats and responsive breakpoints. The booking flow collects user preferences and submits via API route with validation.",
+      "Built with Next.js App Router for server-rendered pages with instant navigation via RSC. The configurator is a client component with Zustand state management – selections update pricing and imagery in real-time without page reloads. Vehicle imagery uses next/image with AVIF/WebP formats and responsive breakpoints. The booking flow collects user preferences and submits via API route with validation.",
     technicalDecisions: [
       {
         decision: "Next.js App Router over plain React CSR",
         rationale:
-          "SEO is critical for an automotive brand — product pages, model specs, and pricing need to be indexable. App Router provides SSR for content pages and seamless client-side transitions for the interactive configurator. RSC means most pages ship zero JavaScript to the browser.",
+          "SEO is critical for an automotive brand – product pages, model specs, and pricing need to be indexable. App Router provides SSR for content pages and seamless client-side transitions for the interactive configurator. RSC means most pages ship zero JavaScript to the browser.",
       },
       {
         decision: "Zustand for configurator state over Context API",
         rationale:
-          "The configurator has complex state (model, color, wheels, interior, package) that updates pricing dynamically. Zustand provides fine-grained subscriptions — only components that depend on a specific value re-render when it changes, avoiding the Context re-render cascade problem.",
+          "The configurator has complex state (model, color, wheels, interior, package) that updates pricing dynamically. Zustand provides fine-grained subscriptions – only components that depend on a specific value re-render when it changes, avoiding the Context re-render cascade problem.",
       },
     ],
     challenges: [
@@ -610,16 +610,16 @@ export const projectDetails: ProjectDetail[] = [
       "Responsive design across all device sizes with touch-friendly interactions",
     ],
     lessonsLearned: [
-      "A configurator is a product, not a form — every selection should feel delightful, not transactional",
-      "Vehicle imagery is the most important asset — invest in high-quality renders and optimise them aggressively",
-      "Brand websites benefit from SSR for discoverability and client interactivity for engagement — the App Router handles this split naturally",
+      "A configurator is a product, not a form – every selection should feel delightful, not transactional",
+      "Vehicle imagery is the most important asset – invest in high-quality renders and optimise them aggressively",
+      "Brand websites benefit from SSR for discoverability and client interactivity for engagement – the App Router handles this split naturally",
     ],
   },
   {
-    title: "Mobile Landing Page — Figma Design",
+    title: "Mobile Landing Page – Figma Design",
     slug: "mobile-landing-page",
     description:
-      "A pixel-perfect mobile landing page design in Figma — focused on conversion-driven layout, clear information hierarchy, and smooth prototyping.",
+      "A pixel-perfect mobile landing page design in Figma – focused on conversion-driven layout, clear information hierarchy, and smooth prototyping.",
     image: "/images/projects/mobile-landing.jpg",
     technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
     category: "Mobile",
@@ -635,7 +635,7 @@ export const projectDetails: ProjectDetail[] = [
       "Establish reusable design tokens and components for future pages",
     ],
     architecture:
-      "The design is built in Figma using auto-layout with a responsive grid system. Components are organised in a design system library — buttons, cards, input fields, and navigation elements are all variants of master components. The prototype connects 5+ key screens with smart-animate transitions that simulate the native app feel. Design tokens (spacing, typography, color) are defined as Figma variables for consistency.",
+      "The design is built in Figma using auto-layout with a responsive grid system. Components are organised in a design system library – buttons, cards, input fields, and navigation elements are all variants of master components. The prototype connects 5+ key screens with smart-animate transitions that simulate the native app feel. Design tokens (spacing, typography, color) are defined as Figma variables for consistency.",
     technicalDecisions: [
       {
         decision: "Mobile-first over desktop-down",
@@ -652,7 +652,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         challenge: "Balancing content density with mobile readability",
         solution:
-          "Used progressive disclosure — key value propositions are visible above the fold, with secondary details revealed through expandable sections. Typography uses a 1.25 line-height ratio for comfortable mobile reading. Touch targets are minimum 44px per WCAG guidelines.",
+          "Used progressive disclosure – key value propositions are visible above the fold, with secondary details revealed through expandable sections. Typography uses a 1.25 line-height ratio for comfortable mobile reading. Touch targets are minimum 44px per WCAG guidelines.",
       },
       {
         challenge: "Design-to-development handoff accuracy",
@@ -668,16 +668,16 @@ export const projectDetails: ProjectDetail[] = [
       "Comprehensive Dev Mode specs for engineering implementation",
     ],
     lessonsLearned: [
-      "A design system library pays for itself by the second screen — never build mobile screens without reusable components",
-      "Prototyping with smart-animate reveals UX issues that static mockups hide — always prototype the full flow before handing off",
+      "A design system library pays for itself by the second screen – never build mobile screens without reusable components",
+      "Prototyping with smart-animate reveals UX issues that static mockups hide – always prototype the full flow before handing off",
       "The gap between Figma design and implementation is smallest when design tokens are treated as source of truth in both tools",
     ],
   },
   {
-    title: "Aremco — Business Landing Page",
+    title: "Aremco – Business Landing Page",
     slug: "aremco",
     description:
-      "A clean, professional landing page for Aremco Heating, Cooling & Construction — establishing brand presence and generating leads.",
+      "A clean, professional landing page for Aremco Heating, Cooling & Construction – establishing brand presence and generating leads.",
     image: "/images/projects/aremco.jpg",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     category: "Frontend",
@@ -693,19 +693,19 @@ export const projectDetails: ProjectDetail[] = [
       "Provide clear contact paths to drive phone calls and inquiries",
     ],
     architecture:
-      "Built with Next.js for static generation — the site is pre-rendered at build time for instant load. Tailwind CSS handles styling with a minimal footprint.",
+      "Built with Next.js for static generation – the site is pre-rendered at build time for instant load. Tailwind CSS handles styling with a minimal footprint.",
     technicalDecisions: [
       {
         decision: "Static generation over SSR",
         rationale:
-          "A business landing page has no dynamic content that changes per-user. Static generation produces HTML files served directly from the CDN edge — zero server cost, instant load, and perfect Lighthouse scores out of the box.",
+          "A business landing page has no dynamic content that changes per-user. Static generation produces HTML files served directly from the CDN edge – zero server cost, instant load, and perfect Lighthouse scores out of the box.",
       },
     ],
     challenges: [
       {
         challenge: "Convincing a traditional business owner that a website is worth the investment",
         solution:
-          "Focused on tangible business outcomes — appearing in Google searches, being findable on mobile, and looking professional enough to justify premium pricing.",
+          "Focused on tangible business outcomes – appearing in Google searches, being findable on mobile, and looking professional enough to justify premium pricing.",
       },
     ],
     results: [
@@ -715,8 +715,8 @@ export const projectDetails: ProjectDetail[] = [
       "Clear contact paths to drive qualified leads",
     ],
     lessonsLearned: [
-      "Not every project needs micro-frontends or CRDTs — a well-built static site is sometimes the most impactful thing you can ship",
-      "For local businesses, the design and copy matter more than the technology — clarity and trust convert better than animations",
+      "Not every project needs micro-frontends or CRDTs – a well-built static site is sometimes the most impactful thing you can ship",
+      "For local businesses, the design and copy matter more than the technology – clarity and trust convert better than animations",
     ],
   },
 ];

@@ -3,7 +3,7 @@ import { socialLinks } from "@/data/socials";
 
 export const siteConfig: SiteConfig = {
   name: "arem.dev",
-  title: "Arem — Senior Software Engineer & Product Engineer",
+  title: "Arem – Senior Software Engineer & Product Engineer",
   description:
     "Senior Software Engineer with 10+ years of experience building high-performance web applications at scale. Specializing in React, Next.js, TypeScript, and system design.",
   url: "https://arem.dev",

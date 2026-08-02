@@ -38,6 +38,14 @@ export const assets = {
     marcus: "/images/avatars/marcus.jpg",
   } as Record<string, string>,
 
+  favorites: {
+    football: "https://picsum.photos/seed/football-cr7/600/450",
+    movies: "https://picsum.photos/seed/ironman-movies/600/450",
+    music: "https://picsum.photos/seed/afrobeats-music/600/450",
+    books: "https://picsum.photos/seed/books-reading/600/450",
+    games: "https://picsum.photos/seed/gaming-fifa/600/450",
+  } as Record<string, string>,
+
   logos: {
     vercel: "/logos/vercel.svg",
     stripe: "/logos/stripe.svg",
@@ -57,4 +65,8 @@ export function getBlogImage(slug: string): string {
 export function getAvatarImage(name: string): string {
   const key = name.toLowerCase().split(" ")[0];
   return assets.avatars[key] ?? "";
+}
+
+export function getFavoriteImage(key: string): string {
+  return assets.favorites[key] ?? "/images/project-placeholder.svg";
 }

@@ -42,7 +42,8 @@ export interface Strength {
 }
 
 export interface Favorite {
-  emoji: string;
+  icon: string;
+  image: string;
   title: string;
   line: string;
   funFact: string;

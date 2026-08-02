@@ -94,7 +94,7 @@ function AboutSection() {
               >
                 My career started in a small agency where I learned to ship fast
                 and wear many hats. That foundation taught me that great
-                engineering isn&apos;t just about writing clean code &mdash; it&apos;s about
+                engineering isn&apos;t just about writing clean code &ndash; it&apos;s about
                 understanding the problem, the user, and the business.
               </motion.p>
               <motion.p
@@ -103,7 +103,7 @@ function AboutSection() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Today, I focus on building systems that scale &mdash; from
+                Today, I focus on building systems that scale &ndash; from
                 micro-frontend architectures serving millions to developer
                 tooling that makes teams more productive. I believe in
                 craftsmanship, clear communication, and shipping work that

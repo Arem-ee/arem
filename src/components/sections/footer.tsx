@@ -13,7 +13,7 @@ const microcopy = [
   "Crafting systems that scale, one commit at a time.",
   "Built with coffee, curiosity, and stubborn optimism.",
   "Powered by Afrobeats and dark mode.",
-  "99.9% uptime — 100% enthusiasm.",
+  "99.9% uptime – 100% enthusiasm.",
   "Debugging by day, dreaming in TypeScript by night.",
 ];
 

@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "mosaic.scdn.co",
       },
+      {
+        protocol: "https",
+        hostname: "is1-ssl.mzstatic.com",
+      },
     ],
   },
   poweredByHeader: false,

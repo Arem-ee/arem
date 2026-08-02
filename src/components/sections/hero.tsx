@@ -145,7 +145,7 @@ function HeroSection() {
       >
         <Image
           src="/images/profile-hero.png"
-          alt="Arem — Senior Software Engineer"
+          alt="Arem – Senior Software Engineer"
           fill
           priority
           quality={95}

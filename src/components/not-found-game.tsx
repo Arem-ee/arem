@@ -180,7 +180,7 @@ function NotFoundGame() {
           ) : running ? (
             <span>Survive: {Math.floor(score / 30)}s</span>
           ) : (
-            <span>Dodge the blocks — arrow keys / WASD</span>
+            <span>Dodge the blocks – arrow keys / WASD</span>
           )}
         </span>
         {gameOver ? (
