@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ExternalLink, Search, ArrowUpDown } from "lucide-react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { ExternalLink, Search, ArrowUpDown, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -12,8 +13,9 @@ import { Tag } from "@/components/ui/tag";
 import { GitHubIcon } from "@/lib/icons";
 import { StaggerContainer, StaggerItem } from "@/components/animations";
 import { projects } from "@/data";
+import { getProjectImage } from "@/data/assets";
 import { useProjectFilterStore } from "@/stores/project-filter-store";
-import type { ProjectCategory } from "@/types";
+import type { Project, ProjectCategory } from "@/types";
 
 const categories: (ProjectCategory | "All")[] = [
   "All",
@@ -25,7 +27,129 @@ const categories: (ProjectCategory | "All")[] = [
   "Mobile",
 ];
 
+function ProjectLightbox({
+  project,
+  onClose,
+}: {
+  project: Project;
+  onClose: () => void;
+}) {
+  React.useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${project.title} details`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <div
+        className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      <motion.div
+        className="relative z-10 max-h-full w-full max-w-3xl overflow-y-auto rounded-2xl border bg-card shadow-2xl"
+        initial={{ scale: 0.92, y: 20, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.95, y: 10, opacity: 0 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <div className="relative aspect-video w-full overflow-hidden border-b bg-muted">
+          <Image
+            src={getProjectImage(project.slug)}
+            alt={project.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
+          />
+        </div>
+
+        <div className="p-6 sm:p-8">
+          <div className="mb-2 flex flex-wrap items-center gap-2">
+            <Tag>{project.category}</Tag>
+            {project.metrics && (
+              <span className="text-xs font-medium uppercase tracking-wider text-foreground/60">
+                {project.metrics}
+              </span>
+            )}
+          </div>
+
+          <h2 className="mb-3 text-2xl font-bold tracking-tight">{project.title}</h2>
+          <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
+            {project.description}
+          </p>
+
+          <div className="mb-6 flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <Tag key={tech}>{tech}</Tag>
+            ))}
+          </div>
+
+          <div className="mb-6 flex flex-wrap gap-3">
+            {project.liveUrl && (
+              <Button variant="primary" size="sm" asChild>
+                <Link
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  Live Demo
+                </Link>
+              </Button>
+            )}
+            {project.githubUrl && (
+              <Button variant="secondary" size="sm" asChild>
+                <Link
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon className="h-3.5 w-3.5" />
+                  Source
+                </Link>
+              </Button>
+            )}
+          </div>
+
+          <Button variant="outline" size="sm" asChild>
+            <Link href={`/projects/${project.slug}`} onClick={onClose}>
+              Full case study
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </Button>
+        </div>
+
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/90 text-foreground shadow-md transition-colors hover:bg-background"
+          aria-label="Close project details"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function ProjectsSection() {
+  const [active, setActive] = React.useState<Project | null>(null);
   const { search, category, sort, setSearch, setCategory, setSort } =
     useProjectFilterStore();
 
@@ -125,88 +249,66 @@ function ProjectsSection() {
           >
             {filtered.map((project) => (
               <StaggerItem key={project.title}>
-                <Link href={`/projects/${project.slug}`}>
+                <motion.button
+                  onClick={() => setActive(project)}
+                  className="group block w-full rounded-xl border bg-card p-6 text-left shadow-sm transition-shadow"
+                  whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
+                  aria-haspopup="dialog"
+                >
                   <motion.div
-                    className="group rounded-xl border bg-card p-6 shadow-sm transition-shadow"
-                    whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
+                    className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-secondary-foreground"
+                    whileHover={{ scale: 1.1, rotate: -5 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <motion.div
-                      className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-secondary-foreground"
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      transition={{ duration: 0.2 }}
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                        <line x1="3" x2="21" y1="9" y2="9" />
-                        <line x1="9" x2="9" y1="21" y2="9" />
-                      </svg>
-                    </motion.div>
-
-                    <h3 className="mb-2 text-lg font-semibold">{project.title}</h3>
-                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                      {project.description}
-                    </p>
-
-                    {project.metrics && (
-                      <p className="mb-4 text-xs font-medium uppercase tracking-wider text-foreground/60">
-                        {project.metrics}
-                      </p>
-                    )}
-
-                    <div className="mb-6 flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <motion.div
-                          key={tech}
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.15 }}
-                        >
-                          <Tag>{tech}</Tag>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      {project.liveUrl && (
-                        <Button variant="primary" size="sm" asChild>
-                          <Link
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="h-3.5 w-3.5" />
-                            Live Demo
-                          </Link>
-                        </Button>
-                      )}
-                      {project.githubUrl && (
-                        <Button variant="secondary" size="sm" asChild>
-                          <Link
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <GitHubIcon className="h-3.5 w-3.5" />
-                            Source
-                          </Link>
-                        </Button>
-                      )}
-                    </div>
+                      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                      <line x1="3" x2="21" y1="9" y2="9" />
+                      <line x1="9" x2="9" y1="21" y2="9" />
+                    </svg>
                   </motion.div>
-                </Link>
+
+                  <h3 className="mb-2 text-lg font-semibold">{project.title}</h3>
+                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                    {project.description}
+                  </p>
+
+                  {project.metrics && (
+                    <p className="mb-4 text-xs font-medium uppercase tracking-wider text-foreground/60">
+                      {project.metrics}
+                    </p>
+                  )}
+
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <Tag key={tech}>{tech}</Tag>
+                    ))}
+                  </div>
+
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors group-hover:text-foreground">
+                    View details
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </motion.button>
               </StaggerItem>
             ))}
           </StaggerContainer>
         )}
       </Container>
+
+      <AnimatePresence>
+        {active && (
+          <ProjectLightbox project={active} onClose={() => setActive(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

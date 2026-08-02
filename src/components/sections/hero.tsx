@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -16,6 +16,53 @@ import { stats } from "@/data";
 import { cn } from "@/lib/utils";
 
 const headlineWords = ["Products", "engineered", "to", "scale."];
+
+const greetings = [
+  { text: "Hello", lang: "English" },
+  { text: "Bonjour", lang: "French" },
+  { text: "Hola", lang: "Spanish" },
+  { text: "Hallo", lang: "German" },
+  { text: "Ciao", lang: "Italian" },
+  { text: "Olá", lang: "Portuguese" },
+  { text: "こんにちは", lang: "Japanese" },
+  { text: "안녕하세요", lang: "Korean" },
+  { text: "你好", lang: "Chinese" },
+  { text: "Bawo", lang: "Yoruba" },
+];
+
+function HelloCycler() {
+  const [index, setIndex] = React.useState(0);
+
+  const next = () => setIndex((i) => (i + 1) % greetings.length);
+
+  return (
+    <motion.button
+      onClick={next}
+      className="inline-flex cursor-pointer items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label="Click to see hello in another language"
+      title="Click to cycle through 10 languages"
+    >
+      <span aria-hidden="true">👋</span>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={greetings[index].lang}
+          className="inline-flex items-baseline gap-1.5"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.2 }}
+        >
+          {greetings[index].text}
+          <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+            / {greetings[index].lang}
+          </span>
+        </motion.span>
+      </AnimatePresence>
+    </motion.button>
+  );
+}
 
 function AnimatedCounter({
   end,
@@ -74,27 +121,30 @@ function HeroSection() {
           <Container size="xl">
             <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
               <motion.div
-                className="flex items-center gap-2"
+                className="flex flex-col items-center gap-3"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="relative flex h-2.5 w-2.5">
-                  <motion.span
-                    className="absolute inline-flex h-full w-full rounded-full bg-emerald-400"
-                    animate={{ opacity: [0.75, 0.3, 0.75], scale: [1, 1.5, 1] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                </span>
-                <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                  Available for opportunities
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <motion.span
+                      className="absolute inline-flex h-full w-full rounded-full bg-emerald-400"
+                      animate={{ opacity: [0.75, 0.3, 0.75], scale: [1, 1.5, 1] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                  </span>
+                  <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                    Available for opportunities
+                  </span>
+                </div>
+                <HelloCycler />
               </motion.div>
 
               <motion.div

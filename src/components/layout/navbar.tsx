@@ -3,7 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, FileText } from "lucide-react";
+import { Menu, X, FileText, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 
@@ -12,6 +13,42 @@ import { Container } from "@/components/ui/container";
 import { GitHubIcon, LinkedInIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 import { navItems, socialLinks } from "@/constants";
+
+function ThemeToggle({ className = "" }: { className?: string }) {
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
+  return (
+    <motion.button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className={cn(
+        "inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground",
+        className
+      )}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={isDark ? "moon" : "sun"}
+          initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+          exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+          transition={{ duration: 0.2 }}
+          className="inline-flex"
+        >
+          {isDark ? (
+            <Sun className="h-4 w-4" />
+          ) : (
+            <Moon className="h-4 w-4" />
+          )}
+        </motion.span>
+      </AnimatePresence>
+    </motion.button>
+  );
+}
 
 function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -80,6 +117,7 @@ function Navbar() {
           </div>
 
           <div className="hidden items-center gap-2 md:flex">
+            <ThemeToggle />
             <motion.a
               href={socialLinks.github}
               target="_blank"
@@ -180,6 +218,7 @@ function Navbar() {
                     closed: { opacity: 0, x: -20 },
                   }}
                 >
+                  <ThemeToggle />
                   <motion.a
                     href={socialLinks.github}
                     target="_blank"

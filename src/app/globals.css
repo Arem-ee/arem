@@ -333,3 +333,17 @@ body {
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
 }
+
+.code-copy-btn {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.code-copy-btn:focus-visible {
+  opacity: 1;
+}
+
+.prose-custom pre:hover .code-copy-btn,
+.code-copy-btn:hover {
+  opacity: 1;
+}

@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Tag } from "@/components/ui/tag";
 import { PageLayout } from "@/components/layout/page-layout";
+import { CodeBlockCopy } from "@/components/code-block-copy";
 import { getAllBlogSlugs, getBlogPostBySlug } from "@/data/blog";
 import { constructMetadata, articleSchema } from "@/lib/seo";
 import { siteConfig } from "@/constants";
@@ -97,7 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           )}
           <article className="prose-custom max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <CodeBlockCopy content={post.content} />
           </article>
         </Container>
       </section>
