@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScroll, useMotionValueEvent } from "framer-motion";
@@ -15,10 +16,12 @@ import { navItems, socialLinks } from "@/constants";
 function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const [avatarVisible, setAvatarVisible] = React.useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 20);
+    setAvatarVisible(latest > 140);
   });
 
   return (
@@ -40,11 +43,24 @@ function Navbar() {
           animate={{ height: scrolled ? 56 : 64 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
-          <Link
-            href="/"
-            className="text-lg font-semibold tracking-tight"
-          >
-            AM
+          <Link href="/" className="relative" aria-label="Home">
+            <motion.div
+              className="relative h-9 w-9 overflow-hidden rounded-full border border-foreground/10 bg-muted"
+              initial={{ opacity: 0, scale: 0.4 }}
+              animate={{
+                opacity: avatarVisible ? 1 : 0,
+                scale: avatarVisible ? 1 : 0.4,
+              }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            >
+              <Image
+                src="/images/profile-hero.png"
+                alt="Arem"
+                fill
+                className="object-cover"
+                sizes="36px"
+              />
+            </motion.div>
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">

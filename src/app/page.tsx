@@ -74,27 +74,6 @@ const TestimonialsSection = dynamic(
   { ssr: true }
 );
 
-const GitHubReposSection = dynamic(
-  () => import("@/components/sections/github-repos").then((m) => ({ default: m.GitHubReposSection })),
-  {
-    ssr: true,
-    loading: () => (
-      <section className="border-t py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <Skeleton className="mb-4 h-6 w-24" />
-          <Skeleton className="mb-4 h-10 w-96" />
-          <Skeleton className="mb-16 h-5 w-[500px]" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <ProjectCardSkeleton key={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-    ),
-  }
-);
-
 const ContactSection = dynamic(
   () => import("@/components/sections/contact").then((m) => ({ default: m.ContactSection })),
   { ssr: true }
@@ -142,7 +121,6 @@ export default function HomePage() {
         <SkillsSection />
         <WritingSection />
         <TestimonialsSection />
-        <GitHubReposSection />
         <ContactSection />
       </main>
       <FooterSection />

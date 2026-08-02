@@ -44,60 +44,42 @@ export const strengths: Strength[] = [
 
 export const experiences: Experience[] = [
   {
-    role: "Senior Software Engineer",
-    company: "Nexlayer",
-    companyUrl: "https://nexlayer.io",
+    role: "CEO & Founder",
+    company: "Propeida",
+    companyUrl: "https://propeida.com",
     duration: "2025 \u2014 Present",
     summary:
-      "Building the platform that powers the modern web. Working across the frontend platform team to improve developer experience and framework performance for millions of developers worldwide.",
+      "Founded and leading Propeida, a computer-based testing (CBT) platform built for exam reliability at scale. I own the product vision, architecture, and engineering — from the testing engine to the candidate experience.",
     achievements: [
-      "Reduced Next.js cold-start build times by 43% through incremental caching redesign adopted by the core framework",
-      "Led the design and rollout of the Turbopack integration layer serving 500K+ weekly active developers",
-      "Architected and shipped the template system used by 50K+ new projects every month",
-      "Established cross-team performance budgets that reduced median page load times by 28% across the platform",
-      "Mentored 4 engineers through the senior promotion track, 2 promoted within 12 months",
+      "Architected and built the full-stack CBT platform — authoring tools, proctoring flows, and real-time result scoring for high-stakes examinations",
+      "Designed the platform around reliability and fairness, with automatic grading, instant result delivery, and audit trails for every session",
+      "Led every stage from zero to launch — product strategy, UI/UX, infrastructure, and go-to-market",
+      "Built the entire codebase as a solo engineer, prioritising clean architecture and maintainability for a growing team",
     ],
   },
   {
-    role: "Lead Frontend Engineer",
-    company: "Pageon",
-    companyUrl: "https://pageon.com",
-    duration: "2024 \u2014 2025",
+    role: "Freelance Full-Stack Developer",
+    company: "Self-employed",
+    duration: "2024 \u2014 Present",
     summary:
-      "Owned the checkout experience frontend — one of the highest-traffic surfaces on the internet. Led a team of 6 engineers focused on conversion, accessibility, and global payment support.",
+      "Delivering production-grade web products for startups and businesses — from Web3 dApps to brand and business websites. Each engagement is scoped, designed, built, and shipped end-to-end.",
     achievements: [
-      "Redesigned the checkout flow to achieve a 42% reduction in abandonment rate across 35+ countries",
-      "Shipped Pageon Elements v2 with micro-frontend architecture, reducing integration time for merchants by 60%",
-      "Built the accessibility framework that lifted Pageon Checkout's WCAG score from 68 to 97 — now industry benchmark",
-      "Scaled real-time payment confirmation rendering to handle 15K+ transactions per second during peak events",
+      "Built Redact, a non-custodial on-chain privacy dApp on Monad with encrypted balance hiding and verified smart contracts",
+      "Designed and developed ERGO Automotive's brand experience — an interactive configurator and multi-model showcase with sub-2s load times",
+      "Shipped client landing pages focused on conversion — including Aremco Heating, Cooling & Construction's business site",
+      "Delivered 20+ projects across landing pages, e-commerce, and Web3 — consistently hitting 90+ Lighthouse scores",
     ],
   },
   {
-    role: "Full Stack Engineer",
-    company: "Canvo",
-    companyUrl: "https://canvo.design",
+    role: "Freelance Web Developer",
+    company: "Self-employed",
     duration: "2024",
     summary:
-      "Joined as an early engineer on the plugins platform team. Built the foundation for the developer ecosystem that now hosts 1,000+ community plugins.",
+      "Started freelancing while studying — building responsive websites and design-to-code implementations for small businesses and personal brands.",
     achievements: [
-      "Designed and built the Plugins API v1 from scratch, enabling 800+ community plugins within the first year",
-      "Implemented the real-time collaboration sync layer using CRDTs, supporting 10K+ concurrent users per file",
-      "Reduced plugin review cycle from 2 weeks to 24 hours through automated testing infrastructure",
-      "Grew plugin adoption to 40% of monthly active users within 6 months of launch",
-    ],
-  },
-  {
-    role: "Frontend Engineer",
-    company: "Roamly",
-    companyUrl: "https://roamly.travel",
-    duration: "2024",
-    summary:
-      "Part of the design systems team responsible for DLS (Design Language System) used across all Roamly products. Focused on component architecture, accessibility, and developer tooling.",
-    achievements: [
-      "Architected and shipped the core component library used by 200+ engineers across 12 product teams",
-      "Reduced UI development time by 55% through reusable component patterns and comprehensive Storybook documentation",
-      "Led the migration from legacy LESS to CSS-in-JS, improving component encapsulation and reducing style bugs by 70%",
-      "Established accessibility guidelines and review processes that raised product-wide a11y compliance from 52% to 89%",
+      "Converted Figma designs into pixel-perfect, responsive Next.js and Tailwind CSS implementations",
+      "Built fast, mobile-first landing pages for local businesses looking to establish an online presence",
+      "Developed a repeatable client workflow — discovery, design review, build, and handoff — used in every engagement since",
     ],
   },
 ];

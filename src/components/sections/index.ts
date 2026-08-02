@@ -7,4 +7,3 @@ export { WritingSection } from "./writing";
 export { TestimonialsSection } from "./testimonials";
 export { ContactSection } from "./contact";
 export { FooterSection } from "./footer";
-export { GitHubReposSection } from "./github-repos";
