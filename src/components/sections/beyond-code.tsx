@@ -128,7 +128,7 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
 
 function BeyondCodeSection() {
   return (
-    <section id="beyond-code" className="border-t py-24 md:py-32">
+    <section id="beyond-code" className="border-t py-16 md:py-32">
       <Container size="xl">
         <FadeIn>
           <SectionTitle
@@ -139,7 +139,7 @@ function BeyondCodeSection() {
           />
         </FadeIn>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-5">
           {favorites.map((favorite, i) => (
             <TiltFlipCard key={favorite.title} favorite={favorite} index={i} />
           ))}

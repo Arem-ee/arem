@@ -170,7 +170,7 @@ function Navbar() {
         {isOpen && (
           <motion.div
             id="mobile-menu"
-            className="absolute left-0 right-0 top-full border-b bg-background/95 backdrop-blur-md md:hidden"
+            className="absolute left-0 right-0 top-full max-h-[calc(100svh-4rem)] overflow-y-auto border-b bg-background/95 backdrop-blur-md md:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"

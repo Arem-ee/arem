@@ -26,7 +26,7 @@ export const metadata: Metadata = constructMetadata({
 export default function BlogPage() {
   return (
     <PageLayout>
-      <section className="border-b py-24 md:py-32">
+      <section className="border-b py-16 md:py-32">
         <Container size="md">
           <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">Blog</h1>
           <p className="text-lg text-muted-foreground">

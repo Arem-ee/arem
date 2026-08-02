@@ -22,7 +22,7 @@ function ExperienceSection() {
   });
 
   return (
-    <section id="experience" className="border-t py-24 md:py-32">
+    <section id="experience" className="border-t py-16 md:py-32">
       <Container size="md">
         <FadeIn>
           <SectionTitle

@@ -55,7 +55,7 @@ export default async function ProjectPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: projectSchemaStr }}
       />
-      <section className="border-b py-24 md:py-32">
+      <section className="border-b py-16 md:py-32">
         <Container size="md">
           <Link
             href="/#projects"

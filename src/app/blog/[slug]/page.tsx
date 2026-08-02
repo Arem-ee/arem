@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: articleSchemaStr }}
       />
-      <section className="border-b py-24 md:py-32">
+      <section className="border-b py-16 md:py-32">
         <Container size="md">
           <Link
             href="/blog"

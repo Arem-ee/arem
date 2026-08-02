@@ -104,7 +104,7 @@ function AnimatedCounter({
 }) {
   const { ref, display } = useCounter({ end, suffix });
   return (
-    <span ref={ref} className="text-3xl font-bold tracking-tight">
+    <span ref={ref} className="text-2xl font-bold tracking-tight sm:text-3xl">
       {display}
     </span>
   );
@@ -310,7 +310,7 @@ function HeroSection() {
 
             <div className="mt-16 border-t border-white/10 pt-8">
               <motion.div
-                className="flex w-full items-center justify-between gap-4"
+                className="grid w-full grid-cols-2 gap-x-4 gap-y-8 sm:flex sm:items-center sm:justify-between sm:gap-4"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}

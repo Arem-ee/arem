@@ -71,15 +71,15 @@ function Konami() {
     <AnimatePresence>
       {toastVisible && (
         <motion.div
-          className="fixed bottom-6 left-1/2 z-[70] -translate-x-1/2"
+          className="fixed bottom-6 left-1/2 z-[70] w-max max-w-[calc(100vw-2rem)] -translate-x-1/2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.25 }}
         >
-          <div className="flex items-center gap-2 rounded-full border bg-card px-5 py-2.5 text-sm font-medium shadow-lg">
-            <Sparkles className="h-4 w-4 text-amber-500" />
-            Cheat code accepted – dev powers restored.
+          <div className="flex items-center gap-2 rounded-full border bg-card px-5 py-2.5 text-center text-sm font-medium shadow-lg">
+            <Sparkles className="h-4 w-4 shrink-0 text-amber-500" />
+            Cheat code accepted - dev powers restored.
           </div>
         </motion.div>
       )}

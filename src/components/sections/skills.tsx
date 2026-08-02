@@ -47,7 +47,7 @@ function AnimatedProgressBar({ value }: { value: number }) {
 
 function SkillsSection() {
   return (
-    <section id="skills" className="border-t py-24 md:py-32">
+    <section id="skills" className="border-t py-16 md:py-32">
       <Container size="xl">
         <SectionTitle
           label="Skills"

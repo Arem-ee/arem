@@ -76,7 +76,7 @@ const strengthIcons: Record<string, React.ReactNode> = {
 
 function AboutSection() {
   return (
-    <section id="about" className="border-t py-24 md:py-32">
+    <section id="about" className="border-t py-16 md:py-32">
       <Container size="xl">
         <div className="grid gap-16 lg:grid-cols-2">
           <FadeIn>

@@ -275,7 +275,7 @@ function ProjectsSection() {
   }, [search, category, sort]);
 
   return (
-    <section id="projects" className="border-t py-24 md:py-32">
+    <section id="projects" className="border-t py-16 md:py-32">
       <Container size="xl">
         <SectionTitle
           label="Projects"

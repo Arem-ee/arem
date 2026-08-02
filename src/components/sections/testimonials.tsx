@@ -73,7 +73,7 @@ function TestimonialsSection() {
   const t = testimonials[current];
 
   return (
-    <section id="testimonials" className="border-t py-24 md:py-32">
+    <section id="testimonials" className="border-t py-16 md:py-32">
       <Container size="md">
         <SectionTitle
           label="Testimonials"

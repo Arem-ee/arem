@@ -86,7 +86,7 @@ function ContactSection() {
   }
 
   return (
-    <section id="contact" className="border-t py-24 md:py-32" aria-labelledby="contact-heading">
+    <section id="contact" className="border-t py-16 md:py-32" aria-labelledby="contact-heading">
       <Container size="md">
         <div className="grid gap-16 lg:grid-cols-2">
           <FadeIn>

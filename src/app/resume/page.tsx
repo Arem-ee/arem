@@ -25,13 +25,13 @@ function ResumePage() {
       <section className="border-b py-16 md:py-24 print:border-none print:py-8">
         <Container size="md">
           <FadeIn>
-            <div className="no-print mb-8 flex items-start justify-between gap-4">
+            <div className="no-print mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Resume</h1>
                 <p className="mt-2 text-muted-foreground">Software Engineer &bull; Architect &bull; Leader</p>
               </div>
               <div className="flex gap-2">
-                <Button variant="primary" onClick={handleDownload}>
+                <Button variant="primary" onClick={handleDownload} className="flex-1 justify-center sm:flex-none">
                   <Download className="h-4 w-4" />
                   Download / Print
                 </Button>

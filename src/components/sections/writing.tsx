@@ -21,7 +21,7 @@ function formatDisplayDate(dateStr: string): string {
 
 function WritingSection() {
   return (
-    <section id="writing" className="border-t py-24 md:py-32">
+    <section id="writing" className="border-t py-16 md:py-32">
       <Container size="md">
         <SectionTitle
           label="Writing"
