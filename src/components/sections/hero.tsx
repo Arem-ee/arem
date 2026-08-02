@@ -110,9 +110,28 @@ function AnimatedCounter({
   );
 }
 
+function useIsDesktop(query = "(min-width: 768px)") {
+  const getSnapshot = React.useCallback(
+    () => window.matchMedia(query).matches,
+    [query]
+  );
+  const getServerSnapshot = React.useCallback(() => false, []);
+
+  return React.useSyncExternalStore(
+    (onChange) => {
+      const mq = window.matchMedia(query);
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    },
+    getSnapshot,
+    getServerSnapshot
+  );
+}
+
 function HeroSection() {
   const { scrollY } = useScroll();
   const [spotlight, setSpotlight] = React.useState({ x: 50, y: 50 });
+  const isDesktop = useIsDesktop();
 
   const ease = cubicBezier(0.65, 0, 0.35, 1);
 
@@ -120,6 +139,10 @@ function HeroSection() {
   const rotate = useTransform(scrollY, [0, 520], [0, -6], { ease });
   const imageOpacity = useTransform(scrollY, [320, 520], [1, 0]);
   const borderRadius = useTransform(scrollY, [160, 420], ["6%", "50%"]);
+
+  const heroSrc = isDesktop
+    ? "/images/projects/landscape-hero-image.png"
+    : "/images/profile-hero.png";
 
   const onHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -144,7 +167,8 @@ function HeroSection() {
         onMouseMove={onHeroMouseMove}
       >
         <Image
-          src="/images/profile-hero.png"
+          key={heroSrc}
+          src={heroSrc}
           alt="Arem – Senior Software Engineer"
           fill
           priority
