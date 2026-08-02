@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, cubicBezier, useScroll, useTransform } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -114,9 +114,12 @@ function HeroSection() {
   const { scrollY } = useScroll();
   const [spotlight, setSpotlight] = React.useState({ x: 50, y: 50 });
 
-  const scale = useTransform(scrollY, [0, 500], [1, 0.1]);
-  const imageOpacity = useTransform(scrollY, [280, 500], [1, 0]);
-  const borderRadius = useTransform(scrollY, [0, 500], ["0%", "50%"]);
+  const ease = cubicBezier(0.65, 0, 0.35, 1);
+
+  const scale = useTransform(scrollY, [0, 520], [1, 0.026], { ease });
+  const rotate = useTransform(scrollY, [0, 520], [0, -6], { ease });
+  const imageOpacity = useTransform(scrollY, [320, 520], [1, 0]);
+  const borderRadius = useTransform(scrollY, [160, 420], ["6%", "50%"]);
 
   const onHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -132,9 +135,11 @@ function HeroSection() {
         className="fixed inset-0 z-40 bg-background"
         style={{
           scale,
+          rotate,
           opacity: imageOpacity,
           borderRadius,
           transformOrigin: "top left",
+          willChange: "transform",
         }}
         onMouseMove={onHeroMouseMove}
       >
@@ -143,14 +148,15 @@ function HeroSection() {
           alt="Arem — Senior Software Engineer"
           fill
           priority
+          quality={95}
           className="object-cover"
           sizes="100vw"
+          style={{ scale: 1.1, transformOrigin: "center" }}
         />
         <motion.div
           className="pointer-events-none absolute inset-0"
           style={{
-            background: `radial-gradient(circle at ${spotlight.x}% ${spotlight.y}%, rgba(255,255,255,0.14), transparent 40%)`,
-            mixBlendMode: "overlay",
+            background: `radial-gradient(circle at ${spotlight.x}% ${spotlight.y}%, rgba(255,255,255,0.08), transparent 45%)`,
             opacity: imageOpacity,
           }}
           aria-hidden="true"
