@@ -5,6 +5,8 @@ import { RotateCcw } from "lucide-react";
 
 const FALLING_SPEED = 2.5;
 
+const palette = ["#8b5cf6", "#06b6d4", "#f59e0b", "#ec4899", "#22c55e"];
+
 interface FallingBlock {
   x: number;
   y: number;
@@ -25,8 +27,6 @@ function NotFoundGame() {
   const rafRef = React.useRef<number>(0);
   const lastSpawnRef = React.useRef(0);
   const blocksRef = React.useRef<FallingBlock[]>([]);
-
-  const palette = ["#8b5cf6", "#06b6d4", "#f59e0b", "#ec4899", "#22c55e"];
 
   const start = React.useCallback(() => {
     setRunning(true);
@@ -95,7 +95,7 @@ function NotFoundGame() {
       });
     };
 
-    const frame = (t: number) => {
+    const frame = (_t: number) => {
       const player = playerRef.current;
       const speed = 3.2;
 

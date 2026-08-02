@@ -74,6 +74,11 @@ const TestimonialsSection = dynamic(
   { ssr: true }
 );
 
+const BeyondCodeSection = dynamic(
+  () => import("@/components/sections/beyond-code").then((m) => ({ default: m.BeyondCodeSection })),
+  { ssr: true }
+);
+
 const ContactSection = dynamic(
   () => import("@/components/sections/contact").then((m) => ({ default: m.ContactSection })),
   { ssr: true }
@@ -82,6 +87,11 @@ const ContactSection = dynamic(
 const FooterSection = dynamic(
   () => import("@/components/sections/footer").then((m) => ({ default: m.FooterSection })),
   { ssr: true }
+);
+
+const Konami = dynamic(
+  () => import("@/components/konami").then((m) => ({ default: m.Konami })),
+  { ssr: false }
 );
 
 function ScrollProgress() {
@@ -121,9 +131,11 @@ export default function HomePage() {
         <SkillsSection />
         <WritingSection />
         <TestimonialsSection />
+        <BeyondCodeSection />
         <ContactSection />
       </main>
       <FooterSection />
+      <Konami />
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -10,6 +10,17 @@ import { FadeIn } from "@/components/animations";
 import { experiences } from "@/data";
 
 function ExperienceSection() {
+  const lineRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: lineRef,
+    offset: ["start 0.75", "end 0.4"],
+  });
+  const lineScale = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 25,
+    restDelta: 0.001,
+  });
+
   return (
     <section id="experience" className="border-t py-24 md:py-32">
       <Container size="md">
@@ -22,7 +33,12 @@ function ExperienceSection() {
           />
         </FadeIn>
 
-        <div className="relative space-y-8 before:absolute before:left-[19px] before:top-2 before:h-[calc(100%-16px)] before:w-px before:bg-border md:space-y-10">
+        <div ref={lineRef} className="relative space-y-8 md:space-y-10">
+          <motion.div
+            className="absolute left-[19px] top-2 h-[calc(100%-16px)] w-px origin-top bg-border"
+            style={{ scaleY: lineScale }}
+            aria-hidden="true"
+          />
           {experiences.map((exp, i) => (
             <motion.div
               key={i}

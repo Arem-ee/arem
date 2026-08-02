@@ -1,6 +1,7 @@
 import type {
   Article,
   Experience,
+  Favorite,
   Project,
   SkillCategory,
   Stat,
@@ -39,6 +40,39 @@ export const strengths: Strength[] = [
     description:
       "Mentoring engineers, setting technical direction, and fostering a culture of ownership and high-quality output across organisations.",
     icon: "Users",
+  },
+];
+
+export const favorites: Favorite[] = [
+  {
+    emoji: "⚽",
+    title: "Football",
+    line: "Sunday league striker, armchair tactician.",
+    funFact: "Kicked a ball before I wrote a line of code — the order still holds.",
+  },
+  {
+    emoji: "🍿",
+    title: "Movies",
+    line: "Iron Man taught me that a great suit is 10% tech, 90% iteration.",
+    funFact: "Can quote the entire elevator scene from Iron Man 1. Not sorry.",
+  },
+  {
+    emoji: "🎵",
+    title: "Music",
+    line: "Afrobeats in the build queue, lo-fi in the bug hunt.",
+    funFact: "Shipping features with Burna Boy on repeat is a documented workflow.",
+  },
+  {
+    emoji: "📚",
+    title: "Books",
+    line: "Clean architecture by day, good sci-fi by night.",
+    funFact: "My favourite read this year: books on systems — and a few on spaceships.",
+  },
+  {
+    emoji: "🎮",
+    title: "Games",
+    line: "FIFA for the win streak, Factorio for the engineering itch.",
+    funFact: "My Factorio factory ships more belts than most startups ship features.",
   },
 ];
 

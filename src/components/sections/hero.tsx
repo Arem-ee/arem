@@ -30,6 +30,37 @@ const greetings = [
   { text: "Bawo", lang: "Yoruba" },
 ];
 
+function getGreeting(hour: number) {
+  if (hour < 5) return "Burning the midnight oil";
+  if (hour < 12) return "Good morning";
+  if (hour < 17) return "Good afternoon";
+  if (hour < 21) return "Good evening";
+  return "Burning the midnight oil";
+}
+
+function TimeGreeting() {
+  const [greeting, setGreeting] = React.useState("Hello");
+
+  React.useEffect(() => {
+    const timer = setTimeout(
+      () => setGreeting(getGreeting(new Date().getHours())),
+      0
+    );
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <motion.span
+      key={greeting}
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      {greeting}
+    </motion.span>
+  );
+}
+
 function HelloCycler() {
   const [index, setIndex] = React.useState(0);
 
@@ -81,10 +112,19 @@ function AnimatedCounter({
 
 function HeroSection() {
   const { scrollY } = useScroll();
+  const [spotlight, setSpotlight] = React.useState({ x: 50, y: 50 });
 
   const scale = useTransform(scrollY, [0, 500], [1, 0.1]);
   const imageOpacity = useTransform(scrollY, [280, 500], [1, 0]);
   const borderRadius = useTransform(scrollY, [0, 500], ["0%", "50%"]);
+
+  const onHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setSpotlight({
+      x: ((e.clientX - rect.left) / rect.width) * 100,
+      y: ((e.clientY - rect.top) / rect.height) * 100,
+    });
+  };
 
   return (
     <section id="hero" className="relative">
@@ -96,6 +136,7 @@ function HeroSection() {
           borderRadius,
           transformOrigin: "top left",
         }}
+        onMouseMove={onHeroMouseMove}
       >
         <Image
           src="/images/profile-hero.png"
@@ -104,6 +145,15 @@ function HeroSection() {
           priority
           className="object-cover"
           sizes="100vw"
+        />
+        <motion.div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `radial-gradient(circle at ${spotlight.x}% ${spotlight.y}%, rgba(255,255,255,0.14), transparent 40%)`,
+            mixBlendMode: "overlay",
+            opacity: imageOpacity,
+          }}
+          aria-hidden="true"
         />
       </motion.div>
 
@@ -141,7 +191,7 @@ function HeroSection() {
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
                   </span>
                   <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                    Available for opportunities
+                    <TimeGreeting /> &middot; available for opportunities
                   </span>
                 </div>
                 <HelloCycler />

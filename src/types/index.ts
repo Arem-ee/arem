@@ -41,6 +41,13 @@ export interface Strength {
   icon: string;
 }
 
+export interface Favorite {
+  emoji: string;
+  title: string;
+  line: string;
+  funFact: string;
+}
+
 export interface Experience {
   role: string;
   company: string;

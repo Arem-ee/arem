@@ -4,7 +4,13 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Search, ArrowUpDown, X, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -148,6 +154,92 @@ function ProjectLightbox({
   );
 }
 
+function TiltCard({
+  project,
+  onOpen,
+}: {
+  project: Project;
+  onOpen: () => void;
+}) {
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [7, -7]), {
+    stiffness: 200,
+    damping: 22,
+  });
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-7, 7]), {
+    stiffness: 200,
+    damping: 22,
+  });
+
+  const onPointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - rect.left) / rect.width - 0.5);
+    my.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const onPointerLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
+  return (
+    <div className="group [perspective:1000px]">
+      <motion.button
+        onClick={onOpen}
+        onPointerMove={onPointerMove}
+        onPointerLeave={onPointerLeave}
+        className="block w-full cursor-pointer rounded-xl border bg-card p-6 text-left shadow-sm transition-shadow group-hover:shadow-lg"
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        whileTap={{ scale: 0.98 }}
+        aria-haspopup="dialog"
+      >
+        <div style={{ transform: "translateZ(30px)" }}>
+          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-secondary-foreground">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+              <line x1="3" x2="21" y1="9" y2="9" />
+              <line x1="9" x2="9" y1="21" y2="9" />
+            </svg>
+          </div>
+
+          <h3 className="mb-2 text-lg font-semibold">{project.title}</h3>
+          <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+            {project.description}
+          </p>
+
+          {project.metrics && (
+            <p className="mb-4 text-xs font-medium uppercase tracking-wider text-foreground/60">
+              {project.metrics}
+            </p>
+          )}
+
+          <div className="mb-6 flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <Tag key={tech}>{tech}</Tag>
+            ))}
+          </div>
+
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors group-hover:text-foreground">
+            View details
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      </motion.button>
+    </div>
+  );
+}
+
 function ProjectsSection() {
   const [active, setActive] = React.useState<Project | null>(null);
   const { search, category, sort, setSearch, setCategory, setSort } =
@@ -249,55 +341,10 @@ function ProjectsSection() {
           >
             {filtered.map((project) => (
               <StaggerItem key={project.title}>
-                <motion.button
-                  onClick={() => setActive(project)}
-                  className="group block w-full rounded-xl border bg-card p-6 text-left shadow-sm transition-shadow"
-                  whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
-                  aria-haspopup="dialog"
-                >
-                  <motion.div
-                    className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-secondary-foreground"
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                      <line x1="3" x2="21" y1="9" y2="9" />
-                      <line x1="9" x2="9" y1="21" y2="9" />
-                    </svg>
-                  </motion.div>
-
-                  <h3 className="mb-2 text-lg font-semibold">{project.title}</h3>
-                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
-
-                  {project.metrics && (
-                    <p className="mb-4 text-xs font-medium uppercase tracking-wider text-foreground/60">
-                      {project.metrics}
-                    </p>
-                  )}
-
-                  <div className="mb-6 flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <Tag key={tech}>{tech}</Tag>
-                    ))}
-                  </div>
-
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors group-hover:text-foreground">
-                    View details
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </motion.button>
+                <TiltCard
+                  project={project}
+                  onOpen={() => setActive(project)}
+                />
               </StaggerItem>
             ))}
           </StaggerContainer>

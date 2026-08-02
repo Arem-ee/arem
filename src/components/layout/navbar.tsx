@@ -54,6 +54,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [avatarVisible, setAvatarVisible] = React.useState(false);
+  const [wave, setWave] = React.useState(0);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -87,8 +88,11 @@ function Navbar() {
               animate={{
                 opacity: avatarVisible ? 1 : 0,
                 scale: avatarVisible ? 1 : 0.4,
+                rotate: wave ? [0, -12, 10, -6, 0] : 0,
               }}
               transition={{ duration: 0.35, ease: "easeOut" }}
+              onClick={() => setWave((w) => w + 1)}
+              style={{ cursor: "pointer" }}
             >
               <Image
                 src="/images/profile-hero.png"
