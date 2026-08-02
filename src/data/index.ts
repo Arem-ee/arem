@@ -45,36 +45,36 @@ export const strengths: Strength[] = [
 
 export const favorites: Favorite[] = [
   {
-    icon: "Football",
-    image: "football",
+    icon: "Goal",
+    image: "https://picsum.photos/seed/football-cr7/600/450",
     title: "Football",
     line: "CR7 set the standard: relentless, disciplined, and clutch in every final. I carry that energy into every sprint and every ship.",
     funFact: "Kicked a ball before I wrote a line of code and the order still holds.",
   },
   {
     icon: "Clapperboard",
-    image: "movies",
+    image: "https://picsum.photos/seed/ironman-movies/600/450",
     title: "Movies",
     line: "Tony Stark is the ultimate engineer-hero. Suit up, build the thing, then upgrade it. I relate more than I should.",
     funFact: "I can quote the entire first Iron Man. I will not apologise.",
   },
   {
     icon: "Music2",
-    image: "music",
+    image: "https://picsum.photos/seed/afrobeats-music/600/450",
     title: "Music",
     line: "Afrobeats is the soundtrack to the build. Burna, Wizkid, and Rema keep the energy high and the commits coming.",
     funFact: "Shipping features with Burna Boy on repeat is a documented workflow.",
   },
   {
     icon: "BookOpen",
-    image: "books",
+    image: "https://picsum.photos/seed/books-reading/600/450",
     title: "Books",
     line: "Books are the cheat codes. Clean architecture by day, sci-fi by night; there is always another level to unlock.",
     funFact: "My favourite reads this year: books on systems, and a few on spaceships.",
   },
   {
     icon: "Gamepad2",
-    image: "games",
+    image: "https://picsum.photos/seed/gaming-fifa/600/450",
     title: "Games",
     line: "FIFA for the winning mindset, Factorio for the pure joy of optimisation. Both are systems thinking in disguise.",
     funFact: "My Factorio factory ships more belts than most startups ship features.",

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Music2 } from "lucide-react";
+import { Music2, Play, Pause } from "lucide-react";
 
 const DEFAULT_TRACK = {
   track: "Billie Jean",
@@ -11,6 +11,8 @@ const DEFAULT_TRACK = {
   album: "Thriller",
   cover:
     "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/4f/fd/324ffda2-9e51-8f6a-0c2d-c6fd2b41ac55/074643811224.jpg/600x600bb.jpg",
+  previewUrl:
+    "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/dc/bc/8a/dcbc8a3e-4ce1-c00d-cc02-eda2212053c7/mzaf_8347559338388601510.plus.aac.p.m4a",
   durationMs: 293802,
 };
 
@@ -32,6 +34,100 @@ function formatTime(ms: number) {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
+function DefaultTrackCard() {
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = React.useState(false);
+  const [currentMs, setCurrentMs] = React.useState(0);
+
+  React.useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const onTime = () => setCurrentMs(audio.currentTime * 1000);
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    const onEnded = () => setCurrentMs(0);
+
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("ended", onEnded);
+
+    return () => {
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("ended", onEnded);
+    };
+  }, []);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) {
+      audio.pause();
+    } else {
+      audio.play().catch(() => {});
+    }
+  };
+
+  const progress = Math.min(100, (currentMs / DEFAULT_TRACK.durationMs) * 100);
+
+  return (
+    <div className="flex w-full items-center gap-4">
+      <button
+        type="button"
+        onClick={togglePlay}
+        className="group relative h-14 w-14 shrink-0 cursor-pointer overflow-hidden rounded-lg"
+        aria-label={playing ? "Pause Billie Jean" : "Play Billie Jean"}
+      >
+        <Image
+          src={DEFAULT_TRACK.cover}
+          alt={`${DEFAULT_TRACK.album} cover`}
+          fill
+          className="object-cover"
+          sizes="56px"
+        />
+        <span className="absolute inset-0 flex items-center justify-center bg-black/40 text-white opacity-0 transition-opacity group-hover:opacity-100">
+          {playing ? (
+            <Pause className="h-5 w-5" />
+          ) : (
+            <Play className="h-5 w-5 fill-current" />
+          )}
+        </span>
+      </button>
+      <audio ref={audioRef} src={DEFAULT_TRACK.previewUrl} preload="none" />
+
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-emerald-500">
+          <motion.span
+            className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1.4, repeat: Infinity }}
+          />
+          Now playing
+        </div>
+        <p className="truncate text-sm font-semibold">{DEFAULT_TRACK.track}</p>
+        <p className="truncate text-xs text-muted-foreground">
+          {DEFAULT_TRACK.artist}
+        </p>
+        <div className="mt-1.5 flex items-center gap-2">
+          <div className="h-1 flex-1 overflow-hidden rounded-full bg-secondary">
+            <motion.div
+              className="h-full bg-emerald-500/70"
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.3, ease: "linear" }}
+            />
+          </div>
+          <span className="text-[10px] tabular-nums text-muted-foreground">
+            {formatTime(currentMs)}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TrackCard({
   track,
   artist,
@@ -39,7 +135,6 @@ function TrackCard({
   cover,
   progressMs,
   durationMs,
-  looping = false,
 }: {
   track: string;
   artist: string;
@@ -47,7 +142,6 @@ function TrackCard({
   cover: string;
   progressMs: number;
   durationMs: number;
-  looping?: boolean;
 }) {
   const liveWidth = Math.min(100, (progressMs / durationMs) * 100);
 
@@ -56,7 +150,7 @@ function TrackCard({
       href="https://open.spotify.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-4"
+      className="group flex w-full items-center gap-4"
     >
       <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg">
         <Image
@@ -82,28 +176,15 @@ function TrackCard({
         <p className="truncate text-xs text-muted-foreground">{artist}</p>
         <div className="mt-1.5 flex items-center gap-2">
           <div className="h-1 flex-1 overflow-hidden rounded-full bg-secondary">
-            {looping ? (
-              <motion.div
-                className="h-full bg-emerald-500/70"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-            ) : (
-              <motion.div
-                className="h-full bg-foreground/60"
-                initial={{ width: 0 }}
-                animate={{ width: `${liveWidth}%` }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              />
-            )}
+            <motion.div
+              className="h-full bg-foreground/60"
+              initial={{ width: 0 }}
+              animate={{ width: `${liveWidth}%` }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            />
           </div>
           <span className="text-[10px] tabular-nums text-muted-foreground">
-            {formatTime(looping ? 0 : progressMs)}
+            {formatTime(progressMs)}
           </span>
         </div>
       </div>
@@ -181,15 +262,7 @@ function SpotifyNowPlaying() {
           </div>
         </div>
       ) : (
-        <TrackCard
-          track={DEFAULT_TRACK.track}
-          artist={DEFAULT_TRACK.artist}
-          album={DEFAULT_TRACK.album}
-          cover={DEFAULT_TRACK.cover}
-          progressMs={0}
-          durationMs={DEFAULT_TRACK.durationMs}
-          looping
-        />
+        <DefaultTrackCard />
       )}
     </motion.div>
   );

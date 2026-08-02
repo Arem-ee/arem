@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -16,7 +15,6 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { SpotifyNowPlaying } from "@/components/spotify-now-playing";
 import { FadeIn } from "@/components/animations";
 import { favorites } from "@/data";
-import { getFavoriteImage } from "@/data/assets";
 import type { Favorite } from "@/types";
 
 const favoriteIcons: Record<string, LucideIcon> = {
@@ -73,22 +71,22 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
         aria-label={`${favorite.title} - click to flip`}
       >
         <motion.div
-          className="relative overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow group-hover:shadow-md"
+          className="relative rounded-xl border bg-card shadow-sm transition-shadow group-hover:shadow-md"
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
           style={{ transformStyle: "preserve-3d" }}
         >
           <div
-            className="relative flex flex-col"
-            style={{ backfaceVisibility: "hidden", transform: "translateZ(30px)" }}
+            className="relative overflow-hidden rounded-xl"
+            style={{ backfaceVisibility: "hidden", transform: "translateZ(24px)" }}
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-              <Image
-                src={getFavoriteImage(favorite.image)}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={favorite.image}
                 alt={favorite.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <span className="absolute left-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-background/90 text-foreground shadow-sm backdrop-blur">
                 <Icon className="h-4 w-4" />
@@ -109,10 +107,10 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
           </div>
 
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary p-5 text-center"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-xl bg-secondary p-5 text-center"
             style={{
               backfaceVisibility: "hidden",
-              transform: "rotateY(180deg) translateZ(30px)",
+              transform: "rotateY(180deg) translateZ(24px)",
             }}
           >
             <Icon className="h-6 w-6 text-secondary-foreground" />
