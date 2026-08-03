@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import { Navbar } from "@/components/layout/navbar";
-import { Skeleton, ProjectCardSkeleton, ArticleCardSkeleton } from "@/components/skeleton";
+import { Skeleton } from "@/components/skeleton";
 
 const HeroSection = dynamic(
   () => import("@/components/sections/hero").then((m) => ({ default: m.HeroSection })),
@@ -27,25 +27,20 @@ const ProjectsSection = dynamic(
   {
     ssr: true,
     loading: () => (
-      <section className="border-t py-16 md:py-32">
+      <section className="border-b py-16 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <Skeleton className="mb-4 h-6 w-24" />
           <Skeleton className="mb-4 h-10 w-96" />
           <Skeleton className="mb-16 h-5 w-[500px]" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <ProjectCardSkeleton key={i} />
+          <div className="space-y-8 border-b">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton key={i} className="h-24 w-full rounded-none" />
             ))}
           </div>
         </div>
       </section>
     ),
   }
-);
-
-const SkillsSection = dynamic(
-  () => import("@/components/sections/skills").then((m) => ({ default: m.SkillsSection })),
-  { ssr: true }
 );
 
 const WritingSection = dynamic(
@@ -53,25 +48,20 @@ const WritingSection = dynamic(
   {
     ssr: true,
     loading: () => (
-      <section className="border-t py-16 md:py-32">
-        <div className="mx-auto max-w-2xl px-6">
+      <section className="border-b py-16 md:py-32">
+        <div className="mx-auto max-w-3xl px-6">
           <Skeleton className="mb-4 h-6 w-24" />
           <Skeleton className="mb-4 h-10 w-96" />
           <Skeleton className="mb-16 h-5 w-[500px]" />
-          <div className="space-y-4">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <ArticleCardSkeleton key={i} />
+          <div className="space-y-4 border-b">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton key={i} className="h-20 w-full rounded-none" />
             ))}
           </div>
         </div>
       </section>
     ),
   }
-);
-
-const TestimonialsSection = dynamic(
-  () => import("@/components/sections/testimonials").then((m) => ({ default: m.TestimonialsSection })),
-  { ssr: true }
 );
 
 const BeyondCodeSection = dynamic(
@@ -126,11 +116,9 @@ export default function HomePage() {
       <main id="main-content" className="pt-16" role="main">
         <HeroSection />
         <AboutSection />
-        <ExperienceSection />
         <ProjectsSection />
-        <SkillsSection />
+        <ExperienceSection />
         <WritingSection />
-        <TestimonialsSection />
         <BeyondCodeSection />
         <ContactSection />
       </main>

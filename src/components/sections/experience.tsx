@@ -27,8 +27,8 @@ function ExperienceSection() {
         <FadeIn>
           <SectionTitle
             label="Experience"
-            title="Building, leading, shipping."
-            description="From freelance craft to founding my own platform – the journey behind the work."
+            title="What I have done."
+            description="Work history, current and previous, with the stack each role ran."
             className="mb-16"
           />
         </FadeIn>

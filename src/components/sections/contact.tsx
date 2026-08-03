@@ -92,18 +92,17 @@ function ContactSection() {
           <FadeIn>
             <SectionTitle
               label="Contact"
-              title="Let&apos;s build something."
-              description="Whether you have a project in mind or just want to say hello, I&apos;d love to hear from you."
+              title="Get in touch."
+              description="Email is the reliable channel. X works if you are already there."
             />
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <p className="flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="relative flex h-2 w-2" aria-hidden="true">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                 </span>
-                Available for freelance and full-time opportunities
-              </div>
+                Based in Nigeria. Replies within a day or two.
+              </p>
 
               <a
                 href="mailto:toromadeadesina@gmail.com"
@@ -287,7 +286,7 @@ function ContactSection() {
                   transition={{ duration: 0.3 }}
                 >
                   <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  Message sent successfully! I&apos;ll get back to you soon.
+                  Message sent. I&apos;ll get back to you soon.
                 </motion.div>
               )}
 

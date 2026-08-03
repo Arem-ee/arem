@@ -3,9 +3,9 @@ import { socialLinks } from "@/data/socials";
 
 export const siteConfig: SiteConfig = {
   name: "arem.dev",
-  title: "Arem – Senior Software Engineer & Product Engineer",
+  title: "Arem - Web3 Technical Writer & Builder",
   description:
-    "Senior Software Engineer with 10+ years of experience building high-performance web applications at scale. Specializing in React, Next.js, TypeScript, and system design.",
+    "Web3 technical writer and builder. Electrical engineering student at the University of Ilorin. I write about self-custody and DAO tooling, and I build products end to end.",
   url: "https://arem.dev",
   ogImage: "/images/og.jpg",
   links: {
@@ -16,27 +16,28 @@ export const siteConfig: SiteConfig = {
   author: {
     name: "Arem",
     email: socialLinks.email,
-    jobTitle: "Senior Software Engineer",
+    jobTitle: "Web3 Technical Writer & Builder",
     image: "/images/og.jpg",
     sameAs: [socialLinks.github, socialLinks.linkedin, socialLinks.twitter],
   },
   keywords: [
-    "senior software engineer",
-    "react developer",
-    "next.js developer",
-    "typescript",
-    "frontend architect",
-    "web development",
-    "portfolio",
-    "system design",
+    "web3",
+    "technical writer",
+    "multisig wallets",
+    "self-custody",
+    "dao tooling",
+    "ethereum",
+    "solidity",
+    "react",
+    "next.js",
+    "electrical engineering",
   ],
 };
 
 export const navItems: NavItem[] = [
   { label: "About", href: "/#about" },
+  { label: "Work", href: "/#work" },
   { label: "Experience", href: "/#experience" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Skills", href: "/#skills" },
   { label: "Writing", href: "/#writing" },
   { label: "Contact", href: "/#contact" },
 ];

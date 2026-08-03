@@ -18,8 +18,9 @@ function formatDisplayDate(dateStr: string): string {
 }
 
 export const metadata: Metadata = constructMetadata({
-  title: "Blog",
-  description: "Thoughts on frontend architecture, system design, and building products that scale.",
+  title: "Writing",
+  description:
+    "Tutorials and field notes on multisig wallets, self-custody, and DAO tooling, with code you can run.",
   path: "/blog",
 });
 
@@ -28,9 +29,12 @@ export default function BlogPage() {
     <PageLayout>
       <section className="border-b py-16 md:py-32">
         <Container size="md">
-          <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">Blog</h1>
+          <h1 className="mb-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+            Writing
+          </h1>
           <p className="text-lg text-muted-foreground">
-            Thoughts on frontend architecture, system design, and building products that scale.
+            Tutorials and field notes on multisig wallets, self-custody, and
+            DAO tooling, with code you can run.
           </p>
         </Container>
       </section>

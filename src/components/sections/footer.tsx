@@ -10,11 +10,11 @@ import { GitHubIcon, LinkedInIcon, TwitterIcon } from "@/lib/icons";
 import { navItems, siteConfig, socialLinks } from "@/constants";
 
 const microcopy = [
-  "Crafting systems that scale, one commit at a time.",
-  "Built with coffee, curiosity, and stubborn optimism.",
-  "Powered by Afrobeats and dark mode.",
-  "99.9% uptime – 100% enthusiasm.",
-  "Debugging by day, dreaming in TypeScript by night.",
+  "The status labels above are current as of the last commit.",
+  "Mostly built on Sundays, when the campus network is quiet.",
+  "Powered by Afrobeats and a reliable sleep schedule.",
+  "Typed in VS Code, edited with intent, shipped with care.",
+  "The 404 page is a dodge game. It was not a deliberate feature.",
 ];
 
 function FooterSection() {

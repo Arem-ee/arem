@@ -63,14 +63,18 @@ export interface Project {
   title: string;
   slug: string;
   description: string;
-  image: string;
+  image?: string;
   technologies: string[];
   category: ProjectCategory;
   metrics?: string;
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
+  status: ProjectStatus;
+  statusNote: string;
 }
+
+export type ProjectStatus = "launched" | "shipped" | "postponed" | "did-not-win";
 
 export type ProjectCategory =
   | "Frontend"
@@ -78,7 +82,8 @@ export type ProjectCategory =
   | "Full Stack"
   | "AI"
   | "Mobile"
-  | "DevOps";
+  | "DevOps"
+  | "Web3";
 
 export interface ProjectDetail extends Project {
   problem: string;

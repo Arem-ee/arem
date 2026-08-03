@@ -176,7 +176,7 @@ function NotFoundGame() {
       <div className="mt-3 flex items-center justify-between text-sm">
         <span className="font-medium text-foreground/80">
           {gameOver ? (
-            <span className="text-destructive">Game over! You dodged for {Math.floor(score / 30)}s.</span>
+            <span className="text-destructive">                    Game over. You dodged for {Math.floor(score / 30)}s.</span>
           ) : running ? (
             <span>Survive: {Math.floor(score / 30)}s</span>
           ) : (

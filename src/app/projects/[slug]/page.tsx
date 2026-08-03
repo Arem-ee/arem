@@ -58,23 +58,21 @@ export default async function ProjectPage({ params }: Props) {
       <section className="border-b py-16 md:py-32">
         <Container size="md">
           <Link
-            href="/#projects"
+            href="/#work"
             className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to projects
+            Back to work
           </Link>
 
           <div className="mb-4 flex items-center gap-3">
             <Badge>{project.category}</Badge>
-            {project.featured && (
-              <span className="text-xs font-medium uppercase tracking-wider text-amber-500">
-                Featured
-              </span>
-            )}
+            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              Status: {project.statusNote}
+            </span>
           </div>
 
-          <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+          <h1 className="mb-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">
             {project.title}
           </h1>
           <p className="mb-6 text-lg text-muted-foreground">
@@ -98,7 +96,7 @@ export default async function ProjectPage({ params }: Props) {
               <Button variant="primary" asChild>
                 <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4" />
-                  Live Demo
+                  Live site
                 </Link>
               </Button>
             )}
@@ -106,7 +104,7 @@ export default async function ProjectPage({ params }: Props) {
               <Button variant="secondary" asChild>
                 <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                   <GitHubIcon className="h-4 w-4" />
-                  Source Code
+                  Source code
                 </Link>
               </Button>
             )}
@@ -158,7 +156,7 @@ export default async function ProjectPage({ params }: Props) {
                   <div key={i} className="rounded-lg border bg-card p-5">
                     <h3 className="mb-1 text-sm font-medium text-destructive">Challenge</h3>
                     <p className="mb-3 text-sm leading-relaxed text-muted-foreground">{c.challenge}</p>
-                    <h3 className="mb-1 text-sm font-medium text-emerald-500">Solution</h3>
+                    <h3 className="mb-1 text-sm font-medium text-primary">Solution</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{c.solution}</p>
                   </div>
                 ))}
@@ -170,7 +168,7 @@ export default async function ProjectPage({ params }: Props) {
               <ul className="space-y-2">
                 {project.results.map((result, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     {result}
                   </li>
                 ))}
@@ -182,7 +180,7 @@ export default async function ProjectPage({ params }: Props) {
               <ul className="space-y-2">
                 {project.lessonsLearned.map((lesson, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground" />
                     {lesson}
                   </li>
                 ))}
