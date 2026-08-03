@@ -64,11 +64,6 @@ const WritingSection = dynamic(
   }
 );
 
-const BeyondCodeSection = dynamic(
-  () => import("@/components/sections/beyond-code").then((m) => ({ default: m.BeyondCodeSection })),
-  { ssr: true }
-);
-
 const ContactSection = dynamic(
   () => import("@/components/sections/contact").then((m) => ({ default: m.ContactSection })),
   { ssr: true }
@@ -119,7 +114,6 @@ export default function HomePage() {
         <ProjectsSection />
         <ExperienceSection />
         <WritingSection />
-        <BeyondCodeSection />
         <ContactSection />
       </main>
       <FooterSection />

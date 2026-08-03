@@ -16,6 +16,7 @@ import { SpotifyNowPlaying } from "@/components/spotify-now-playing";
 import { FadeIn } from "@/components/animations";
 import { favorites } from "@/data";
 import type { Favorite } from "@/types";
+import { cn } from "@/lib/utils";
 
 const favoriteIcons: Record<string, LucideIcon> = {
   Goal,
@@ -126,18 +127,25 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
   );
 }
 
-function BeyondCodeSection() {
+function BeyondCodeSection({ showHeader = true }: { showHeader?: boolean }) {
   return (
-    <section id="beyond-code" className="border-t py-16 md:py-32">
+    <section
+      id="beyond-code"
+      className={cn(
+        showHeader ? "border-t py-16 md:py-32" : "py-16 md:py-24"
+      )}
+    >
       <Container size="xl">
-        <FadeIn>
-          <SectionTitle
-            label="Beyond the code"
-            title="What I'm into off the clock."
-            description="A few role models and favourites that keep the balance - click a card to flip it."
-            className="mb-12"
-          />
-        </FadeIn>
+        {showHeader && (
+          <FadeIn>
+            <SectionTitle
+              label="Beyond the code"
+              title="What I'm into off the clock."
+              description="A few role models and favourites that keep the balance - click a card to flip it."
+              className="mb-12"
+            />
+          </FadeIn>
+        )}
 
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-5">
           {favorites.map((favorite, i) => (
