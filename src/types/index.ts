@@ -64,6 +64,7 @@ export interface Project {
   slug: string;
   description: string;
   image?: string;
+  logo?: string;
   technologies: string[];
   category: ProjectCategory;
   metrics?: string;

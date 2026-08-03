@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/animations";
 import { socialLinks } from "@/constants";
+import { GitHubIcon, TwitterIcon } from "@/lib/icons";
+import { Mail } from "lucide-react";
 
 function useIsDesktop(query = "(min-width: 768px)") {
   const getSnapshot = React.useCallback(
@@ -26,9 +28,24 @@ function useIsDesktop(query = "(min-width: 768px)") {
 }
 
 const heroLinks = [
-  { label: "X", value: "@Arem_ee", href: socialLinks.twitter },
-  { label: "GitHub", value: "Arem-ee", href: socialLinks.github },
-  { label: "Email", value: socialLinks.email, href: `mailto:${socialLinks.email}` },
+  {
+    label: "X",
+    value: "@Arem_ee",
+    href: socialLinks.twitter,
+    icon: <TwitterIcon className="h-4 w-4 shrink-0" aria-hidden="true" />,
+  },
+  {
+    label: "GitHub",
+    value: "Arem-ee",
+    href: socialLinks.github,
+    icon: <GitHubIcon className="h-4 w-4 shrink-0" aria-hidden="true" />,
+  },
+  {
+    label: "Email",
+    value: socialLinks.email,
+    href: `mailto:${socialLinks.email}`,
+    icon: <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />,
+  },
 ];
 
 function HeroSection() {
@@ -65,12 +82,13 @@ function HeroSection() {
                     rel={
                       link.href.startsWith("http") ? "noreferrer" : undefined
                     }
-                    className="group inline-flex items-baseline gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="group inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <span className="w-16 shrink-0 font-mono text-xs uppercase tracking-wider text-muted-foreground/70">
                       {link.label}
                     </span>
-                    <span className="underline decoration-border underline-offset-4 transition-colors group-hover:decoration-primary">
+                    <span className="inline-flex items-center gap-2 underline decoration-border underline-offset-4 transition-colors group-hover:decoration-primary">
+                      {link.icon}
                       {link.value}
                     </span>
                   </a>

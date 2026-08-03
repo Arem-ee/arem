@@ -3,6 +3,7 @@
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { FadeIn } from "@/components/animations";
+import Image from "next/image";
 import { projects } from "@/data";
 import type { ProjectStatus } from "@/types";
 import { cn } from "@/lib/utils";
@@ -44,9 +45,20 @@ function StatusBoardRow({ project, index }: { project: (typeof projects)[number]
         </div>
 
         <div className="md:col-span-6">
-          <h3 className="font-display text-2xl font-semibold tracking-tight">
-            {project.title}
-          </h3>
+          <div className="flex items-center gap-3">
+            {project.logo && (
+              <Image
+                src={project.logo}
+                alt={`${project.title} logo`}
+                width={36}
+                height={36}
+                className="h-9 w-9 shrink-0 rounded-lg border border-border bg-card object-contain"
+              />
+            )}
+            <h3 className="font-display text-2xl font-semibold tracking-tight">
+              {project.title}
+            </h3>
+          </div>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             {project.description}
           </p>
@@ -98,7 +110,7 @@ function ProjectsSection() {
         <SectionTitle
           label="Selected work"
           title="Shipped, paused, or shelved."
-          description="Four projects, with their current status. The status column is part of the information, not decoration."
+          description="Six projects, with their current status. The status column is part of the information, not decoration."
           className="mb-8 md:mb-12"
         />
 

@@ -206,6 +206,102 @@ export const projectDetails: ProjectDetail[] = [
       "3D is a feature, not the page. Containing the scene is what keeps the rest of the site fast.",
     ],
   },
+  {
+    title: "Aremco",
+    slug: "aremco",
+    description:
+      "Business landing page for Aremco Heating, Cooling & Construction. Services, contact path, and quote request flow, mobile-first.",
+    technologies: ["Next.js", "Tailwind CSS"],
+    category: "Frontend",
+    logo: "/logos/aremco.svg",
+    liveUrl: "https://aremco-seven.vercel.app",
+    featured: true,
+    status: "shipped",
+    statusNote: "Shipped. Live business site for Aremco Heating, Cooling & Construction.",
+    problem:
+      "Aremco Heating, Cooling & Construction ran entirely on word-of-mouth. No website meant no way for new customers to verify the services, see the coverage area, or request a quote without calling.",
+    goals: [
+      "Give the business a credible online presence",
+      "Turn visitors into calls and quote requests",
+      "Work on the phones most customers use: mobile-first",
+    ],
+    architecture:
+      "A Next.js landing page with Tailwind styling. One page, few sections: services, why-choose-us, coverage, and a persistent quote/contact path. Content is static and cheap to edit, so the client can update it without touching code.",
+    technicalDecisions: [
+      {
+        decision: "Static single page over a CMS",
+        rationale:
+          "A service business updates its site a few times a year. A CMS adds a bill and a login for zero benefit at this stage.",
+      },
+      {
+        decision: "Contact-first layout",
+        rationale:
+          "The goal is calls and quotes, not dwell time. The contact action is reachable from every scroll position.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "No existing brand assets",
+        solution:
+          "Built a simple, consistent visual system from scratch: a clean type scale and a business-appropriate palette, applied across sections.",
+      },
+    ],
+    results: [
+      "Live business site shipped for Aremco Heating, Cooling & Construction",
+      "Mobile-first layout covering the main customer flows",
+    ],
+    lessonsLearned: [
+      "For a local service business, the contact path is the product. Everything else is context.",
+    ],
+  },
+  {
+    title: "Mobile Landing Page",
+    slug: "mobile-landing-page",
+    description:
+      "Conversion-focused mobile landing page designed and prototyped in Figma: clear hierarchy, persuasive flow, clickable end to end.",
+    technologies: ["Figma", "Prototyping"],
+    category: "Mobile",
+    logo: "/logos/figma.svg",
+    liveUrl: "https://boho-dwarf-46414877.figma.site",
+    featured: true,
+    status: "shipped",
+    statusNote: "Shipped as a design prototype. Clickable mobile landing, built in Figma.",
+    problem:
+      "Most landing pages are designed on desktop canvases and degrade on mobile. This was an exercise in designing mobile-first from the first frame: a landing page where the layout, hierarchy, and interaction are native to the phone, not stretched to fit it.",
+    goals: [
+      "Design a conversion-focused landing page on a mobile canvas",
+      "Establish a clear information hierarchy for a small screen",
+      "Prototype the flow so the interactions are testable, not assumed",
+    ],
+    architecture:
+      "A Figma design system with components for each section: hero, value proposition, social proof, and call to action. The prototype wires the primary flow end to end, including form states and error handling.",
+    technicalDecisions: [
+      {
+        decision: "Mobile canvas from the start",
+        rationale:
+          "Designing on a phone-sized canvas forces decisions about what matters. Desktop layouts were never the constraint.",
+      },
+      {
+        decision: "Interactive prototype over static mockups",
+        rationale:
+          "A clickable prototype shows the flow to stakeholders in seconds. Static art invites debate about pixels instead of decisions.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "Keeping the scroll story short",
+        solution:
+          "Each section carries one message and one action. Anything that did not serve the conversion goal was cut.",
+      },
+    ],
+    results: [
+      "Clickable mobile prototype shipped on Figma",
+      "Component-based system ready to extend into a full product design",
+    ],
+    lessonsLearned: [
+      "A prototype settles design arguments faster than a spec ever will.",
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {

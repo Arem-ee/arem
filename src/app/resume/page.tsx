@@ -124,7 +124,7 @@ function ResumePage() {
               <div className="space-y-3">
                 {resumeData.certifications.map((cert, i) => (
                   <div key={i} className="flex items-center gap-3 rounded-lg border bg-card p-4">
-                    <div className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <div className="h-2 w-2 rounded-full bg-primary" />
                     <span className="text-sm font-medium">{cert}</span>
                   </div>
                 ))}

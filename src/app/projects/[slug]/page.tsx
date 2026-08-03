@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 
@@ -65,11 +66,22 @@ export default async function ProjectPage({ params }: Props) {
             Back to work
           </Link>
 
-          <div className="mb-4 flex items-center gap-3">
-            <Badge>{project.category}</Badge>
-            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              Status: {project.statusNote}
-            </span>
+          <div className="mb-6 flex items-center gap-4">
+            {project.logo && (
+              <Image
+                src={project.logo}
+                alt={`${project.title} logo`}
+                width={56}
+                height={56}
+                className="h-14 w-14 shrink-0 rounded-xl border border-border bg-card object-contain"
+              />
+            )}
+            <div className="flex flex-wrap items-center gap-3">
+              <Badge>{project.category}</Badge>
+              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                Status: {project.statusNote}
+              </span>
+            </div>
           </div>
 
           <h1 className="mb-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">

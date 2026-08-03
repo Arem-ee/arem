@@ -278,7 +278,7 @@ function ContactSection() {
             <AnimatePresence>
               {status === "success" && (
                 <motion.div
-                  className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-600 dark:text-emerald-400"
+                  className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary px-4 py-3 text-sm text-primary-foreground"
                   role="alert"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
