@@ -8,7 +8,7 @@ export const projectDetails: ProjectDetail[] = [
       "General entrance exam prep platform, rebranded from PrepIQ. Practice questions, per-exam leaderboards, referral tracking, and admin question management.",
     technologies: ["Next.js", "Supabase", "Paystack", "Tailwind CSS"],
     category: "Full Stack",
-    liveUrl: "https://propeida.com",
+    liveUrl: "https://propeida.online",
     featured: true,
     status: "launched",
     statusNote: "Launched. UNILORIN Post-UTME is the first supported exam.",

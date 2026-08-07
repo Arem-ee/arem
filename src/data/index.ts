@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
   {
     role: "CEO & Founder",
     company: "Propeida",
-    companyUrl: "https://propeida.com",
+    companyUrl: "https://propeida.online",
     duration: "2025 \u2013 Present",
     summary:
       "Building Propeida, an entrance exam prep platform (formerly PrepIQ). I own the product, the architecture, and the engineering.",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "Supabase", "Paystack", "Tailwind CSS"],
     category: "Full Stack",
     logo: "/logos/propeida.svg",
-    liveUrl: "https://propeida.com",
+    liveUrl: "https://propeida.online",
     featured: true,
     status: "launched",
     statusNote: "Launched. UNILORIN Post-UTME is the first supported exam.",
