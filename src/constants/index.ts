@@ -2,12 +2,12 @@ import type { NavItem, SiteConfig } from "@/types";
 import { socialLinks } from "@/data/socials";
 
 export const siteConfig: SiteConfig = {
-  name: "arem.dev",
+  name: "arem.is-a.dev",
   title: "Arem - Web3 Technical Writer & Builder",
   description:
     "Web3 technical writer and builder. Electrical engineering student at the University of Ilorin. I write about self-custody and DAO tooling, and I build products end to end.",
-  url: "https://arem.dev",
-  ogImage: "/images/og.jpg",
+  url: "https://arem.is-a.dev",
+  ogImage: "/images/profile-hero.png",
   links: {
     github: socialLinks.github,
     linkedin: socialLinks.linkedin,
@@ -21,16 +21,22 @@ export const siteConfig: SiteConfig = {
     sameAs: [socialLinks.github, socialLinks.linkedin, socialLinks.twitter],
   },
   keywords: [
-    "web3",
-    "technical writer",
-    "multisig wallets",
-    "self-custody",
-    "dao tooling",
-    "ethereum",
-    "solidity",
-    "react",
-    "next.js",
-    "electrical engineering",
+    "web3 technical writer",
+    "technical writing portfolio",
+    "self-custody crypto",
+    "multisig wallet tutorial",
+    "DAO treasury management",
+    "smart contract education",
+    "crypto wallet security",
+    "Solidity",
+    "Ethereum",
+    "on-chain verification",
+    "timelock contracts",
+    "developer portfolio",
+    "electrical engineering student",
+    "React",
+    "Next.js",
+    "TypeScript",
   ],
 };
 
