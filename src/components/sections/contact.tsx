@@ -76,191 +76,197 @@ function ContactSection() {
 
   function inputClasses(field: keyof ContactFormData) {
     return cn(
-      "flex h-10 w-full rounded-lg border bg-background px-3 py-2 text-sm ring-offset-background transition-all duration-200",
-      "placeholder:text-muted-foreground",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      errors[field]
-        ? "border-destructive"
-        : "border-input hover:border-foreground/40"
+      "h-11 w-full border-0 border-b bg-transparent px-0 text-sm transition-colors duration-200",
+      "placeholder:text-muted-foreground/50",
+      "focus-visible:outline-none focus-visible:ring-0 focus-visible:border-primary",
+      errors[field] ? "border-destructive" : "border-input hover:border-foreground/40"
     );
   }
 
+  const statusBox = cn(
+    "flex items-center gap-2 px-4 py-3 text-sm"
+  );
+
   return (
-    <section id="contact" className="border-t py-16 md:py-32" aria-labelledby="contact-heading">
-      <Container size="md">
-        <div className="grid gap-16 lg:grid-cols-2">
-          <FadeIn>
-            <SectionTitle
-              label="Contact"
-              title="Get in touch."
-              description="Email is the reliable channel. X works if you are already there."
-            />
+    <section id="contact" className="border-t py-24 md:py-36" aria-labelledby="contact-heading">
+      <Container size="lg">
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5 lg:col-start-1">
+            <FadeIn from="left">
+              <SectionTitle
+                label="Contact"
+                title="Get in touch."
+                description="Email is the reliable channel. X works if you are already there."
+              />
 
-            <div className="mt-8 space-y-4">
-              <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="relative flex h-2 w-2" aria-hidden="true">
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                </span>
-                Based in Nigeria. Replies within a day or two.
-              </p>
+              <div className="mt-10 space-y-5">
+                <p className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <span className="relative flex h-2 w-2" aria-hidden="true">
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                  </span>
+                  Based in Nigeria. Replies within a day or two.
+                </p>
 
-              <a
-                href="mailto:toromadeadesina@gmail.com"
-                className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Send email to toromadeadesina@gmail.com"
-              >
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                toromadeadesina@gmail.com
-              </a>
+                <a
+                  href="mailto:toromadeadesina@gmail.com"
+                  className="group flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  aria-label="Send email to toromadeadesina@gmail.com"
+                >
+                  <Mail
+                    className="h-4 w-4 text-muted-foreground/60 transition-colors group-hover:text-primary"
+                    aria-hidden="true"
+                  />
+                  <span className="border-b border-transparent transition-colors group-hover:border-primary">
+                    toromadeadesina@gmail.com
+                  </span>
+                </a>
 
-              <div className="flex items-center gap-1 pt-2" role="list" aria-label="Social media links">
-                <SocialLink
-                  href={socialLinks.github}
-                  label="GitHub"
-                  icon={<GitHubIcon className="h-4 w-4" aria-hidden="true" />}
-                />
-                <SocialLink
-                  href={socialLinks.linkedin}
-                  label="LinkedIn"
-                  icon={<LinkedInIcon className="h-4 w-4" aria-hidden="true" />}
-                />
-                <SocialLink
-                  href={socialLinks.twitter}
-                  label="Twitter"
-                  icon={<TwitterIcon className="h-4 w-4" aria-hidden="true" />}
-                />
+                <div className="flex items-center gap-1 pt-3" role="list" aria-label="Social media links">
+                  <SocialLink
+                    href={socialLinks.github}
+                    label="GitHub"
+                    icon={<GitHubIcon className="h-4 w-4" aria-hidden="true" />}
+                  />
+                  <SocialLink
+                    href={socialLinks.linkedin}
+                    label="LinkedIn"
+                    icon={<LinkedInIcon className="h-4 w-4" aria-hidden="true" />}
+                  />
+                  <SocialLink
+                    href={socialLinks.twitter}
+                    label="Twitter"
+                    icon={<TwitterIcon className="h-4 w-4" aria-hidden="true" />}
+                  />
+                </div>
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5"
-            noValidate
-            aria-label="Contact form"
-          >
-            <input
-              type="text"
-              className="hidden"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              {...register("website")}
-            />
-
-            <div className="space-y-2">
-              <label htmlFor="contact-name" className="text-sm font-medium">
-                Name <span className="text-destructive">*</span>
-              </label>
-              <input
-                id="contact-name"
-                type="text"
-                placeholder="Your name"
-                className={inputClasses("name")}
-                aria-invalid={errors.name ? "true" : "false"}
-                aria-describedby={errors.name ? "contact-name-error" : undefined}
-                {...register("name")}
-              />
-              {errors.name && (
-                <motion.p
-                  id="contact-name-error"
-                  className="text-xs text-destructive"
-                  role="alert"
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  {errors.name.message}
-                </motion.p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="contact-email" className="text-sm font-medium">
-                Email <span className="text-destructive">*</span>
-              </label>
-              <input
-                id="contact-email"
-                type="email"
-                placeholder="you@example.com"
-                className={inputClasses("email")}
-                aria-invalid={errors.email ? "true" : "false"}
-                aria-describedby={errors.email ? "contact-email-error" : undefined}
-                {...register("email")}
-              />
-              {errors.email && (
-                <motion.p
-                  id="contact-email-error"
-                  className="text-xs text-destructive"
-                  role="alert"
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  {errors.email.message}
-                </motion.p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="contact-subject" className="text-sm font-medium">
-                Subject <span className="text-destructive">*</span>
-              </label>
-              <input
-                id="contact-subject"
-                type="text"
-                placeholder="What is this about?"
-                className={inputClasses("subject")}
-                aria-invalid={errors.subject ? "true" : "false"}
-                aria-describedby={errors.subject ? "contact-subject-error" : undefined}
-                {...register("subject")}
-              />
-              {errors.subject && (
-                <motion.p
-                  id="contact-subject-error"
-                  className="text-xs text-destructive"
-                  role="alert"
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  {errors.subject.message}
-                </motion.p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="contact-message" className="text-sm font-medium">
-                Message <span className="text-destructive">*</span>
-              </label>
-              <textarea
-                id="contact-message"
-                placeholder="Tell me about your project..."
-                rows={5}
-                className={cn(inputClasses("message"), "h-auto min-h-[100px] resize-y")}
-                aria-invalid={errors.message ? "true" : "false"}
-                aria-describedby={errors.message ? "contact-message-error" : undefined}
-                {...register("message")}
-              />
-              {errors.message && (
-                <motion.p
-                  id="contact-message-error"
-                  className="text-xs text-destructive"
-                  role="alert"
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  {errors.message.message}
-                </motion.p>
-              )}
-            </div>
-
-            <motion.div
-              whileHover={status === "idle" ? { scale: 1.01 } : undefined}
-              whileTap={status === "idle" ? { scale: 0.99 } : undefined}
+          <FadeIn from="right" delay={0.1} className="lg:col-span-6 lg:col-start-7">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-8"
+              noValidate
+              aria-label="Contact form"
             >
+              <input
+                type="text"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                {...register("website")}
+              />
+
+              <div className="space-y-2">
+                <label htmlFor="contact-name" className="flex text-[13px] font-medium">
+                  Name <span className="ml-1 text-primary">*</span>
+                </label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  placeholder="Your name"
+                  className={inputClasses("name")}
+                  aria-invalid={errors.name ? "true" : "false"}
+                  aria-describedby={errors.name ? "contact-name-error" : undefined}
+                  {...register("name")}
+                />
+                {errors.name && (
+                  <motion.p
+                    id="contact-name-error"
+                    className="text-xs text-destructive"
+                    role="alert"
+                    initial={{ opacity: 0, x: -6 }}
+                    animate={{ opacity: 1, x: 0 }}
+                  >
+                    {errors.name.message}
+                  </motion.p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="contact-email" className="flex text-[13px] font-medium">
+                  Email <span className="ml-1 text-primary">*</span>
+                </label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  placeholder="you@example.com"
+                  className={inputClasses("email")}
+                  aria-invalid={errors.email ? "true" : "false"}
+                  aria-describedby={errors.email ? "contact-email-error" : undefined}
+                  {...register("email")}
+                />
+                {errors.email && (
+                  <motion.p
+                    id="contact-email-error"
+                    className="text-xs text-destructive"
+                    role="alert"
+                    initial={{ opacity: 0, x: -6 }}
+                    animate={{ opacity: 1, x: 0 }}
+                  >
+                    {errors.email.message}
+                  </motion.p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="contact-subject" className="flex text-[13px] font-medium">
+                  Subject <span className="ml-1 text-primary">*</span>
+                </label>
+                <input
+                  id="contact-subject"
+                  type="text"
+                  placeholder="What is this about?"
+                  className={inputClasses("subject")}
+                  aria-invalid={errors.subject ? "true" : "false"}
+                  aria-describedby={errors.subject ? "contact-subject-error" : undefined}
+                  {...register("subject")}
+                />
+                {errors.subject && (
+                  <motion.p
+                    id="contact-subject-error"
+                    className="text-xs text-destructive"
+                    role="alert"
+                    initial={{ opacity: 0, x: -6 }}
+                    animate={{ opacity: 1, x: 0 }}
+                  >
+                    {errors.subject.message}
+                  </motion.p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="contact-message" className="flex text-[13px] font-medium">
+                  Message <span className="ml-1 text-primary">*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  placeholder="Tell me about your project"
+                  rows={4}
+                  className={cn(inputClasses("message"), "h-auto min-h-[96px] resize-y")}
+                  aria-invalid={errors.message ? "true" : "false"}
+                  aria-describedby={errors.message ? "contact-message-error" : undefined}
+                  {...register("message")}
+                />
+                {errors.message && (
+                  <motion.p
+                    id="contact-message-error"
+                    className="text-xs text-destructive"
+                    role="alert"
+                    initial={{ opacity: 0, x: -6 }}
+                    animate={{ opacity: 1, x: 0 }}
+                  >
+                    {errors.message.message}
+                  </motion.p>
+                )}
+              </div>
+
               <Button
                 type="submit"
                 variant="primary"
-                size="lg"
-                className="w-full"
+                size="md"
+                className="w-full rounded-xl shadow-[0_6px_20px_-8px_rgba(216,162,46,0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-8px_rgba(216,162,46,0.6)]"
                 disabled={status === "loading"}
                 aria-label={status === "loading" ? "Sending message..." : "Send message"}
               >
@@ -273,38 +279,38 @@ function ContactSection() {
                   "Send Message"
                 )}
               </Button>
-            </motion.div>
 
-            <AnimatePresence>
-              {status === "success" && (
-                <motion.div
-                  className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary px-4 py-3 text-sm text-primary-foreground"
-                  role="alert"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  Message sent. I&apos;ll get back to you soon.
-                </motion.div>
-              )}
+              <AnimatePresence>
+                {status === "success" && (
+                  <motion.div
+                    className={cn(statusBox, "border border-primary/30 bg-primary/10 text-foreground")}
+                    role="alert"
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 12 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                    Message sent. I&apos;ll get back to you soon.
+                  </motion.div>
+                )}
 
-              {status === "error" && (
-                <motion.div
-                  className="flex items-center gap-2 rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive"
-                  role="alert"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  {errorMessage}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </form>
+                {status === "error" && (
+                  <motion.div
+                    className={cn(statusBox, "border border-destructive/30 bg-destructive/10 text-destructive")}
+                    role="alert"
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 12 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    {errorMessage}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
+          </FadeIn>
         </div>
       </Container>
     </section>

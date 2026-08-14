@@ -3,12 +3,11 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, FileText, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { GitHubIcon, LinkedInIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
@@ -22,25 +21,23 @@ function ThemeToggle({ className = "" }: { className?: string }) {
     <motion.button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
-        "inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground",
+        "inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
         className
       )}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={isDark ? "moon" : "sun"}
-          initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
-          animate={{ opacity: 1, rotate: 0, scale: 1 }}
-          exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
-          transition={{ duration: 0.2 }}
+          initial={{ opacity: 0, rotate: -45 }}
+          animate={{ opacity: 1, rotate: 0 }}
+          exit={{ opacity: 0, rotate: 45 }}
+          transition={{ duration: 0.25 }}
           className="inline-flex"
         >
           {isDark ? (
-            <Sun className="h-4 w-4" />
+            <Sun className="h-4 w-4 text-primary" />
           ) : (
             <Moon className="h-4 w-4" />
           )}
@@ -54,7 +51,6 @@ function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [avatarVisible, setAvatarVisible] = React.useState(false);
-  const [wave, setWave] = React.useState(0);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -62,57 +58,37 @@ function Navbar() {
     setAvatarVisible(latest > 140);
   });
 
+  const linkClasses = cn(
+    "text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground",
+    "transition-colors duration-200 hover:text-foreground"
+  );
+
   return (
     <motion.header
       className={cn(
         "fixed top-0 z-50 w-full transition-colors duration-300",
         scrolled
-          ? "border-b bg-background/80 backdrop-blur-md"
+          ? "border-b bg-background/85 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       )}
-      initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       role="banner"
     >
       <Container as="nav" size="xl" aria-label="Main navigation">
-        <motion.div
-          className="flex items-center justify-between"
-          animate={{ height: scrolled ? 56 : 64 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-        >
+        <div className="flex h-14 items-center justify-between">
           <Link href="/" className="relative" aria-label="Home">
-            <motion.div
-              className="relative h-9 w-9 overflow-hidden rounded-full border border-foreground/10 bg-muted"
-              initial={{ opacity: 0, scale: 0.4 }}
-              animate={{
-                opacity: avatarVisible ? 1 : 0,
-                scale: avatarVisible ? 1 : 0.4,
-                rotate: wave ? [0, -12, 10, -6, 0] : 0,
-              }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              onClick={() => setWave((w) => w + 1)}
-              style={{ cursor: "pointer" }}
-            >
-              <Image
-                src="/images/profile-hero.png"
-                alt="Arem"
-                fill
-                className="object-cover"
-                sizes="36px"
-              />
-            </motion.div>
+            <span className="whisper-label">Arem</span>
           </Link>
 
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "inline-flex h-9 items-center justify-center rounded-lg px-4 py-2",
-                  "text-sm font-medium text-muted-foreground transition-colors",
-                  "hover:bg-accent hover:text-accent-foreground"
+                  linkClasses,
+                  "relative pb-0.5 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100"
                 )}
               >
                 {item.label}
@@ -120,16 +96,13 @@ function Navbar() {
             ))}
           </div>
 
-          <div className="hidden items-center gap-2 md:flex">
-            <ThemeToggle />
+          <div className="hidden items-center gap-5 md:flex">
             <motion.a
               href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
               aria-label="GitHub"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
             >
               <GitHubIcon className="h-4 w-4" />
             </motion.a>
@@ -137,122 +110,88 @@ function Navbar() {
               href={socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
               aria-label="LinkedIn"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
             >
               <LinkedInIcon className="h-4 w-4" />
             </motion.a>
-            <Button variant="primary" size="sm" asChild>
-              <Link href="/resume">
-                <FileText className="h-3.5 w-3.5" />
-                Resume
-              </Link>
-            </Button>
+            <ThemeToggle />
+            <Link
+              href="/resume"
+              className="whisper-label rounded-md bg-primary px-3 py-1.5 text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Resume
+            </Link>
           </div>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-        </motion.div>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+        </div>
       </Container>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
             id="mobile-menu"
-            className="absolute left-0 right-0 top-full max-h-[calc(100svh-4rem)] overflow-y-auto border-b bg-background/95 backdrop-blur-md md:hidden"
+            className="absolute left-0 right-0 top-full max-h-[calc(100svh-3.5rem)] overflow-y-auto border-b bg-background/95 backdrop-blur-md md:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 12 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <Container size="xl">
-              <motion.div
-                className="flex flex-col gap-2 py-4"
-                initial="closed"
-                animate="open"
-                exit="closed"
-                variants={{
-                  open: {
-                    transition: { staggerChildren: 0.05, delayChildren: 0.05 },
-                  },
-                  closed: {
-                    transition: { staggerChildren: 0.03, staggerDirection: -1 },
-                  },
-                }}
-              >
+              <nav className="flex flex-col gap-1 py-6" aria-label="Mobile">
                 {navItems.map((item) => (
-                  <motion.div
+                  <Link
                     key={item.href}
-                    variants={{
-                      open: { opacity: 1, x: 0 },
-                      closed: { opacity: 0, x: -20 },
-                    }}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="py-2 font-display text-xl font-medium tracking-tight text-foreground transition-colors hover:text-primary"
                   >
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={cn(
-                        "inline-flex h-10 items-center justify-start rounded-lg px-4 py-2",
-                        "text-sm font-medium text-muted-foreground transition-colors",
-                        "hover:bg-accent hover:text-accent-foreground"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
+                    {item.label}
+                  </Link>
                 ))}
-                <motion.div
-                  className="mt-2 flex items-center gap-2 border-t pt-4"
-                  variants={{
-                    open: { opacity: 1, x: 0 },
-                    closed: { opacity: 0, x: -20 },
-                  }}
-                >
-                  <ThemeToggle />
-                  <motion.a
+                <div className="mt-6 flex items-center gap-5 border-t pt-6">
+                  <Link
+                    href="/resume"
+                    className="whisper-label text-foreground underline decoration-border underline-offset-4"
+                  >
+                    Resume
+                  </Link>
+                  <a
                     href={socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
                     aria-label="GitHub"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
                   >
                     <GitHubIcon className="h-4 w-4" />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href={socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
                     aria-label="LinkedIn"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
                   >
                     <LinkedInIcon className="h-4 w-4" />
-                  </motion.a>
-                  <Button variant="primary" size="sm" asChild className="ml-auto">
-                    <Link href="/resume">
-                      <FileText className="h-3.5 w-3.5" />
-                      Resume
-                    </Link>
-                  </Button>
-                </motion.div>
-              </motion.div>
+                  </a>
+                </div>
+              </nav>
             </Container>
           </motion.div>
         )}

@@ -20,22 +20,26 @@ function SectionTitle({
   return (
     <div
       className={cn(
-        "max-w-2xl space-y-4",
+        "max-w-2xl space-y-5",
         align === "center" && "mx-auto text-center",
         className
       )}
       {...props}
     >
       {label && (
-        <span className="inline-block text-xs font-medium uppercase tracking-widest text-muted-foreground">
+        <span className="whisper-label inline-flex items-center gap-3">
+          <span
+            className="h-1.5 w-1.5 rounded-full bg-primary"
+            aria-hidden="true"
+          />
           {label}
         </span>
       )}
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+      <h2 className="font-display text-3xl font-medium tracking-tight text-foreground sm:text-[2.5rem] sm:leading-[1.1]">
         {title}
       </h2>
       {description && (
-        <p className="text-base leading-relaxed text-muted-foreground">
+        <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
           {description}
         </p>
       )}

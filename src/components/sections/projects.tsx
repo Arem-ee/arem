@@ -12,7 +12,7 @@ const statusDot: Record<ProjectStatus, string> = {
   launched: "bg-primary",
   shipped: "bg-foreground",
   "did-not-win": "bg-muted-foreground",
-  postponed: "bg-muted-foreground/50",
+  postponed: "bg-muted-foreground/40",
 };
 
 const statusLabel: Record<ProjectStatus, string> = {
@@ -22,66 +22,78 @@ const statusLabel: Record<ProjectStatus, string> = {
   postponed: "Postponed",
 };
 
-function StatusBoardRow({ project, index }: { project: (typeof projects)[number]; index: number }) {
+function StatusBoardRow({
+  project,
+  index,
+}: {
+  project: (typeof projects)[number];
+  index: number;
+}) {
   return (
-    <FadeIn delay={index * 0.05}>
-      <div className="group grid gap-3 border-t py-8 transition-colors hover:bg-surface md:grid-cols-12 md:gap-6">
+    <FadeIn from={index % 2 === 0 ? "left" : "right"} delay={index * 0.05}>
+      <div className="group grid gap-4 border-t py-10 transition-colors md:grid-cols-12 md:gap-6">
+        <span className="whisper-label mt-1 hidden text-muted-foreground/40 md:block">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
         <div className="flex items-start gap-3 md:col-span-3">
           <span
-            className={cn(
-              "mt-1.5 h-2 w-2 shrink-0 rounded-full",
-              statusDot[project.status]
-            )}
+            className={cn("mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full", statusDot[project.status])}
             aria-hidden="true"
           />
           <div className="space-y-1">
-            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+            <p
+              className={cn(
+                "whisper-label",
+                project.status === "did-not-win" && "text-muted-foreground/60"
+              )}
+            >
               {statusLabel[project.status]}
             </p>
-            <p className="text-xs leading-relaxed text-muted-foreground/80">
+            <p className="text-xs leading-relaxed text-muted-foreground/70">
               {project.statusNote}
             </p>
           </div>
         </div>
 
-        <div className="md:col-span-6">
+        <div className="md:col-span-5">
           <div className="flex items-center gap-3">
             {project.logo && (
               <Image
                 src={project.logo}
                 alt={`${project.title} logo`}
-                width={36}
-                height={36}
-                className="h-9 w-9 shrink-0 rounded-lg border border-border bg-card object-contain"
+                width={32}
+                height={32}
+                className="h-8 w-8 shrink-0 rounded-md border border-border/60 bg-surface object-contain p-0.5"
               />
             )}
-            <h3 className="font-display text-2xl font-semibold tracking-tight">
+            <h3 className="font-display text-2xl font-medium tracking-tight text-foreground">
               {project.title}
             </h3>
           </div>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground">
             {project.description}
           </p>
         </div>
 
-        <div className="flex flex-col justify-between gap-3 md:col-span-3">
-          <ul className="flex flex-wrap gap-x-3 gap-y-1">
+        <div className="flex flex-col justify-between gap-4 md:col-span-3">
+          <ul className="flex flex-wrap gap-x-3 gap-y-1 md:justify-end">
             {project.technologies.map((tech) => (
               <li
                 key={tech}
-                className="font-mono text-xs text-muted-foreground/80"
+                className="font-mono text-[11px] text-muted-foreground/60"
               >
                 {tech}
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5 md:justify-end">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-xs uppercase tracking-widest text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-primary"
+                className="whisper-label transition-colors hover:text-primary"
               >
                 Live
               </a>
@@ -91,7 +103,7 @@ function StatusBoardRow({ project, index }: { project: (typeof projects)[number]
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-primary hover:text-foreground"
+                className="whisper-label text-muted-foreground/70 transition-colors hover:text-foreground"
               >
                 Source
               </a>
@@ -105,13 +117,13 @@ function StatusBoardRow({ project, index }: { project: (typeof projects)[number]
 
 function ProjectsSection() {
   return (
-    <section id="work" className="border-b py-16 md:py-32">
+    <section id="work" className="border-b py-24 md:py-36">
       <Container size="xl">
         <SectionTitle
           label="Selected work"
           title="Shipped, paused, or shelved."
           description="Six projects, with their current status. The status column is part of the information, not decoration."
-          className="mb-8 md:mb-12"
+          className="mb-16 md:mb-20"
         />
 
         <div className="border-b">

@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
 
 import { Container } from "@/components/ui/container";
@@ -8,24 +7,6 @@ import { FadeIn } from "@/components/animations";
 import { socialLinks } from "@/constants";
 import { GitHubIcon, TwitterIcon } from "@/lib/icons";
 import { Mail } from "lucide-react";
-
-function useIsDesktop(query = "(min-width: 768px)") {
-  const getSnapshot = React.useCallback(
-    () => window.matchMedia(query).matches,
-    [query]
-  );
-  const getServerSnapshot = React.useCallback(() => false, []);
-
-  return React.useSyncExternalStore(
-    (onChange) => {
-      const mq = window.matchMedia(query);
-      mq.addEventListener("change", onChange);
-      return () => mq.removeEventListener("change", onChange);
-    },
-    getSnapshot,
-    getServerSnapshot
-  );
-}
 
 const heroLinks = [
   {
@@ -49,72 +30,84 @@ const heroLinks = [
 ];
 
 function HeroSection() {
-  const isDesktop = useIsDesktop();
-  const heroSrc = isDesktop
-    ? "/images/projects/landscape-hero-image.png"
-    : "/images/profile-hero.png";
-
   return (
-    <section id="hero" className="relative border-b">
+    <section id="hero" className="border-b">
       <Container size="xl">
-        <div className="grid items-center gap-12 py-20 md:py-32 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-          <FadeIn>
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              University of Ilorin - Electrical Engineering
-            </p>
-            <h1 className="font-display text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-              Arem
-            </h1>
-            <p className="mt-4 text-xl font-medium text-muted-foreground sm:text-2xl">
-              Web3 technical writer and builder.
-            </p>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-              I write about self-custody and DAO tooling, and I build products
-              end to end, from architecture to shipped code.
-            </p>
+        <div className="grid items-center gap-16 py-24 md:py-36 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-6 lg:col-start-1">
+            <FadeIn from="left">
+              <p className="whisper-label mb-8">
+                University of Ilorin - Electrical Engineering
+              </p>
+            </FadeIn>
+            <FadeIn from="left" delay={0.08}>
+              <h1 className="font-display text-5xl font-medium tracking-tight text-foreground sm:text-6xl lg:text-7xl lg:leading-[1.05]">
+                Arem
+              </h1>
+            </FadeIn>
+            <FadeIn from="left" delay={0.16}>
+              <p className="mt-6 max-w-md text-lg font-medium text-muted-foreground sm:text-xl">
+                Web3 technical writer and builder.
+              </p>
+            </FadeIn>
+            <FadeIn from="left" delay={0.24}>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+                I write about self-custody and DAO tooling, and I build
+                products end to end, from architecture to shipped code.
+              </p>
+            </FadeIn>
 
-            <ul className="mt-8 space-y-2">
-              {heroLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={
-                      link.href.startsWith("http") ? "noreferrer" : undefined
-                    }
-                    className="group inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    <span className="w-16 shrink-0 font-mono text-xs uppercase tracking-wider text-muted-foreground/70">
-                      {link.label}
-                    </span>
-                    <span className="inline-flex items-center gap-2 underline decoration-border underline-offset-4 transition-colors group-hover:decoration-primary">
-                      {link.icon}
-                      {link.value}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
+            <FadeIn from="left" delay={0.32}>
+              <ul className="mt-12 space-y-3">
+                {heroLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target={
+                        link.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        link.href.startsWith("http")
+                          ? "noreferrer"
+                          : undefined
+                      }
+                      className="group inline-flex items-center gap-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <span className="w-14 shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
+                        {link.label}
+                      </span>
+                      <span className="inline-flex items-center gap-2 transition-colors group-hover:text-primary">
+                        {link.icon}
+                        {link.value}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
+          </div>
 
-          <FadeIn delay={0.15}>
-            <div
-              className={`relative overflow-hidden rounded-xl border bg-card ${
-                isDesktop ? "aspect-[3/2]" : "aspect-[4/5]"
-              }`}
-            >
-              <Image
-                key={heroSrc}
-                src={heroSrc}
-                alt="Arem"
-                fill
-                priority
-                quality={90}
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
-            </div>
-          </FadeIn>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <FadeIn from="right" delay={0.2}>
+              <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+                <div
+                  className="absolute -inset-x-10 -top-12 bottom-4 rounded-[50%] bg-primary/25 blur-3xl"
+                  aria-hidden="true"
+                />
+                <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-3xl border border-border bg-card shadow-[0_24px_60px_-30px_rgba(26,23,19,0.18)]">
+                  <Image
+                    src="/images/profile-hero.png"
+                    alt="Arem"
+                    fill
+                    priority
+                    quality={90}
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 60vw, 35vw"
+                  />
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </Container>
     </section>

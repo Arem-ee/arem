@@ -18,8 +18,8 @@ function SlideUp({
   children,
   className,
   delay = 0,
-  duration = 0.5,
-  distance = 20,
+  duration = 0.7,
+  distance = 12,
   once = true,
 }: SlideUpProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -31,8 +31,8 @@ function SlideUp({
   return (
     <motion.div
       className={cn(className)}
-      initial={{ opacity: 0, y: distance }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: -distance }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once, margin: "-60px" }}
       transition={{
         duration,

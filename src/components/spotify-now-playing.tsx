@@ -222,11 +222,11 @@ function SpotifyNowPlaying() {
 
   return (
     <motion.div
-      className="w-full max-w-sm rounded-xl border bg-card p-4 shadow-sm"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      className="w-full max-w-sm rounded-xl border border-border bg-card p-4 shadow-[0_1px_2px_rgba(26,23,19,0.04)]"
+      initial={{ opacity: 0, x: -16 }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
     >
       {isLoading ? (
         <div className="flex items-center gap-4">
