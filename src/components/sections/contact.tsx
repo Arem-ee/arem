@@ -88,9 +88,9 @@ function ContactSection() {
   );
 
   return (
-    <section id="contact" className="border-t py-24 md:py-44" aria-labelledby="contact-heading">
+    <section id="contact" className="border-t py-24 md:py-48" aria-labelledby="contact-heading">
       <Container size="lg">
-        <div className="grid gap-20 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-24 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5 lg:col-start-1">
             <FadeIn from="left">
               <SectionTitle
@@ -100,8 +100,8 @@ function ContactSection() {
                 folio="08"
               />
 
-              <div className="mt-12 space-y-6">
-                <p className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div className="mt-16 space-y-6">
+                <p className="flex items-center gap-3 text-[13px] text-muted-foreground sm:text-sm">
                   <span className="relative flex h-2 w-2" aria-hidden="true">
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                   </span>
@@ -110,7 +110,7 @@ function ContactSection() {
 
                 <a
                   href="mailto:toromadeadesina@gmail.com"
-                  className="group flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="group flex items-center gap-3 text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
                   aria-label="Send email to toromadeadesina@gmail.com"
                 >
                   <Mail
@@ -146,7 +146,7 @@ function ContactSection() {
           <FadeIn from="right" delay={0.1} className="lg:col-span-6 lg:col-start-7">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="space-y-10"
+              className="space-y-11"
               noValidate
               aria-label="Contact form"
             >
@@ -267,7 +267,7 @@ function ContactSection() {
                 type="submit"
                 variant="primary"
                 size="md"
-                className="w-full rounded-xl shadow-[0_6px_20px_-8px_rgba(216,162,46,0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-8px_rgba(216,162,46,0.6)]"
+                className="w-full rounded-lg transition-colors duration-300 hover:bg-primary/90"
                 disabled={status === "loading"}
                 aria-label={status === "loading" ? "Sending message..." : "Send message"}
               >

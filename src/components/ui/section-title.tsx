@@ -29,16 +29,8 @@ function SectionTitle({
       {...props}
     >
       <div className="flex items-start justify-between gap-8">
-        <div className="space-y-5">
-          {label && (
-            <span className="whisper-label inline-flex items-center gap-3">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-primary"
-                aria-hidden="true"
-              />
-              {label}
-            </span>
-          )}
+        <div className="space-y-6">
+          {label && <span className="whisper-label block">{label}</span>}
           <h2 className="font-display text-3xl font-medium tracking-[-0.01em] text-foreground sm:text-[2.5rem] sm:leading-[1.12]">
             {title}
           </h2>
@@ -50,7 +42,7 @@ function SectionTitle({
         )}
       </div>
       {description && (
-        <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+        <p className="max-w-xl text-[13px] leading-[1.8] text-muted-foreground sm:text-sm">
           {description}
         </p>
       )}

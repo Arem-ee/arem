@@ -10,9 +10,9 @@ import { blogPosts } from "@/data/blog";
 
 function WritingSection() {
   return (
-    <section id="writing" className="border-t py-24 md:py-44">
+    <section id="writing" className="border-t py-24 md:py-48">
       <Container size="lg">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-20 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <SectionTitle
               label="Writing"
@@ -32,7 +32,7 @@ function WritingSection() {
                 >
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group flex gap-5 border-t py-11 transition-colors first:border-t-0"
+                    className="group flex gap-5 border-t py-13 transition-colors first:border-t-0"
                     aria-label={`Read ${post.title}`}
                   >
                     <span className="whisper-label mt-1.5 shrink-0 text-muted-foreground/40">
@@ -48,10 +48,10 @@ function WritingSection() {
                           aria-hidden="true"
                         />
                       </div>
-                      <p className="mt-3.5 max-w-prose text-sm leading-[1.75] text-muted-foreground">
+                      <p className="mt-4 max-w-prose text-[13px] leading-[1.8] text-muted-foreground sm:text-sm">
                         {post.summary}
                       </p>
-                      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground/60">
+                      <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground/60">
                         <span>{post.date}</span>
                         <span className="h-0.5 w-0.5 rounded-full bg-muted-foreground/40" />
                         <span>{post.readingTime}</span>

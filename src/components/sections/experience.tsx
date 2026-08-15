@@ -8,9 +8,9 @@ import { experiences } from "@/data";
 
 function ExperienceSection() {
   return (
-    <section id="experience" className="border-t py-24 md:py-40">
+    <section id="experience" className="border-t py-24 md:py-44">
       <Container size="lg">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-20 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <SectionTitle
               label="Experience"
@@ -26,7 +26,7 @@ function ExperienceSection() {
                 className="absolute left-[3px] top-1 h-[calc(100%-8px)] w-px bg-border"
                 aria-hidden="true"
               />
-              <div className="space-y-16 md:space-y-20">
+              <div className="space-y-20 md:space-y-24">
                 {experiences.map((exp, i) => (
                   <motion.div
                     key={i}
@@ -66,14 +66,14 @@ function ExperienceSection() {
                         {exp.duration}
                       </span>
                     </div>
-                    <p className="text-sm leading-[1.8] text-muted-foreground">
+                    <p className="text-[13px] leading-[1.85] text-muted-foreground sm:text-sm">
                       {exp.summary}
                     </p>
-                    <ul className="mt-6 space-y-3.5">
+                    <ul className="mt-7 space-y-4">
                       {exp.achievements.map((achievement, j) => (
                         <li
                           key={j}
-                          className="flex gap-3 text-sm leading-[1.75] text-muted-foreground"
+                          className="flex gap-3 text-[13px] leading-[1.8] text-muted-foreground sm:text-sm"
                         >
                           <span
                             className="mt-2.5 h-1 w-2 shrink-0 rounded-[1px] bg-primary/60"

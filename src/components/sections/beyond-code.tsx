@@ -72,7 +72,7 @@ function TiltFlipCard({ favorite, index }: { favorite: Favorite; index: number }
         aria-label={`${favorite.title} - click to flip`}
       >
         <motion.div
-          className="relative rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgba(26,23,19,0.04)] transition-shadow group-hover:shadow-[0_16px_40px_-16px_rgba(216,162,46,0.3)]"
+          className="relative rounded-xl border border-border bg-background transition-colors duration-300 group-hover:border-primary/40"
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
           style={{ transformStyle: "preserve-3d" }}

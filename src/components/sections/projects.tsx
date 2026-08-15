@@ -23,12 +23,12 @@ const statusLabel: Record<ProjectStatus, string> = {
 };
 
 const rowRhythm = [
-  "py-12 md:py-16",
-  "py-8 md:py-10",
   "py-14 md:py-20",
   "py-9 md:py-12",
-  "py-12 md:py-16",
+  "py-16 md:py-24",
   "py-10 md:py-14",
+  "py-14 md:py-20",
+  "py-11 md:py-16",
 ];
 
 function StatusBoardRow({
@@ -71,21 +71,21 @@ function StatusBoardRow({
         </div>
 
         <div className="md:col-span-5">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             {project.logo && (
               <Image
                 src={project.logo}
                 alt={`${project.title} logo`}
-                width={28}
-                height={28}
-                className="h-7 w-7 shrink-0 rounded-md border border-border/60 bg-surface object-contain p-0.5"
+                width={24}
+                height={24}
+                className="h-6 w-6 shrink-0 object-contain"
               />
             )}
             <h3 className="font-display text-2xl font-medium tracking-[-0.01em] text-foreground">
               {project.title}
             </h3>
           </div>
-          <p className="mt-3 max-w-prose text-sm leading-[1.75] text-muted-foreground">
+          <p className="mt-4 max-w-prose text-[13px] leading-[1.8] text-muted-foreground sm:text-sm">
             {project.description}
           </p>
         </div>
@@ -131,14 +131,14 @@ function StatusBoardRow({
 
 function ProjectsSection() {
   return (
-    <section id="work" className="border-b py-24 md:py-40">
+    <section id="work" className="border-b py-24 md:py-48">
       <Container size="xl">
         <SectionTitle
           label="Selected work"
           title="Shipped, paused, or shelved."
           description="Six projects, with their current status. The status column is part of the information, not decoration."
           folio="03"
-          className="mb-16 md:mb-24"
+          className="mb-20 md:mb-28"
         />
 
         <div className="border-b">

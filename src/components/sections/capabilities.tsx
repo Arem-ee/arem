@@ -101,17 +101,17 @@ const capabilities: Capability[] = [
 
 function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="border-b py-24 md:py-40">
+    <section id="capabilities" className="border-b py-24 md:py-44">
       <Container size="xl">
         <SectionTitle
           label="Capabilities"
           title="Arem can help you with."
           description="Six lanes of work, each with a track record behind it. If it is on this list, it is something I have done for someone or for the record."
           folio="05"
-          className="mb-16 md:mb-24"
+          className="mb-20 md:mb-28"
         />
 
-        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-10 lg:gap-y-6">
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 lg:gap-y-8">
           {capabilities.map((cap) => {
             const Icon = cap.icon;
             return (
@@ -122,28 +122,26 @@ function CapabilitiesSection() {
               >
                 <div
                   className={cn(
-                    "group h-full rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgba(26,23,19,0.04)] transition-transform duration-300 hover:-translate-y-0.5",
-                    "hover:shadow-[0_18px_45px_-22px_rgba(199,149,42,0.4)]",
+                    "group h-full rounded-xl border border-border bg-background transition-colors duration-300",
+                    "hover:border-primary/40",
                     cap.padding,
                     cap.tilt && `lg:${cap.tilt}`
                   )}
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                      <Icon
-                        className="h-5 w-5"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                    </span>
+                    <Icon
+                      className="h-5 w-5 text-muted-foreground transition-colors duration-300 group-hover:text-primary"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    />
                     <span className="whisper-label text-muted-foreground/40">
                       {cap.numeral}
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-lg font-medium tracking-[-0.01em] text-foreground">
+                  <h3 className="mt-8 font-display text-lg font-medium tracking-[-0.01em] text-foreground">
                     {cap.title}
                   </h3>
-                  <p className="mt-2.5 text-sm leading-[1.75] text-muted-foreground">
+                  <p className="mt-3 text-[13px] leading-[1.8] text-muted-foreground">
                     {cap.line}
                   </p>
                 </div>

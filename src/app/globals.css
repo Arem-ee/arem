@@ -73,48 +73,48 @@
   --neutral-950: #0a0a0a;
 
   --background: #ffffff;
-  --foreground: #1a1713;
+  --foreground: #111110;
   --primary: #c7952a;
-  --primary-foreground: #1a1713;
-  --secondary: #f7f4ed;
-  --secondary-foreground: #1a1713;
-  --muted: #f5f1e8;
-  --muted-foreground: #6b6353;
-  --accent: #faf7f0;
-  --accent-foreground: #1a1713;
+  --primary-foreground: #111110;
+  --secondary: #f6f6f4;
+  --secondary-foreground: #111110;
+  --muted: #f4f4f1;
+  --muted-foreground: #6f6f6a;
+  --accent: #fafafa;
+  --accent-foreground: #111110;
   --destructive: #b3261e;
   --destructive-foreground: #ffffff;
-  --border: #e9e4d8;
-  --input: #e9e4d8;
+  --border: #e5e5e0;
+  --input: #e5e5e0;
   --ring: #c7952a;
   --card: #ffffff;
-  --card-foreground: #1a1713;
-  --surface: #f8f5ee;
-  --surface-hover: #f3efe4;
+  --card-foreground: #111110;
+  --surface: #f8f8f6;
+  --surface-hover: #efefec;
 }
 
 .dark {
   color-scheme: dark;
 
-  --background: #131210;
-  --foreground: #eae6db;
+  --background: #000000;
+  --foreground: #f2f2f0;
   --primary: #f1c75b;
-  --primary-foreground: #191613;
-  --secondary: #1f1d19;
-  --secondary-foreground: #eae6db;
-  --muted: #1e1c18;
-  --muted-foreground: #a39e90;
-  --accent: #221f1a;
-  --accent-foreground: #eae6db;
+  --primary-foreground: #111110;
+  --secondary: #141414;
+  --secondary-foreground: #f2f2f0;
+  --muted: #131313;
+  --muted-foreground: #a1a1a1;
+  --accent: #1a1a1a;
+  --accent-foreground: #f2f2f0;
   --destructive: #e07b73;
   --destructive-foreground: #ffffff;
-  --border: #292622;
-  --input: #292622;
+  --border: #2a2a2a;
+  --input: #2a2a2a;
   --ring: #f1c75b;
-  --card: #1a1815;
-  --card-foreground: #eae6db;
-  --surface: #1a1815;
-  --surface-hover: #24211c;
+  --card: #0d0d0d;
+  --card-foreground: #f2f2f0;
+  --surface: #0d0d0d;
+  --surface-hover: #1a1a1a;
 }
 
 *,
@@ -259,6 +259,16 @@ body {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted-foreground);
+}
+
+/* Organic cut-out silhouettes for portraits (gallery catalogue crop) */
+
+.cutout-a {
+  border-radius: 58% 42% 55% 45% / 55% 48% 52% 45%;
+}
+
+.cutout-b {
+  border-radius: 45% 55% 48% 52% / 52% 60% 40% 48%;
 }
 
 .prose-custom h2 {

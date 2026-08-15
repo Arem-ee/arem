@@ -14,17 +14,17 @@ const paragraphs = [
 
 function MeetAremSection() {
   return (
-    <section id="meet" className="border-b py-24 md:py-44">
+    <section id="meet" className="border-b py-24 md:py-48">
       <Container size="xl">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-24 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5 lg:col-start-1">
             <FadeIn from="left">
               <div className="relative mx-auto max-w-sm lg:max-w-none">
                 <div
-                  className="absolute -inset-x-10 -top-12 bottom-8 rounded-[50%] bg-primary/15 blur-3xl"
+                  className="absolute -inset-14 rounded-full bg-primary/10 blur-3xl"
                   aria-hidden="true"
                 />
-                <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-3xl border border-border bg-card">
+                <div className="cutout-b relative aspect-[4/5] rotate-[2deg] overflow-hidden">
                   <Image
                     src="/images/profile-hero.png"
                     alt="Arem, portrait"
@@ -44,22 +44,22 @@ function MeetAremSection() {
               title="An engineering student who builds and writes."
               description="Not a biography. The route from circuits to products, and why the writing came with it."
               folio="04"
-              className="mb-12"
+              className="mb-14"
             />
-            <div className="space-y-7">
+            <div className="space-y-8">
               {paragraphs.map((text, i) => (
                 <FadeIn key={i} from="left" delay={0.1 + i * 0.06}>
-                  <p className="max-w-lg text-sm leading-[1.8] text-muted-foreground sm:text-[15px]">
+                  <p className="max-w-lg text-[13px] leading-[1.85] text-muted-foreground sm:text-sm">
                     {text}
                   </p>
                 </FadeIn>
               ))}
             </div>
             <FadeIn from="left" delay={0.3}>
-              <p className="mt-14 font-display text-lg font-medium tracking-[-0.01em] text-foreground">
+              <p className="mt-16 font-display text-lg font-medium tracking-[-0.01em] text-foreground">
                 Arem
               </p>
-              <p className="whisper-label mt-1.5">Writer and builder</p>
+              <p className="whisper-label mt-2">Writer and builder</p>
             </FadeIn>
           </div>
         </div>

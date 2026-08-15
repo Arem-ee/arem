@@ -33,14 +33,14 @@ function HeroSection() {
   return (
     <section id="hero" className="border-b">
       <Container size="xl">
-        <div className="relative grid items-center gap-20 py-28 md:py-44 lg:grid-cols-12 lg:gap-8">
-          <span className="whisper-label absolute right-0 top-10 hidden text-muted-foreground/40 lg:block">
+        <div className="relative grid items-center gap-24 py-32 md:py-56 lg:grid-cols-12 lg:gap-10">
+          <span className="whisper-label absolute right-0 top-14 hidden text-muted-foreground/40 lg:block">
             01
           </span>
 
           <div className="lg:col-span-5 lg:col-start-1">
             <FadeIn from="left">
-              <p className="whisper-label mb-10">
+              <p className="whisper-label mb-12">
                 University of Ilorin - Electrical Engineering
               </p>
             </FadeIn>
@@ -50,19 +50,19 @@ function HeroSection() {
               </h1>
             </FadeIn>
             <FadeIn from="left" delay={0.16}>
-              <p className="mt-7 max-w-sm text-lg font-normal leading-snug text-muted-foreground sm:text-xl">
+              <p className="mt-8 max-w-sm text-base font-normal leading-snug text-muted-foreground sm:text-lg">
                 Web3 technical writer and builder.
               </p>
             </FadeIn>
             <FadeIn from="left" delay={0.24}>
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-[1.75]">
+              <p className="mt-5 max-w-sm text-[13px] leading-[1.85] text-muted-foreground sm:text-sm">
                 I write about self-custody and DAO tooling, and I build
                 products end to end, from architecture to shipped code.
               </p>
             </FadeIn>
 
             <FadeIn from="left" delay={0.32}>
-              <ul className="mt-14 space-y-3">
+              <ul className="mt-16 space-y-3">
                 {heroLinks.map((link) => (
                   <li key={link.label}>
                     <a
@@ -75,7 +75,7 @@ function HeroSection() {
                           ? "noreferrer"
                           : undefined
                       }
-                      className="group inline-flex items-center gap-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="group inline-flex items-center gap-4 text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
                     >
                       <span className="w-14 shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
                         {link.label}
@@ -95,14 +95,10 @@ function HeroSection() {
             <FadeIn from="right" delay={0.2}>
               <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
                 <div
-                  className="absolute -inset-x-12 -top-16 bottom-2 rounded-[50%] bg-primary/20 blur-3xl"
+                  className="absolute -inset-16 rounded-full bg-primary/10 blur-3xl"
                   aria-hidden="true"
                 />
-                <div
-                  className="absolute inset-0 translate-x-5 translate-y-5 rounded-t-[999px] rounded-b-3xl border border-border"
-                  aria-hidden="true"
-                />
-                <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-3xl border border-border bg-card">
+                <div className="cutout-a relative aspect-[4/5] rotate-[-2.5deg] overflow-hidden">
                   <Image
                     src="/images/profile-hero.png"
                     alt="Arem"

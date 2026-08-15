@@ -21,9 +21,9 @@ const paragraphs = [
 
 function AboutSection() {
   return (
-    <section id="about" className="border-b py-24 md:py-36">
+    <section id="about" className="border-b py-24 md:py-40">
       <Container size="lg">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-20 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <SectionTitle
               label="About"
@@ -36,11 +36,11 @@ function AboutSection() {
             <div>
               {paragraphs.map((p, i) => (
                 <FadeIn key={p.index} from="left" delay={i * 0.08}>
-                  <div className="flex gap-6 border-t py-9 first:border-t-0 first:pt-0">
+                  <div className="flex gap-6 border-t py-10 first:border-t-0 first:pt-0">
                     <span className="whisper-label mt-1.5 shrink-0 text-muted-foreground/40">
                       {p.index}
                     </span>
-                    <p className="max-w-lg text-sm leading-[1.8] text-muted-foreground sm:text-[15px]">
+                    <p className="max-w-lg text-[13px] leading-[1.85] text-muted-foreground sm:text-sm">
                       {p.text}
                     </p>
                   </div>
