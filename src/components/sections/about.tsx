@@ -40,7 +40,7 @@ function AboutSection() {
                     <span className="whisper-label mt-1.5 shrink-0 text-muted-foreground/40">
                       {p.index}
                     </span>
-                    <p className="max-w-lg text-[13px] leading-[1.85] text-muted-foreground sm:text-sm">
+                    <p className="max-w-lg text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
                       {p.text}
                     </p>
                   </div>

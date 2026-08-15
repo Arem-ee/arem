@@ -49,14 +49,14 @@ function MeetAremSection() {
             <div className="space-y-8">
               {paragraphs.map((text, i) => (
                 <FadeIn key={i} from="left" delay={0.1 + i * 0.06}>
-                  <p className="max-w-lg text-[13px] leading-[1.85] text-muted-foreground sm:text-sm">
+                  <p className="max-w-lg text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
                     {text}
                   </p>
                 </FadeIn>
               ))}
             </div>
             <FadeIn from="left" delay={0.3}>
-              <p className="mt-16 font-display text-lg font-medium tracking-[-0.01em] text-foreground">
+              <p className="mt-16 font-display text-base font-medium tracking-tight text-foreground">
                 Arem
               </p>
               <p className="whisper-label mt-2">Writer and builder</p>

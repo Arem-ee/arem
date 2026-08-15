@@ -122,8 +122,7 @@ function CapabilitiesSection() {
               >
                 <div
                   className={cn(
-                    "group h-full rounded-xl border border-border bg-background transition-colors duration-300",
-                    "hover:border-primary/40",
+                    "group",
                     cap.padding,
                     cap.tilt && `lg:${cap.tilt}`
                   )}
@@ -138,10 +137,10 @@ function CapabilitiesSection() {
                       {cap.numeral}
                     </span>
                   </div>
-                  <h3 className="mt-8 font-display text-lg font-medium tracking-[-0.01em] text-foreground">
+                  <h3 className="mt-8 font-display text-base font-medium tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
                     {cap.title}
                   </h3>
-                  <p className="mt-3 text-[13px] leading-[1.8] text-muted-foreground">
+                  <p className="mt-3 text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
                     {cap.line}
                   </p>
                 </div>

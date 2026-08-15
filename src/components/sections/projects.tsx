@@ -81,11 +81,11 @@ function StatusBoardRow({
                 className="h-6 w-6 shrink-0 object-contain"
               />
             )}
-            <h3 className="font-display text-2xl font-medium tracking-[-0.01em] text-foreground">
+            <h3 className="font-display text-xl font-medium tracking-tight text-foreground">
               {project.title}
             </h3>
           </div>
-          <p className="mt-4 max-w-prose text-[13px] leading-[1.8] text-muted-foreground sm:text-sm">
+          <p className="mt-4 max-w-prose text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
             {project.description}
           </p>
         </div>
@@ -95,7 +95,7 @@ function StatusBoardRow({
             {project.technologies.map((tech) => (
               <li
                 key={tech}
-                className="font-mono text-[11px] text-muted-foreground/60"
+                className="font-mono text-[10px] text-muted-foreground/60"
               >
                 {tech}
               </li>

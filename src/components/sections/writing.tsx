@@ -40,7 +40,7 @@ function WritingSection() {
                     </span>
                     <div className="flex-1">
                       <div className="flex items-baseline justify-between gap-4">
-                        <h3 className="font-display text-lg font-medium tracking-[-0.01em] text-foreground transition-colors group-hover:text-primary sm:text-xl">
+                        <h3 className="font-display text-base font-medium tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-lg">
                           {post.title}
                         </h3>
                         <ArrowUpRight
@@ -48,10 +48,10 @@ function WritingSection() {
                           aria-hidden="true"
                         />
                       </div>
-                      <p className="mt-4 max-w-prose text-[13px] leading-[1.8] text-muted-foreground sm:text-sm">
+                      <p className="mt-4 max-w-prose text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
                         {post.summary}
                       </p>
-                      <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground/60">
+                      <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/60">
                         <span>{post.date}</span>
                         <span className="h-0.5 w-0.5 rounded-full bg-muted-foreground/40" />
                         <span>{post.readingTime}</span>

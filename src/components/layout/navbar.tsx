@@ -59,7 +59,7 @@ function Navbar() {
   });
 
   const linkClasses = cn(
-    "text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground",
+    "text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground",
     "transition-colors duration-200 hover:text-foreground"
   );
 
@@ -76,7 +76,7 @@ function Navbar() {
       role="banner"
     >
       <Container as="nav" size="xl" aria-label="Main navigation">
-        <div className="flex h-14 items-center justify-between">
+        <div className="flex h-12 items-center justify-between">
           <Link href="/" className="relative" aria-label="Home">
             <span className="whisper-label">Arem</span>
           </Link>

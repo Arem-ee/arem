@@ -29,7 +29,7 @@ export default function BlogPage() {
     <PageLayout>
       <section className="border-b py-16 md:py-32">
         <Container size="md">
-          <h1 className="mb-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+          <h1 className="mb-4 font-display text-2xl font-semibold tracking-tight md:text-3xl">
             Writing
           </h1>
           <p className="text-lg text-muted-foreground">

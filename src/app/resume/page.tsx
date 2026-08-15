@@ -27,7 +27,7 @@ function ResumePage() {
           <FadeIn>
             <div className="no-print mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h1 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">Resume</h1>
+                <h1 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">Resume</h1>
                 <p className="mt-2 text-muted-foreground">Web3 Technical Writer &amp; Builder</p>
               </div>
               <div className="flex gap-2">
@@ -54,7 +54,7 @@ function ResumePage() {
         <Container size="md">
           <StaggerContainer className="space-y-12" staggerDelay={0.1}>
             <StaggerItem>
-              <h2 className="mb-6 text-2xl font-semibold">Experience</h2>
+              <h2 className="mb-6 text-xl font-semibold">Experience</h2>
               <div className="space-y-8">
                 {resumeData.experience.map((exp, i) => (
                   <motion.div
@@ -85,7 +85,7 @@ function ResumePage() {
             </StaggerItem>
 
             <StaggerItem>
-              <h2 className="mb-6 text-2xl font-semibold">Education</h2>
+              <h2 className="mb-6 text-xl font-semibold">Education</h2>
               <div className="space-y-4">
                 {resumeData.education.map((edu, i) => (
                   <div key={i} className="rounded-lg border bg-card p-5">
@@ -102,7 +102,7 @@ function ResumePage() {
             </StaggerItem>
 
             <StaggerItem>
-              <h2 className="mb-6 text-2xl font-semibold">Skills</h2>
+              <h2 className="mb-6 text-xl font-semibold">Skills</h2>
               <div className="grid gap-6 sm:grid-cols-2">
                 {resumeData.skills.map((group, i) => (
                   <div key={i} className="rounded-lg border bg-card p-5">
@@ -120,7 +120,7 @@ function ResumePage() {
             </StaggerItem>
 
             <StaggerItem>
-              <h2 className="mb-6 text-2xl font-semibold">Certifications</h2>
+              <h2 className="mb-6 text-xl font-semibold">Certifications</h2>
               <div className="space-y-3">
                 {resumeData.certifications.map((cert, i) => (
                   <div key={i} className="flex items-center gap-3 rounded-lg border bg-card p-4">
@@ -132,7 +132,7 @@ function ResumePage() {
             </StaggerItem>
 
             <StaggerItem>
-              <h2 className="mb-6 text-2xl font-semibold">Languages</h2>
+              <h2 className="mb-6 text-xl font-semibold">Languages</h2>
               <div className="flex flex-wrap gap-4">
                 {resumeData.languages.map((lang, i) => (
                   <div key={i} className="flex items-center gap-3 rounded-lg border bg-card px-4 py-3">

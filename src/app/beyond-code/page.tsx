@@ -21,7 +21,7 @@ export default function BeyondCodePage() {
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
             Off the clock
           </p>
-          <h1 className="mb-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+          <h1 className="mb-4 font-display text-2xl font-semibold tracking-tight md:text-3xl">
             Beyond the code
           </h1>
           <p className="text-lg text-muted-foreground">

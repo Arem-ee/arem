@@ -136,7 +136,7 @@ export default function HomePage() {
       </a>
       <ScrollProgress />
       <Navbar />
-      <main id="main-content" className="pt-14" role="main">
+      <main id="main-content" className="pt-12" role="main">
         <HeroSection />
         <AboutSection />
         <ProjectsSection />

@@ -101,7 +101,7 @@ function ContactSection() {
               />
 
               <div className="mt-16 space-y-6">
-                <p className="flex items-center gap-3 text-[13px] text-muted-foreground sm:text-sm">
+                <p className="flex items-center gap-3 text-xs text-muted-foreground sm:text-[13px]">
                   <span className="relative flex h-2 w-2" aria-hidden="true">
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                   </span>
@@ -110,7 +110,7 @@ function ContactSection() {
 
                 <a
                   href="mailto:toromadeadesina@gmail.com"
-                  className="group flex items-center gap-3 text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
+                  className="group flex items-center gap-3 text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-[13px]"
                   aria-label="Send email to toromadeadesina@gmail.com"
                 >
                   <Mail
@@ -160,7 +160,7 @@ function ContactSection() {
               />
 
               <div className="space-y-2">
-                <label htmlFor="contact-name" className="flex text-[13px] font-medium">
+                <label htmlFor="contact-name" className="flex text-xs font-medium">
                   Name <span className="ml-1 text-primary">*</span>
                 </label>
                 <input
@@ -186,7 +186,7 @@ function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-email" className="flex text-[13px] font-medium">
+                <label htmlFor="contact-email" className="flex text-xs font-medium">
                   Email <span className="ml-1 text-primary">*</span>
                 </label>
                 <input
@@ -212,7 +212,7 @@ function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-subject" className="flex text-[13px] font-medium">
+                <label htmlFor="contact-subject" className="flex text-xs font-medium">
                   Subject <span className="ml-1 text-primary">*</span>
                 </label>
                 <input
@@ -238,7 +238,7 @@ function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-message" className="flex text-[13px] font-medium">
+                <label htmlFor="contact-message" className="flex text-xs font-medium">
                   Message <span className="ml-1 text-primary">*</span>
                 </label>
                 <textarea

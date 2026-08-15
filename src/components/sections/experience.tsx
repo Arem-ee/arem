@@ -46,7 +46,7 @@ function ExperienceSection() {
                     />
                     <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
                       <div>
-                        <h3 className="font-display text-xl font-medium tracking-[-0.01em] text-foreground">
+                        <h3 className="font-display text-lg font-medium tracking-tight text-foreground">
                           {exp.role}
                         </h3>
                         {exp.companyUrl ? (
@@ -66,14 +66,14 @@ function ExperienceSection() {
                         {exp.duration}
                       </span>
                     </div>
-                    <p className="text-[13px] leading-[1.85] text-muted-foreground sm:text-sm">
+                    <p className="text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
                       {exp.summary}
                     </p>
                     <ul className="mt-7 space-y-4">
                       {exp.achievements.map((achievement, j) => (
                         <li
                           key={j}
-                          className="flex gap-3 text-[13px] leading-[1.8] text-muted-foreground sm:text-sm"
+                          className="flex gap-3 text-xs leading-[1.8] text-muted-foreground sm:text-[13px]"
                         >
                           <span
                             className="mt-2.5 h-1 w-2 shrink-0 rounded-[1px] bg-primary/60"

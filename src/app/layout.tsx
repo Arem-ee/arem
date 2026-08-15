@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Fraunces, IBM_Plex_Mono } from "next/font/google";
+import { Inter, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/constants";
@@ -7,14 +7,14 @@ import { constructMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -42,9 +42,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
+<html
       lang="en"
-      className={`${newsreader.variable} ${fraunces.variable} ${ibmPlexMono.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}
       suppressHydrationWarning
     >
       <head>

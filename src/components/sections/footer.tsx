@@ -38,7 +38,7 @@ function FooterSection() {
             <Link href="/" className="whisper-label text-foreground">
               Arem
             </Link>
-            <p className="font-mono text-[11px] text-muted-foreground/60">
+            <p className="font-mono text-[10px] text-muted-foreground/60">
               Built with care. &copy; {new Date().getFullYear()}
             </p>
           </div>
@@ -48,7 +48,7 @@ function FooterSection() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
+                className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.label}
               </Link>

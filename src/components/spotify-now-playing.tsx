@@ -222,7 +222,7 @@ function SpotifyNowPlaying() {
 
   return (
     <motion.div
-      className="w-full max-w-sm rounded-xl border border-border bg-background p-4"
+      className="w-full max-w-sm p-4"
       initial={{ opacity: 0, x: -16 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-60px" }}

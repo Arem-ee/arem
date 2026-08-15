@@ -84,7 +84,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
           </div>
 
-          <h1 className="mb-4 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+          <h1 className="mb-4 font-display text-2xl font-semibold tracking-tight md:text-3xl">
             {project.title}
           </h1>
           <p className="mb-6 text-lg text-muted-foreground">
@@ -128,12 +128,12 @@ export default async function ProjectPage({ params }: Props) {
         <Container size="md">
           <div className="space-y-16">
             <div>
-              <h2 className="mb-4 text-2xl font-semibold">The Problem</h2>
+              <h2 className="mb-4 text-xl font-semibold">The Problem</h2>
               <p className="leading-relaxed text-muted-foreground">{project.problem}</p>
             </div>
 
             <div>
-              <h2 className="mb-4 text-2xl font-semibold">Goals</h2>
+              <h2 className="mb-4 text-xl font-semibold">Goals</h2>
               <ul className="space-y-2">
                 {project.goals.map((goal, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
@@ -145,12 +145,12 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-4 text-2xl font-semibold">Architecture</h2>
+              <h2 className="mb-4 text-xl font-semibold">Architecture</h2>
               <p className="leading-relaxed text-muted-foreground">{project.architecture}</p>
             </div>
 
             <div>
-              <h2 className="mb-6 text-2xl font-semibold">Technical Decisions</h2>
+              <h2 className="mb-6 text-xl font-semibold">Technical Decisions</h2>
               <div className="space-y-6">
                 {project.technicalDecisions.map((td, i) => (
                   <div key={i} className="rounded-lg border bg-card p-5">
@@ -162,7 +162,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-6 text-2xl font-semibold">Challenges & Solutions</h2>
+              <h2 className="mb-6 text-xl font-semibold">Challenges & Solutions</h2>
               <div className="space-y-6">
                 {project.challenges.map((c, i) => (
                   <div key={i} className="rounded-lg border bg-card p-5">
@@ -176,7 +176,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-4 text-2xl font-semibold">Results</h2>
+              <h2 className="mb-4 text-xl font-semibold">Results</h2>
               <ul className="space-y-2">
                 {project.results.map((result, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
@@ -188,7 +188,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-4 text-2xl font-semibold">Lessons Learned</h2>
+              <h2 className="mb-4 text-xl font-semibold">Lessons Learned</h2>
               <ul className="space-y-2">
                 {project.lessonsLearned.map((lesson, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
