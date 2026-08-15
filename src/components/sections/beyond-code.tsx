@@ -142,6 +142,7 @@ function BeyondCodeSection({ showHeader = true }: { showHeader?: boolean }) {
               label="Beyond the code"
               title="What I'm into off the clock."
               description="A few role models and favourites that keep the balance - click a card to flip it."
+              folio="09"
               className="mb-12"
             />
           </FadeIn>

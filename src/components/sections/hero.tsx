@@ -33,32 +33,36 @@ function HeroSection() {
   return (
     <section id="hero" className="border-b">
       <Container size="xl">
-        <div className="grid items-center gap-16 py-24 md:py-36 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-6 lg:col-start-1">
+        <div className="relative grid items-center gap-20 py-28 md:py-44 lg:grid-cols-12 lg:gap-8">
+          <span className="whisper-label absolute right-0 top-10 hidden text-muted-foreground/40 lg:block">
+            01
+          </span>
+
+          <div className="lg:col-span-5 lg:col-start-1">
             <FadeIn from="left">
-              <p className="whisper-label mb-8">
+              <p className="whisper-label mb-10">
                 University of Ilorin - Electrical Engineering
               </p>
             </FadeIn>
             <FadeIn from="left" delay={0.08}>
-              <h1 className="font-display text-5xl font-medium tracking-tight text-foreground sm:text-6xl lg:text-7xl lg:leading-[1.05]">
+              <h1 className="font-display text-5xl font-medium tracking-[-0.01em] text-foreground sm:text-6xl lg:text-7xl lg:leading-[1.02]">
                 Arem
               </h1>
             </FadeIn>
             <FadeIn from="left" delay={0.16}>
-              <p className="mt-6 max-w-md text-lg font-medium text-muted-foreground sm:text-xl">
+              <p className="mt-7 max-w-sm text-lg font-normal leading-snug text-muted-foreground sm:text-xl">
                 Web3 technical writer and builder.
               </p>
             </FadeIn>
             <FadeIn from="left" delay={0.24}>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-[1.75]">
                 I write about self-custody and DAO tooling, and I build
                 products end to end, from architecture to shipped code.
               </p>
             </FadeIn>
 
             <FadeIn from="left" delay={0.32}>
-              <ul className="mt-12 space-y-3">
+              <ul className="mt-14 space-y-3">
                 {heroLinks.map((link) => (
                   <li key={link.label}>
                     <a
@@ -91,10 +95,14 @@ function HeroSection() {
             <FadeIn from="right" delay={0.2}>
               <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
                 <div
-                  className="absolute -inset-x-10 -top-12 bottom-4 rounded-[50%] bg-primary/25 blur-3xl"
+                  className="absolute -inset-x-12 -top-16 bottom-2 rounded-[50%] bg-primary/20 blur-3xl"
                   aria-hidden="true"
                 />
-                <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-3xl border border-border bg-card shadow-[0_24px_60px_-30px_rgba(26,23,19,0.18)]">
+                <div
+                  className="absolute inset-0 translate-x-5 translate-y-5 rounded-t-[999px] rounded-b-3xl border border-border"
+                  aria-hidden="true"
+                />
+                <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-3xl border border-border bg-card">
                   <Image
                     src="/images/profile-hero.png"
                     alt="Arem"

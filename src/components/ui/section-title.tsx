@@ -7,6 +7,7 @@ interface SectionTitleProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   description?: string;
   align?: "left" | "center";
+  folio?: string;
 }
 
 function SectionTitle({
@@ -14,6 +15,7 @@ function SectionTitle({
   title,
   description,
   align = "left",
+  folio,
   className,
   ...props
 }: SectionTitleProps) {
@@ -26,18 +28,27 @@ function SectionTitle({
       )}
       {...props}
     >
-      {label && (
-        <span className="whisper-label inline-flex items-center gap-3">
-          <span
-            className="h-1.5 w-1.5 rounded-full bg-primary"
-            aria-hidden="true"
-          />
-          {label}
-        </span>
-      )}
-      <h2 className="font-display text-3xl font-medium tracking-tight text-foreground sm:text-[2.5rem] sm:leading-[1.1]">
-        {title}
-      </h2>
+      <div className="flex items-start justify-between gap-8">
+        <div className="space-y-5">
+          {label && (
+            <span className="whisper-label inline-flex items-center gap-3">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-primary"
+                aria-hidden="true"
+              />
+              {label}
+            </span>
+          )}
+          <h2 className="font-display text-3xl font-medium tracking-[-0.01em] text-foreground sm:text-[2.5rem] sm:leading-[1.12]">
+            {title}
+          </h2>
+        </div>
+        {folio && (
+          <span className="whisper-label hidden shrink-0 pt-1 text-muted-foreground/40 sm:block">
+            {folio}
+          </span>
+        )}
+      </div>
       {description && (
         <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
           {description}

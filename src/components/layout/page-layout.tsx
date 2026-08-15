@@ -16,7 +16,7 @@ function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-50 h-[2px] origin-left bg-foreground"
+      className="fixed top-0 left-0 right-0 z-50 h-[2px] origin-left bg-primary"
       style={{ scaleX }}
       role="progressbar"
       aria-valuenow={Math.round(scrollYProgress.get() * 100)}
@@ -35,7 +35,7 @@ function PageLayout({ children }: { children: React.ReactNode }) {
       </a>
       <ScrollProgress />
       <Navbar />
-      <main id="main-content" className="pt-16" role="main">
+      <main id="main-content" className="pt-14" role="main">
         {children}
       </main>
       <FooterSection />

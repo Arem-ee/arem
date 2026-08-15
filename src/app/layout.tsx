@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Newsreader, Fraunces, IBM_Plex_Mono } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/constants";
@@ -7,14 +7,16 @@ import { constructMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -42,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}
+      className={`${newsreader.variable} ${fraunces.variable} ${ibmPlexMono.variable}`}
       suppressHydrationWarning
     >
       <head>

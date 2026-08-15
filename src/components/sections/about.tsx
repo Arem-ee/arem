@@ -23,23 +23,24 @@ function AboutSection() {
   return (
     <section id="about" className="border-b py-24 md:py-36">
       <Container size="lg">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <SectionTitle
               label="About"
               title="How I work."
               description="Short version. The long version is in the writing section."
+              folio="02"
             />
           </div>
-          <div className="lg:col-span-6 lg:col-start-7">
+          <div className="lg:col-span-5 lg:col-start-7">
             <div>
               {paragraphs.map((p, i) => (
                 <FadeIn key={p.index} from="left" delay={i * 0.08}>
-                  <div className="flex gap-6 border-t py-8 first:border-t-0 first:pt-0">
-                    <span className="whisper-label mt-1 shrink-0 text-muted-foreground/50">
+                  <div className="flex gap-6 border-t py-9 first:border-t-0 first:pt-0">
+                    <span className="whisper-label mt-1.5 shrink-0 text-muted-foreground/40">
                       {p.index}
                     </span>
-                    <p className="text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-[1.75]">
+                    <p className="max-w-lg text-sm leading-[1.8] text-muted-foreground sm:text-[15px]">
                       {p.text}
                     </p>
                   </div>

@@ -22,6 +22,15 @@ const statusLabel: Record<ProjectStatus, string> = {
   postponed: "Postponed",
 };
 
+const rowRhythm = [
+  "py-12 md:py-16",
+  "py-8 md:py-10",
+  "py-14 md:py-20",
+  "py-9 md:py-12",
+  "py-12 md:py-16",
+  "py-10 md:py-14",
+];
+
 function StatusBoardRow({
   project,
   index,
@@ -30,8 +39,13 @@ function StatusBoardRow({
   index: number;
 }) {
   return (
-    <FadeIn from={index % 2 === 0 ? "left" : "right"} delay={index * 0.05}>
-      <div className="group grid gap-4 border-t py-10 transition-colors md:grid-cols-12 md:gap-6">
+    <FadeIn from={index % 2 === 0 ? "left" : "right"} delay={index * 0.04}>
+      <div
+        className={cn(
+          "group grid gap-4 border-t transition-colors md:grid-cols-12 md:gap-6",
+          rowRhythm[index % rowRhythm.length]
+        )}
+      >
         <span className="whisper-label mt-1 hidden text-muted-foreground/40 md:block">
           {String(index + 1).padStart(2, "0")}
         </span>
@@ -62,16 +76,16 @@ function StatusBoardRow({
               <Image
                 src={project.logo}
                 alt={`${project.title} logo`}
-                width={32}
-                height={32}
-                className="h-8 w-8 shrink-0 rounded-md border border-border/60 bg-surface object-contain p-0.5"
+                width={28}
+                height={28}
+                className="h-7 w-7 shrink-0 rounded-md border border-border/60 bg-surface object-contain p-0.5"
               />
             )}
-            <h3 className="font-display text-2xl font-medium tracking-tight text-foreground">
+            <h3 className="font-display text-2xl font-medium tracking-[-0.01em] text-foreground">
               {project.title}
             </h3>
           </div>
-          <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-3 max-w-prose text-sm leading-[1.75] text-muted-foreground">
             {project.description}
           </p>
         </div>
@@ -117,13 +131,14 @@ function StatusBoardRow({
 
 function ProjectsSection() {
   return (
-    <section id="work" className="border-b py-24 md:py-36">
+    <section id="work" className="border-b py-24 md:py-40">
       <Container size="xl">
         <SectionTitle
           label="Selected work"
           title="Shipped, paused, or shelved."
           description="Six projects, with their current status. The status column is part of the information, not decoration."
-          className="mb-16 md:mb-20"
+          folio="03"
+          className="mb-16 md:mb-24"
         />
 
         <div className="border-b">

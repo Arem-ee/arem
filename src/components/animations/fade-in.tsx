@@ -15,7 +15,7 @@ interface FadeInProps {
   from?: "left" | "right" | "none";
 }
 
-const offset = 12;
+const offset = 8;
 
 function buildVariants(from: FadeInProps["from"]): Variants {
   const x = from === "left" ? -offset : from === "right" ? offset : 0;
@@ -30,7 +30,7 @@ function FadeIn({
   className,
   as: Tag = "div",
   delay = 0,
-  duration = 0.7,
+  duration = 0.8,
   once = true,
   from = "left",
 }: FadeInProps) {
@@ -48,7 +48,7 @@ function FadeIn({
       initial="hidden"
       whileInView="visible"
       viewport={{ once, margin: "-60px" }}
-      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration, delay, ease: [0.22, 0.1, 0.25, 1] }}
     >
       {children}
     </motion.div>

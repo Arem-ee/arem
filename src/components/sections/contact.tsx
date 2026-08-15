@@ -88,18 +88,19 @@ function ContactSection() {
   );
 
   return (
-    <section id="contact" className="border-t py-24 md:py-36" aria-labelledby="contact-heading">
+    <section id="contact" className="border-t py-24 md:py-44" aria-labelledby="contact-heading">
       <Container size="lg">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-20 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5 lg:col-start-1">
             <FadeIn from="left">
               <SectionTitle
                 label="Contact"
                 title="Get in touch."
                 description="Email is the reliable channel. X works if you are already there."
+                folio="08"
               />
 
-              <div className="mt-10 space-y-5">
+              <div className="mt-12 space-y-6">
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
                   <span className="relative flex h-2 w-2" aria-hidden="true">
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -145,7 +146,7 @@ function ContactSection() {
           <FadeIn from="right" delay={0.1} className="lg:col-span-6 lg:col-start-7">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="space-y-8"
+              className="space-y-10"
               noValidate
               aria-label="Contact form"
             >
