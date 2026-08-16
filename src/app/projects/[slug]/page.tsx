@@ -168,7 +168,7 @@ export default async function ProjectPage({ params }: Props) {
                   <div key={i} className="rounded-lg border bg-card p-5">
                     <h3 className="mb-1 text-sm font-medium text-destructive">Challenge</h3>
                     <p className="mb-3 text-sm leading-relaxed text-muted-foreground">{c.challenge}</p>
-                    <h3 className="mb-1 text-sm font-medium text-primary">Solution</h3>
+                    <h3 className="mb-1 border-l-2 border-l-primary pl-3 text-sm font-medium text-foreground">Solution</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{c.solution}</p>
                   </div>
                 ))}

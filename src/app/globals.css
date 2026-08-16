@@ -243,12 +243,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--primary);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
+  background: var(--primary);
+  opacity: 0.8;
 }
 
 /* --- Editorial utilities --- */

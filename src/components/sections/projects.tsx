@@ -107,7 +107,7 @@ function StatusBoardRow({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="whisper-label transition-colors hover:text-primary"
+                className="whisper-label decoration-primary underline-offset-4 transition-colors hover:underline"
               >
                 Live
               </a>

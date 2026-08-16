@@ -20,10 +20,6 @@ function MeetAremSection() {
           <div className="lg:col-span-5 lg:col-start-1">
             <FadeIn from="left">
               <div className="relative mx-auto max-w-sm lg:max-w-none">
-                <div
-                  className="absolute -inset-14 rounded-full bg-primary/10 blur-3xl"
-                  aria-hidden="true"
-                />
                 <div className="cutout-b relative aspect-[4/5] rotate-[2deg] overflow-hidden">
                   <Image
                     src="/images/profile-hero.png"

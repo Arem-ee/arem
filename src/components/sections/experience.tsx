@@ -54,7 +54,7 @@ function ExperienceSection() {
                             href={exp.companyUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="whisper-label mt-2 inline-block transition-colors hover:text-primary"
+                            className="whisper-label mt-2 inline-block decoration-primary underline-offset-4 transition-colors hover:underline"
                           >
                             {exp.company}
                           </a>

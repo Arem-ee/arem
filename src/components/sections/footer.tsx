@@ -36,7 +36,10 @@ function FooterSection() {
         <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col items-center gap-1 sm:items-start">
             <Link href="/" className="whisper-label text-foreground">
-              Arem
+              <span className="flex items-center gap-2">
+                <span className="h-2 w-2 bg-primary" aria-hidden="true" />
+                Arem
+              </span>
             </Link>
             <p className="font-mono text-[10px] text-muted-foreground/60">
               Built with care. &copy; {new Date().getFullYear()}

@@ -40,11 +40,11 @@ function WritingSection() {
                     </span>
                     <div className="flex-1">
                       <div className="flex items-baseline justify-between gap-4">
-                        <h3 className="font-display text-base font-medium tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-lg">
+                        <h3 className="font-display text-base font-medium tracking-tight text-foreground decoration-primary underline-offset-4 transition-colors group-hover:underline sm:text-lg">
                           {post.title}
                         </h3>
                         <ArrowUpRight
-                          className="h-4 w-4 shrink-0 text-muted-foreground/50 transition-colors duration-300 group-hover:text-primary"
+                          className="h-4 w-4 shrink-0 text-muted-foreground/50 transition-colors duration-300 group-hover:text-foreground"
                           aria-hidden="true"
                         />
                       </div>

@@ -99,9 +99,9 @@ function DefaultTrackCard() {
       <audio ref={audioRef} src={DEFAULT_TRACK.previewUrl} preload="none" />
 
       <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-emerald-500">
+        <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
           <motion.span
-            className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"
+            className="inline-block h-1.5 w-1.5 rounded-full bg-primary"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 1.4, repeat: Infinity }}
           />
@@ -114,7 +114,7 @@ function DefaultTrackCard() {
         <div className="mt-1.5 flex items-center gap-2">
           <div className="h-1 flex-1 overflow-hidden rounded-full bg-secondary">
             <motion.div
-              className="h-full bg-emerald-500/70"
+              className="h-full bg-primary/70"
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3, ease: "linear" }}
             />
@@ -162,9 +162,9 @@ function TrackCard({
         />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-emerald-500">
+        <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
           <motion.span
-            className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"
+            className="inline-block h-1.5 w-1.5 rounded-full bg-primary"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 1.4, repeat: Infinity }}
           />

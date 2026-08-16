@@ -45,8 +45,10 @@ function HeroSection() {
               </p>
             </FadeIn>
             <FadeIn from="left" delay={0.08}>
-              <h1 className="font-display text-5xl font-semibold tracking-tight text-foreground sm:text-6xl">
-                Arem
+              <h1 className="font-display text-5xl font-semibold tracking-tight sm:text-6xl">
+                <span className="inline-block bg-primary px-3 py-1.5 text-primary-foreground">
+                  Arem
+                </span>
               </h1>
             </FadeIn>
             <FadeIn from="left" delay={0.16}>
@@ -80,7 +82,7 @@ function HeroSection() {
                       <span className="w-14 shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60">
                         {link.label}
                       </span>
-                      <span className="inline-flex items-center gap-2 transition-colors group-hover:text-primary">
+                      <span className="inline-flex items-center gap-2 decoration-primary underline-offset-4 transition-colors group-hover:underline">
                         {link.icon}
                         {link.value}
                       </span>
@@ -94,10 +96,6 @@ function HeroSection() {
           <div className="lg:col-span-5 lg:col-start-8">
             <FadeIn from="right" delay={0.2}>
               <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
-                <div
-                  className="absolute -inset-12 rounded-full bg-primary/10 blur-3xl"
-                  aria-hidden="true"
-                />
                 <div className="relative aspect-square rotate-[-4deg] overflow-hidden rounded-full">
                   <Image
                     src="/images/profile-hero.png"

@@ -114,7 +114,7 @@ function ContactSection() {
                   aria-label="Send email to toromadeadesina@gmail.com"
                 >
                   <Mail
-                    className="h-4 w-4 text-muted-foreground/60 transition-colors group-hover:text-primary"
+                    className="h-4 w-4 text-muted-foreground/60 transition-colors group-hover:text-foreground"
                     aria-hidden="true"
                   />
                   <span className="border-b border-transparent transition-colors group-hover:border-primary">
@@ -161,7 +161,7 @@ function ContactSection() {
 
               <div className="space-y-2">
                 <label htmlFor="contact-name" className="flex text-xs font-medium">
-                  Name <span className="ml-1 text-primary">*</span>
+                  Name <span className="ml-1">*</span>
                 </label>
                 <input
                   id="contact-name"
@@ -187,7 +187,7 @@ function ContactSection() {
 
               <div className="space-y-2">
                 <label htmlFor="contact-email" className="flex text-xs font-medium">
-                  Email <span className="ml-1 text-primary">*</span>
+                  Email <span className="ml-1">*</span>
                 </label>
                 <input
                   id="contact-email"
@@ -213,7 +213,7 @@ function ContactSection() {
 
               <div className="space-y-2">
                 <label htmlFor="contact-subject" className="flex text-xs font-medium">
-                  Subject <span className="ml-1 text-primary">*</span>
+                  Subject <span className="ml-1">*</span>
                 </label>
                 <input
                   id="contact-subject"
@@ -239,7 +239,7 @@ function ContactSection() {
 
               <div className="space-y-2">
                 <label htmlFor="contact-message" className="flex text-xs font-medium">
-                  Message <span className="ml-1 text-primary">*</span>
+                  Message <span className="ml-1">*</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -291,7 +291,7 @@ function ContactSection() {
                     exit={{ opacity: 0, x: 12 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-foreground" aria-hidden="true" />
                     Message sent. I&apos;ll get back to you soon.
                   </motion.div>
                 )}

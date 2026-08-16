@@ -36,7 +36,7 @@ function SectionTitle({
           </h2>
         </div>
         {folio && (
-          <span className="whisper-label hidden shrink-0 pt-1 text-muted-foreground/40 sm:block">
+          <span className="hidden shrink-0 pt-1 font-mono text-[13px] uppercase tracking-[0.24em] text-muted-foreground/40 sm:block">
             {folio}
           </span>
         )}

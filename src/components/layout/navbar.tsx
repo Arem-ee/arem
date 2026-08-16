@@ -78,7 +78,10 @@ function Navbar() {
       <Container as="nav" size="xl" aria-label="Main navigation">
         <div className="flex h-12 items-center justify-between">
           <Link href="/" className="relative" aria-label="Home">
-            <span className="whisper-label">Arem</span>
+            <span className="flex items-center gap-2">
+              <span className="h-2 w-2 bg-primary" aria-hidden="true" />
+              <span className="whisper-label">Arem</span>
+            </span>
           </Link>
 
           <div className="hidden items-center gap-7 md:flex">
@@ -118,7 +121,7 @@ function Navbar() {
             <ThemeToggle />
             <Link
               href="/resume"
-              className="whisper-label rounded-md border border-border px-3 py-1.5 text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+              className="whisper-label rounded-md border border-border px-3 py-1.5 text-foreground transition-colors hover:border-primary/70"
             >
               Resume
             </Link>
@@ -160,7 +163,7 @@ function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="py-2 font-display text-xl font-medium tracking-tight text-foreground transition-colors hover:text-primary"
+                    className="py-2 font-display text-xl font-medium tracking-tight text-foreground decoration-primary underline-offset-4 transition-colors hover:underline"
                   >
                     {item.label}
                   </Link>

@@ -129,7 +129,7 @@ function CapabilitiesSection() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <Icon
-                      className="h-5 w-5 text-muted-foreground transition-colors duration-300 group-hover:text-primary"
+                      className="h-5 w-5 text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
                       strokeWidth={1.5}
                       aria-hidden="true"
                     />
@@ -137,7 +137,11 @@ function CapabilitiesSection() {
                       {cap.numeral}
                     </span>
                   </div>
-                  <h3 className="mt-8 font-display text-base font-medium tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+                  <span
+                    className="mt-6 block h-px w-10 bg-primary transition-all duration-300 group-hover:w-16"
+                    aria-hidden="true"
+                  />
+                  <h3 className="mt-6 font-display text-base font-medium tracking-tight text-foreground decoration-primary underline-offset-4 group-hover:underline">
                     {cap.title}
                   </h3>
                   <p className="mt-3 text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
