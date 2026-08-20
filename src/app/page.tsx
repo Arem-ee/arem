@@ -17,6 +17,11 @@ const AboutSection = dynamic(
   { ssr: true }
 );
 
+const HowIWorkSection = dynamic(
+  () => import("@/components/sections/how-i-work").then((m) => ({ default: m.HowIWorkSection })),
+  { ssr: true }
+);
+
 const ProjectsSection = dynamic(
   () => import("@/components/sections/projects").then((m) => ({ default: m.ProjectsSection })),
   {
@@ -62,7 +67,7 @@ const MeetAremSection = dynamic(
 );
 
 const CapabilitiesSection = dynamic(
-  () => import("@/components/sections/capabilities").then((m) => ({ default: m.CapabilitiesSection })),
+  () => import("@/components/sections/capabilities").then((m) => ({ default: m.ServicesSection })),
   { ssr: true }
 );
 
@@ -139,6 +144,7 @@ export default function HomePage() {
       <main id="main-content" className="pt-12" role="main">
         <HeroSection />
         <AboutSection />
+        <HowIWorkSection />
         <ProjectsSection />
         <MeetAremSection />
         <CapabilitiesSection />

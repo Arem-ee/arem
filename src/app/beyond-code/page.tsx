@@ -18,10 +18,10 @@ export default function BeyondCodePage() {
     <PageLayout>
       <section className="border-b py-16 md:py-32">
         <Container size="md">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">
             Off the clock
           </p>
-          <h1 className="mb-4 font-display text-2xl font-semibold tracking-tight md:text-3xl">
+          <h1 className="mb-4 text-xl font-semibold tracking-tight md:text-2xl">
             Beyond the code
           </h1>
           <p className="text-lg text-muted-foreground">

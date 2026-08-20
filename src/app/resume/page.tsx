@@ -2,13 +2,12 @@
 
 import * as React from "react";
 import { Download, Printer } from "lucide-react";
-import { motion } from "framer-motion";
 
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
 import { PageLayout } from "@/components/layout/page-layout";
-import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from "@/components/animations";
+import { FadeIn } from "@/components/animations";
 import { resumeData } from "@/data/resume";
 import { useAnalyticsStore } from "@/stores/analytics-store";
 
@@ -27,7 +26,7 @@ function ResumePage() {
           <FadeIn>
             <div className="no-print mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h1 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">Resume</h1>
+                <h1 className="text-xl font-semibold tracking-tight md:text-2xl">Resume</h1>
                 <p className="mt-2 text-muted-foreground">Web3 Technical Writer &amp; Builder</p>
               </div>
               <div className="flex gap-2">
@@ -42,49 +41,44 @@ function ResumePage() {
             </div>
           </FadeIn>
 
-          <SlideUp>
+          <FadeIn delay={0.05}>
             <div className="mb-12">
               <p className="leading-relaxed text-muted-foreground">{resumeData.summary}</p>
             </div>
-          </SlideUp>
+          </FadeIn>
         </Container>
       </section>
 
       <section className="py-16 md:py-24 print:py-6" id="resume-content">
         <Container size="md">
-          <StaggerContainer className="space-y-12" staggerDelay={0.1}>
-            <StaggerItem>
+          <div className="space-y-12">
+            <FadeIn>
               <h2 className="mb-6 text-xl font-semibold">Experience</h2>
               <div className="space-y-8">
                 {resumeData.experience.map((exp, i) => (
-                  <motion.div
-                    key={i}
-                    className="relative border-l-2 border-border pl-6"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.4, delay: i * 0.1 }}
-                  >
-                    <div className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full border-2 border-foreground bg-background" />
-                    <div className="mb-1 flex flex-wrap items-baseline gap-2">
-                      <h3 className="font-semibold">{exp.role}</h3>
-                      <span className="text-sm text-muted-foreground">at {exp.company}</span>
+                  <FadeIn key={i} from="left" delay={i * 0.05}>
+                    <div className="relative border-l-2 border-primary pl-6">
+                      <div className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full border-2 border-primary bg-background" />
+                      <div className="mb-1 flex flex-wrap items-baseline gap-2">
+                        <h3 className="font-semibold">{exp.role}</h3>
+                        <span className="text-sm text-muted-foreground">at {exp.company}</span>
+                      </div>
+                      <p className="mb-3 text-sm text-muted-foreground">{exp.period} &bull; {exp.location}</p>
+                      <ul className="space-y-1.5">
+                        {exp.achievements.map((achievement, j) => (
+                          <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                            {achievement}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <p className="mb-3 text-sm text-muted-foreground">{exp.period} &bull; {exp.location}</p>
-                    <ul className="space-y-1.5">
-                      {exp.achievements.map((achievement, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-foreground/40" />
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
+                  </FadeIn>
                 ))}
               </div>
-            </StaggerItem>
+            </FadeIn>
 
-            <StaggerItem>
+            <FadeIn>
               <h2 className="mb-6 text-xl font-semibold">Education</h2>
               <div className="space-y-4">
                 {resumeData.education.map((edu, i) => (
@@ -99,9 +93,9 @@ function ResumePage() {
                   </div>
                 ))}
               </div>
-            </StaggerItem>
+            </FadeIn>
 
-            <StaggerItem>
+            <FadeIn>
               <h2 className="mb-6 text-xl font-semibold">Skills</h2>
               <div className="grid gap-6 sm:grid-cols-2">
                 {resumeData.skills.map((group, i) => (
@@ -117,9 +111,9 @@ function ResumePage() {
                   </div>
                 ))}
               </div>
-            </StaggerItem>
+            </FadeIn>
 
-            <StaggerItem>
+            <FadeIn>
               <h2 className="mb-6 text-xl font-semibold">Certifications</h2>
               <div className="space-y-3">
                 {resumeData.certifications.map((cert, i) => (
@@ -129,9 +123,9 @@ function ResumePage() {
                   </div>
                 ))}
               </div>
-            </StaggerItem>
+            </FadeIn>
 
-            <StaggerItem>
+            <FadeIn>
               <h2 className="mb-6 text-xl font-semibold">Languages</h2>
               <div className="flex flex-wrap gap-4">
                 {resumeData.languages.map((lang, i) => (
@@ -141,8 +135,8 @@ function ResumePage() {
                   </div>
                 ))}
               </div>
-            </StaggerItem>
-          </StaggerContainer>
+            </FadeIn>
+          </div>
         </Container>
       </section>
     </PageLayout>

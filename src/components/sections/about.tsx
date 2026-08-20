@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
+
 import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { FadeIn } from "@/components/animations";
+import { AnnotationLine } from "@/components/annotation-line";
 
 const paragraphs = [
   {
@@ -21,16 +24,34 @@ const paragraphs = [
 
 function AboutSection() {
   return (
-    <section id="about" className="border-b py-24 md:py-40">
+    <section id="about" className="border-b py-24 md:py-36">
       <Container size="lg">
         <div className="grid gap-20 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <SectionTitle
               label="About"
-              title="How I work."
+              title="About."
               description="Short version. The long version is in the writing section."
-              folio="02"
             />
+            <FadeIn from="left" delay={0.15}>
+              <div className="mt-14 flex items-center gap-6">
+                <div className="relative h-36 w-28 shrink-0 overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/profile-hero.png"
+                    alt="Arem, portrait"
+                    fill
+                    quality={90}
+                    className="object-cover"
+                    sizes="112px"
+                  />
+                </div>
+                <AnnotationLine
+                  label="B.Eng. EEE, UNILORIN"
+                  align="right"
+                  className="hidden lg:flex"
+                />
+              </div>
+            </FadeIn>
           </div>
           <div className="lg:col-span-5 lg:col-start-7">
             <div>

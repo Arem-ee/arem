@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
@@ -50,16 +49,14 @@ function ThemeToggle({ className = "" }: { className?: string }) {
 function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
-  const [avatarVisible, setAvatarVisible] = React.useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 20);
-    setAvatarVisible(latest > 140);
   });
 
   const linkClasses = cn(
-    "text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground",
+    "text-xs font-medium text-muted-foreground",
     "transition-colors duration-200 hover:text-foreground"
   );
 
@@ -121,7 +118,7 @@ function Navbar() {
             <ThemeToggle />
             <Link
               href="/resume"
-              className="whisper-label rounded-md border border-border px-3 py-1.5 text-foreground transition-colors hover:border-primary/70"
+              className="pill-label text-foreground transition-colors hover:border-primary/70"
             >
               Resume
             </Link>
@@ -163,7 +160,7 @@ function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="py-2 font-display text-xl font-medium tracking-tight text-foreground decoration-primary underline-offset-4 transition-colors hover:underline"
+                    className="py-2 text-base font-medium tracking-tight text-foreground decoration-primary underline-offset-4 transition-colors hover:underline"
                   >
                     {item.label}
                   </Link>

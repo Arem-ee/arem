@@ -97,7 +97,6 @@ function ContactSection() {
                 label="Contact"
                 title="Get in touch."
                 description="Email is the reliable channel. X works if you are already there."
-                folio="08"
               />
 
               <div className="mt-16 space-y-6">
@@ -267,7 +266,7 @@ function ContactSection() {
                 type="submit"
                 variant="primary"
                 size="md"
-                className="w-full rounded-lg transition-colors duration-300 hover:bg-primary/90"
+                className="w-full rounded-full sm:w-auto sm:px-10 transition-colors duration-300 hover:bg-primary/90"
                 disabled={status === "loading"}
                 aria-label={status === "loading" ? "Sending message..." : "Send message"}
               >

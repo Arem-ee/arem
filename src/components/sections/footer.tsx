@@ -41,7 +41,7 @@ function FooterSection() {
                 Arem
               </span>
             </Link>
-            <p className="font-mono text-[10px] text-muted-foreground/60">
+            <p className="text-[11px] text-muted-foreground/60">
               Built with care. &copy; {new Date().getFullYear()}
             </p>
           </div>
@@ -51,7 +51,7 @@ function FooterSection() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+                className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.label}
               </Link>
@@ -78,7 +78,7 @@ function FooterSection() {
         </div>
 
         <motion.p
-          className="mt-10 cursor-pointer text-center font-mono text-[11px] text-muted-foreground/50 transition-colors hover:text-muted-foreground sm:text-left"
+          className="mt-10 cursor-pointer text-center text-[11px] text-muted-foreground/50 transition-colors hover:text-muted-foreground sm:text-left"
           onClick={cycle}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

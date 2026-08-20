@@ -20,7 +20,7 @@ function MeetAremSection() {
           <div className="lg:col-span-5 lg:col-start-1">
             <FadeIn from="left">
               <div className="relative mx-auto max-w-sm lg:max-w-none">
-                <div className="cutout-b relative aspect-[4/5] rotate-[2deg] overflow-hidden">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                   <Image
                     src="/images/profile-hero.png"
                     alt="Arem, portrait"
@@ -39,7 +39,6 @@ function MeetAremSection() {
               label="Meet Arem"
               title="An engineering student who builds and writes."
               description="Not a biography. The route from circuits to products, and why the writing came with it."
-              folio="04"
               className="mb-14"
             />
             <div className="space-y-8">
@@ -52,7 +51,7 @@ function MeetAremSection() {
               ))}
             </div>
             <FadeIn from="left" delay={0.3}>
-              <p className="mt-16 font-display text-base font-medium tracking-tight text-foreground">
+              <p className="mt-16 text-base font-semibold tracking-tight text-foreground">
                 Arem
               </p>
               <p className="whisper-label mt-2">Writer and builder</p>
