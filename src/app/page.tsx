@@ -71,6 +71,11 @@ const CapabilitiesSection = dynamic(
   { ssr: true }
 );
 
+const TestimonialsSection = dynamic(
+  () => import("@/components/sections/testimonials").then((m) => ({ default: m.TestimonialsSection })),
+  { ssr: true }
+);
+
 const ExperienceSection = dynamic(
   () => import("@/components/sections/experience").then((m) => ({ default: m.ExperienceSection })),
   { ssr: true }
@@ -146,6 +151,7 @@ export default function HomePage() {
         <AboutSection />
         <HowIWorkSection />
         <ProjectsSection />
+        <TestimonialsSection />
         <MeetAremSection />
         <CapabilitiesSection />
         <ExperienceSection />
