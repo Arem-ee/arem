@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/constants";
 import { constructMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
+import { ChatWidget } from "@/components/chat/chat-widget";
 import "./globals.css";
 
 const inter = Inter({
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
           {children}
+          <ChatWidget />
         </ThemeProvider>
       </body>
     </html>
