@@ -65,16 +65,8 @@ function HowIWorkSection() {
           />
         </FadeIn>
 
-        <div className="relative mt-16">
-          <div
-            className="absolute inset-x-0 top-[44px] hidden h-px bg-[#0a0a0a]/30 lg:block"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute bottom-[44px] left-[44px] top-[44px] w-px bg-[#0a0a0a]/30 sm:hidden lg:hidden"
-            aria-hidden="true"
-          />
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <div className="relative mt-16 md:mt-20">
+          <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {steps.map((step, i) => {
               const Icon = step.icon;
               return (
@@ -82,18 +74,19 @@ function HowIWorkSection() {
                   key={step.step}
                   from={i % 2 === 0 ? "left" : "right"}
                   delay={i * 0.06}
+                  className={cn(step.highlight && "lg:-mt-8")}
                 >
                   <div
                     className={cn(
                       "relative rounded-xl p-6",
                       step.highlight
-                        ? "bg-[#0a0a0a] shadow-[0_10px_24px_rgba(10,10,10,0.12)] dark:shadow-[0_0_32px_rgba(245,197,24,0.3)]"
-                        : "border border-[#0a0a0a]/10 bg-[#0a0a0a]/5"
+                        ? "z-10 bg-[#0a0a0a] p-7 shadow-[0_18px_40px_rgba(10,10,10,0.22)] lg:scale-[1.06] dark:shadow-[0_0_44px_rgba(245,197,24,0.35)]"
+                        : "border border-[#0a0a0a]/10 bg-[#0a0a0a]/5 shadow-[0_10px_24px_rgba(10,10,10,0.08)]"
                     )}
                   >
                     <span
                       className={cn(
-                        "flex h-10 w-10 items-center justify-center rounded-full",
+                        "flex h-14 w-14 items-center justify-center rounded-full",
                         step.highlight
                           ? "bg-white/10 text-primary"
                           : "bg-[#0a0a0a]/10 text-[#0a0a0a]",
@@ -101,7 +94,7 @@ function HowIWorkSection() {
                       )}
                     >
                       <Icon
-                        className="h-5 w-5"
+                        className="h-7 w-7"
                         strokeWidth={1.5}
                         aria-hidden="true"
                       />
