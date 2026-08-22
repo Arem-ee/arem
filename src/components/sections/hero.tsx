@@ -33,8 +33,6 @@ const heroLinks = [
 
 const pills = ["Solo builder", "Student, EEE", "Web3 + AI"];
 
-const shapeRadius = "56% 44% 50% 50% / 50% 56% 44% 50%";
-
 function HeroSection() {
   return (
     <section id="hero" className="border-b">
@@ -45,63 +43,58 @@ function HeroSection() {
             className="absolute left-0 top-20 hidden lg:flex"
           />
 
-          <div
-            className="relative mx-auto mb-16 h-72 w-60 bg-primary md:absolute md:left-1/2 md:top-0 md:z-10 md:mb-0 md:h-[420px] md:w-[320px] md:-translate-x-1/2"
-            style={{ borderRadius: shapeRadius }}
-          >
-            <div
-              className="absolute inset-1.5 overflow-hidden"
-              style={{ borderRadius: shapeRadius }}
+          <div className="relative z-10 mx-auto mb-16 h-72 w-60 md:absolute md:left-1/2 md:top-[56px] md:mb-0 md:h-[200px] md:w-[300px] md:-translate-x-1/2">
+            <Image
+              src="/images/profile-hero.png"
+              alt="Arem"
+              fill
+              priority
+              quality={90}
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 60vw, 300px"
+            />
+            <span
+              className="pill-label absolute -top-3 right-8 hidden md:inline-flex"
+              aria-hidden="true"
             >
-              <Image
-                src="/images/profile-hero.png"
-                alt="Arem"
-                fill
-                priority
-                quality={90}
-                className="object-cover"
-                sizes="(max-width: 768px) 60vw, 320px"
-              />
-            </div>
+              Solo builder
+            </span>
+            <span
+              className="pill-label absolute -bottom-3 left-10 hidden md:inline-flex"
+              aria-hidden="true"
+            >
+              Student, EEE
+            </span>
+            <span
+              className="pill-label absolute -bottom-3 -right-4 hidden md:inline-flex"
+              aria-hidden="true"
+            >
+              Web3 + AI
+            </span>
           </div>
 
-          <span
-            className="pill-label absolute left-0 top-[45%] hidden lg:inline-flex"
-            aria-hidden="true"
-          >
-            Solo builder
-          </span>
-          <span
-            className="pill-label absolute right-0 top-[30%] hidden lg:inline-flex"
-            aria-hidden="true"
-          >
-            Student, EEE
-          </span>
-          <span
-            className="pill-label absolute right-0 bottom-[22%] hidden lg:inline-flex"
-            aria-hidden="true"
-          >
-            Web3 + AI
-          </span>
-
-          <div className="relative md:pt-44">
+          <div className="relative z-0">
             <FadeIn from="left">
               <p className="whisper-label mb-6 md:hidden">
                 University of Ilorin, EEE
               </p>
             </FadeIn>
             <FadeIn from="left" delay={0.08}>
-              <h1 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
-                Hi, I&apos;m Arem (Toromade Abdulrahman), a student.
+              <h1 className="flex flex-col text-3xl font-semibold tracking-tight sm:text-4xl md:items-center md:text-5xl">
+                <span className="md:mr-[calc(50%-18px)] md:self-end">
+                  I&apos;m Arem,
+                </span>
+                <span className="md:mt-[240px]">a student who builds</span>
+                <span>and writes about them.</span>
               </h1>
             </FadeIn>
-            <FadeIn from="left" delay={0.16}>
-              <p className="mt-6 max-w-md text-sm font-normal leading-snug text-muted-foreground sm:text-base">
+            <FadeIn from="none" delay={0.16}>
+              <p className="mt-6 max-w-md text-sm font-normal leading-snug text-muted-foreground sm:text-base md:mx-auto md:text-center">
                 Web3 technical writer and builder.
               </p>
             </FadeIn>
-            <FadeIn from="left" delay={0.24}>
-              <p className="mt-5 max-w-md text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
+            <FadeIn from="none" delay={0.24}>
+              <p className="mt-5 max-w-md text-xs leading-[1.8] text-muted-foreground sm:text-[13px] md:mx-auto md:text-center">
                 I write about self-custody and DAO tooling, and I build
                 products end to end, from architecture to shipped code.
               </p>
@@ -117,8 +110,8 @@ function HeroSection() {
               </div>
             </FadeIn>
 
-            <FadeIn from="left" delay={0.36}>
-              <div className="mt-10">
+            <FadeIn from="none" delay={0.36}>
+              <div className="mt-10 md:flex md:justify-center">
                 <Link
                   href="/#work"
                   className="inline-flex h-11 items-center rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
@@ -128,8 +121,8 @@ function HeroSection() {
               </div>
             </FadeIn>
 
-            <FadeIn from="left" delay={0.44}>
-              <ul className="mt-12 space-y-3">
+            <FadeIn from="none" delay={0.44}>
+              <ul className="mt-12 flex flex-col items-center gap-3">
                 {heroLinks.map((link) => (
                   <li key={link.label}>
                     <a

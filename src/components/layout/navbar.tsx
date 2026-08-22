@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 
 import { Container } from "@/components/ui/container";
+import { Logo } from "@/components/brand/logo";
 import { GitHubIcon, LinkedInIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 import { navItems, socialLinks } from "@/constants";
@@ -75,8 +76,8 @@ function Navbar() {
       <Container as="nav" size="xl" aria-label="Main navigation">
         <div className="flex h-12 items-center justify-between">
           <Link href="/" className="relative" aria-label="Home">
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 bg-primary" aria-hidden="true" />
+            <span className="flex items-center gap-2 text-foreground">
+              <Logo className="h-5 w-5" />
               <span className="whisper-label">Arem</span>
             </span>
           </Link>

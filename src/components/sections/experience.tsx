@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { FadeIn } from "@/components/animations";
 import { experiences } from "@/data";
+import { cn } from "@/lib/utils";
 
 function ExperienceSection() {
   return (
@@ -27,7 +28,13 @@ function ExperienceSection() {
               <div className="space-y-16 md:space-y-20">
                 {experiences.map((exp, i) => (
                   <FadeIn key={i} from="left" delay={i * 0.06}>
-                    <div className="relative pl-10">
+                    <div
+                      className={cn(
+                        "relative pl-10",
+                        i === 0 &&
+                          "dark:-mx-4 dark:rounded-xl dark:border dark:border-blue-accent/25 dark:bg-blue-accent/10 dark:p-4 dark:pl-14"
+                      )}
+                    >
                       <span
                         className="absolute left-0 top-2 h-2 w-2 rounded-full bg-primary"
                         aria-hidden="true"

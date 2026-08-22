@@ -55,12 +55,13 @@ const capabilities: Capability[] = [
 
 function ServicesSection() {
   return (
-    <section id="services" className="border-b py-24 md:py-36">
+    <section id="services" className="border-b bg-primary py-24 md:py-36">
       <Container size="lg">
         <SectionTitle
           label="Services"
           title="What I can help with."
           description="Six lanes of work, each with a track record behind it."
+          tone="on-primary"
           className="mb-16 md:mb-24"
         />
 
@@ -73,16 +74,16 @@ function ServicesSection() {
                 from={i % 2 === 0 ? "left" : "right"}
                 delay={i * 0.05}
               >
-                <div className="group h-full border bg-card p-7 transition-colors duration-300 hover:bg-foreground">
+                <div className="group h-full border border-[#0a0a0a]/10 bg-card p-7 transition-all duration-300 hover:bg-[#0a0a0a] dark:border-white/10 dark:hover:shadow-[0_0_28px_rgba(245,197,24,0.25)]">
                   <Icon
-                    className="h-5 w-5 text-primary"
+                    className="h-5 w-5 text-[#0a0a0a] transition-colors duration-300 group-hover:text-primary dark:text-primary"
                     strokeWidth={1.5}
                     aria-hidden="true"
                   />
-                  <h3 className="mt-6 text-base font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-background">
+                  <h3 className="mt-6 text-base font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
                     {cap.title}
                   </h3>
-                  <p className="mt-3 text-xs leading-[1.8] text-muted-foreground transition-colors duration-300 group-hover:text-background/70 sm:text-[13px]">
+                  <p className="mt-3 text-xs leading-[1.8] text-muted-foreground transition-colors duration-300 group-hover:text-primary/70 sm:text-[13px]">
                     {cap.line}
                   </p>
                 </div>

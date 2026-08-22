@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Container } from "@/components/ui/container";
+import { Logo } from "@/components/brand/logo";
 import { SocialLink } from "@/components/cards/social-link";
 import { GitHubIcon, LinkedInIcon, TwitterIcon } from "@/lib/icons";
 import { navItems, socialLinks } from "@/constants";
@@ -37,7 +38,7 @@ function FooterSection() {
           <div className="flex flex-col items-center gap-1 sm:items-start">
             <Link href="/" className="whisper-label text-foreground">
               <span className="flex items-center gap-2">
-                <span className="h-2 w-2 bg-primary" aria-hidden="true" />
+                <Logo className="h-4 w-4" />
                 Arem
               </span>
             </Link>

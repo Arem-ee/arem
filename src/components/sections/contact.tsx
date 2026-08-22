@@ -76,10 +76,12 @@ function ContactSection() {
 
   function inputClasses(field: keyof ContactFormData) {
     return cn(
-      "h-11 w-full border-0 border-b bg-transparent px-0 text-sm transition-colors duration-200",
-      "placeholder:text-muted-foreground/50",
-      "focus-visible:outline-none focus-visible:ring-0 focus-visible:border-primary",
-      errors[field] ? "border-destructive" : "border-input hover:border-foreground/40"
+      "h-11 w-full border-0 border-b bg-transparent px-0 text-sm text-[#0a0a0a] transition-colors duration-200",
+      "placeholder:text-[#0a0a0a]/40",
+      "focus-visible:outline-none focus-visible:ring-0 focus-visible:border-[#0a0a0a]",
+      errors[field]
+        ? "border-destructive"
+        : "border-[#0a0a0a]/25 hover:border-[#0a0a0a]/60"
     );
   }
 
@@ -88,7 +90,7 @@ function ContactSection() {
   );
 
   return (
-    <section id="contact" className="border-t py-24 md:py-48" aria-labelledby="contact-heading">
+    <section id="contact" className="bg-primary py-24 md:py-48" aria-labelledby="contact-heading">
       <Container size="lg">
         <div className="grid gap-24 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5 lg:col-start-1">
@@ -97,23 +99,24 @@ function ContactSection() {
                 label="Contact"
                 title="Get in touch."
                 description="Email is the reliable channel. X works if you are already there."
+                tone="on-primary"
               />
 
               <div className="mt-16 space-y-6">
-                <p className="flex items-center gap-3 text-xs text-muted-foreground sm:text-[13px]">
+                <p className="flex items-center gap-3 text-xs text-[#0a0a0a]/70 sm:text-[13px]">
                   <span className="relative flex h-2 w-2" aria-hidden="true">
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0a0a0a]" />
                   </span>
                   Based in Nigeria. Replies within a day or two.
                 </p>
 
                 <a
                   href="mailto:toromadeadesina@gmail.com"
-                  className="group flex items-center gap-3 text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-[13px]"
+                  className="group flex items-center gap-3 text-xs text-[#0a0a0a]/70 transition-colors hover:text-[#0a0a0a] sm:text-[13px]"
                   aria-label="Send email to toromadeadesina@gmail.com"
                 >
                   <Mail
-                    className="h-4 w-4 text-muted-foreground/60 transition-colors group-hover:text-foreground"
+                    className="h-4 w-4 text-[#0a0a0a]/60 transition-colors group-hover:text-[#0a0a0a]"
                     aria-hidden="true"
                   />
                   <span className="border-b border-transparent transition-colors group-hover:border-primary">
@@ -126,16 +129,19 @@ function ContactSection() {
                     href={socialLinks.github}
                     label="GitHub"
                     icon={<GitHubIcon className="h-4 w-4" aria-hidden="true" />}
+                    className="text-[#0a0a0a]/70 hover:bg-[#0a0a0a]/10 hover:text-[#0a0a0a]"
                   />
                   <SocialLink
                     href={socialLinks.linkedin}
                     label="LinkedIn"
                     icon={<LinkedInIcon className="h-4 w-4" aria-hidden="true" />}
+                    className="text-[#0a0a0a]/70 hover:bg-[#0a0a0a]/10 hover:text-[#0a0a0a]"
                   />
                   <SocialLink
                     href={socialLinks.twitter}
                     label="Twitter"
                     icon={<TwitterIcon className="h-4 w-4" aria-hidden="true" />}
+                    className="text-[#0a0a0a]/70 hover:bg-[#0a0a0a]/10 hover:text-[#0a0a0a]"
                   />
                 </div>
               </div>
@@ -159,7 +165,7 @@ function ContactSection() {
               />
 
               <div className="space-y-2">
-                <label htmlFor="contact-name" className="flex text-xs font-medium">
+                <label htmlFor="contact-name" className="flex text-xs font-medium text-[#0a0a0a]">
                   Name <span className="ml-1">*</span>
                 </label>
                 <input
@@ -185,7 +191,7 @@ function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-email" className="flex text-xs font-medium">
+                <label htmlFor="contact-email" className="flex text-xs font-medium text-[#0a0a0a]">
                   Email <span className="ml-1">*</span>
                 </label>
                 <input
@@ -211,7 +217,7 @@ function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-subject" className="flex text-xs font-medium">
+                <label htmlFor="contact-subject" className="flex text-xs font-medium text-[#0a0a0a]">
                   Subject <span className="ml-1">*</span>
                 </label>
                 <input
@@ -237,7 +243,7 @@ function ContactSection() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-message" className="flex text-xs font-medium">
+                <label htmlFor="contact-message" className="flex text-xs font-medium text-[#0a0a0a]">
                   Message <span className="ml-1">*</span>
                 </label>
                 <textarea
@@ -266,7 +272,7 @@ function ContactSection() {
                 type="submit"
                 variant="primary"
                 size="md"
-                className="w-full rounded-full sm:w-auto sm:px-10 transition-colors duration-300 hover:bg-primary/90"
+                className="w-full rounded-full bg-[#0a0a0a] text-primary hover:bg-[#0a0a0a]/90 sm:w-auto sm:px-10 transition-colors duration-300"
                 disabled={status === "loading"}
                 aria-label={status === "loading" ? "Sending message..." : "Send message"}
               >
@@ -283,14 +289,14 @@ function ContactSection() {
               <AnimatePresence>
                 {status === "success" && (
                   <motion.div
-                    className={cn(statusBox, "border border-primary/30 bg-primary/10 text-foreground")}
+                    className={cn(statusBox, "border border-[#0a0a0a]/30 bg-[#0a0a0a]/10 text-[#0a0a0a]")}
                     role="alert"
                     initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 12 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-foreground" aria-hidden="true" />
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#0a0a0a]" aria-hidden="true" />
                     Message sent. I&apos;ll get back to you soon.
                   </motion.div>
                 )}
