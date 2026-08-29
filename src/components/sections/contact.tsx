@@ -97,8 +97,8 @@ function ContactSection() {
             <FadeIn from="left">
               <SectionTitle
                 label="Contact"
-                title="Get in touch."
-                description="Email is the reliable channel. X works if you are already there."
+                title="Have something you want built?"
+                description="I can help. Whether it's a web app, a product, or something in between, I'm down to work on it. Email is the reliable channel. X works if you are already there."
                 tone="on-primary"
               />
 

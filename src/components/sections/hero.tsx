@@ -42,6 +42,14 @@ function HeroSection() {
             label="University of Ilorin, EEE"
             className="absolute left-0 top-0 hidden -translate-y-full lg:flex"
           />
+          <AnnotationLine
+            label="Available for freelance work"
+            align="right"
+            className="absolute right-0 top-0 hidden -translate-y-full lg:flex"
+          />
+          <div className="mb-6 flex justify-center lg:hidden">
+            <AnnotationLine label="Available for freelance work" className="flex" />
+          </div>
 
           <FadeIn from="none">
             <h1 className="flex flex-col text-center text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl xl:mr-[540px]">
