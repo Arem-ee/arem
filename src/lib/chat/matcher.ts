@@ -14,7 +14,7 @@ const keywordRules: Array<[RegExp, string]> = [
   [/\bredact\b|\bzk\b|zero[- ]knowledge|duress|\bmonad\b/i, "redact"],
   [/\bauditon\b|\bsoc ?2\b/i, "auditon"],
   [/\bergon? automot|\bcar configurat|\bergon?\b.*site|\bautomotive\b/i, "ergo"],
-  [/\baremco\b|hvac|heating|cooling/i, "aremco"],
+  [/\baletheia\b|research studio|growth research/i, "aletheia"],
   [/figma|mobile landing page/i, "mobilelp"],
   [
     /(how.*(contact|reach)|contact you|reach you|get in touch|your email|email address|\bhire\b|freelance|available for)/i,

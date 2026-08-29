@@ -2,7 +2,7 @@ import type { ResumeData } from "@/types";
 
 export const resumeData: ResumeData = {
   summary:
-    "Web3 technical writer and builder. Electrical engineering student at the University of Ilorin. I write about self-custody and DAO tooling, and I build products end to end, from architecture to shipped code.",
+    "Fullstack developer and AI engineer. I build real products and ship them, directing AI coding agents from architecture to deploy. Electrical engineering student at the University of Ilorin.",
   experience: [
     {
       company: "Propeida",
@@ -19,13 +19,13 @@ export const resumeData: ResumeData = {
     {
       company: "Self-employed",
       location: "Remote",
-      role: "Freelance Web3 & Product Builder",
+      role: "Freelance Fullstack & Product Builder",
       period: "2024 \u2013 Present",
       achievements: [
         "Built Redact, a non-custodial privacy dApp on Monad for a hackathon, with a ZK privacy layer and client-side duress mode",
         "Designed and built ERGO Automotive's brand experience: a 3D car configurator with Three.js and React Three Fiber, plus logo and identity",
         "Built Auditon, a SOC 2 compliance orchestration platform in Go, now postponed pending equipment funding",
-        "Shipped client sites including Aremco Heating, Cooling & Construction's business landing page",
+        "Shipped client sites including Aletheia, a digital growth research studio",
       ],
     },
     {
@@ -50,7 +50,7 @@ export const resumeData: ResumeData = {
       degree: "Self-Taught Software Engineer",
       school: "Independent study",
       period: "2022 \u2013 Present",
-      details: "Web3 engineering, product architecture, and full-stack development.",
+      details: "Fullstack engineering, product architecture, and AI-assisted development.",
     },
   ],
   skills: [

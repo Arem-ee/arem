@@ -31,7 +31,7 @@ const heroLinks = [
   },
 ];
 
-const pills = ["Solo builder", "Student, EEE", "Web3 + AI"];
+const pills = ["Solo builder", "Student, EEE", "Fullstack + AI"];
 
 function HeroSection() {
   return (
@@ -45,9 +45,9 @@ function HeroSection() {
 
           <FadeIn from="none">
             <h1 className="flex flex-col text-center text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl xl:mr-[540px]">
-              <span>I&apos;m Arem,</span>
-              <span>a student who builds</span>
-              <span>and writes about them.</span>
+              <span>I&apos;m Arem, a fullstack</span>
+              <span>developer and AI engineer.</span>
+              <span>I build real products and ship them.</span>
             </h1>
           </FadeIn>
 
@@ -65,13 +65,14 @@ function HeroSection() {
 
           <FadeIn from="none">
             <p className="mx-auto mt-8 max-w-md text-center text-sm font-normal leading-snug text-muted-foreground sm:text-base md:mt-12 xl:mt-[290px]">
-              Web3 technical writer and builder.
+              Fullstack developer and AI engineer.
             </p>
           </FadeIn>
           <FadeIn from="none">
             <p className="mx-auto mt-5 max-w-md text-center text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
-              I write about self-custody and DAO tooling, and I build products
-              end to end, from architecture to shipped code.
+              I direct AI coding agents to build products end to end, from
+              architecture to shipped code. I also write about self-custody and
+              DAO tooling.
             </p>
           </FadeIn>
 

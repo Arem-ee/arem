@@ -27,7 +27,7 @@ function ResumePage() {
             <div className="no-print mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h1 className="text-xl font-semibold tracking-tight md:text-2xl">Resume</h1>
-                <p className="mt-2 text-muted-foreground">Web3 Technical Writer &amp; Builder</p>
+                <p className="mt-2 text-muted-foreground">Fullstack Developer &amp; AI Engineer</p>
               </div>
               <div className="flex gap-2">
                 <Button variant="primary" onClick={handleDownload} className="flex-1 justify-center sm:flex-none">

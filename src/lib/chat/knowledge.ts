@@ -28,7 +28,7 @@ export const qaPairs: QAPair[] = [
       "what is this site about",
     ],
     answer:
-      "I'm Arem, short for Toromade Abdulrahman. I'm an electrical engineering student at the University of Ilorin and a self-taught software engineer. I write about self-custody and DAO tooling, and I build products end to end, from architecture to shipped code.",
+      "I'm Arem, short for Toromade Abdulrahman. I'm a fullstack developer and AI engineer, and an electrical engineering student at the University of Ilorin. I build products end to end by directing AI coding agents, and I also write about self-custody and DAO tooling.",
   },
   {
     id: "build",
@@ -55,7 +55,7 @@ export const qaPairs: QAPair[] = [
       "what course are you doing",
     ],
     answer:
-      "B.Eng Electrical Engineering at the University of Ilorin, started in 2023. Alongside that I've been teaching myself software engineering since 2022: web3 engineering, product architecture, and full-stack development.",
+      "B.Eng Electrical Engineering at the University of Ilorin, started in 2023. Alongside that I've been teaching myself software engineering since 2022: fullstack engineering, product architecture, and AI-assisted development.",
   },
   {
     id: "propeida",
@@ -101,15 +101,15 @@ export const qaPairs: QAPair[] = [
       "ERGO Automotive was a client site for an automotive brand: a 3D car configurator built with Three.js and React Three Fiber, plus the brand identity and logo design. It shipped and it's live.",
   },
   {
-    id: "aremco",
+    id: "aletheia",
     questions: [
-      "what is Aremco",
-      "tell me about Aremco",
-      "the HVAC site",
-      "the construction company website",
+      "what is Aletheia",
+      "tell me about Aletheia",
+      "what is that research studio",
+      "the digital growth studio",
     ],
     answer:
-      "Aremco is a live business site for Aremco Heating, Cooling & Construction. Services, contact path, and a quote request flow, built mobile-first.",
+      "Aletheia is a digital growth research studio, Greek for truth. It runs a four-phase process across seven investigation areas and delivers a structured assessment brief instead of generic advice. It's live at aletheia-phi-rouge.vercel.app.",
   },
   {
     id: "mobilelp",

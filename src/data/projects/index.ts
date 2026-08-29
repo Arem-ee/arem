@@ -207,51 +207,51 @@ export const projectDetails: ProjectDetail[] = [
     ],
   },
   {
-    title: "Aremco",
-    slug: "aremco",
+    title: "Aletheia",
+    slug: "aletheia",
     description:
-      "Business landing page for Aremco Heating, Cooling & Construction. Services, contact path, and quote request flow, mobile-first.",
-    technologies: ["Next.js", "Tailwind CSS"],
+      "Digital growth research studio. A four-phase process across seven investigation areas that turns a business's digital presence and buyer pathways into a structured assessment brief.",
+    technologies: ["Vite", "React", "Tailwind CSS"],
     category: "Frontend",
-    logo: "/logos/aremco.svg",
-    liveUrl: "https://aremco-seven.vercel.app",
+    logo: "/logos/aletheia.svg",
+    liveUrl: "https://aletheia-phi-rouge.vercel.app",
     featured: true,
     status: "shipped",
-    statusNote: "Shipped. Live business site for Aremco Heating, Cooling & Construction.",
+    statusNote: "Shipped. Live research studio delivering structured assessment briefs.",
     problem:
-      "Aremco Heating, Cooling & Construction ran entirely on word-of-mouth. No website meant no way for new customers to verify the services, see the coverage area, or request a quote without calling.",
+      "Businesses often redesign or spend on ads before understanding their digital presence, buyer decision pathways, and market positioning. Generic advice wastes budget; structured diagnosis comes first.",
     goals: [
-      "Give the business a credible online presence",
-      "Turn visitors into calls and quote requests",
-      "Work on the phones most customers use: mobile-first",
+      "Investigate a business's digital presence across seven areas: brand authority, website experience, lead generation, trust signals, competitor positioning, and more",
+      "Run a four-phase process: research, diagnosis, strategy, and implementation",
+      "Deliver a structured assessment brief instead of generic advice",
     ],
     architecture:
-      "A Next.js landing page with Tailwind styling. One page, few sections: services, why-choose-us, coverage, and a persistent quote/contact path. Content is static and cheap to edit, so the client can update it without touching code.",
+      "A Vite and React single-page studio site with Tailwind styling. The name is Greek for truth, fitting a research-first approach. Content is structured to guide a business from investigation through a clear, actionable brief.",
     technicalDecisions: [
       {
-        decision: "Static single page over a CMS",
+        decision: "Single-page studio site over a multi-page app",
         rationale:
-          "A service business updates its site a few times a year. A CMS adds a bill and a login for zero benefit at this stage.",
+          "The studio sells a diagnostic process, not a dashboard. One focused page communicates the method clearly without extra navigation.",
       },
       {
-        decision: "Contact-first layout",
+        decision: "Research-led content structure",
         rationale:
-          "The goal is calls and quotes, not dwell time. The contact action is reachable from every scroll position.",
+          "Seven investigation areas and four phases are presented as a framework, so a visitor understands what will be assessed before any commitment.",
       },
     ],
     challenges: [
       {
-        challenge: "No existing brand assets",
+        challenge: "Explaining a diagnostic product without sounding generic",
         solution:
-          "Built a simple, consistent visual system from scratch: a clean type scale and a business-appropriate palette, applied across sections.",
+          "Framed every section as an investigation area with a concrete output, so the value is a structured brief, not vague consulting.",
       },
     ],
     results: [
-      "Live business site shipped for Aremco Heating, Cooling & Construction",
-      "Mobile-first layout covering the main customer flows",
+      "Live research studio shipped at aletheia-phi-rouge.vercel.app",
+      "Clear four-phase process and seven-area framework presented as the product",
     ],
     lessonsLearned: [
-      "For a local service business, the contact path is the product. Everything else is context.",
+      "Naming matters. Aletheia, Greek for truth, signals the studio's research-first identity.",
     ],
   },
   {

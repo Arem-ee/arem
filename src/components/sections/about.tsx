@@ -10,11 +10,11 @@ import { AnnotationLine } from "@/components/annotation-line";
 const paragraphs = [
   {
     index: "01",
-    text: "I write about Web3 infrastructure: multisig wallets, self-custody, and DAO tooling. Most posts start as a problem I hit while building, worked through until it is reproducible in a tutorial.",
+    text: "I'm a fullstack developer and AI engineer. I build products end to end by directing AI coding agents, owning the architecture, the product decisions, and the review while agents handle the mechanical work.",
   },
   {
     index: "02",
-    text: "I build products end to end, from architecture to shipped code. Development is AI-assisted: agents handle the mechanical work while I own the architecture, the product decisions, and the review.",
+    text: "I also write about Web3 infrastructure: multisig wallets, self-custody, and DAO tooling. Most posts start as a problem I hit while building, worked through until it is reproducible in a tutorial.",
   },
   {
     index: "03",

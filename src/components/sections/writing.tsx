@@ -15,7 +15,7 @@ function WritingSection() {
         <SectionTitle
           label="Writing"
           title="Tutorials and field notes."
-          description="Notes on self-custody, multisig wallets, and DAO tooling. Each post ships with code you can run."
+          description="Notes from whatever I'm building. Mostly Web3 infrastructure lately. Each post ships with code you can run."
           className="mb-16 md:mb-24"
         />
 

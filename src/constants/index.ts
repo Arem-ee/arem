@@ -3,9 +3,9 @@ import { socialLinks } from "@/data/socials";
 
 export const siteConfig: SiteConfig = {
   name: "arem.is-a.dev",
-  title: "Arem - Web3 Technical Writer & Builder",
+  title: "Arem - Fullstack Developer & AI Engineer",
   description:
-    "Web3 technical writer and builder. Electrical engineering student at the University of Ilorin. I write about self-custody and DAO tooling, and I build products end to end.",
+    "Fullstack developer and AI engineer. I build real products and ship them, directing AI coding agents from architecture to deploy. Electrical engineering student at the University of Ilorin.",
   url: "https://arem.is-a.dev",
   ogImage: "/images/profile-hero.png",
   links: {
@@ -16,12 +16,13 @@ export const siteConfig: SiteConfig = {
   author: {
     name: "Arem",
     email: socialLinks.email,
-    jobTitle: "Web3 Technical Writer & Builder",
+    jobTitle: "Fullstack Developer & AI Engineer",
     image: "/images/og.jpg",
     sameAs: [socialLinks.github, socialLinks.linkedin, socialLinks.twitter],
   },
   keywords: [
-    "web3 technical writer",
+    "fullstack developer",
+    "AI engineer",
     "technical writing portfolio",
     "self-custody crypto",
     "multisig wallet tutorial",

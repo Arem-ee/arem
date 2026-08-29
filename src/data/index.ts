@@ -55,16 +55,16 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    role: "Freelance Web3 & Product Builder",
+    role: "Freelance Fullstack & Product Builder",
     company: "Self-employed",
     duration: "2024 \u2013 Present",
     summary:
-      "Contract work across Web3 and product engineering: dApps, dashboards, and client sites, scoped and shipped end to end.",
+      "Contract work across fullstack and product engineering: dApps, dashboards, and client sites, scoped and shipped end to end.",
     achievements: [
       "Built Redact, a non-custodial privacy dApp on Monad for a hackathon, with a ZK privacy layer and client-side duress mode",
       "Designed and built ERGO Automotive's brand experience, a 3D car configurator with Three.js and React Three Fiber, plus logo and identity",
       "Built Auditon, a SOC 2 compliance orchestration platform in Go, now postponed pending equipment funding",
-      "Shipped client sites including Aremco Heating, Cooling & Construction's business landing page",
+      "Shipped client sites including Aletheia, a digital growth research studio",
     ],
   },
   {
@@ -134,17 +134,17 @@ export const projects: Project[] = [
     statusNote: "Shipped. Client site with configurator, brand identity, and logo.",
   },
   {
-    title: "Aremco",
-    slug: "aremco",
+    title: "Aletheia",
+    slug: "aletheia",
     description:
-      "Business landing page for Aremco Heating, Cooling & Construction. Services, contact path, and quote request flow, mobile-first.",
-    technologies: ["Next.js", "Tailwind CSS"],
+      "Digital growth research studio. A four-phase process across seven investigation areas that turns a business's digital presence and buyer pathways into a structured assessment brief.",
+    technologies: ["Vite", "React", "Tailwind CSS"],
     category: "Frontend",
-    logo: "/logos/aremco.svg",
-    liveUrl: "https://aremco-seven.vercel.app",
+    logo: "/logos/aletheia.svg",
+    liveUrl: "https://aletheia-phi-rouge.vercel.app",
     featured: true,
     status: "shipped",
-    statusNote: "Shipped. Live business site for Aremco Heating, Cooling & Construction.",
+    statusNote: "Shipped. Live research studio delivering structured assessment briefs.",
   },
   {
     title: "Mobile Landing Page",
