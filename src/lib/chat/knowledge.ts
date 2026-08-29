@@ -28,7 +28,7 @@ export const qaPairs: QAPair[] = [
       "what is this site about",
     ],
     answer:
-      "I'm Arem, short for Toromade Abdulrahman. I'm a fullstack developer and AI engineer, and an electrical engineering student at the University of Ilorin. I build products end to end by directing AI coding agents, and I also write about self-custody and DAO tooling.",
+      "I'm Arem, short for Toromade Abdulrahman. I'm a fullstack developer and AI engineer, and an electrical engineering student at the University of Ilorin. I build products end to end, from architecture to shipped code, and I also write about self-custody and DAO tooling.",
   },
   {
     id: "build",

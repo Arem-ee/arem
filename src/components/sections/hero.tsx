@@ -55,11 +55,10 @@ function HeroSection() {
             <h1 className="flex flex-col text-center text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl xl:mr-[540px]">
               <span>I&apos;m Arem, a fullstack</span>
               <span>developer and AI engineer.</span>
-              <span>I build real products and ship them.</span>
             </h1>
           </FadeIn>
 
-          <div className="relative z-10 mx-auto mt-10 h-[300px] w-[240px] md:mt-12 md:h-[347px] md:w-[300px] xl:absolute xl:left-1/2 xl:top-[127px] xl:mx-0 xl:mt-0 xl:h-[416px] xl:w-[360px] xl:translate-x-[calc(-50%+44px)]">
+          <div className="relative z-10 mx-auto mt-10 h-[300px] w-[240px] md:mt-12 md:h-[347px] md:w-[300px] xl:absolute xl:left-1/2 xl:top-[31px] xl:mx-0 xl:mt-0 xl:h-[416px] xl:w-[360px] xl:translate-x-[calc(-50%+44px)]">
             <Image
               src="/images/profile-hero.png"
               alt="Arem"
@@ -78,9 +77,8 @@ function HeroSection() {
           </FadeIn>
           <FadeIn from="none">
             <p className="mx-auto mt-5 max-w-md text-center text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
-              I direct AI coding agents to build products end to end, from
-              architecture to shipped code. I also write about self-custody and
-              DAO tooling.
+              I build products end to end, from architecture to shipped code. I
+              also write about self-custody and DAO tooling.
             </p>
           </FadeIn>
 

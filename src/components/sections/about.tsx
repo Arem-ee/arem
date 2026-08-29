@@ -10,7 +10,7 @@ import { AnnotationLine } from "@/components/annotation-line";
 const paragraphs = [
   {
     index: "01",
-    text: "I'm a fullstack developer and AI engineer. I build products end to end by directing AI coding agents, owning the architecture, the product decisions, and the review while agents handle the mechanical work.",
+    text: "I'm a fullstack developer and AI engineer. I build products end to end, from architecture to shipped code, owning the product decisions and the review along the way.",
   },
   {
     index: "02",
