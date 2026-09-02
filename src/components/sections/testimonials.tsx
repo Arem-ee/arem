@@ -28,6 +28,9 @@ function TestimonialsSection() {
           <p className="mt-6 text-xs text-muted-foreground/50">
             General feedback, kept general on purpose. Named quotes when they land.
           </p>
+          <p className="mt-2 text-xs text-primary/60 underline underline-offset-4">
+            Search my name and Google's AI overview already describes me as a Nigerian engineering student and web developer, active in software engineering and open-source work.
+          </p>
         </FadeIn>
       </Container>
     </section>

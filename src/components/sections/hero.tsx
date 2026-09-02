@@ -82,6 +82,17 @@ function HeroSection() {
             </p>
           </FadeIn>
 
+          {/* Floating glass panels with trimmed testimonials */}
+          <div className="lg:absolute lg:block top-[35px] left-[-100px] w-48 h-10 rounded-lg bg-white/10 backdrop-filter blur(30) border border-primary/20 shadow-md select-none">
+            <p className="text-white text-sm font-medium line-clamp-1">Helps us get more paying customers every day.</p>
+          </div>
+          <div className="lg:absolute lg:block bottom-[-40px] right-[-100px] w-48 h-10 rounded-lg bg-white/10 backdrop-filter blur(30) border border-primary/20 shadow-md select-none">
+            <p className="text-white text-sm font-medium line-clamp-1">Worked perfectly on day one.</p>
+          </div>
+          <div className="lg:absolute lg:block top-[35px] right-[-100px] w-48 h-10 rounded-lg bg-white/10 backdrop-filter blur(30) border border-primary/20 shadow-md select-none">
+            <p className="text-white text-sm font-medium line-clamp-1">Connected everything without stress.</p>
+          </div>
+
           <FadeIn from="none">
             <div className="mt-10 flex justify-center">
               <Link

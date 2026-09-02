@@ -209,13 +209,10 @@ function ChatWidget() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Chat with Arem"}
         aria-expanded={open}
-        className="fixed bottom-5 right-4 z-[60] grid h-13 w-13 place-items-center overflow-hidden rounded-full border border-primary/50 bg-[#0a0a0a] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-transform hover:scale-105 sm:right-6"
-        style={{ height: 52, width: 52 }}
+        className="fixed bottom-8 right-4 z-[60] grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-primary/50 bg-[#0a0a0a] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-transform hover:scale-105 sm:right-6"
       >
         {open ? (
           <X className="h-5 w-5 text-primary" aria-hidden="true" />
-        ) : avatarLoaded ? (
-          <Avatar3D size={52} paused={false} />
         ) : (
           <MessageCircle className="h-5 w-5 text-primary" aria-hidden="true" />
         )}
