@@ -27,6 +27,13 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
+  redirects: async () => [
+    {
+      source: "/projects/:slug",
+      destination: "/work/:slug",
+      permanent: true,
+    },
+  ],
   turbopack: {
     root: process.cwd(),
   },

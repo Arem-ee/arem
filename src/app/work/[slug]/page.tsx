@@ -1,7 +1,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import type { Metadata } from "next";
 
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -10,12 +11,12 @@ import { Badge } from "@/components/ui/badge";
 import { PageLayout } from "@/components/layout/page-layout";
 import { GitHubIcon } from "@/lib/icons";
 import {
+  getAdjacentProjects,
   getAllProjectSlugs,
   getProjectBySlug,
 } from "@/data/projects";
 import { constructMetadata, projectSchema } from "@/lib/seo";
 import { siteConfig } from "@/constants";
-import type { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,22 +31,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProjectBySlug(slug);
   if (!project) return {};
   return constructMetadata({
-    title: project.title,
+    title: `${project.title} case study`,
     description: project.description,
-    path: `/projects/${project.slug}`,
+    path: `/work/${project.slug}`,
   });
 }
 
-export default async function ProjectPage({ params }: Props) {
+export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
+  const { prev, next } = getAdjacentProjects(slug);
 
   const projectSchemaStr = JSON.stringify(
     projectSchema({
       name: project.title,
       description: project.description,
-      url: `${siteConfig.url}/projects/${project.slug}`,
+      url: `${siteConfig.url}/work/${project.slug}`,
     })
   );
 
@@ -57,14 +59,6 @@ export default async function ProjectPage({ params }: Props) {
       />
       <section className="border-b py-16 md:py-32">
         <Container size="md">
-          <Link
-            href="/#work"
-            className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to work
-          </Link>
-
           <div className="mb-6 flex items-center gap-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary">
               <span className="text-lg font-bold tracking-tight text-primary-foreground">
@@ -74,7 +68,7 @@ export default async function ProjectPage({ params }: Props) {
             <div className="flex flex-wrap items-center gap-3">
               <Badge>{project.category}</Badge>
               <span className="text-xs uppercase tracking-widest text-muted-foreground">
-                Status: {project.statusNote}
+                {project.statusNote}
               </span>
             </div>
           </div>
@@ -98,7 +92,7 @@ export default async function ProjectPage({ params }: Props) {
             ))}
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             {project.liveUrl && (
               <Button variant="primary" asChild>
                 <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -123,12 +117,14 @@ export default async function ProjectPage({ params }: Props) {
         <Container size="md">
           <div className="space-y-16">
             <div>
-              <h2 className="mb-4 text-xl font-semibold">The Problem</h2>
+              <h2 className="mb-4 text-xl font-semibold">The problem</h2>
               <p className="leading-relaxed text-muted-foreground">{project.problem}</p>
             </div>
 
             <div>
-              <h2 className="mb-4 text-xl font-semibold">Goals</h2>
+              <h2 className="mb-4 text-xl font-semibold">What I built</h2>
+              <p className="mb-6 leading-relaxed text-muted-foreground">{project.role}</p>
+              <p className="mb-6 leading-relaxed text-muted-foreground">{project.architecture}</p>
               <ul className="space-y-2">
                 {project.goals.map((goal, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
@@ -140,12 +136,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-4 text-xl font-semibold">Architecture</h2>
-              <p className="leading-relaxed text-muted-foreground">{project.architecture}</p>
-            </div>
-
-            <div>
-              <h2 className="mb-6 text-xl font-semibold">Technical Decisions</h2>
+              <h2 className="mb-6 text-xl font-semibold">Key decisions</h2>
               <div className="space-y-6">
                 {project.technicalDecisions.map((td, i) => (
                   <div key={i} className="rounded-lg border bg-card p-5">
@@ -157,7 +148,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-6 text-xl font-semibold">Challenges & Solutions</h2>
+              <h2 className="mb-6 text-xl font-semibold">Challenges</h2>
               <div className="space-y-6">
                 {project.challenges.map((c, i) => (
                   <div key={i} className="rounded-lg border bg-card p-5">
@@ -171,7 +162,8 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-4 text-xl font-semibold">Results</h2>
+              <h2 className="mb-4 text-xl font-semibold">Outcome</h2>
+              <p className="mb-6 leading-relaxed text-muted-foreground">{project.statusNote}</p>
               <ul className="space-y-2">
                 {project.results.map((result, i) => (
                   <li key={i} className="flex items-start gap-3 text-muted-foreground">
@@ -183,16 +175,57 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <div>
-              <h2 className="mb-4 text-xl font-semibold">Lessons Learned</h2>
-              <ul className="space-y-2">
-                {project.lessonsLearned.map((lesson, i) => (
-                  <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground" />
-                    {lesson}
-                  </li>
+              <h2 className="mb-6 text-xl font-semibold">Stack</h2>
+              <div className="overflow-hidden rounded-lg border bg-card">
+                {project.stack.map((s, i) => (
+                  <div
+                    key={s.tech}
+                    className={`flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-baseline sm:gap-6 ${i > 0 ? "border-t" : ""}`}
+                  >
+                    <span className="w-36 shrink-0 text-sm font-medium text-foreground">{s.tech}</span>
+                    <span className="text-sm leading-relaxed text-muted-foreground">{s.usedFor}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
+
+            <nav aria-label="Case study navigation" className="border-t pt-10">
+              <Link
+                href="/#work"
+                className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back to all work
+              </Link>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {prev ? (
+                  <Link
+                    href={`/work/${prev.slug}`}
+                    className="group rounded-lg border bg-card p-5 transition-colors hover:border-primary/50"
+                  >
+                    <span className="mb-1 flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground">
+                      <ArrowLeft className="h-3.5 w-3.5" />
+                      Previous
+                    </span>
+                    <span className="font-medium text-foreground">{prev.title}</span>
+                  </Link>
+                ) : (
+                  <span />
+                )}
+                {next && (
+                  <Link
+                    href={`/work/${next.slug}`}
+                    className="group rounded-lg border bg-card p-5 text-right transition-colors hover:border-primary/50"
+                  >
+                    <span className="mb-1 flex items-center justify-end gap-2 text-xs uppercase tracking-widest text-muted-foreground">
+                      Next
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="font-medium text-foreground">{next.title}</span>
+                  </Link>
+                )}
+              </div>
+            </nav>
           </div>
         </Container>
       </section>

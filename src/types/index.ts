@@ -90,6 +90,8 @@ export interface ProjectDetail extends Project {
   problem: string;
   goals: string[];
   architecture: string;
+  role: string;
+  stack: { tech: string; usedFor: string }[];
   technicalDecisions: { decision: string; rationale: string }[];
   challenges: { challenge: string; solution: string }[];
   results: string[];

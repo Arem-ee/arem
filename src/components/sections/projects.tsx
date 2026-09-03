@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   GraduationCap,
   EyeOff,
@@ -79,7 +80,12 @@ function ProjectRow({
                 <Icon className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
               </span>
               <h3 className="text-lg font-semibold tracking-tight text-foreground transition-transform duration-300 group-hover:translate-x-1">
-                {project.title}
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="decoration-primary underline-offset-4 hover:underline"
+                >
+                  {project.title}
+                </Link>
               </h3>
             </div>
             <p className="mt-4 max-w-prose text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
@@ -96,6 +102,12 @@ function ProjectRow({
               ))}
             </ul>
             <div className="flex items-center gap-5 md:justify-end">
+              <Link
+                href={`/work/${project.slug}`}
+                className="whisper-label decoration-primary underline-offset-4 transition-colors hover:underline"
+              >
+                Case study
+              </Link>
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}

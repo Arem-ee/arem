@@ -22,6 +22,13 @@ export const projectDetails: ProjectDetail[] = [
     ],
     architecture:
       "Next.js frontend with Supabase for auth and storage, Paystack for payments, and Tailwind for styling. The student and admin experiences are separate dashboards over the same data model: exams, questions, attempts, and leaderboard scores. Leaderboards compute per exam from attempt data.",
+    role: "Sole builder and founder. I own the product, the architecture, and the engineering.",
+    stack: [
+      { tech: "Next.js", usedFor: "Student practice flow and admin dashboards" },
+      { tech: "Supabase", usedFor: "Auth, Postgres, and storage" },
+      { tech: "Paystack", usedFor: "Bank transfer and card payments" },
+      { tech: "Tailwind CSS", usedFor: "Styling" },
+    ],
     technicalDecisions: [
       {
         decision: "Supabase over a custom API",
@@ -83,6 +90,13 @@ export const projectDetails: ProjectDetail[] = [
     ],
     architecture:
       "A smart contract on Monad stores encrypted balance commitments. Deposits commit a hidden amount; withdrawals reveal only what moves. The frontend is a React SPA using Wagmi, with keys generated and held client-side. Duress mode lives in the client: a PIN change flips the UI to a decoy balance while the real funds stay behind the contract.",
+    role: "Solo hackathon build. I designed and built the contract, the frontend, and the submission.",
+    stack: [
+      { tech: "TypeScript", usedFor: "React frontend with Wagmi" },
+      { tech: "Solidity", usedFor: "Privacy contract on Monad" },
+      { tech: "ZK", usedFor: "Encrypted balance commitments" },
+      { tech: "Monad", usedFor: "Fast finality and near-zero fees" },
+    ],
     technicalDecisions: [
       {
         decision: "Encrypted commitments over a full ZK proof pipeline",
@@ -131,6 +145,13 @@ export const projectDetails: ProjectDetail[] = [
     ],
     architecture:
       "Go service with PostgreSQL via GORM, deployed on Cloud Run. Tenant-aware from the start: every table carries a tenant id, every query scopes to it, and pricing tiers map to feature sets.",
+    role: "Solo build. I designed the tenant-aware model and built the Go service.",
+    stack: [
+      { tech: "Go", usedFor: "Service and long-running evidence jobs" },
+      { tech: "PostgreSQL", usedFor: "Tenant-scoped data store" },
+      { tech: "GORM", usedFor: "ORM layer" },
+      { tech: "Cloud Run", usedFor: "Deploy" },
+    ],
     technicalDecisions: [
       {
         decision: "Go over Node.js",
@@ -178,6 +199,13 @@ export const projectDetails: ProjectDetail[] = [
     ],
     architecture:
       "Next.js frontend with a React Three Fiber configurator rendering the vehicle model. Selections update materials and visible options in the scene. The brand work (logo, wordmark, palette) is applied across the site as the design system.",
+    role: "Client project. I designed and built the site and configurator, plus the logo and identity.",
+    stack: [
+      { tech: "Next.js", usedFor: "Site frontend" },
+      { tech: "Three.js", usedFor: "3D rendering" },
+      { tech: "React Three Fiber", usedFor: "Configurator scene" },
+      { tech: "TypeScript", usedFor: "Build language" },
+    ],
     technicalDecisions: [
       {
         decision: "React Three Fiber over a video-based configurator",
@@ -227,6 +255,12 @@ export const projectDetails: ProjectDetail[] = [
     ],
     architecture:
       "A Vite and React single-page studio site with Tailwind styling. The name is Greek for truth, fitting a research-first approach. Content is structured to guide a business from investigation through a clear, actionable brief.",
+    role: "Client project. I designed and built the studio site end to end.",
+    stack: [
+      { tech: "Vite", usedFor: "Build and dev" },
+      { tech: "React", usedFor: "Single-page site" },
+      { tech: "Tailwind CSS", usedFor: "Styling" },
+    ],
     technicalDecisions: [
       {
         decision: "Single-page studio site over a multi-page app",
@@ -275,6 +309,11 @@ export const projectDetails: ProjectDetail[] = [
     ],
     architecture:
       "A Figma design system with components for each section: hero, value proposition, social proof, and call to action. The prototype wires the primary flow end to end, including form states and error handling.",
+    role: "Solo design exercise. Mobile-first canvas, interactive prototype.",
+    stack: [
+      { tech: "Figma", usedFor: "Design system and interactive prototype" },
+      { tech: "Prototyping", usedFor: "Clickable flow with form states" },
+    ],
     technicalDecisions: [
       {
         decision: "Mobile canvas from the start",
@@ -318,4 +357,16 @@ export function getRelatedProjects(slug: string, count = 2): ProjectDetail[] {
   return projectDetails
     .filter((p) => p.slug !== slug && p.category === current.category)
     .slice(0, count);
+}
+
+export function getAdjacentProjects(slug: string): {
+  prev: ProjectDetail | undefined;
+  next: ProjectDetail | undefined;
+} {
+  const index = projectDetails.findIndex((p) => p.slug === slug);
+  if (index === -1) return { prev: undefined, next: undefined };
+  return {
+    prev: projectDetails[index - 1],
+    next: projectDetails[index + 1],
+  };
 }

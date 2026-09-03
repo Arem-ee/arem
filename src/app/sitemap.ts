@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const projectRoutes = getAllProjectSlugs().map((slug) => ({
-    url: `${baseUrl}/projects/${slug}`,
+    url: `${baseUrl}/work/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
