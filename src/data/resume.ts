@@ -23,7 +23,7 @@ export const resumeData: ResumeData = {
       period: "2024 \u2013 Present",
       achievements: [
         "Built Redact, a non-custodial privacy dApp on Monad for a hackathon, with a ZK privacy layer and client-side duress mode",
-        "Designed and built ERGO Automotive's brand experience: a 3D car configurator with Three.js and React Three Fiber, plus logo and identity",
+        "Designed and built StyleArem, a men's fashion e-commerce landing page with a product catalog, quick view, and bag drawer",
         "Built Auditon, a SOC 2 compliance orchestration platform in Go, now postponed pending equipment funding",
         "Shipped client sites including Aletheia, a digital growth research studio",
       ],

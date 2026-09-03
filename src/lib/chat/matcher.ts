@@ -13,7 +13,7 @@ const keywordRules: Array<[RegExp, string]> = [
   [/\bpropeida\b|\bprepiq\b|post[- ]?utme|exam prep/i, "propeida"],
   [/\bredact\b|\bzk\b|zero[- ]knowledge|duress|\bmonad\b/i, "redact"],
   [/\bauditon\b|\bsoc ?2\b/i, "auditon"],
-  [/\bergon? automot|\bcar configurat|\bergon?\b.*site|\bautomotive\b/i, "ergo"],
+  [/\bstylearem\b|men'?s fashion|fashion (landing|store|e-?commerce)/i, "stylearem"],
   [/\baletheia\b|research studio|growth research/i, "aletheia"],
   [/figma|mobile landing page/i, "mobilelp"],
   [

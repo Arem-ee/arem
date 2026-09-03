@@ -180,58 +180,70 @@ export const projectDetails: ProjectDetail[] = [
     ],
   },
   {
-    title: "ERGO Automotive",
-    slug: "ergo-automotive",
+    title: "StyleArem",
+    slug: "stylearem",
     description:
-      "Client site for an automotive brand with a 3D car configurator (Three.js / React Three Fiber), plus brand identity and logo design.",
-    technologies: ["Next.js", "Three.js", "React Three Fiber", "TypeScript"],
+      "Men's fashion e-commerce landing page. Full storefront layout with collections, a working bag, and social proof built in.",
+    technologies: ["React", "Vite", "Tailwind CSS"],
     category: "Frontend",
-    liveUrl: "https://ergo-website-seven.vercel.app",
+    liveUrl: "https://stylearem.vercel.app",
     featured: true,
     status: "shipped",
-    statusNote: "Shipped. Client site with configurator, brand identity, and logo.",
+    statusNote: "Shipped. Men's fashion storefront, live.",
     problem:
-      "The client needed a site that lets a visitor configure a vehicle without leaving the page, plus a visual identity that matched the product.",
+      "Men's fashion online is spread across marketplaces where every listing looks the same. StyleArem takes the opposite approach: one curated point of view, with collections by lifestyle, full product detail, and reviews in a single storefront.",
     goals: [
-      "Deliver a configurable 3D vehicle viewer",
-      "Ship the brand identity: logo and visual system",
-      "Keep the site fast enough for a showroom feel",
+      "Present collections by lifestyle: streetwear, formal, essentials, and active",
+      "Let shoppers inspect a product without leaving the grid",
+      "Keep the bag visible at all times with running totals",
+      "Answer common questions on the page with an FAQ",
     ],
     architecture:
-      "Next.js frontend with a React Three Fiber configurator rendering the vehicle model. Selections update materials and visible options in the scene. The brand work (logo, wordmark, palette) is applied across the site as the design system.",
-    role: "Client project. I designed and built the site and configurator, plus the logo and identity.",
+      "React single-page storefront built with Vite and styled with Tailwind. Catalog, quick-view modal, bag drawer, FAQ, and newsletter sections share one client-side product model: items with sizes, colors, prices, ratings, and reviews.",
+    role: "Designed and built end to end: layout, catalog, quick view, bag drawer, FAQ, and footer.",
     stack: [
-      { tech: "Next.js", usedFor: "Site frontend" },
-      { tech: "Three.js", usedFor: "3D rendering" },
-      { tech: "React Three Fiber", usedFor: "Configurator scene" },
-      { tech: "TypeScript", usedFor: "Build language" },
+      { tech: "React", usedFor: "Catalog, quick view, and bag state" },
+      { tech: "Vite", usedFor: "Build" },
+      { tech: "Tailwind CSS", usedFor: "Styling" },
+      { tech: "Plus Jakarta Sans", usedFor: "Type" },
     ],
     technicalDecisions: [
       {
-        decision: "React Three Fiber over a video-based configurator",
+        decision: "Category pills over separate pages",
         rationale:
-          "Videos cannot change colour or trim in real time. A live 3D scene can, and it doubles as the product showcase.",
+          "One collections section with category pills keeps every product two clicks away. Separate pages would add routes without adding value at this scale.",
       },
       {
-        decision: "Lazy-load the 3D scene",
+        decision: "Quick-view modal over product pages",
         rationale:
-          "The scene only mounts when the configurator is in view, so marketing pages stay light.",
+          "Size, color, quantity, materials, and reviews open over the grid, so comparing items never loses scroll position.",
+      },
+      {
+        decision: "Bag as a slide-over drawer",
+        rationale:
+          "Running subtotal, quantities, a promo field, and a free-shipping progress bar stay visible while shopping continues underneath.",
+      },
+      {
+        decision: "Social proof in the hero",
+        rationale:
+          "Avatar stack and member count sit next to the headline, where a first-time visitor decides whether to keep scrolling.",
       },
     ],
     challenges: [
       {
-        challenge: "Model size vs load time",
+        challenge: "Scope stops at the front end",
         solution:
-          "Compressed glTF with texture atlases, and the scene loads only when needed.",
+          "Bag math, promos, and the order confirmation all run in browser state. No backend or payment is wired, so the page never charges anything: the confirmation is local state, not a receipt.",
       },
     ],
     results: [
-      "Configurator shipped with real-time material and option changes",
-      "Brand identity delivered: logo, wordmark, and palette applied site-wide",
-      "Marketing pages remain fast; the 3D work is contained to the configurator",
+      "Live storefront at stylearem.vercel.app",
+      "Catalog across six lifestyle categories with quick view and reviews",
+      "Bag drawer with quantities, promo codes, and free-shipping progress",
+      "FAQ and newsletter sections shipped",
     ],
     lessonsLearned: [
-      "3D is a feature, not the page. Containing the scene is what keeps the rest of the site fast.",
+      "Front-end state carries a storefront surprisingly far: bag, promos, and totals all work without a backend.",
     ],
   },
   {

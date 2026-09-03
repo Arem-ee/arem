@@ -6,7 +6,7 @@ import {
   GraduationCap,
   EyeOff,
   ClipboardCheck,
-  Car,
+  ShoppingBag,
   Search,
   Smartphone,
 } from "lucide-react";
@@ -37,7 +37,7 @@ const projectIcons: Record<string, LucideIcon> = {
   propeida: GraduationCap,
   redact: EyeOff,
   auditon: ClipboardCheck,
-  "ergo-automotive": Car,
+  "stylearem": ShoppingBag,
   aletheia: Search,
   "mobile-landing-page": Smartphone,
 };

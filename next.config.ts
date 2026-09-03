@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
       destination: "/work/:slug",
       permanent: true,
     },
+    {
+      source: "/work/ergo-automotive",
+      destination: "/#work",
+      permanent: true,
+    },
   ],
   turbopack: {
     root: process.cwd(),

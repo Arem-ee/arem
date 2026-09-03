@@ -90,15 +90,15 @@ export const qaPairs: QAPair[] = [
       "Auditon is a B2B SOC 2 compliance orchestration platform I built Go-first, with tenant-aware architecture and enterprise pricing tiers. It's postponed pending equipment funding, not dead.",
   },
   {
-    id: "ergo",
+    id: "stylearem",
     questions: [
-      "what is ERGO Automotive",
-      "tell me about ERGO",
-      "the car configurator site",
-      "the automotive project",
+      "what is StyleArem",
+      "tell me about StyleArem",
+      "the fashion site",
+      "the menswear project",
     ],
     answer:
-      "ERGO Automotive was a client site for an automotive brand: a 3D car configurator built with Three.js and React Three Fiber, plus the brand identity and logo design. It shipped and it's live.",
+      "StyleArem is a men's fashion e-commerce landing page: collections by lifestyle, product quick view, and a bag drawer with promo codes. It's live at stylearem.vercel.app.",
   },
   {
     id: "aletheia",
