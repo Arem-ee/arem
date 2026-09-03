@@ -65,40 +65,22 @@ function HeroSection() {
               fill
               priority
               quality={90}
-              className="object-cover object-top"
+              className="object-cover object-top [mask-image:linear-gradient(to_bottom,black_70%,transparent_99%)] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_99%)]"
               sizes="(max-width: 768px) 60vw, 360px"
             />
-            <div className="absolute left-0 top-[14%] z-20 hidden w-52 -translate-x-[55%] -rotate-2 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] lg:block dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <p className="text-xs font-medium leading-snug text-card-foreground">
+            <div className="absolute left-0 top-[14%] z-20 w-36 -translate-x-[22%] -rotate-2 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-44 sm:-translate-x-[35%] sm:px-3.5 sm:py-2.5 lg:w-52 lg:-translate-x-[55%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
                 Helps us get more paying customers every day.
               </p>
             </div>
-            <div className="absolute right-0 top-[5%] z-20 hidden w-44 translate-x-[38%] rotate-1 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] lg:block dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <p className="text-xs font-medium leading-snug text-card-foreground">
+            <div className="absolute right-0 top-[5%] z-20 w-36 translate-x-[22%] rotate-1 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-40 sm:translate-x-[30%] sm:px-3.5 sm:py-2.5 lg:w-44 lg:translate-x-[38%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
                 Connected everything without stress.
               </p>
             </div>
-            <div className="absolute bottom-[20%] right-0 z-20 hidden w-48 translate-x-[45%] rotate-2 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] lg:block dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <p className="text-xs font-medium leading-snug text-card-foreground">
+            <div className="absolute bottom-[20%] right-0 z-20 w-36 translate-x-[22%] rotate-2 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-44 sm:translate-x-[35%] sm:px-3.5 sm:py-2.5 lg:w-48 lg:translate-x-[45%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
                 Worked perfectly on day one.
-              </p>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-6 grid w-full max-w-md gap-2.5 lg:hidden">
-            <div className="rounded-xl border glass-panel bg-card/70 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <p className="text-xs font-medium leading-snug text-card-foreground">
-                Helps us get more paying customers every day.
-              </p>
-            </div>
-            <div className="rounded-xl border glass-panel bg-card/70 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <p className="text-xs font-medium leading-snug text-card-foreground">
-                Worked perfectly on day one.
-              </p>
-            </div>
-            <div className="rounded-xl border glass-panel bg-card/70 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <p className="text-xs font-medium leading-snug text-card-foreground">
-                Connected everything without stress.
               </p>
             </div>
           </div>

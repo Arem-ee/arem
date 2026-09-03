@@ -28,16 +28,6 @@ function TestimonialsSection() {
           <p className="mt-6 text-xs text-muted-foreground/50">
             General feedback, kept general on purpose. Named quotes when they land.
           </p>
-          <div className="mt-10 max-w-2xl rounded-xl border border-border bg-card p-5">
-            <p className="whisper-label text-muted-foreground/60">
-              Shows up in search
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-              Search my name and Google&apos;s AI overview already describes me
-              as a Nigerian engineering student and web developer, active in
-              software engineering and open-source work.
-            </p>
-          </div>
         </FadeIn>
       </Container>
     </section>
