@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/constants";
@@ -8,10 +8,11 @@ import { JsonLd } from "@/components/json-ld";
 import { ChatWidget } from "@/components/chat/chat-widget";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const monaSans = localFont({
+  src: "./fonts/Mona-Sans.woff2",
+  variable: "--font-mona-sans",
+  weight: "200 900",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={monaSans.variable} suppressHydrationWarning>
       <head>
         <link rel="canonical" href={siteConfig.url} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

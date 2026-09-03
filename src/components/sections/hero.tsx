@@ -68,6 +68,39 @@ function HeroSection() {
               className="object-cover object-top"
               sizes="(max-width: 768px) 60vw, 360px"
             />
+            <div className="absolute left-0 top-[14%] z-20 hidden w-52 -translate-x-[55%] -rotate-2 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] lg:block dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-xs font-medium leading-snug text-card-foreground">
+                Helps us get more paying customers every day.
+              </p>
+            </div>
+            <div className="absolute right-0 top-[5%] z-20 hidden w-44 translate-x-[38%] rotate-1 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] lg:block dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-xs font-medium leading-snug text-card-foreground">
+                Connected everything without stress.
+              </p>
+            </div>
+            <div className="absolute bottom-[20%] right-0 z-20 hidden w-48 translate-x-[45%] rotate-2 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] lg:block dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-xs font-medium leading-snug text-card-foreground">
+                Worked perfectly on day one.
+              </p>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-6 grid w-full max-w-md gap-2.5 lg:hidden">
+            <div className="rounded-xl border glass-panel bg-card/70 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-xs font-medium leading-snug text-card-foreground">
+                Helps us get more paying customers every day.
+              </p>
+            </div>
+            <div className="rounded-xl border glass-panel bg-card/70 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-xs font-medium leading-snug text-card-foreground">
+                Worked perfectly on day one.
+              </p>
+            </div>
+            <div className="rounded-xl border glass-panel bg-card/70 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+              <p className="text-xs font-medium leading-snug text-card-foreground">
+                Connected everything without stress.
+              </p>
+            </div>
           </div>
 
           <FadeIn from="none">
@@ -81,17 +114,6 @@ function HeroSection() {
               also write about self-custody and DAO tooling.
             </p>
           </FadeIn>
-
-          {/* Floating glass panels with trimmed testimonials */}
-          <div className="lg:absolute lg:block top-[35px] left-[-100px] w-48 h-10 rounded-lg bg-white/10 backdrop-filter blur(30) border border-primary/20 shadow-md select-none">
-            <p className="text-white text-sm font-medium line-clamp-1">Helps us get more paying customers every day.</p>
-          </div>
-          <div className="lg:absolute lg:block bottom-[-40px] right-[-100px] w-48 h-10 rounded-lg bg-white/10 backdrop-filter blur(30) border border-primary/20 shadow-md select-none">
-            <p className="text-white text-sm font-medium line-clamp-1">Worked perfectly on day one.</p>
-          </div>
-          <div className="lg:absolute lg:block top-[35px] right-[-100px] w-48 h-10 rounded-lg bg-white/10 backdrop-filter blur(30) border border-primary/20 shadow-md select-none">
-            <p className="text-white text-sm font-medium line-clamp-1">Connected everything without stress.</p>
-          </div>
 
           <FadeIn from="none">
             <div className="mt-10 flex justify-center">
