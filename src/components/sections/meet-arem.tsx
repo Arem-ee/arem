@@ -28,7 +28,7 @@ function MeetAremSection() {
                       alt="Arem, portrait"
                       fill
                       quality={90}
-                      className="object-cover"
+                      className="object-cover [mask-image:linear-gradient(to_bottom,black_70%,transparent_99%)] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_99%)]"
                       sizes="(max-width: 1024px) 60vw, 35vw"
                     />
                   </div>
