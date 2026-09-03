@@ -40,12 +40,12 @@ function HeroSection() {
         <div className="relative py-24 md:py-36">
           <AnnotationLine
             label="University of Ilorin, EEE"
-            className="absolute left-0 top-0 hidden -translate-y-full lg:flex"
+            className="absolute left-0 top-10 hidden lg:flex"
           />
           <AnnotationLine
             label="Available for freelance work"
             align="right"
-            className="absolute right-0 top-0 hidden -translate-y-full lg:flex"
+            className="absolute right-0 top-10 hidden lg:flex"
           />
           <div className="mb-6 flex justify-center lg:hidden">
             <AnnotationLine label="Available for freelance work" className="flex" />
