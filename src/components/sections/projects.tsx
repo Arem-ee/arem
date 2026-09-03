@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   GraduationCap,
@@ -57,7 +58,26 @@ function ProjectRow({
           className="absolute left-0 top-0 h-full w-[3px] bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           aria-hidden="true"
         />
-        <div className="grid gap-6 py-10 pl-6 md:grid-cols-12 md:gap-6 md:py-14">
+        {project.image && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-0 top-1/2 z-0 aspect-[3/2] w-24 -translate-y-1/2 [mask-image:linear-gradient(to_right,transparent,black_35%)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_35%)] sm:w-32 md:w-44"
+          >
+            <Image
+              src={project.image}
+              alt=""
+              fill
+              sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 176px"
+              className="rounded-md border object-cover object-top opacity-30 grayscale transition duration-300 [mask-image:linear-gradient(to_bottom,black_55%,transparent_97%)] [-webkit-mask-image:linear-gradient(to_bottom,black_55%,transparent_97%)] group-hover:opacity-90 group-hover:grayscale-0"
+            />
+          </div>
+        )}
+        <div
+          className={cn(
+            "relative z-10 grid gap-6 py-10 pl-6 md:grid-cols-12 md:gap-6 md:py-14",
+            project.image && "pr-28 md:pr-52"
+          )}
+        >
           <div className="flex items-start gap-4 md:col-span-3">
             <span
               className={cn(

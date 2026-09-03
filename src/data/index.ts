@@ -86,6 +86,7 @@ export const projects: Project[] = [
     slug: "propeida",
     description:
       "General entrance exam prep platform, rebranded from PrepIQ. Practice questions, per-exam leaderboards, referral tracking, and admin question management.",
+    image: "/images/work/propeida.jpg",
     technologies: ["Next.js", "Supabase", "Paystack", "Tailwind CSS"],
     category: "Full Stack",
     logo: "/logos/propeida.svg",
@@ -99,6 +100,7 @@ export const projects: Project[] = [
     slug: "redact",
     description:
       "Non-custodial stablecoin privacy app built on Monad for a hackathon. ZK privacy layer for private balance management, client-side duress mode.",
+    image: "/images/work/redact.jpg",
     technologies: ["TypeScript", "Solidity", "ZK", "Monad"],
     category: "Web3",
     logo: "/logos/redact.svg",
@@ -125,6 +127,7 @@ export const projects: Project[] = [
     slug: "ergo-automotive",
     description:
       "Client site for an automotive brand with a 3D car configurator (Three.js / React Three Fiber), plus brand identity and logo design.",
+    image: "/images/work/ergo-automotive.jpg",
     technologies: ["Next.js", "Three.js", "React Three Fiber", "TypeScript"],
     category: "Frontend",
     logo: "/logos/ergo.svg",
@@ -138,6 +141,7 @@ export const projects: Project[] = [
     slug: "aletheia",
     description:
       "Digital growth research studio. A four-phase process across seven investigation areas that turns a business's digital presence and buyer pathways into a structured assessment brief.",
+    image: "/images/work/aletheia.jpg",
     technologies: ["Vite", "React", "Tailwind CSS"],
     category: "Frontend",
     logo: "/logos/aletheia.svg",
@@ -151,6 +155,7 @@ export const projects: Project[] = [
     slug: "mobile-landing-page",
     description:
       "Conversion-focused mobile landing page designed and prototyped in Figma: clear hierarchy, persuasive flow, clickable end to end.",
+    image: "/images/work/mobile-landing-page.jpg",
     technologies: ["Figma", "Prototyping"],
     category: "Mobile",
     logo: "/logos/figma.svg",
