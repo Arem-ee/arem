@@ -122,6 +122,17 @@ export const qaPairs: QAPair[] = [
       "A conversion-focused mobile landing page designed and prototyped in Figma: clear hierarchy, persuasive flow, clickable end to end. Shipped as a design prototype.",
   },
   {
+    id: "oralcare",
+    questions: [
+      "what is Oralcare",
+      "tell me about Oralcare",
+      "the dental site",
+      "the clinic project",
+    ],
+    answer:
+      "Oralcare is a dental clinic marketing and booking site: hero with booking CTA, trust stats, a specialist team grid, a four-step process explainer, and testimonials. It's live at oralcare-omega.vercel.app.",
+  },
+  {
     id: "process",
     questions: [
       "how do you work",

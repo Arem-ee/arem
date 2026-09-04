@@ -163,4 +163,17 @@ export const projects: Project[] = [
     status: "shipped",
     statusNote: "Shipped as a design prototype. Clickable mobile landing, built in Figma.",
   },
+  {
+    title: "Oralcare",
+    slug: "oralcare",
+    description:
+      "A dental clinic site. Booking flow, a team directory, a four-step process explainer, and patient testimonials, built as a full marketing site rather than a single landing page.",
+    image: "/images/work/oralcare.jpg",
+    technologies: ["React", "Vite", "Tailwind CSS"],
+    category: "Frontend",
+    liveUrl: "https://oralcare-omega.vercel.app",
+    featured: true,
+    status: "shipped",
+    statusNote: "Shipped. Dental clinic marketing and booking site, live.",
+  },
 ];

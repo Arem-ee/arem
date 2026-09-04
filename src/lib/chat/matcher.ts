@@ -16,6 +16,7 @@ const keywordRules: Array<[RegExp, string]> = [
   [/\bstylearem\b|men'?s fashion|fashion (landing|store|e-?commerce)/i, "stylearem"],
   [/\baletheia\b|research studio|growth research/i, "aletheia"],
   [/figma|mobile landing page/i, "mobilelp"],
+  [/\boralcare\b|dental|clinic site/i, "oralcare"],
   [
     /(how.*(contact|reach)|contact you|reach you|get in touch|your email|email address|\bhire\b|freelance|available for)/i,
     "contact",

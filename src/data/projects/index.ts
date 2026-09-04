@@ -353,6 +353,73 @@ export const projectDetails: ProjectDetail[] = [
       "A prototype settles design arguments faster than a spec ever will.",
     ],
   },
+  {
+    title: "Oralcare",
+    slug: "oralcare",
+    description:
+      "A dental clinic site. Booking flow, a team directory, a four-step process explainer, and patient testimonials, built as a full marketing site rather than a single landing page.",
+    technologies: ["React", "Vite", "Tailwind CSS"],
+    category: "Frontend",
+    liveUrl: "https://oralcare-omega.vercel.app",
+    featured: true,
+    status: "shipped",
+    statusNote: "Shipped. Dental clinic marketing and booking site, live.",
+    problem:
+      "A dental clinic wins patients on trust: who will treat them, what happens step by step, and what other patients say. A single landing page with a phone number does not carry that weight.",
+    goals: [
+      "Present the team as individuals with profiles and booking links",
+      "Explain the four-step process in plain order",
+      "Show trust early with stats and testimonials",
+      "Keep booking one click away from every section",
+    ],
+    architecture:
+      "React single-page marketing site built with Vite and styled with Tailwind. Hero, trust stats, about, team grid, four-step process, testimonials, insights, and booking sections share one page with anchor navigation.",
+    role: "Designed and built end to end: layout, sections, team directory, process explainer, testimonials, and booking flow.",
+    stack: [
+      { tech: "React", usedFor: "Sections and booking flow state" },
+      { tech: "Vite", usedFor: "Build" },
+      { tech: "Tailwind CSS", usedFor: "Styling" },
+      { tech: "Syne and Plus Jakarta Sans", usedFor: "Type" },
+    ],
+    technicalDecisions: [
+      {
+        decision: "One page with anchor nav over separate pages",
+        rationale:
+          "Home, Services, Team, and About scroll to sections. A clinic site is read, not browsed; anchors keep every answer one scroll away.",
+      },
+      {
+        decision: "Trust stats directly under the hero",
+        rationale:
+          "Smiles, years, patients, and satisfaction sit right below the headline, where a nervous patient decides whether to keep reading.",
+      },
+      {
+        decision: "Doctors as profiles with booking links",
+        rationale:
+          "Each specialist gets a face, a specialty, and a next step, so the team grid converts instead of just informing.",
+      },
+      {
+        decision: "Process as four named steps",
+        rationale:
+          "Consultation, 3D scan, treatment, wellness: naming the steps turns an unknown into a sequence.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "Scope stops at the front end",
+        solution:
+          "Schedule buttons and CTAs run in the browser. No practice-management system is wired behind them, so booking reads as a request flow, not a confirmed appointment.",
+      },
+    ],
+    results: [
+      "Live clinic site at oralcare-omega.vercel.app",
+      "Hero with booking CTA and four trust stats",
+      "Team grid with doctor profiles and booking links",
+      "Four-step process, testimonials, and insights sections shipped",
+    ],
+    lessonsLearned: [
+      "Trust content is the product on a clinic site: team, process, and reviews do the converting.",
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
