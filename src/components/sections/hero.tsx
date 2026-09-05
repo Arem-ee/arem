@@ -31,7 +31,7 @@ const heroLinks = [
   },
 ];
 
-const pills = ["Solo builder", "Student, EEE", "Fullstack + AI"];
+const pills = ["Fullstack + AI", "Full product ownership", "Systems that ship"];
 
 function HeroSection() {
   return (
@@ -39,16 +39,12 @@ function HeroSection() {
       <Container size="lg">
         <div className="relative py-24 md:py-36">
           <AnnotationLine
-            label="University of Ilorin, EEE"
-            className="absolute left-0 top-10 hidden lg:flex"
-          />
-          <AnnotationLine
-            label="Available for freelance work"
+            label="Open to the right project"
             align="right"
             className="absolute right-0 top-10 hidden lg:flex"
           />
           <div className="mb-6 flex justify-center lg:hidden">
-            <AnnotationLine label="Available for freelance work" className="flex" />
+            <AnnotationLine label="Open to the right project" className="flex" />
           </div>
 
           <FadeIn from="none">
@@ -86,8 +82,8 @@ function HeroSection() {
           </div>
 
           <FadeIn from="none">
-            <p className="mx-auto mt-8 max-w-md text-center text-sm font-normal leading-snug text-muted-foreground sm:text-base md:mt-12 xl:mt-[290px]">
-              Fullstack developer and AI engineer.
+            <p className="mx-auto mt-8 max-w-md text-center text-sm font-medium leading-snug text-foreground sm:text-base md:mt-12 xl:mt-[290px]">
+              I build products and systems that make businesses more money, not just things that look good.
             </p>
           </FadeIn>
           <FadeIn from="none">

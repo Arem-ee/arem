@@ -2,7 +2,7 @@ import type { ResumeData } from "@/types";
 
 export const resumeData: ResumeData = {
   summary:
-    "Fullstack developer and AI engineer. I build products end to end, from architecture to shipped code. Electrical engineering student at the University of Ilorin.",
+    "Fullstack developer and AI engineer. I build products end to end, from architecture to shipped code. Based in Nigeria, studying electrical engineering at the University of Ilorin.",
   experience: [
     {
       company: "Propeida",

@@ -5,7 +5,7 @@ export const siteConfig: SiteConfig = {
   name: "arem.is-a.dev",
   title: "Arem - Fullstack Developer & AI Engineer",
   description:
-    "Fullstack developer and AI engineer. I build products end to end, from architecture to shipped code. Electrical engineering student at the University of Ilorin.",
+    "Fullstack developer and AI engineer. I build products end to end, from architecture to shipped code. Based in Nigeria, studying electrical engineering at the University of Ilorin.",
   url: "https://arem.is-a.dev",
   ogImage: "/images/profile-hero.png",
   links: {

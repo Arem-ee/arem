@@ -17,6 +17,11 @@ const AboutSection = dynamic(
   { ssr: true }
 );
 
+const ValueSection = dynamic(
+  () => import("@/components/sections/value").then((m) => ({ default: m.ValueSection })),
+  { ssr: true }
+);
+
 const HowIWorkSection = dynamic(
   () => import("@/components/sections/how-i-work").then((m) => ({ default: m.HowIWorkSection })),
   { ssr: true }
@@ -148,6 +153,7 @@ export default function HomePage() {
       <Navbar />
       <main id="main-content" className="pt-12" role="main">
         <HeroSection />
+        <ValueSection />
         <AboutSection />
         <HowIWorkSection />
         <ProjectsSection />

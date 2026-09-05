@@ -42,7 +42,7 @@ function MeetAremSection() {
               label="Meet Arem"
               title={
                 <>
-                  An engineering student who{" "}
+                  An engineer who{" "}
                   <span className="bg-primary px-1 text-[#0a0a0a]">
                     builds
                   </span>{" "}
