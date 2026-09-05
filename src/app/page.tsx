@@ -12,18 +12,8 @@ const HeroSection = dynamic(
   { ssr: true }
 );
 
-const AboutSection = dynamic(
-  () => import("@/components/sections/about").then((m) => ({ default: m.AboutSection })),
-  { ssr: true }
-);
-
 const ValueSection = dynamic(
   () => import("@/components/sections/value").then((m) => ({ default: m.ValueSection })),
-  { ssr: true }
-);
-
-const HowIWorkSection = dynamic(
-  () => import("@/components/sections/how-i-work").then((m) => ({ default: m.HowIWorkSection })),
   { ssr: true }
 );
 
@@ -157,8 +147,6 @@ export default function HomePage() {
         <ValueSection />
         <ProjectsSection />
         <TestimonialsSection />
-        <AboutSection />
-        <HowIWorkSection />
         <MeetAremSection />
         <ExperienceSection />
         <WritingSection />

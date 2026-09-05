@@ -42,7 +42,7 @@ export const siteConfig: SiteConfig = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/#meet" },
   { label: "Work", href: "/#work" },
   { label: "Experience", href: "/#experience" },
   { label: "Writing", href: "/#writing" },
