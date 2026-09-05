@@ -14,7 +14,7 @@ const paragraphs = [
   },
   {
     index: "02",
-    text: "I also write about Web3 infrastructure: multisig wallets, self-custody, and DAO tooling. Most posts start as a problem I hit while building, worked through until it is reproducible in a tutorial.",
+    text: "I also write about whatever I'm building. Lately that's multisig wallets, self-custody, and DAO tooling, each worked through until it is reproducible in a tutorial.",
   },
   {
     index: "03",

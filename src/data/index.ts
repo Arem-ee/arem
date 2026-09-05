@@ -176,4 +176,48 @@ export const projects: Project[] = [
     status: "shipped",
     statusNote: "Shipped. Dental clinic marketing and booking site, live.",
   },
+  {
+    title: "Faze",
+    slug: "faze",
+    description:
+      "An app that lets users share playlists with each other.",
+    technologies: [],
+    category: "Mobile",
+    featured: true,
+    status: "in-progress",
+    statusNote: "In progress. Not live yet.",
+  },
+  {
+    title: "Flux",
+    slug: "flux",
+    description:
+      "An app for sharing social media stickers with each other. It started as payment infrastructure for AI agents before the pivot.",
+    technologies: [],
+    category: "Mobile",
+    featured: true,
+    status: "in-progress",
+    statusNote: "In progress. Not live yet.",
+  },
+  {
+    title: "Dealenz",
+    slug: "dealenz",
+    description:
+      "AI-powered deal and contract risk intelligence. Know the risk before you sign.",
+    technologies: [],
+    category: "AI",
+    featured: true,
+    status: "in-progress",
+    statusNote: "In progress. Coming live soon.",
+  },
+  {
+    title: "CloseFlow",
+    slug: "closeflow",
+    description:
+      "A Chrome-extension-first tool built for TAs.",
+    technologies: [],
+    category: "Frontend",
+    featured: true,
+    status: "in-progress",
+    statusNote: "In progress. Not live yet.",
+  },
 ];

@@ -10,6 +10,10 @@ import {
   Search,
   Smartphone,
   Cross,
+  ListMusic,
+  Sticker,
+  ShieldCheck,
+  Puzzle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -17,6 +21,7 @@ import { Container } from "@/components/ui/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { FadeIn } from "@/components/animations";
 import { projects } from "@/data";
+import { getProjectBySlug } from "@/data/projects";
 import type { ProjectStatus } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +30,7 @@ const statusColor: Record<ProjectStatus, string> = {
   shipped: "bg-primary",
   "did-not-win": "bg-foreground",
   postponed: "bg-blue-accent",
+  "in-progress": "bg-blue-accent animate-pulse",
 };
 
 const statusLabel: Record<ProjectStatus, string> = {
@@ -32,6 +38,7 @@ const statusLabel: Record<ProjectStatus, string> = {
   shipped: "Shipped",
   "did-not-win": "Did not win",
   postponed: "Postponed",
+  "in-progress": "In progress",
 };
 
 const projectIcons: Record<string, LucideIcon> = {
@@ -42,6 +49,10 @@ const projectIcons: Record<string, LucideIcon> = {
   aletheia: Search,
   "mobile-landing-page": Smartphone,
   oralcare: Cross,
+  faze: ListMusic,
+  flux: Sticker,
+  dealenz: ShieldCheck,
+  closeflow: Puzzle,
 };
 
 function ProjectRow({
@@ -52,6 +63,7 @@ function ProjectRow({
   index: number;
 }) {
   const Icon = projectIcons[project.slug] ?? GraduationCap;
+  const hasCaseStudy = Boolean(getProjectBySlug(project.slug));
 
   return (
     <FadeIn from={index % 2 === 0 ? "left" : "right"} delay={index * 0.04}>
@@ -102,12 +114,16 @@ function ProjectRow({
                 <Icon className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
               </span>
               <h3 className="text-lg font-semibold tracking-tight text-foreground transition-transform duration-300 group-hover:translate-x-1">
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="decoration-primary underline-offset-4 hover:underline"
-                >
-                  {project.title}
-                </Link>
+                {hasCaseStudy ? (
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="decoration-primary underline-offset-4 hover:underline"
+                  >
+                    {project.title}
+                  </Link>
+                ) : (
+                  project.title
+                )}
               </h3>
             </div>
             <p className="mt-4 max-w-prose text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
@@ -124,12 +140,14 @@ function ProjectRow({
               ))}
             </ul>
             <div className="flex items-center gap-5 md:justify-end">
-              <Link
-                href={`/work/${project.slug}`}
-                className="whisper-label decoration-primary underline-offset-4 transition-colors hover:underline"
-              >
-                Case study
-              </Link>
+              {hasCaseStudy && (
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="whisper-label decoration-primary underline-offset-4 transition-colors hover:underline"
+                >
+                  Case study
+                </Link>
+              )}
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
@@ -149,6 +167,11 @@ function ProjectRow({
                 >
                   Source
                 </a>
+              )}
+              {project.status === "in-progress" && !project.liveUrl && !project.githubUrl && (
+                <span className="whisper-label text-muted-foreground/50">
+                  Coming soon
+                </span>
               )}
             </div>
           </div>

@@ -64,19 +64,19 @@ function HeroSection() {
               className="object-cover object-top [mask-image:linear-gradient(to_bottom,black_70%,transparent_99%)] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_99%)]"
               sizes="(max-width: 768px) 60vw, 360px"
             />
-            <div className="absolute left-0 top-[14%] z-20 w-36 -translate-x-[22%] -rotate-2 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-44 sm:-translate-x-[35%] sm:px-3.5 sm:py-2.5 lg:w-52 lg:-translate-x-[55%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+            <div className="absolute left-0 top-[2%] z-20 w-52 -translate-x-[15%] -rotate-2 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-60 sm:-translate-x-[30%] lg:w-72 lg:-translate-x-[60%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
               <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
-                You bring the problem.
+                I build systems that connect all your different tools together so nothing breaks once you start scaling up.
               </p>
             </div>
-            <div className="absolute right-0 top-[5%] z-20 w-36 translate-x-[22%] rotate-1 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-40 sm:translate-x-[30%] sm:px-3.5 sm:py-2.5 lg:w-44 lg:translate-x-[38%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+            <div className="absolute bottom-[8%] left-0 z-20 hidden w-64 -translate-x-[50%] rotate-1 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] lg:block dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
               <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
-                I build the product.
+                I build products that actually get finished and launched, not ones that stall out half done.
               </p>
             </div>
-            <div className="absolute bottom-[20%] right-0 z-20 w-36 translate-x-[22%] rotate-2 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-44 sm:translate-x-[35%] sm:px-3.5 sm:py-2.5 lg:w-48 lg:translate-x-[45%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+            <div className="absolute bottom-[-6%] right-0 z-20 w-52 translate-x-[15%] rotate-2 rounded-xl border glass-panel bg-card/70 px-3.5 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:bottom-[-4%] sm:w-60 sm:translate-x-[25%] lg:bottom-[20%] lg:w-72 lg:translate-x-[42%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
               <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
-                You keep the result.
+                I build things that make it easier for your customers to find you, trust you, and actually buy from you.
               </p>
             </div>
           </div>

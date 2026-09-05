@@ -75,7 +75,7 @@ export interface Project {
   statusNote: string;
 }
 
-export type ProjectStatus = "launched" | "shipped" | "postponed" | "did-not-win";
+export type ProjectStatus = "launched" | "shipped" | "postponed" | "did-not-win" | "in-progress";
 
 export type ProjectCategory =
   | "Frontend"

@@ -187,7 +187,7 @@ export const qaPairs: QAPair[] = [
       "what do you do for clients",
     ],
     answer:
-      "Six lanes: technical writing, end-to-end web applications, product strategy, web3 infrastructure, UI systems, and API integrations. Each one has a track record behind it.",
+      "Six lanes: technical writing, end-to-end web applications, product strategy, wallet infrastructure, UI systems, and API integrations. Each one has a track record behind it.",
   },
   {
     id: "focus",

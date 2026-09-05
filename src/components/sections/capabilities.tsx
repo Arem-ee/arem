@@ -38,7 +38,7 @@ const capabilities: Capability[] = [
   },
   {
     icon: Layers,
-    title: "Web3 Infrastructure",
+    title: "Wallet Infrastructure",
     line: "Multisig, self-custody, and DAO tooling, explained and deployed in the same breath.",
   },
   {
