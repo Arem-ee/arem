@@ -153,13 +153,13 @@ export default function HomePage() {
       <Navbar />
       <main id="main-content" className="pt-12" role="main">
         <HeroSection />
+        <CapabilitiesSection />
         <ValueSection />
-        <AboutSection />
-        <HowIWorkSection />
         <ProjectsSection />
         <TestimonialsSection />
+        <AboutSection />
+        <HowIWorkSection />
         <MeetAremSection />
-        <CapabilitiesSection />
         <ExperienceSection />
         <WritingSection />
         <ContactSection />

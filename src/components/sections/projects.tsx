@@ -188,7 +188,7 @@ function ProjectsSection() {
         <SectionTitle
           label="Selected work"
           title="Shipped, paused, or shelved."
-          description="These projects, with their current status. The status column is part of the information, not decoration. This is a small slice of what I've actually built. I keep most client work private, this is just what I can show."
+          description="These projects, with their current status. The status column is part of the information, not decoration."
           className="mb-16 md:mb-24"
         />
 

@@ -45,7 +45,7 @@ const steps: Step[] = [
     step: "04",
     icon: Rocket,
     title: "Ship",
-    body: "Deployed, verified, documented. Not done until someone else can run it.",
+    body: "Deployed, verified, documented. You get something that actually runs, not just a handoff.",
   },
 ];
 

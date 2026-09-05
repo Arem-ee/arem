@@ -60,7 +60,7 @@ function ServicesSection() {
         <SectionTitle
           label="Services"
           title="What I can help with."
-          description="Six lanes of work, each with a track record behind it."
+          description="Six lanes of work, each with a track record behind it. The projects list and client words further down are the receipts."
           tone="on-primary"
           className="mb-16 md:mb-24"
         />

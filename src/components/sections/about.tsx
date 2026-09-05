@@ -55,6 +55,12 @@ function AboutSection() {
           </div>
           <div className="lg:col-span-5 lg:col-start-7">
             <div>
+              <FadeIn from="left">
+                <p className="max-w-lg border-t-0 pb-10 pt-0 text-xs font-medium leading-[1.8] text-foreground sm:text-[13px]">
+                  You get one person who owns the whole build, from the
+                  first sketch to the shipped deploy.
+                </p>
+              </FadeIn>
               {paragraphs.map((p, i) => (
                 <FadeIn key={p.index} from="left" delay={i * 0.08}>
                   <div className="flex gap-6 border-t py-10 first:border-t-0 first:pt-0">
