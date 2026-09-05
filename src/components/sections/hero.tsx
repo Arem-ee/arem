@@ -70,17 +70,17 @@ function HeroSection() {
             />
             <div className="absolute left-0 top-[14%] z-20 w-36 -translate-x-[22%] -rotate-2 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-44 sm:-translate-x-[35%] sm:px-3.5 sm:py-2.5 lg:w-52 lg:-translate-x-[55%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
               <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
-                Helps us get more paying customers every day.
+                You bring the problem.
               </p>
             </div>
             <div className="absolute right-0 top-[5%] z-20 w-36 translate-x-[22%] rotate-1 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-40 sm:translate-x-[30%] sm:px-3.5 sm:py-2.5 lg:w-44 lg:translate-x-[38%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
               <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
-                Connected everything without stress.
+                I build the product.
               </p>
             </div>
             <div className="absolute bottom-[20%] right-0 z-20 w-36 translate-x-[22%] rotate-2 rounded-xl border glass-panel bg-card/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[28px] sm:w-44 sm:translate-x-[35%] sm:px-3.5 sm:py-2.5 lg:w-48 lg:translate-x-[45%] dark:shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
               <p className="text-[11px] font-medium leading-snug text-card-foreground sm:text-xs">
-                Worked perfectly on day one.
+                You keep the result.
               </p>
             </div>
           </div>
