@@ -36,6 +36,13 @@ function ContactSection() {
   >("idle");
   const [errorMessage, setErrorMessage] = React.useState("");
   const track = useAnalyticsStore((s) => s.track);
+  const inquiryTrackedRef = React.useRef(false);
+
+  const markInquiryStarted = React.useCallback(() => {
+    if (inquiryTrackedRef.current) return;
+    inquiryTrackedRef.current = true;
+    track({ type: "inquiry_started", payload: { location: "contact_form" } });
+  }, [track]);
 
   const {
     register,
@@ -151,6 +158,8 @@ function ContactSection() {
           <FadeIn from="right" delay={0.1} className="lg:col-span-6 lg:col-start-7">
             <form
               onSubmit={handleSubmit(onSubmit)}
+              onFocusCapture={markInquiryStarted}
+              onChange={markInquiryStarted}
               className="space-y-11"
               noValidate
               aria-label="Contact form"

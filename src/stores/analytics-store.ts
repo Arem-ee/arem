@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { track as vercelTrack } from "@vercel/analytics";
 import type { AnalyticsEvent } from "@/types";
 
 interface AnalyticsState {
@@ -10,10 +11,16 @@ interface AnalyticsState {
 
 export const useAnalyticsStore = create<AnalyticsState>((set, get) => ({
   events: [],
-  track: (event) =>
+  track: (event) => {
     set((state) => ({
       events: [...state.events, { ...event, timestamp: Date.now() }],
-    })),
+    }));
+    try {
+      vercelTrack(event.type, event.payload);
+    } catch {
+      // analytics must never break the app
+    }
+  },
   flush: () => {
     const events = get().events;
     set({ events: [] });
