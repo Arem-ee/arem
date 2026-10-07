@@ -14,6 +14,16 @@ import {
   Sticker,
   ShieldCheck,
   Puzzle,
+  Users,
+  Repeat,
+  Activity,
+  Zap,
+  Star,
+  Monitor,
+  LayoutGrid,
+  Layers,
+  MousePointer,
+  CheckCircle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -22,7 +32,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { FadeIn } from "@/components/animations";
 import { projects } from "@/data";
 import { getProjectBySlug } from "@/data/projects";
-import type { ProjectStatus } from "@/types";
+import type { ProjectStatus, ProjectMetrics } from "@/types";
 import { cn } from "@/lib/utils";
 
 const statusColor: Record<ProjectStatus, string> = {
@@ -55,6 +65,68 @@ const projectIcons: Record<string, LucideIcon> = {
   closeflow: Puzzle,
 };
 
+const metricIcons: Record<string, LucideIcon> = {
+  users: Users,
+  retention: Repeat,
+  attempts: Activity,
+  adminEfficiency: Zap,
+  contractDeployed: CheckCircle,
+  duressMode: ShieldCheck,
+  githubStars: Star,
+  judgesFeedback: Search,
+  lighthousePerf: Monitor,
+  lighthouseA11y: CheckCircle,
+  categories: LayoutGrid,
+  products: ShoppingBag,
+  components: Layers,
+  trustStats: Users,
+  doctorProfiles: Users,
+  processSteps: ListMusic,
+  screens: Smartphone,
+  formStates: MousePointer,
+  handoffReady: CheckCircle,
+};
+
+function formatMetricKey(key: string): string {
+  if (!key) return "";
+  return key
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (str) => str.toUpperCase())
+    .trim();
+}
+
+function MetricChip({ key, value }: { key: string; value: string | number | boolean }) {
+  const Icon = metricIcons[key] || Activity;
+  const label = formatMetricKey(key);
+  const displayValue = typeof value === "boolean" ? (value ? "Yes" : "No") : String(value);
+
+  return (
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-medium">
+      <Icon className="h-3 w-3" aria-hidden="true" />
+      <span className="flex items-center gap-1">
+        <span className="font-semibold">{displayValue}</span>
+        <span className="text-muted-foreground/60">{label}</span>
+      </span>
+    </span>
+  );
+}
+
+function MetricsDisplay({ metrics }: { metrics?: ProjectMetrics }) {
+  if (!metrics || Object.keys(metrics).length === 0) return null;
+
+  const entries = Object.entries(metrics).filter(([, v]) => v !== undefined && v !== "");
+
+  if (entries.length === 0) return null;
+
+  return (
+    <div className="mt-4 flex flex-wrap gap-2" role="list" aria-label="Project metrics">
+      {entries.map(([key, value]) => (
+        <MetricChip key={key} value={value as string | number | boolean} />
+      ))}
+    </div>
+  );
+}
+
 function ProjectRow({
   project,
   index,
@@ -67,7 +139,7 @@ function ProjectRow({
 
   return (
     <FadeIn from={index % 2 === 0 ? "left" : "right"} delay={index * 0.04}>
-      <div className="group relative border-t transition-colors duration-300 hover:bg-primary/[0.07]">
+      <div className="group relative border-t transition-colors duration-300 hover:bg-primary/[0.07] morphism hover:shadow-morphism">
         <span
           className="absolute left-0 top-0 h-full w-[3px] bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           aria-hidden="true"
@@ -129,6 +201,7 @@ function ProjectRow({
             <p className="mt-4 max-w-prose text-xs leading-[1.8] text-muted-foreground sm:text-[13px]">
               {project.description}
             </p>
+            <MetricsDisplay metrics={project.metrics} />
           </div>
 
           <div className="flex flex-col justify-between gap-4 md:col-span-3">

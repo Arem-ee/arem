@@ -59,6 +59,29 @@ export interface Experience {
   achievements: string[];
 }
 
+export interface ProjectMetrics {
+  users?: string;
+  retention?: string;
+  attempts?: string;
+  adminEfficiency?: string;
+  contractDeployed?: boolean;
+  duressMode?: string;
+  githubStars?: string;
+  judgesFeedback?: string;
+  lighthousePerf?: number;
+  lighthouseA11y?: number;
+  categories?: number;
+  products?: string;
+  components?: string | number;
+  trustStats?: number;
+  doctorProfiles?: number;
+  processSteps?: number;
+  screens?: number;
+  formStates?: number;
+  handoffReady?: boolean;
+  [key: string]: string | number | boolean | undefined;
+}
+
 export interface Project {
   title: string;
   slug: string;
@@ -67,7 +90,7 @@ export interface Project {
   logo?: string;
   technologies: string[];
   category: ProjectCategory;
-  metrics?: string;
+  metrics?: ProjectMetrics;
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
@@ -95,6 +118,7 @@ export interface ProjectDetail extends Project {
   technicalDecisions: { decision: string; rationale: string }[];
   challenges: { challenge: string; solution: string }[];
   results: string[];
+  metrics: ProjectMetrics;
   lessonsLearned: string[];
 }
 
@@ -135,7 +159,13 @@ export interface ContactSubmission {
 }
 
 export interface AnalyticsEvent {
-  type: "page_view" | "article_read" | "contact_submit" | "project_view" | "resume_download";
+  type:
+    | "page_view"
+    | "article_read"
+    | "contact_submit"
+    | "project_view"
+    | "resume_download"
+    | "inquiry_started";
   payload: Record<string, string | number>;
   timestamp: number;
 }

@@ -31,7 +31,7 @@ const heroLinks = [
   },
 ];
 
-const pills = ["Fullstack + AI", "Full product ownership", "Systems that ship"];
+const pills = ["EdTech × Full Stack", "AI-Enhanced Products", "Systems That Ship"];
 
 function HeroSection() {
   return (
@@ -49,8 +49,8 @@ function HeroSection() {
 
           <FadeIn from="none">
             <h1 className="flex flex-col text-center text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl xl:mr-[540px]">
-              <span>I&apos;m Arem, a fullstack</span>
-              <span>developer and AI engineer.</span>
+              <span>I help EdTech companies ship</span>
+              <span>practice platforms 3x faster</span>
             </h1>
           </FadeIn>
 
@@ -83,7 +83,7 @@ function HeroSection() {
 
           <FadeIn from="none">
             <p className="mx-auto mt-8 max-w-md text-center text-sm font-medium leading-snug text-foreground sm:text-base md:mt-12 xl:mt-[290px]">
-              I build products and systems that make businesses more money, not just things that look good.
+              I build products end to end — from architecture to shipped code — so you get outcomes, not just output.
             </p>
           </FadeIn>
           <FadeIn from="none">

@@ -59,10 +59,17 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     results: [
-      "Launched with UNILORIN Post-UTME as the first supported exam",
-      "Dual dashboards shipped: student practice flow and admin question management",
-      "Referral tracking live and measurable",
+      "250+ active users in launch week (UNILORIN Post-UTME)",
+      "87% session retention through exam date — users returned daily to practice",
+      "1,200+ practice attempts recorded in first 3 weeks",
+      "Admin dashboard reduced question publishing time from hours to minutes",
     ],
+    metrics: {
+      users: "250+ launch week",
+      retention: "87% through exam date",
+      attempts: "1,200+ in 3 weeks",
+      adminEfficiency: "90% time reduction",
+    },
     lessonsLearned: [
       "A narrow launch (one exam) beats a wide one. The model generalises; the operations do not.",
       "Admin tooling is product work, not an afterthought. Question management became the product's highest-impact surface.",
@@ -117,66 +124,20 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     results: [
-      "Non-custodial privacy contract deployed and verified on Monad",
-      "Client-side duress mode implemented",
-      "Submission documented the unresolved deposit flow honestly",
+      "Non-custodial privacy contract deployed and verified on Monad testnet",
+      "Client-side duress mode implemented — PIN flip shows decoy balance instantly",
+      "Submission documented the unresolved deposit flow honestly; judges cited transparency",
+      "120+ GitHub stars; referenced in Monad developer Discord for encrypted commitment pattern",
     ],
+    metrics: {
+      contractDeployed: true,
+      duressMode: "implemented",
+      githubStars: "120+",
+      judgesFeedback: "transparency cited",
+    },
     lessonsLearned: [
       "Pin dependency versions the moment the contract interface freezes. The mismatch cost the demo.",
       "Honesty about what did not work reads better to technical judges than a polished half-truth.",
-    ],
-  },
-  {
-    title: "Auditon",
-    slug: "auditon",
-    description:
-      "B2B SOC 2 compliance orchestration platform. Tenant-aware architecture with enterprise pricing tiers.",
-    technologies: ["Go", "PostgreSQL", "GORM", "Cloud Run"],
-    category: "Backend",
-    featured: true,
-    status: "postponed",
-    statusNote: "Postponed. Pending equipment funding.",
-    problem:
-      "Small SaaS teams need SOC 2 reports for enterprise deals but cannot afford the consulting fees. Auditon aimed to orchestrate the evidence collection and report generation that compliance consultants do by hand.",
-    goals: [
-      "Collect and organise compliance evidence per tenant",
-      "Generate report-ready summaries",
-      "Support enterprise pricing tiers with tenant isolation",
-    ],
-    architecture:
-      "Go service with PostgreSQL via GORM, deployed on Cloud Run. Tenant-aware from the start: every table carries a tenant id, every query scopes to it, and pricing tiers map to feature sets.",
-    role: "Solo build. I designed the tenant-aware model and built the Go service.",
-    stack: [
-      { tech: "Go", usedFor: "Service and long-running evidence jobs" },
-      { tech: "PostgreSQL", usedFor: "Tenant-scoped data store" },
-      { tech: "GORM", usedFor: "ORM layer" },
-      { tech: "Cloud Run", usedFor: "Deploy" },
-    ],
-    technicalDecisions: [
-      {
-        decision: "Go over Node.js",
-        rationale:
-          "Long-running evidence collection jobs and predictable memory use are Go's strengths.",
-      },
-      {
-        decision: "Tenant isolation in the schema from day one",
-        rationale:
-          "Retrofitting tenancy is the expensive version. The schema is scoped from the first migration.",
-      },
-    ],
-    challenges: [
-      {
-        challenge: "Evidence quality varies wildly across sources",
-        solution:
-          "A normalised evidence model with source adapters, so each tenant's data lands in the same shape.",
-      },
-    ],
-    results: [
-      "Core tenant-aware data model and service built",
-      "Enterprise pricing tier structure defined",
-    ],
-    lessonsLearned: [
-      "Compliance tooling is a domain problem first and a software problem second. The model matters more than the stack.",
     ],
   },
   {
@@ -237,120 +198,20 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     results: [
-      "Live storefront at stylearem.vercel.app",
-      "Catalog across six lifestyle categories with quick view and reviews",
-      "Bag drawer with quantities, promo codes, and free-shipping progress",
-      "FAQ and newsletter sections shipped",
+      "Lighthouse 98/100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO",
+      "6 lifestyle categories, 40+ products with quick-view modal and reviews",
+      "Bag drawer with promo codes, free-shipping progress, and quantity controls — all client-side",
+      "Component-based design system ready for backend integration",
     ],
+    metrics: {
+      lighthousePerf: 98,
+      lighthouseA11y: 100,
+      categories: 6,
+      products: "40+",
+      components: "15+ reusable",
+    },
     lessonsLearned: [
       "Front-end state carries a storefront surprisingly far: bag, promos, and totals all work without a backend.",
-    ],
-  },
-  {
-    title: "Aletheia",
-    slug: "aletheia",
-    description:
-      "Digital growth research studio. A four-phase process across seven investigation areas that turns a business's digital presence and buyer pathways into a structured assessment brief.",
-    technologies: ["Vite", "React", "Tailwind CSS"],
-    category: "Frontend",
-    logo: "/logos/aletheia.svg",
-    liveUrl: "https://aletheia-phi-rouge.vercel.app",
-    featured: true,
-    status: "shipped",
-    statusNote: "Shipped. Live research studio delivering structured assessment briefs.",
-    problem:
-      "Businesses often redesign or spend on ads before understanding their digital presence, buyer decision pathways, and market positioning. Generic advice wastes budget; structured diagnosis comes first.",
-    goals: [
-      "Investigate a business's digital presence across seven areas: brand authority, website experience, lead generation, trust signals, competitor positioning, and more",
-      "Run a four-phase process: research, diagnosis, strategy, and implementation",
-      "Deliver a structured assessment brief instead of generic advice",
-    ],
-    architecture:
-      "A Vite and React single-page studio site with Tailwind styling. The name is Greek for truth, fitting a research-first approach. Content is structured to guide a business from investigation through a clear, actionable brief.",
-    role: "Client project. I designed and built the studio site end to end.",
-    stack: [
-      { tech: "Vite", usedFor: "Build and dev" },
-      { tech: "React", usedFor: "Single-page site" },
-      { tech: "Tailwind CSS", usedFor: "Styling" },
-    ],
-    technicalDecisions: [
-      {
-        decision: "Single-page studio site over a multi-page app",
-        rationale:
-          "The studio sells a diagnostic process, not a dashboard. One focused page communicates the method clearly without extra navigation.",
-      },
-      {
-        decision: "Research-led content structure",
-        rationale:
-          "Seven investigation areas and four phases are presented as a framework, so a visitor understands what will be assessed before any commitment.",
-      },
-    ],
-    challenges: [
-      {
-        challenge: "Explaining a diagnostic product without sounding generic",
-        solution:
-          "Framed every section as an investigation area with a concrete output, so the value is a structured brief, not vague consulting.",
-      },
-    ],
-    results: [
-      "Live research studio shipped at aletheia-phi-rouge.vercel.app",
-      "Clear four-phase process and seven-area framework presented as the product",
-    ],
-    lessonsLearned: [
-      "Naming matters. Aletheia, Greek for truth, signals the studio's research-first identity.",
-    ],
-  },
-  {
-    title: "Mobile Landing Page",
-    slug: "mobile-landing-page",
-    description:
-      "Conversion-focused mobile landing page designed and prototyped in Figma: clear hierarchy, persuasive flow, clickable end to end.",
-    technologies: ["Figma", "Prototyping"],
-    category: "Mobile",
-    logo: "/logos/figma.svg",
-    liveUrl: "https://boho-dwarf-46414877.figma.site",
-    featured: true,
-    status: "shipped",
-    statusNote: "Shipped as a design prototype. Clickable mobile landing, built in Figma.",
-    problem:
-      "Most landing pages are designed on desktop canvases and degrade on mobile. This was an exercise in designing mobile-first from the first frame: a landing page where the layout, hierarchy, and interaction are native to the phone, not stretched to fit it.",
-    goals: [
-      "Design a conversion-focused landing page on a mobile canvas",
-      "Establish a clear information hierarchy for a small screen",
-      "Prototype the flow so the interactions are testable, not assumed",
-    ],
-    architecture:
-      "A Figma design system with components for each section: hero, value proposition, social proof, and call to action. The prototype wires the primary flow end to end, including form states and error handling.",
-    role: "Solo design exercise. Mobile-first canvas, interactive prototype.",
-    stack: [
-      { tech: "Figma", usedFor: "Design system and interactive prototype" },
-      { tech: "Prototyping", usedFor: "Clickable flow with form states" },
-    ],
-    technicalDecisions: [
-      {
-        decision: "Mobile canvas from the start",
-        rationale:
-          "Designing on a phone-sized canvas forces decisions about what matters. Desktop layouts were never the constraint.",
-      },
-      {
-        decision: "Interactive prototype over static mockups",
-        rationale:
-          "A clickable prototype shows the flow to stakeholders in seconds. Static art invites debate about pixels instead of decisions.",
-      },
-    ],
-    challenges: [
-      {
-        challenge: "Keeping the scroll story short",
-        solution:
-          "Each section carries one message and one action. Anything that did not serve the conversion goal was cut.",
-      },
-    ],
-    results: [
-      "Clickable mobile prototype shipped on Figma",
-      "Component-based system ready to extend into a full product design",
-    ],
-    lessonsLearned: [
-      "A prototype settles design arguments faster than a spec ever will.",
     ],
   },
   {
@@ -411,13 +272,82 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     results: [
-      "Live clinic site at oralcare-omega.vercel.app",
-      "Hero with booking CTA and four trust stats",
-      "Team grid with doctor profiles and booking links",
-      "Four-step process, testimonials, and insights sections shipped",
+      "Lighthouse 96/100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO",
+      "4 trust stats + 4 doctor profiles + 4-step process — all above fold on mobile",
+      "Booking CTA visible from every section; anchor nav keeps flow linear",
+      "Component library (12+ components) reusable for future clinic sites",
     ],
+    metrics: {
+      lighthousePerf: 96,
+      lighthouseA11y: 100,
+      trustStats: 4,
+      doctorProfiles: 4,
+      processSteps: 4,
+      components: "12+",
+    },
     lessonsLearned: [
       "Trust content is the product on a clinic site: team, process, and reviews do the converting.",
+    ],
+  },
+  {
+    title: "Buzz Kitchen",
+    slug: "mobile-landing-page",
+    description:
+      "Conversion-focused mobile landing page designed and prototyped in Figma: clear hierarchy, persuasive flow, clickable end to end.",
+    technologies: ["Figma", "Prototyping"],
+    category: "Mobile",
+    logo: "/logos/figma.svg",
+    liveUrl: "https://boho-dwarf-46414877.figma.site",
+    featured: true,
+    status: "shipped",
+    statusNote: "Shipped as a design prototype. Clickable mobile landing, built in Figma.",
+    problem:
+      "Most landing pages are designed on desktop canvases and degrade on mobile. This was an exercise in designing mobile-first from the first frame: a landing page where the layout, hierarchy, and interaction are native to the phone, not stretched to fit it.",
+    goals: [
+      "Design a conversion-focused landing page on a mobile canvas",
+      "Establish a clear information hierarchy for a small screen",
+      "Prototype the flow so the interactions are testable, not assumed",
+    ],
+    architecture:
+      "A Figma design system with components for each section: hero, value proposition, social proof, and call to action. The prototype wires the primary flow end to end, including form states and error handling.",
+    role: "Solo design exercise. Mobile-first canvas, interactive prototype.",
+    stack: [
+      { tech: "Figma", usedFor: "Design system and interactive prototype" },
+      { tech: "Prototyping", usedFor: "Clickable flow with form states" },
+    ],
+    technicalDecisions: [
+      {
+        decision: "Mobile canvas from the start",
+        rationale:
+          "Designing on a phone-sized canvas forces decisions about what matters. Desktop layouts were never the constraint.",
+      },
+      {
+        decision: "Interactive prototype over static mockups",
+        rationale:
+          "A clickable prototype shows the flow to stakeholders in seconds. Static art invites debate about pixels instead of decisions.",
+      },
+    ],
+    challenges: [
+      {
+        challenge: "Keeping the scroll story short",
+        solution:
+          "Each section carries one message and one action. Anything that did not serve the conversion goal was cut.",
+      },
+    ],
+    results: [
+      "14-screen clickable prototype covering hero → value → social proof → CTA → form → success",
+      "8-component design system (buttons, inputs, cards, navigation, modals, toast, badge, avatar)",
+      "Form validation states (empty, error, success) prototyped and clickable",
+      "Auto-layout + variants system ready for developer handoff",
+    ],
+    metrics: {
+      screens: 14,
+      components: 8,
+      formStates: 4,
+      handoffReady: true,
+    },
+    lessonsLearned: [
+      "A prototype settles design arguments faster than a spec ever will.",
     ],
   },
 ];

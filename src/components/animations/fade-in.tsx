@@ -12,16 +12,17 @@ interface FadeInProps {
   delay?: number;
   duration?: number;
   once?: boolean;
-  from?: "left" | "right" | "none";
+  from?: "left" | "right" | "top" | "bottom" | "none";
 }
 
 const offset = 8;
 
 function buildVariants(from: FadeInProps["from"]): Variants {
   const x = from === "left" ? -offset : from === "right" ? offset : 0;
+  const y = from === "top" ? -offset : from === "bottom" ? offset : 0;
   return {
-    hidden: { opacity: 0, x },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, x, y },
+    visible: { opacity: 1, x: 0, y: 0 },
   };
 }
 

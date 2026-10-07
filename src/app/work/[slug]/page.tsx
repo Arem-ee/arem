@@ -1,7 +1,26 @@
 import * as React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ExternalLink,
+  Users,
+  Repeat,
+  Activity,
+  Zap,
+  CheckCircle,
+  ShieldCheck,
+  Star,
+  Search,
+  Monitor,
+  LayoutGrid,
+  ShoppingBag,
+  Layers,
+  ListMusic,
+  Smartphone,
+  MousePointer,
+} from "lucide-react";
 import type { Metadata } from "next";
 
 import { Container } from "@/components/ui/container";
@@ -17,6 +36,69 @@ import {
 } from "@/data/projects";
 import { constructMetadata, projectSchema } from "@/lib/seo";
 import { siteConfig } from "@/constants";
+import type { ProjectMetrics } from "@/types";
+
+function formatMetricKey(key: string): string {
+  if (!key) return "";
+  return key
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (str) => str.toUpperCase())
+    .trim();
+}
+
+const metricIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  users: Users,
+  retention: Repeat,
+  attempts: Activity,
+  adminEfficiency: Zap,
+  contractDeployed: CheckCircle,
+  duressMode: ShieldCheck,
+  githubStars: Star,
+  judgesFeedback: Search,
+  lighthousePerf: Monitor,
+  lighthouseA11y: CheckCircle,
+  categories: LayoutGrid,
+  products: ShoppingBag,
+  components: Layers,
+  trustStats: Users,
+  doctorProfiles: Users,
+  processSteps: ListMusic,
+  screens: Smartphone,
+  formStates: MousePointer,
+  handoffReady: CheckCircle,
+};
+
+function MetricChip({ key, value }: { key: string; value: string | number | boolean }) {
+  const Icon = metricIcons[key] || Activity;
+  const label = formatMetricKey(key);
+  const displayValue = typeof value === "boolean" ? (value ? "Yes" : "No") : String(value);
+
+  return (
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-medium">
+      <Icon className="h-3 w-3" aria-hidden="true" />
+      <span className="flex items-center gap-1">
+        <span className="font-semibold">{displayValue}</span>
+        <span className="text-muted-foreground/60">{label}</span>
+      </span>
+    </span>
+  );
+}
+
+function MetricsDisplay({ metrics }: { metrics?: ProjectMetrics }) {
+  if (!metrics || Object.keys(metrics).length === 0) return null;
+
+  const entries = Object.entries(metrics).filter(([, v]) => v !== undefined && v !== "");
+
+  if (entries.length === 0) return null;
+
+  return (
+    <div className="mb-6 flex flex-wrap gap-2" role="list" aria-label="Project metrics">
+      {entries.map(([key, value]) => (
+        <MetricChip key={key} value={value as string | number | boolean} />
+      ))}
+    </div>
+  );
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -81,9 +163,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </p>
 
           {project.metrics && (
-            <p className="mb-6 text-sm font-medium uppercase tracking-wider text-foreground/60">
-              {project.metrics}
-            </p>
+            <MetricsDisplay metrics={project.metrics} />
           )}
 
           <div className="mb-8 flex flex-wrap gap-2">
