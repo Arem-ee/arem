@@ -102,6 +102,13 @@ function mountProject(slug, { animateIntro = false } = {}) {
   const root = document.getElementById("project-root");
   if (!root) return;
 
+  // Case-study image slots: overview (Block A), two process shots (Block C), result (Block D).
+  // Falls back to the cover image until dedicated screenshots are provided in content.js.
+  const imgOverview = project.overviewImage || project.image;
+  const imgProcess1 = project.processImage1 || project.image;
+  const imgProcess2 = project.processImage2 || project.image;
+  const imgResult = project.resultImage || project.image;
+
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // (a) set swapping = true, call ctx.revert() and ScrollTrigger.clearScrollMemory()
@@ -127,7 +134,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
         <section class="project-block project-block-a">
           <div class="parallax-media-wrap">
             <img 
-              src="${project.image}" 
+              src="${imgOverview}" 
               alt="${project.title} overview" 
               class="parallax-img"
               loading="eager"
@@ -153,10 +160,10 @@ function mountProject(slug, { animateIntro = false } = {}) {
           </div>
           <div class="block-c-images">
             <div class="block-c-img-wrap block-c-img-wrap--left">
-              <img src="${project.image}" alt="${project.title} process detail" class="block-c-img" loading="lazy">
+              <img src="${imgProcess1}" alt="${project.title} process detail" class="block-c-img" loading="lazy">
             </div>
             <div class="block-c-img-wrap block-c-img-wrap--right">
-              <img src="${project.image}" alt="${project.title} process execution" class="block-c-img" loading="lazy">
+              <img src="${imgProcess2}" alt="${project.title} process execution" class="block-c-img" loading="lazy">
             </div>
           </div>
         </section>
@@ -167,7 +174,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
             <p>${project.result}</p>
           </div>
           <div class="block-d-media">
-            <img src="${project.image}" alt="${project.title} result" class="block-d-img" loading="lazy">
+            <img src="${imgResult}" alt="${project.title} result" class="block-d-img" loading="lazy">
           </div>
         </section>
       </div>
@@ -209,7 +216,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
         <section class="project-block project-block-a">
           <div class="parallax-media-wrap">
             <img 
-              src="${project.image}" 
+              src="${imgOverview}" 
               alt="${project.title} overview" 
               class="parallax-img"
               loading="eager"
@@ -237,10 +244,10 @@ function mountProject(slug, { animateIntro = false } = {}) {
           </div>
           <div class="block-c-images">
             <div class="block-c-img-wrap block-c-img-wrap--left">
-              <img src="${project.image}" alt="${project.title} process detail" class="block-c-img" loading="lazy">
+              <img src="${imgProcess1}" alt="${project.title} process detail" class="block-c-img" loading="lazy">
             </div>
             <div class="block-c-img-wrap block-c-img-wrap--right">
-              <img src="${project.image}" alt="${project.title} process execution" class="block-c-img" loading="lazy">
+              <img src="${imgProcess2}" alt="${project.title} process execution" class="block-c-img" loading="lazy">
             </div>
           </div>
         </section>
@@ -252,7 +259,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
             <p>${project.result}</p>
           </div>
           <div class="block-d-media">
-            <img src="${project.image}" alt="${project.title} result" class="block-d-img" loading="lazy">
+            <img src="${imgResult}" alt="${project.title} result" class="block-d-img" loading="lazy">
           </div>
         </section>
       </div>

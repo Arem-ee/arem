@@ -19,8 +19,8 @@ window.SITE = {
   ],
 
   hero: {
-    headlineLeft: "TOROMADE",
-    headlineRight: "ABDULRAHMAN",
+    headlineLeft: "AREM",
+    headlineRight: "",
     subtextLeft: "Arem — fullstack developer and AI engineer. I build products end to end, from architecture to shipped code.",
     subtextRight: "Based in Nigeria, studying electrical engineering at the University of Ilorin."
   },

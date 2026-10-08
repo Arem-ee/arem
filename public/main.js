@@ -306,7 +306,7 @@ function setupHeroInteractions(prefersReducedMotion) {
   if (!heroWrapper || !heroFigure || !heroShadow) return;
 
   if (prefersReducedMotion || typeof gsap === "undefined") {
-    gsap.set([heroWrapper, heroShadow, titleLeft, titleRight, subLeft, subRight], {
+    gsap.set([heroWrapper, heroShadow, titleLeft, titleRight, subLeft, subRight].filter(Boolean), {
       opacity: 1,
       y: 0,
       scale: 1
@@ -324,7 +324,7 @@ function setupHeroInteractions(prefersReducedMotion) {
       { opacity: 1, scale: 1, duration: 1.2 }
     )
     .fromTo(
-      [titleLeft, titleRight],
+      [titleLeft, titleRight].filter(Boolean),
       { opacity: 0, y: 32 },
       { opacity: 1, y: 0, duration: 0.9, stagger: 0.15 },
       "-=0.9"
@@ -386,7 +386,7 @@ function setupHeroInteractions(prefersReducedMotion) {
         ease: "power1.out"
       });
 
-      gsap.to([titleLeft, titleRight], {
+      gsap.to([titleLeft, titleRight].filter(Boolean), {
         x: xPercent * -6,
         duration: 0.8,
         ease: "power1.out"
@@ -394,7 +394,7 @@ function setupHeroInteractions(prefersReducedMotion) {
     });
 
     heroSection.addEventListener("mouseleave", () => {
-      gsap.to([heroWrapper, titleLeft, titleRight], {
+      gsap.to([heroWrapper, titleLeft, titleRight].filter(Boolean), {
         x: 0,
         y: 0,
         duration: 1,
