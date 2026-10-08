@@ -186,8 +186,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 1; /* Headline sits behind character (z-index: 1) */
   pointer-events: none;
 }
 
@@ -195,6 +193,7 @@ body {
   display: flex;
   flex-direction: column;
   pointer-events: auto;
+  position: relative; /* Anchors the character wrapper beside this column */
 }
 
 .hero__headline-col--left {
@@ -230,8 +229,8 @@ body {
 .hero__character-wrapper {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 100%; /* Beside the AREM headline column (desktop) */
+  transform: translate(-35%, -50%);
   z-index: 2; /* Character is above headline */
   display: flex;
   flex-direction: column;

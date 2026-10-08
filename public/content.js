@@ -21,7 +21,7 @@ window.SITE = {
   hero: {
     headlineLeft: "AREM",
     headlineRight: "",
-    subtextLeft: "Arem — fullstack developer and AI engineer. I build products end to end, from architecture to shipped code.",
+    subtextLeft: "Hey there, I'm Toromade Abdulrahman. A student at the University of Ilorin, Nigeria. My vision is to solve real-world challenges through enterprise and technology, but currently I'm open to freelance work.",
     subtextRight: "Based in Nigeria, studying electrical engineering at the University of Ilorin."
   },
 
