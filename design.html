@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design — Arem</title>
+  <meta name="description" content="Design works presented as a cascading fountain of tactile trays.">
+
+  <!-- Google Fonts: Space Grotesk & Inter with display=block -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=block" rel="stylesheet">
+
+  <!-- Core & Design Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/design.css">
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="page-design">
+
+  <!-- SVG Defs for Metallic Components & Gradients -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="metal-rainbar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f4f4f4"/>
+        <stop offset="0.35" stop-color="#b9b9b9"/>
+        <stop offset="0.7" stop-color="#6e6e6e"/>
+        <stop offset="1" stop-color="#9a9a9a"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/index.html#hero" class="nav__logo">Arem</a>
+      <ul class="nav__list">
+        <li><a href="/index.html#work" class="nav__link">Work</a></li>
+        <li><a href="/design.html" class="nav__link is-active" aria-current="page">Design</a></li>
+        <li><a href="/writing.html" class="nav__link">Writing</a></li>
+        <li><a href="/index.html#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="design-main">
+    <!-- Header Block -->
+    <header class="design-header">
+      <div class="design-header__inner">
+        <h1 class="design-header__title">Design</h1>
+        <p class="design-header__intro">Six tactile studies connected in continuous kinetic gravity. Trays, basins, and falling fluid motion.</p>
+      </div>
+    </header>
+
+    <!-- Fountain Showcase Section -->
+    <section class="design-section" id="fountain-section" aria-label="Design fountain showcase">
+      <!-- Full-bleed background canvas for fluid water rendering -->
+      <canvas id="fountain-canvas" class="design-fountain-canvas" aria-hidden="true"></canvas>
+
+      <!-- Trays Cascade Wrapper -->
+      <div class="design-wrapper" id="design-wrapper">
+
+        <!-- Card 1: Odd (Left-aligned) -->
+        <article class="design-row design-row--left" data-index="1" data-slug="design-one">
+          <div class="design-card" data-card-id="1">
+            <div class="design-tray">
+              <div class="design-tray__basin" aria-hidden="true">
+                <canvas class="design-basin-canvas" width="600" height="24"></canvas>
+                <div class="design-tray__rim"></div>
+              </div>
+              <div class="design-tray__media">
+                <img 
+                  src="/assets/project-1.jpg" 
+                  alt="Design Study One" 
+                  class="design-tray__img"
+                  width="1280" 
+                  height="800"
+                >
+              </div>
+            </div>
+
+            <!-- Rain Bar at pour end (Right for odd) -->
+            <div class="rain-bar rain-bar--right" data-rainbar-id="1" aria-hidden="true">
+              <div class="rain-throat"></div>
+              <div class="rain-bar__mount">
+                <div class="rain-bar__collar"></div>
+                <div class="rain-bar__rod">
+                  <div class="rain-bar__highlight"></div>
+                  <div class="rain-bar__holes"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outer Caption under card (Left-aligned for odd) -->
+          <div class="design-caption design-caption--left">
+            <h2 class="design-caption__title">Study One</h2>
+            <p class="design-caption__desc">Kinetic tension balance and dynamic fluid containment within tactile stoneware vessels.</p>
+          </div>
+        </article>
+
+        <!-- Card 2: Even (Right-aligned) -->
+        <article class="design-row design-row--right" data-index="2" data-slug="design-two">
+          <div class="design-card" data-card-id="2">
+            <div class="design-tray">
+              <div class="design-tray__basin" aria-hidden="true">
+                <canvas class="design-basin-canvas" width="600" height="24"></canvas>
+                <div class="design-tray__rim"></div>
+              </div>
+              <div class="design-tray__media">
+                <img 
+                  src="/assets/project-2.jpg" 
+                  alt="Design Study Two" 
+                  class="design-tray__img"
+                  width="1280" 
+                  height="800"
+                >
+              </div>
+            </div>
+
+            <!-- Rain Bar at pour end (Left for even) -->
+            <div class="rain-bar rain-bar--left" data-rainbar-id="2" aria-hidden="true">
+              <div class="rain-throat"></div>
+              <div class="rain-bar__mount">
+                <div class="rain-bar__collar"></div>
+                <div class="rain-bar__rod">
+                  <div class="rain-bar__highlight"></div>
+                  <div class="rain-bar__holes"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outer Caption under card (Right-aligned for even) -->
+          <div class="design-caption design-caption--right">
+            <h2 class="design-caption__title">Study Two</h2>
+            <p class="design-caption__desc">Refractive boundary conditions and specular reflections across cascading plane steps.</p>
+          </div>
+        </article>
+
+        <!-- Card 3: Odd (Left-aligned) -->
+        <article class="design-row design-row--left" data-index="3" data-slug="design-three">
+          <div class="design-card" data-card-id="3">
+            <div class="design-tray">
+              <div class="design-tray__basin" aria-hidden="true">
+                <canvas class="design-basin-canvas" width="600" height="24"></canvas>
+                <div class="design-tray__rim"></div>
+              </div>
+              <div class="design-tray__media">
+                <img 
+                  src="/assets/project-3.jpg" 
+                  alt="Design Study Three" 
+                  class="design-tray__img"
+                  width="1280" 
+                  height="800"
+                >
+              </div>
+            </div>
+
+            <!-- Rain Bar at pour end (Right for odd) -->
+            <div class="rain-bar rain-bar--right" data-rainbar-id="3" aria-hidden="true">
+              <div class="rain-throat"></div>
+              <div class="rain-bar__mount">
+                <div class="rain-bar__collar"></div>
+                <div class="rain-bar__rod">
+                  <div class="rain-bar__highlight"></div>
+                  <div class="rain-bar__holes"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outer Caption under card (Left-aligned for odd) -->
+          <div class="design-caption design-caption--left">
+            <h2 class="design-caption__title">Study Three</h2>
+            <p class="design-caption__desc">Viscous momentum damping calibrated to real-time physical gravity and surface tension.</p>
+          </div>
+        </article>
+
+        <!-- Card 4: Even (Right-aligned) -->
+        <article class="design-row design-row--right" data-index="4" data-slug="design-four">
+          <div class="design-card" data-card-id="4">
+            <div class="design-tray">
+              <div class="design-tray__basin" aria-hidden="true">
+                <canvas class="design-basin-canvas" width="600" height="24"></canvas>
+                <div class="design-tray__rim"></div>
+              </div>
+              <div class="design-tray__media">
+                <img 
+                  src="/assets/project-4.jpg" 
+                  alt="Design Study Four" 
+                  class="design-tray__img"
+                  width="1280" 
+                  height="800"
+                >
+              </div>
+            </div>
+
+            <!-- Rain Bar at pour end (Left for even) -->
+            <div class="rain-bar rain-bar--left" data-rainbar-id="4" aria-hidden="true">
+              <div class="rain-throat"></div>
+              <div class="rain-bar__mount">
+                <div class="rain-bar__collar"></div>
+                <div class="rain-bar__rod">
+                  <div class="rain-bar__highlight"></div>
+                  <div class="rain-bar__holes"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outer Caption under card (Right-aligned for even) -->
+          <div class="design-caption design-caption--right">
+            <h2 class="design-caption__title">Study Four</h2>
+            <p class="design-caption__desc">Acoustic water resonance mapping and quiet tactile spatial cadence between intervals.</p>
+          </div>
+        </article>
+
+        <!-- Card 5: Odd (Left-aligned) -->
+        <article class="design-row design-row--left" data-index="5" data-slug="design-five">
+          <div class="design-card" data-card-id="5">
+            <div class="design-tray">
+              <div class="design-tray__basin" aria-hidden="true">
+                <canvas class="design-basin-canvas" width="600" height="24"></canvas>
+                <div class="design-tray__rim"></div>
+              </div>
+              <div class="design-tray__media">
+                <img 
+                  src="/assets/project-5.jpg" 
+                  alt="Design Study Five" 
+                  class="design-tray__img"
+                  width="1280" 
+                  height="800"
+                >
+              </div>
+            </div>
+
+            <!-- Rain Bar at pour end (Right for odd) -->
+            <div class="rain-bar rain-bar--right" data-rainbar-id="5" aria-hidden="true">
+              <div class="rain-throat"></div>
+              <div class="rain-bar__mount">
+                <div class="rain-bar__collar"></div>
+                <div class="rain-bar__rod">
+                  <div class="rain-bar__highlight"></div>
+                  <div class="rain-bar__holes"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outer Caption under card (Left-aligned for odd) -->
+          <div class="design-caption design-caption--left">
+            <h2 class="design-caption__title">Study Five</h2>
+            <p class="design-caption__desc">Fluid droplet dispersion and micro-droplet detachment curves under subtle air drafts.</p>
+          </div>
+        </article>
+
+        <!-- Card 6: Even (Right-aligned) -->
+        <article class="design-row design-row--right" data-index="6" data-slug="design-six">
+          <div class="design-card" data-card-id="6">
+            <div class="design-tray">
+              <div class="design-tray__basin" aria-hidden="true">
+                <canvas class="design-basin-canvas" width="600" height="24"></canvas>
+                <div class="design-tray__rim"></div>
+              </div>
+              <div class="design-tray__media">
+                <img 
+                  src="/assets/project-6.jpg" 
+                  alt="Design Study Six" 
+                  class="design-tray__img"
+                  width="1280" 
+                  height="800"
+                >
+              </div>
+            </div>
+
+            <!-- Rain Bar at pour end (Left for even) -->
+            <div class="rain-bar rain-bar--left" data-rainbar-id="6" aria-hidden="true">
+              <div class="rain-throat"></div>
+              <div class="rain-bar__mount">
+                <div class="rain-bar__collar"></div>
+                <div class="rain-bar__rod">
+                  <div class="rain-bar__highlight"></div>
+                  <div class="rain-bar__holes"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outer Caption under card (Right-aligned for even) -->
+          <div class="design-caption design-caption--right">
+            <h2 class="design-caption__title">Study Six</h2>
+            <p class="design-caption__desc">Final trajectory stabilization spilling directly into the collection pool basin below.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Basin Catch Pool at Bottom -->
+      <div class="fountain-pool" id="fountain-pool" aria-label="Fountain reservoir pool">
+        <div class="fountain-pool__coping"></div>
+        <div class="fountain-pool__water">
+          <div class="fountain-pool__surface-shimmer"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="/content.js"></script>
+  <script src="/design.js"></script>
+</body>
+</html>

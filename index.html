@@ -1,0 +1,366 @@
+<!-- assets/character.png for Image 1 and assets/project-1.jpg to assets/project-5.jpg for the projects -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>html{background:#ece5da} html:not(.is-ready) body{opacity:0} body{transition:opacity .35s ease}</style>
+  <noscript><style>html:not(.is-ready) body{opacity:1}</style></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arem — Fullstack Developer & AI Engineer</title>
+  <meta name="description" content="Fullstack developer and AI engineer based in Nigeria. I build products end to end, from architecture to shipped code.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arem.is-a.dev/">
+  <meta property="og:title" content="Arem — Fullstack Developer & AI Engineer">
+  <meta property="og:description" content="Fullstack developer and AI engineer based in Nigeria. I build products end to end, from architecture to shipped code.">
+  <meta property="og:image" content="https://arem.is-a.dev/assets/character.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arem — Fullstack Developer & AI Engineer">
+  <meta name="twitter:description" content="Fullstack developer and AI engineer based in Nigeria. I build products end to end, from architecture to shipped code.">
+  <meta name="twitter:image" content="https://arem.is-a.dev/assets/character.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- Preload hero character image -->
+  <link rel="preload" as="image" href="assets/character.png" fetchpriority="high">
+
+  <!-- Google Fonts: Space Grotesk (Headings) & Inter (Body) with display=block -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=block" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GSAP & ScrollTrigger from cdnjs CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Hidden SVG for Metallic Interlocking Link Symbols -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+   <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+     <stop offset="0" stop-color="#f4f4f4"/><stop offset=".35" stop-color="#b9b9b9"/>
+     <stop offset=".7" stop-color="#6e6e6e"/><stop offset="1" stop-color="#9a9a9a"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+     <stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <g id="link-wide">
+     <rect x="-17" y="-29" width="34" height="58" rx="17" fill="none" stroke="#2a2a2a" stroke-width="12"/>
+     <rect x="-17" y="-29" width="34" height="58" rx="17" fill="none" stroke="url(#metal)" stroke-width="9"/>
+     <rect x="-18" y="-30" width="34" height="58" rx="17" fill="none" stroke="url(#shine)" stroke-width="2.5"/>
+    </g>
+    <g id="link-narrow">
+     <rect x="-7" y="-29" width="14" height="58" rx="7" fill="none" stroke="#2a2a2a" stroke-width="10"/>
+     <rect x="-7" y="-29" width="14" height="58" rx="7" fill="none" stroke="url(#metal)" stroke-width="7"/>
+     <rect x="-7.5" y="-29.5" width="14" height="58" rx="7" fill="none" stroke="url(#shine)" stroke-width="2"/>
+    </g>
+   </defs>
+  </svg>
+
+  <!-- Top Scroll Progress Line -->
+  <div class="scroll-progress" id="scroll-progress" role="progressbar" aria-label="Page reading progress" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#hero" class="nav__logo">Arem</a>
+      <ul class="nav__list">
+        <li><a href="index.html#work" class="nav__link">Work</a></li>
+        <li><a href="/design.html" class="nav__link">Design</a></li>
+        <li><a href="writing.html" class="nav__link">Writing</a></li>
+        <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SECTION 1: HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <!-- Headline sits behind character (z-index: 1) -->
+      <div class="hero__container">
+        <!-- Left Headline Column -->
+        <div class="hero__headline-col hero__headline-col--left">
+          <h1 class="hero__title" id="hero-title-left">YOUR</h1>
+          <p class="hero__subtext" id="hero-subtext-left">A concise introductory sentence describing your perspective.</p>
+        </div>
+
+        <!-- Right Headline Column -->
+        <div class="hero__headline-col hero__headline-col--right">
+          <h2 class="hero__title" id="hero-title-right">NAME</h2>
+          <p class="hero__subtext" id="hero-subtext-right">A second concise sentence highlighting your core practice.</p>
+        </div>
+      </div>
+
+      <!-- Centered Character & Cat Figure with depth illusion and transparent background (z-index: 2) -->
+      <div class="hero__character-wrapper">
+        <div class="hero__figure">
+          <img 
+            src="assets/character.png" 
+            alt="Character illustration" 
+            class="hero__character-img"
+            width="480"
+            height="800"
+          >
+          <img 
+            src="assets/cat.png" 
+            alt="Small brown tabby cat" 
+            class="hero__cat-img"
+            width="200"
+            height="200"
+          >
+        </div>
+        <div class="hero__shadow" aria-hidden="true"></div>
+      </div>
+
+      <!-- Scroll Hint -->
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <div class="hero__scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 & 3: PROJECT CARDS (THE ZIGZAG) & ANIMATED CHAINS -->
+    <section class="projects-section" id="work">
+      <!-- Projects Wrapper with position:relative containing ONLY the five items -->
+      <div class="projects-wrapper" id="projects-wrapper">
+        <!-- Card 1: Left -->
+        <article class="project-row project-row--left" data-index="1" data-slug="project-one">
+          <div class="project-card">
+            <div class="project-card__media">
+              <img 
+                src="assets/project-1.jpg" 
+                alt="Project One overview" 
+                class="project-card__img"
+                width="1280" 
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-info__title">Project One</h3>
+            <p class="project-info__desc">A short plain sentence describing the scope and outcome of this project.</p>
+            <a href="project.html?p=project-one" class="project-info__link">View project <span class="project-info__arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 2: Right -->
+        <article class="project-row project-row--right" data-index="2" data-slug="project-two">
+          <div class="project-card">
+            <div class="project-card__media">
+              <img 
+                src="assets/project-2.jpg" 
+                alt="Project Two overview" 
+                class="project-card__img"
+                width="1280" 
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-info__title">Project Two</h3>
+            <p class="project-info__desc">A short plain sentence describing the scope and outcome of this project.</p>
+            <a href="project.html?p=project-two" class="project-info__link">View project <span class="project-info__arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 3: Left -->
+        <article class="project-row project-row--left" data-index="3" data-slug="project-three">
+          <div class="project-card">
+            <div class="project-card__media">
+              <img 
+                src="assets/project-3.jpg" 
+                alt="Project Three overview" 
+                class="project-card__img"
+                width="1280" 
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-info__title">Project Three</h3>
+            <p class="project-info__desc">A short plain sentence describing the scope and outcome of this project.</p>
+            <a href="project.html?p=project-three" class="project-info__link">View project <span class="project-info__arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 4: Right -->
+        <article class="project-row project-row--right" data-index="4" data-slug="project-four">
+          <div class="project-card">
+            <div class="project-card__media">
+              <img 
+                src="assets/project-4.jpg" 
+                alt="Project Four overview" 
+                class="project-card__img"
+                width="1280" 
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-info__title">Project Four</h3>
+            <p class="project-info__desc">A short plain sentence describing the scope and outcome of this project.</p>
+            <a href="project.html?p=project-four" class="project-info__link">View project <span class="project-info__arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 5: Left -->
+        <article class="project-row project-row--left" data-index="5" data-slug="project-five">
+          <div class="project-card">
+            <div class="project-card__media">
+              <img 
+                src="assets/project-5.jpg" 
+                alt="Project Five overview" 
+                class="project-card__img"
+                width="1280" 
+                height="800"
+                loading="lazy"
+              >
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-info__title">Project Five</h3>
+            <p class="project-info__desc">A short plain sentence describing the scope and outcome of this project.</p>
+            <a href="project.html?p=project-five" class="project-info__link">View project <span class="project-info__arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 4: REMAINING BODY -->
+    <section class="statement-section" id="statement">
+      <div class="statement-container">
+        <h2 class="statement-title" id="statement-title">A clear two-line statement summarizing your perspective.</h2>
+        <p class="statement-text" id="statement-text">
+          A single paragraph of placeholder text offering further detail about your methodology, principles, and collaborative approach without extraneous decorative elements.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 5 & 6: BOTTOM AREA (FOOTER & PAPER STACK FORM) -->
+    <footer class="site-footer" id="contact">
+      <!-- Left side footer content (at most 46% width) -->
+      <div class="footer-content">
+        <div class="footer-top">
+          <span class="footer-logo">Arem</span>
+          <p class="footer-sentence">Based in Nigeria, open to the right project. The form below is the fastest way to reach me.</p>
+          
+          <div class="footer-links-grid">
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-title">Pages</h4>
+              <ul class="footer-link-list" id="footer-pages-list">
+                <li><a href="index.html#work" class="footer-link">Work</a></li>
+                <li><a href="/design.html" class="footer-link">Design</a></li>
+                <li><a href="writing.html" class="footer-link">Writing</a></li>
+                <li><a href="#contact" class="footer-link">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-title">Social</h4>
+              <ul class="footer-link-list" id="footer-social-list">
+                <li><a href="https://github.com/Arem-ee" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/toromadeabdulrahman" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://x.com/Arem_ee" class="footer-link" target="_blank" rel="noopener noreferrer">X</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright" id="copyright-text">&copy; <span id="copyright-year">2026</span> Arem. All rights reserved.</p>
+          <a href="#hero" class="footer-back-top" id="back-to-top">Back to top <span aria-hidden="true">&uarr;</span></a>
+        </div>
+      </div>
+
+      <!-- Absolutely positioned paper-stack on top of footer -->
+      <div class="paper-stack" id="paper-stack">
+        <!-- paper--back: empty sheet shifted and rotated -->
+        <div class="paper-sheet paper--back" aria-hidden="true"></div>
+
+        <!-- paper--front: the contact form -->
+        <div class="paper-sheet paper--front">
+          <form class="contact-form" id="contact-form" novalidate>
+            <!-- Honeypot Field for Spam Prevention -->
+            <div style="display:none;" aria-hidden="true">
+              <label for="field-trap">Do not fill this</label>
+              <input type="text" id="field-trap" name="_bot_trap" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Full Name -->
+            <div class="form-field">
+              <div class="floating-group">
+                <input type="text" id="field-name" name="name" class="form-input" placeholder=" " required autocomplete="name">
+                <label for="field-name" class="floating-label">Full name</label>
+              </div>
+              <span class="field-error" id="error-name" role="alert"></span>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-field">
+              <div class="floating-group">
+                <input type="email" id="field-email" name="email" class="form-input" placeholder=" " required autocomplete="email">
+                <label for="field-email" class="floating-label">Email address</label>
+              </div>
+              <span class="field-error" id="error-email" role="alert"></span>
+            </div>
+
+            <!-- Dropdown: What do you need? -->
+            <div class="form-field">
+              <div class="floating-group is-active">
+                <select id="field-need" name="need" class="form-select" aria-label="What do you need?">
+                  <option value="project">A new project</option>
+                  <option value="role">A full-time role</option>
+                  <option value="collaboration">A collaboration</option>
+                  <option value="other">Something else</option>
+                </select>
+                <label for="field-need" class="floating-label">What do you need?</label>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="form-field">
+              <div class="floating-group">
+                <textarea id="field-message" name="message" class="form-textarea" placeholder=" " required minlength="10"></textarea>
+                <label for="field-message" class="floating-label">Message</label>
+              </div>
+              <span class="field-error" id="error-message" role="alert"></span>
+            </div>
+
+            <!-- Form-level error -->
+            <span class="field-error" id="error-form" role="alert"></span>
+
+            <!-- Full-width Submit Button in --sage with Arrow -->
+            <button type="submit" class="form-submit-btn" id="form-submit-btn">
+              <span>Send inquiry</span>
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </form>
+
+          <!-- Success State -->
+          <div class="form-success-state" id="contact-success" role="status" aria-live="polite">
+            <div class="success-check-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="success-title">Message received.</h3>
+            <p class="success-body">Thank you for reaching out. I will get back to you shortly.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Site Content Data -->
+  <script src="content.js"></script>
+
+  <!-- Main JavaScript File -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
