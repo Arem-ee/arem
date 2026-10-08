@@ -144,7 +144,6 @@ body,
 
 .parallax-media-wrap {
   width: 100%;
-  aspect-ratio: 16 / 9;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-card);
@@ -155,11 +154,8 @@ body,
 
 .parallax-img {
   width: 100%;
-  height: 120%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  transform: translateY(0);
-  will-change: transform;
 }
 
 /* Block B: "The problem" 2-Column (Heading 4/12, Paragraphs 8/12) */
@@ -240,7 +236,6 @@ body,
 }
 
 .block-c-img-wrap {
-  aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-card);
@@ -254,8 +249,7 @@ body,
 
 .block-c-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
@@ -294,7 +288,6 @@ body,
 
 .block-d-media {
   width: 100%;
-  aspect-ratio: 21 / 9;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-card);
@@ -304,8 +297,7 @@ body,
 
 .block-d-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 

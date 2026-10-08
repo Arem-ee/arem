@@ -177,7 +177,6 @@ html, body {
 
 /* Tray Media Card */
 .design-tray__media {
-  aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: calc(var(--radius) - 6px);
   background-color: var(--cream);
@@ -186,8 +185,7 @@ html, body {
 
 .design-tray__img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   user-select: none;
   pointer-events: none;

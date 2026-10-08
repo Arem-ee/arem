@@ -300,22 +300,6 @@ function mountProject(slug, { animateIntro = false } = {}) {
   if (typeof gsap !== "undefined") {
     ctx = gsap.context(() => {
       if (!prefersReducedMotion && typeof ScrollTrigger !== "undefined") {
-        // Subtle Parallax on Block A image (moves 40px slower than scroll)
-        gsap.fromTo(
-          ".parallax-img",
-          { y: 0 },
-          {
-            y: -40,
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".project-block-a",
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true
-            }
-          }
-        );
-
         // Section 2: Every block reveals with a fade and 24px rise, 0.1s stagger
         const blocks = document.querySelectorAll(".project-block");
         blocks.forEach((blk) => {
