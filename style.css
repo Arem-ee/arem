@@ -46,6 +46,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -97,12 +98,20 @@ body {
 }
 
 .nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: -0.03em;
   color: var(--ink);
   text-decoration: none;
+}
+
+.nav__logo-mark {
+  display: block;
+  border-radius: 5px;
 }
 
 .nav__list {
@@ -430,7 +439,7 @@ body {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--card-accent, var(--ink));
   text-decoration: none;
   width: fit-content;
   transition: color 0.2s ease;
@@ -443,7 +452,11 @@ body {
 
 @media (hover: hover) {
   .project-info__link:hover {
-    color: var(--sage);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .project-row:hover .project-info__title {
+    color: var(--card-accent, var(--ink));
   }
   .project-row:hover .project-info__arrow,
   .project-info__link:hover .project-info__arrow {
@@ -549,11 +562,19 @@ body {
 }
 
 .footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.03em;
   color: var(--cream);
+}
+
+.footer-logo-mark {
+  display: block;
+  border-radius: 6px;
 }
 
 .footer-sentence {
@@ -1157,6 +1178,12 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 18px;
+}
+
+.splash__mark {
+  display: block;
+  width: 72px;
+  height: 72px;
 }
 
 .splash__logo {

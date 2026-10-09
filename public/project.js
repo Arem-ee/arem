@@ -37,13 +37,18 @@ let backArmed = false;
  * SECTION 1 - Single source of truth for the first screen
  * Also used to build the nav-less replica inside the portal (Section 3 & Problem 2)
  */
-function renderHero(project) {
-  const worldColor = project.world === "sage" ? "var(--sage)" : "var(--cream)";
+function renderHero(project, index) {
+  const accent = project.accent || "#9BAA97";
+  const heroBg = `radial-gradient(130% 100% at 50% 0%, ${accent}16 0%, var(--bg) 62%)`;
+  const num = typeof index === "number" ? String(index + 1).padStart(2, "0") : "";
   return `
-    <section class="project-hero-screen" style="background-color: ${worldColor};">
+    <section class="project-hero-screen" style="background: ${heroBg};">
       <div class="project-hero-content">
         <div class="project-hero-main">
-          <h1 class="project-hero-title">${project.title}</h1>
+          <div class="project-hero-title-wrap">
+            <span class="project-hero-kicker">${num ? num + " &middot; " : ""}Case study</span>
+            <h1 class="project-hero-title">${project.title}</h1>
+          </div>
           <p class="project-hero-summary">${project.summary}</p>
         </div>
         <div class="project-hero-meta">
@@ -127,10 +132,11 @@ function mountProject(slug, { animateIntro = false } = {}) {
     // Problem 2.5: Reduced motion - do not render portal-back (LAND = 0)
     root.innerHTML = `
       <!-- SECTION 1: FIRST SCREEN -->
-      ${renderHero(project)}
+      ${renderHero(project, currentIndex)}
 
       <!-- SECTION 2: PROJECT BODY -->
       <div class="project-body">
+        <a href="index.html#work" class="back-to-work">&larr; All projects</a>
         <section class="project-block project-block-a">
           <div class="parallax-media-wrap">
             <img 
@@ -199,7 +205,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
           </a>
           <div class="portal-circle-border" id="portal-back-circle-border"></div>
           <div class="portal-replica-wrap" id="portal-back-replica">
-            ${renderHero(prevProject)}
+            ${renderHero(prevProject, prevIndex)}
           </div>
           <div class="portal-next-label" id="portal-back-label">
             Previous: ${prevProject.title}
@@ -208,10 +214,11 @@ function mountProject(slug, { animateIntro = false } = {}) {
       </section>
 
       <!-- SECTION 1: FIRST SCREEN -->
-      ${renderHero(project)}
+      ${renderHero(project, currentIndex)}
 
       <!-- SECTION 2: PROJECT BODY -->
       <div class="project-body">
+        <a href="index.html#work" class="back-to-work">&larr; All projects</a>
         <!-- Block A: 16:9 Wide Image with Parallax -->
         <section class="project-block project-block-a">
           <div class="parallax-media-wrap">
@@ -272,7 +279,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
           </a>
           <div class="portal-circle-border" id="portal-circle-border"></div>
           <div class="portal-replica-wrap" id="portal-replica">
-            ${renderHero(nextProject)}
+            ${renderHero(nextProject, nextIndex)}
           </div>
           <div class="portal-next-label" id="portal-next-label">
             Next: ${nextProject.title}
@@ -284,6 +291,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
 
   // Set document.title
   document.title = `${project.title} — ${SITE.brand.name}`;
+  document.documentElement.style.setProperty("--project-accent", project.accent || "#9BAA97");
 
   // (c) force layout by reading document.body.offsetHeight
   const _forceLayout = document.body.offsetHeight;
@@ -489,9 +497,15 @@ function mountProject(slug, { animateIntro = false } = {}) {
         const introTl = gsap.timeline({ defaults: { ease: "power2.out" } });
         introTl
           .fromTo(
+            ".project-hero-kicker",
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.6 }
+          )
+          .fromTo(
             ".project-hero-title",
             { opacity: 0, y: 32 },
-            { opacity: 1, y: 0, duration: 0.8 }
+            { opacity: 1, y: 0, duration: 0.8 },
+            "-=0.4"
           )
           .fromTo(
             ".project-hero-summary",

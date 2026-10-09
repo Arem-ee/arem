@@ -171,6 +171,7 @@ function triggerAppInit() {
     readyTimeout
   ]).then(() => {
     document.documentElement.classList.add("is-ready");
+    hideSplash();
     requestAnimationFrame(() => {
       initLandingApp(prefersReducedMotion);
       if (typeof ScrollTrigger !== "undefined") {
@@ -224,13 +225,13 @@ function populateSiteContent() {
   const projects = SITE_CONTENT.projects || [];
   const footer = SITE_CONTENT.footer || {};
 
-  const logo = document.querySelector(".nav__logo");
+  const logo = document.querySelector(".nav__logo-text");
   if (logo && brand.name) {
     logo.textContent = brand.name;
     document.title = brand.name;
   }
 
-  const footerLogo = document.querySelector(".footer-logo");
+  const footerLogo = document.querySelector(".footer-logo-text");
   if (footerLogo && brand.name) {
     footerLogo.textContent = brand.name;
   }
@@ -267,6 +268,7 @@ function populateSiteContent() {
     if (!pData) return;
 
     row.setAttribute("data-slug", pData.slug);
+    row.style.setProperty("--card-accent", pData.accent || "#9BAA97");
     const titleEl = row.querySelector(".project-info__title");
     const descEl = row.querySelector(".project-info__desc");
     const linkEl = row.querySelector(".project-info__link");
