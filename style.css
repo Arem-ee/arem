@@ -187,6 +187,7 @@ body {
   justify-content: space-between;
   align-items: center;
   pointer-events: none;
+  position: relative; /* Anchors the absolutely-positioned character */
 }
 
 .hero__headline-col {
@@ -228,9 +229,9 @@ body {
 
 .hero__character-wrapper {
   position: absolute;
-  top: clamp(31.7px, 5.06vw, 81px);
-  left: 100%; /* Beside the AREM headline column (desktop) */
-  transform: translate(-30%, -50%);
+  top: clamp(31.7px, 5.06vw, 81px); /* half of the AREM title height, so the character centers on the wordmark */
+  left: 50%; /* centered between the two headline columns */
+  transform: translate(-50%, -50%);
   z-index: 2; /* Character is above headline */
   display: flex;
   flex-direction: column;
@@ -869,7 +870,8 @@ body {
   .hero__container {
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 8px;
+    row-gap: 24px;
+    position: static;
   }
 
   .hero__headline-col {
@@ -883,32 +885,27 @@ body {
     line-height: 0.9;
   }
 
-  #hero-title-right {
-    order: 2;
-    text-align: right;
-    font-size: clamp(64px, 22vw, 120px);
-    line-height: 0.9;
-    margin-bottom: 28svh;
-  }
-
   .hero__character-wrapper {
-    position: absolute;
-    top: calc(50% - 16px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 56svh;
-    width: auto;
-    max-width: 80vw;
+    order: 2;
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    height: auto;
+    max-height: none;
   }
 
   .hero__figure {
-    height: 100%;
+    height: auto;
+    max-height: none;
   }
 
   .hero__character-img {
-    height: 100%;
+    height: auto;
     width: auto;
-    max-width: 80vw;
+    max-width: 70vw;
+    max-height: 34svh;
   }
 
   .hero__shadow {
@@ -1128,8 +1125,57 @@ body {
   .hero__character-wrapper,
   .hero__shadow,
   .chain__sway,
-  .paper-stack {
+  .paper-stack,
+  .splash__dot {
     animation: none !important;
     transform: none !important;
   }
+}
+
+/* ==========================================================================
+   SPLASH SCREEN
+   ========================================================================== */
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg);
+  transition: opacity 0.6s ease;
+}
+
+.splash--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.splash__logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 2.25rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.splash__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--sage);
+  animation: splash-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes splash-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.7); opacity: 0.4; }
 }

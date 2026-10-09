@@ -186,6 +186,19 @@ if (document.readyState === "loading") {
   triggerAppInit();
 }
 
+const splashTimeout = setTimeout(hideSplash, 5000);
+window.addEventListener("load", () => {
+  clearTimeout(splashTimeout);
+  hideSplash();
+});
+
+function hideSplash() {
+  const splash = document.querySelector(".splash");
+  if (!splash || splash.classList.contains("splash--hidden")) return;
+  splash.classList.add("splash--hidden");
+  splash.addEventListener("transitionend", () => splash.remove(), { once: true });
+}
+
 /**
  * Initialize all landing page components after readiness gate
  */
