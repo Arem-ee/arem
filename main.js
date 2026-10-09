@@ -279,10 +279,40 @@ function populateSiteContent() {
     if (linkEl) {
       linkEl.href = `project.html?p=${pData.slug}`;
       linkEl.innerHTML = `View project <span class="project-info__arrow" aria-hidden="true">&rarr;</span>`;
+      linkEl.addEventListener("click", (e) => {
+        e.preventDefault();
+        playProjectEnter(pData.accent, e.clientX, e.clientY, () => {
+          window.location.href = `project.html?p=${pData.slug}`;
+        });
+      });
     }
     if (imgEl && pData.image) {
       imgEl.src = pData.image;
       imgEl.alt = pData.alt || `${pData.title} overview`;
+    }
+  });
+}
+
+/**
+ * Circle-wipe enter transition from a project card click point
+ */
+function playProjectEnter(accent, x, y, done) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || typeof gsap === "undefined") {
+    done();
+    return;
+  }
+  const circle = document.createElement("div");
+  circle.className = "enter-circle";
+  circle.style.backgroundColor = accent || "#9BAA97";
+  circle.style.transformOrigin = `${x}px ${y}px`;
+  document.body.appendChild(circle);
+  gsap.to(circle, {
+    scale: 1,
+    duration: 0.7,
+    ease: "power2.inOut",
+    onComplete: () => {
+      circle.remove();
+      done();
     }
   });
 }
@@ -1001,9 +1031,9 @@ function initContactForm(prefersReducedMotion) {
 
   // Paper stack drop-in entrance animation
   const paperStack = document.getElementById("paper-stack");
-  const footer = document.querySelector(".site-footer");
+  const contactSection = document.querySelector(".contact-section");
 
-  if (paperStack && footer) {
+  if (paperStack && contactSection) {
     if (prefersReducedMotion || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
       paperStack.style.opacity = "1";
       paperStack.style.transform = "none";
@@ -1012,18 +1042,18 @@ function initContactForm(prefersReducedMotion) {
         paperStack,
         {
           opacity: 0,
-          y: 48,
-          rotation: 3
+          y: 64,
+          rotation: 4
         },
         {
           opacity: 1,
           y: 0,
           rotation: 0,
-          duration: 0.9,
-          ease: "power2.out",
+          duration: 1,
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: footer,
-            start: "top 80%",
+            trigger: contactSection,
+            start: "top 85%",
             toggleActions: "play none none none"
           }
         }

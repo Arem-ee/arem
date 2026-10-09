@@ -251,115 +251,113 @@
       </div>
     </section>
 
-    <!-- SECTION 5 & 6: BOTTOM AREA (FOOTER & PAPER STACK FORM) -->
-    <footer class="site-footer" id="contact">
-      <!-- Left side footer content (at most 46% width) -->
-      <div class="footer-content">
-        <div class="footer-top">
-            <span class="footer-logo"><img src="assets/logo.svg" alt="" class="footer-logo-mark" width="24" height="24"><span class="footer-logo-text">Arem</span></span>
-          <p class="footer-sentence">Based in Nigeria, open to the right project. The form below is the fastest way to reach me.</p>
-          
-          <div class="footer-links-grid">
-            <div class="footer-nav-col">
-              <h4 class="footer-nav-title">Pages</h4>
-              <ul class="footer-link-list" id="footer-pages-list">
-                <li><a href="index.html#work" class="footer-link">Work</a></li>
-                <li><a href="/design.html" class="footer-link">Design</a></li>
-                <li><a href="writing.html" class="footer-link">Writing</a></li>
-                <li><a href="#contact" class="footer-link">Contact</a></li>
-              </ul>
-            </div>
-            <div class="footer-nav-col">
-              <h4 class="footer-nav-title">Social</h4>
-              <ul class="footer-link-list" id="footer-social-list">
-                <li><a href="https://github.com/Arem-ee" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/toromadeabdulrahman" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://x.com/Arem_ee" class="footer-link" target="_blank" rel="noopener noreferrer">X</a></li>
-              </ul>
+    <!-- SECTION 5: CONTACT FORM (paper form drops in) -->
+    <section class="contact-section" id="contact">
+      <div class="contact-inner">
+        <div class="paper-stack" id="paper-stack">
+          <div class="paper-sheet paper--back" aria-hidden="true"></div>
+          <div class="paper-sheet paper--front">
+            <form class="contact-form" id="contact-form" novalidate>
+              <!-- Honeypot Field for Spam Prevention -->
+              <div style="display:none;" aria-hidden="true">
+                <label for="field-trap">Do not fill this</label>
+                <input type="text" id="field-trap" name="_bot_trap" tabindex="-1" autocomplete="off">
+              </div>
+
+              <!-- Full Name -->
+              <div class="form-field">
+                <div class="floating-group">
+                  <input type="text" id="field-name" name="name" class="form-input" placeholder=" " required autocomplete="name">
+                  <label for="field-name" class="floating-label">Full name</label>
+                </div>
+                <span class="field-error" id="error-name" role="alert"></span>
+              </div>
+
+              <!-- Email Address -->
+              <div class="form-field">
+                <div class="floating-group">
+                  <input type="email" id="field-email" name="email" class="form-input" placeholder=" " required autocomplete="email">
+                  <label for="field-email" class="floating-label">Email address</label>
+                </div>
+                <span class="field-error" id="error-email" role="alert"></span>
+              </div>
+
+              <!-- Dropdown: What do you need? -->
+              <div class="form-field">
+                <div class="floating-group is-active">
+                  <select id="field-need" name="need" class="form-select" aria-label="What do you need?">
+                    <option value="project">A new project</option>
+                    <option value="role">A full-time role</option>
+                    <option value="collaboration">A collaboration</option>
+                    <option value="other">Something else</option>
+                  </select>
+                  <label for="field-need" class="floating-label">What do you need?</label>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="form-field form-field--message">
+                <div class="floating-group">
+                  <textarea id="field-message" name="message" class="form-textarea" placeholder=" " required minlength="10"></textarea>
+                  <label for="field-message" class="floating-label">Message</label>
+                </div>
+                <span class="field-error" id="error-message" role="alert"></span>
+              </div>
+
+              <!-- Form-level error -->
+              <span class="field-error" id="error-form" role="alert"></span>
+
+              <!-- Full-width Submit Button in --sage with Arrow -->
+              <button type="submit" class="form-submit-btn" id="form-submit-btn">
+                <span>Send inquiry</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </form>
+
+            <!-- Success State -->
+            <div class="form-success-state" id="contact-success" role="status" aria-live="polite">
+              <div class="success-check-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3 class="success-title">Message received.</h3>
+              <p class="success-body">Thank you for reaching out. I will get back to you shortly.</p>
             </div>
           </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p class="footer-copyright" id="copyright-text">&copy; <span id="copyright-year">2026</span> Arem. All rights reserved.</p>
-          <a href="#hero" class="footer-back-top" id="back-to-top">Back to top <span aria-hidden="true">&uarr;</span></a>
         </div>
       </div>
+    </section>
 
-      <!-- Absolutely positioned paper-stack on top of footer -->
-      <div class="paper-stack" id="paper-stack">
-        <!-- paper--back: empty sheet shifted and rotated -->
-        <div class="paper-sheet paper--back" aria-hidden="true"></div>
-
-        <!-- paper--front: the contact form -->
-        <div class="paper-sheet paper--front">
-          <form class="contact-form" id="contact-form" novalidate>
-            <!-- Honeypot Field for Spam Prevention -->
-            <div style="display:none;" aria-hidden="true">
-              <label for="field-trap">Do not fill this</label>
-              <input type="text" id="field-trap" name="_bot_trap" tabindex="-1" autocomplete="off">
-            </div>
-
-            <!-- Full Name -->
-            <div class="form-field">
-              <div class="floating-group">
-                <input type="text" id="field-name" name="name" class="form-input" placeholder=" " required autocomplete="name">
-                <label for="field-name" class="floating-label">Full name</label>
-              </div>
-              <span class="field-error" id="error-name" role="alert"></span>
-            </div>
-
-            <!-- Email Address -->
-            <div class="form-field">
-              <div class="floating-group">
-                <input type="email" id="field-email" name="email" class="form-input" placeholder=" " required autocomplete="email">
-                <label for="field-email" class="floating-label">Email address</label>
-              </div>
-              <span class="field-error" id="error-email" role="alert"></span>
-            </div>
-
-            <!-- Dropdown: What do you need? -->
-            <div class="form-field">
-              <div class="floating-group is-active">
-                <select id="field-need" name="need" class="form-select" aria-label="What do you need?">
-                  <option value="project">A new project</option>
-                  <option value="role">A full-time role</option>
-                  <option value="collaboration">A collaboration</option>
-                  <option value="other">Something else</option>
-                </select>
-                <label for="field-need" class="floating-label">What do you need?</label>
-              </div>
-            </div>
-
-            <!-- Message -->
-            <div class="form-field form-field--message">
-              <div class="floating-group">
-                <textarea id="field-message" name="message" class="form-textarea" placeholder=" " required minlength="10"></textarea>
-                <label for="field-message" class="floating-label">Message</label>
-              </div>
-              <span class="field-error" id="error-message" role="alert"></span>
-            </div>
-
-            <!-- Form-level error -->
-            <span class="field-error" id="error-form" role="alert"></span>
-
-            <!-- Full-width Submit Button in --sage with Arrow -->
-            <button type="submit" class="form-submit-btn" id="form-submit-btn">
-              <span>Send inquiry</span>
-              <span aria-hidden="true">&rarr;</span>
-            </button>
-          </form>
-
-          <!-- Success State -->
-          <div class="form-success-state" id="contact-success" role="status" aria-live="polite">
-            <div class="success-check-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <h3 class="success-title">Message received.</h3>
-            <p class="success-body">Thank you for reaching out. I will get back to you shortly.</p>
+    <!-- SECTION 6: FOOTER (full-width) -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo"><img src="assets/logo.svg" alt="" class="footer-logo-mark" width="24" height="24"><span class="footer-logo-text">Arem</span></span>
+          <p class="footer-sentence">Based in Nigeria, open to the right project.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Pages</h4>
+            <ul class="footer-link-list" id="footer-pages-list">
+              <li><a href="index.html#work" class="footer-link">Work</a></li>
+              <li><a href="/design.html" class="footer-link">Design</a></li>
+              <li><a href="writing.html" class="footer-link">Writing</a></li>
+              <li><a href="#contact" class="footer-link">Contact</a></li>
+            </ul>
           </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Social</h4>
+            <ul class="footer-link-list" id="footer-social-list">
+              <li><a href="https://github.com/Arem-ee" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/toromadeabdulrahman" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://x.com/Arem_ee" class="footer-link" target="_blank" rel="noopener noreferrer">X</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <p class="footer-copyright" id="copyright-text">&copy; <span id="copyright-year">2026</span> Arem. All rights reserved.</p>
+          <a href="#hero" class="footer-back-top" id="back-to-top">Back to top <span aria-hidden="true">&uarr;</span></a>
         </div>
       </div>
     </footer>

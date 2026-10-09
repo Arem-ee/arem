@@ -31,7 +31,7 @@ window.SITE = {
   },
 
   footer: {
-    description: "Based in Nigeria, open to the right project. The form below is the fastest way to reach me.",
+    description: "Based in Nigeria, open to the right project. The form above is the fastest way to reach me.",
     pages: [
       { label: "Work", href: "index.html#work" },
       { label: "Design", href: "/design.html" },

@@ -535,29 +535,41 @@ body {
    SECTION 5 & 6: BOTTOM AREA (FOOTER & PAPER STACK - DESKTOP)
    ========================================================================== */
 
+.contact-section {
+  background-color: var(--bg);
+  padding: 120px 48px 0;
+}
+
+.contact-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
 .site-footer {
   background-color: var(--ink);
   color: var(--cream);
-  min-height: 600px;
-  padding: 64px;
+  padding: 160px 48px 48px;
   position: relative;
   z-index: 1;
   overflow: visible;
 }
 
-/* Left side content stays at most 46% of width so paper never covers it */
-.footer-content {
-  max-width: 46%;
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
-  min-height: 480px;
+  gap: 48px;
 }
 
-.footer-top {
+.footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  max-width: 320px;
 }
 
 .footer-logo {
@@ -580,13 +592,12 @@ body {
   font-size: 0.9375rem;
   line-height: 1.6;
   opacity: 0.8;
-  max-width: 380px;
+  max-width: 320px;
 }
 
-.footer-links-grid {
+.footer-links {
   display: flex;
   gap: 64px;
-  margin-top: 16px;
 }
 
 .footer-nav-col {
@@ -600,7 +611,7 @@ body {
   font-weight: 600;
   font-size: 0.875rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+ letter-spacing: 0.05em;
   color: var(--sage);
 }
 
@@ -625,12 +636,11 @@ body {
   }
 }
 
-.footer-bottom {
-  border-top: 1px solid rgba(243, 236, 225, 0.12);
-  padding-top: 32px;
+.footer-meta {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
 }
 
 .footer-copyright {
@@ -660,13 +670,12 @@ body {
    ========================================================================== */
 
 .paper-stack {
-  position: absolute;
-  top: -120px; /* Sticks out over the section above */
-  right: 64px;
   width: 480px;
-  height: 600px;
+  max-width: 100%;
+  height: 560px;
+  position: relative;
   z-index: 5;
-  overflow: visible;
+  margin-bottom: -100px;
 }
 
 .paper-sheet {
@@ -681,7 +690,6 @@ body {
   border: 1px solid rgba(34, 33, 30, 0.06);
 }
 
-/* Back sheet rotated and offset for layered physical feel */
 .paper--back {
   transform: rotate(-2deg) translate(-10px, 12px);
   z-index: 1;
@@ -689,7 +697,7 @@ body {
 }
 
 .paper--front {
-  transform: rotate(0deg);
+  position: relative;
   z-index: 2;
   padding: 44px 40px;
   display: flex;
@@ -1063,23 +1071,14 @@ body {
     max-width: 100% !important;
   }
 
-  /* Footer & Paper Stack Mobile */
-  .site-footer {
-    padding: 0 20px 48px 20px !important;
-    min-height: auto !important;
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
+  /* Contact & Footer Mobile */
+  .contact-section {
+    padding: 80px 20px 0 !important;
   }
 
   .paper-stack {
-    position: relative !important;
-    top: -56px !important;
-    right: auto !important;
-    left: auto !important;
     width: 100% !important;
     height: auto !important;
-    min-height: 520px;
     margin-bottom: 24px;
   }
 
@@ -1114,26 +1113,26 @@ body {
     padding: 16px 20px !important;
   }
 
-  .footer-content {
-    max-width: 100% !important;
-    width: 100% !important;
-    min-height: auto !important;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  .site-footer {
+    padding: 64px 20px 40px !important;
   }
 
-  .footer-links-grid {
+  .footer-inner {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  .footer-brand {
+    max-width: 100% !important;
+  }
+
+  .footer-links {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 24px !important;
-    margin-top: 24px !important;
   }
 
-  .footer-bottom {
-    margin-top: 32px !important;
-    padding-top: 24px !important;
-    display: flex !important;
+  .footer-meta {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 16px !important;
@@ -1214,4 +1213,16 @@ body {
 @keyframes splash-pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.7); opacity: 0.4; }
+}
+
+/* ==========================================================================
+   PROJECT ENTER TRANSITION (circle wipe from click point)
+   ========================================================================== */
+
+.enter-circle {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  transform: scale(0);
 }
