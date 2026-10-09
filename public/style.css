@@ -46,7 +46,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -238,7 +237,7 @@ body {
 
 .hero__character-wrapper {
   position: absolute;
-  top: clamp(31.7px, 5.06vw, 81px); /* half of the AREM title height, so the character centers on the wordmark */
+  top: 50%; /* center of the screen, between the two headline columns */
   left: 50%; /* centered between the two headline columns */
   transform: translate(-50%, -50%);
   z-index: 2; /* Character is above headline */
@@ -539,7 +538,7 @@ body {
 .site-footer {
   background-color: var(--ink);
   color: var(--cream);
-  min-height: 760px;
+  min-height: 600px;
   padding: 64px;
   position: relative;
   z-index: 1;
@@ -552,7 +551,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 632px;
+  min-height: 480px;
 }
 
 .footer-top {
@@ -662,10 +661,10 @@ body {
 
 .paper-stack {
   position: absolute;
-  top: -140px; /* Sticks out over the section above */
+  top: -120px; /* Sticks out over the section above */
   right: 64px;
   width: 480px;
-  height: 680px;
+  height: 600px;
   z-index: 5;
   overflow: visible;
 }
@@ -684,7 +683,7 @@ body {
 
 /* Back sheet rotated and offset for layered physical feel */
 .paper--back {
-  transform: rotate(-3deg) translate(-14px, 16px);
+  transform: rotate(-2deg) translate(-10px, 12px);
   z-index: 1;
   pointer-events: none;
 }
@@ -710,6 +709,14 @@ body {
   flex-direction: column;
 }
 
+.form-field--message {
+  flex: 1;
+}
+
+.form-field--message .floating-group {
+  flex: 1;
+}
+
 .floating-group {
   position: relative;
   width: 100%;
@@ -733,7 +740,9 @@ body {
 
 .form-textarea {
   resize: none;
-  height: 110px;
+  flex: 1;
+  height: auto;
+  min-height: 140px;
   line-height: 1.5;
 }
 
