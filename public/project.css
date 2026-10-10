@@ -390,6 +390,11 @@ body,
   will-change: clip-path;
 }
 
+/* Center the replica hero content so the growing circle reveals it */
+.portal-replica-wrap .project-hero-screen {
+  justify-content: center;
+}
+
 /* Circle Border & Shadow while Small */
 .portal-circle-border {
   position: absolute;
