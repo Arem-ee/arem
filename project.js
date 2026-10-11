@@ -286,6 +286,39 @@ function mountProject(slug, { animateIntro = false } = {}) {
           </div>
         </div>
       </section>
+
+      <!-- SECTION 6: FOOTER (full-width) -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <span class="footer-logo"><img src="assets/logo.svg" alt="" class="footer-logo-mark" width="24" height="24"><span class="footer-logo-text">Arem</span></span>
+            <p class="footer-sentence">Based in Nigeria, open to the right project.</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-title">Pages</h4>
+              <ul class="footer-link-list" id="footer-pages-list">
+                <li><a href="index.html#work" class="footer-link">Work</a></li>
+                <li><a href="/design.html" class="footer-link">Design</a></li>
+                <li><a href="/writing.html" class="footer-link">Writing</a></li>
+                <li><a href="#contact" class="footer-link">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-nav-col">
+              <h4 class="footer-nav-title">Social</h4>
+              <ul class="footer-link-list" id="footer-social-list">
+                <li><a href="https://github.com/Arem-ee" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/toromadeabdulrahman" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://x.com/Arem_ee" class="footer-link" target="_blank" rel="noopener noreferrer">X</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-meta">
+            <p class="footer-copyright" id="copyright-text">&copy; <span id="copyright-year">2026</span> Arem. All rights reserved.</p>
+            <a href="#hero" class="footer-back-top" id="back-to-top">Back to top <span aria-hidden="true">&uarr;</span></a>
+          </div>
+        </div>
+      </section>
     `;
   }
 
