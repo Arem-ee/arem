@@ -422,8 +422,8 @@ function mountProject(slug, { animateIntro = false } = {}) {
 
           ScrollTrigger.create({
             trigger: portalSection,
-            start: "top top",
-            end: "bottom bottom",
+            start: "bottom bottom",
+            end: "top top",
             onUpdate: (self) => {
               if (swapping) return;
               const openness = self.progress;
