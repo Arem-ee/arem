@@ -16,142 +16,16 @@ const SITE_CONTENT = window.SITE || {};
 
 /**
  * Background-removal helper for character image
+ * Uses CSS mix-blend-mode instead of expensive canvas BFS
  */
 function prepareCharacterImage(imgEl) {
   return new Promise((resolve) => {
     if (!imgEl) return resolve();
-
-    function process() {
-      try {
-        const w = imgEl.naturalWidth || imgEl.width;
-        const h = imgEl.naturalHeight || imgEl.height;
-        if (!w || !h) return resolve();
-
-        const canvas = document.createElement("canvas");
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext("2d", { willReadFrequently: true });
-        if (!ctx) return resolve();
-
-        ctx.drawImage(imgEl, 0, 0);
-        const imgData = ctx.getImageData(0, 0, w, h);
-        const data = imgData.data;
-
-        // Check corner pixel alphas to see if already transparent
-        const cIndices = [
-          0,
-          (w - 1) * 4,
-          (h - 1) * w * 4,
-          ((h - 1) * w + (w - 1)) * 4
-        ];
-        const alreadyTransparent = cIndices.every((idx) => data[idx + 3] < 10);
-        if (alreadyTransparent) {
-          return resolve();
-        }
-
-        const tolerance = 18;
-        function isWhiteBg(idx) {
-          const r = data[idx];
-          const g = data[idx + 1];
-          const b = data[idx + 2];
-          const a = data[idx + 3];
-          if (a < 10) return false;
-          return (255 - r <= tolerance) && (255 - g <= tolerance) && (255 - b <= tolerance);
-        }
-
-        const visited = new Uint8Array(w * h);
-        const queue = new Int32Array(w * h);
-        let head = 0;
-        let tail = 0;
-
-        function pushPixel(px, py) {
-          if (px < 0 || px >= w || py < 0 || py >= h) return;
-          const i = py * w + px;
-          if (visited[i]) return;
-          visited[i] = 1;
-          if (isWhiteBg(i * 4)) {
-            queue[tail++] = i;
-          }
-        }
-
-        // Seed all border pixels
-        for (let x = 0; x < w; x++) {
-          pushPixel(x, 0);
-          pushPixel(x, h - 1);
-        }
-        for (let y = 0; y < h; y++) {
-          pushPixel(0, y);
-          pushPixel(w - 1, y);
-        }
-
-        // 4-way BFS flood-fill inward
-        while (head < tail) {
-          const curr = queue[head++];
-          const cx = curr % w;
-          const cy = Math.floor(curr / w);
-          const neighbors = [
-            [cx + 1, cy],
-            [cx - 1, cy],
-            [cx, cy + 1],
-            [cx, cy - 1]
-          ];
-          for (let i = 0; i < 4; i++) {
-            const nx = neighbors[i][0];
-            const ny = neighbors[i][1];
-            if (nx >= 0 && nx < w && ny >= 0 && ny < h) {
-              const nIdx = ny * w + nx;
-              if (!visited[nIdx]) {
-                visited[nIdx] = 1;
-                if (isWhiteBg(nIdx * 4)) {
-                  queue[tail++] = nIdx;
-                }
-              }
-            }
-          }
-        }
-
-        // Mark cleared pixels
-        for (let i = 0; i < tail; i++) {
-          const pIdx = queue[i] * 4;
-          data[pIdx + 3] = 0;
-        }
-
-        // Perimeter softening: lower alpha of pixels adjacent to cleared pixels by ~35%
-        for (let y = 1; y < h - 1; y++) {
-          for (let x = 1; x < w - 1; x++) {
-            const i = y * w + x;
-            const idx = i * 4;
-            if (data[idx + 3] > 0) {
-              const hasClearedNeighbor =
-                data[(idx - 4) + 3] === 0 ||
-                data[(idx + 4) + 3] === 0 ||
-                data[(idx - w * 4) + 3] === 0 ||
-                data[(idx + w * 4) + 3] === 0;
-
-              if (hasClearedNeighbor) {
-                data[idx + 3] = Math.round(data[idx + 3] * 0.65);
-              }
-            }
-          }
-        }
-
-        ctx.putImageData(imgData, 0, 0);
-        imgEl.src = canvas.toDataURL("image/png");
-        try {
-          imgEl.decode().then(resolve).catch(resolve);
-        } catch {
-          resolve();
-        }
-      } catch (e) {
-        console.warn("Background removal error:", e);
-        resolve();
-      }
-    }
-
+    imgEl.style.mixBlendMode = "multiply";
     if (imgEl.complete && imgEl.naturalWidth !== 0) {
-      process();
+      resolve();
     } else {
-      imgEl.addEventListener("load", process, { once: true });
+      imgEl.addEventListener("load", resolve, { once: true });
       imgEl.addEventListener("error", resolve, { once: true });
     }
   });
@@ -324,12 +198,21 @@ function setupScrollProgress() {
   const progressBar = document.getElementById("scroll-progress");
   if (!progressBar) return;
 
-  window.addEventListener("scroll", () => {
+  let ticking = false;
+  function updateProgress() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
     progressBar.style.width = `${progress}%`;
     progressBar.setAttribute("aria-valuenow", Math.round(progress));
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
   }, { passive: true });
 }
 

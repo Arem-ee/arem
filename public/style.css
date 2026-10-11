@@ -339,6 +339,9 @@ body {
   position: relative;
   background-color: var(--bg);
   padding: 120px 48px;
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 3000px;
 }
 
 .projects-wrapper {
@@ -505,6 +508,9 @@ body {
 .statement-section {
   background-color: var(--bg-soft);
   padding: 160px 48px;
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 .statement-container {
@@ -538,6 +544,9 @@ body {
 .contact-section {
   background-color: var(--bg);
   padding: 120px 48px 0;
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 .contact-inner {
