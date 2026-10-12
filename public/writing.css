@@ -170,6 +170,34 @@
   margin-bottom: 0;
 }
 
+/* Footer on writing pages: match main page layout */
+.page-writing .site-footer {
+  padding: 160px 48px 48px;
+}
+
+.page-writing .footer-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.page-writing .footer-brand {
+  max-width: 320px;
+}
+
+.page-writing .footer-links {
+  display: flex;
+  gap: 64px;
+}
+
+.page-writing .footer-meta {
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
 @media (max-width: 768px) {
   .writing-main {
     padding: 120px 24px 80px;
