@@ -170,6 +170,156 @@
   margin-bottom: 0;
 }
 
+.post__body h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+.post__body h2:first-child {
+  margin-top: 0;
+}
+
+.post__tldr {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 48px;
+}
+
+.post__tldr-label {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sage);
+  margin-bottom: 8px;
+}
+
+.post__tldr p {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
+.post__toc {
+  margin-bottom: 48px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.post__toc-label {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.post__toc ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.post__toc a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.post__toc a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.post__faq {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.post__faq-label {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.post__faq-item {
+  margin-bottom: 24px;
+}
+
+.post__faq-q {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.post__faq-a {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  opacity: 0.8;
+  margin: 0;
+}
+
+.post__author {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.post__author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--cream);
+}
+
+.post__author-bio {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  opacity: 0.75;
+  margin: 0;
+}
+
+.post__author-name {
+  font-weight: 600;
+  color: var(--ink);
+  opacity: 1;
+}
+
 /* Footer on writing pages: match main page layout */
 .page-writing .site-footer {
   padding: 160px 48px 48px;

@@ -37,17 +37,35 @@
         </header>
 
         <div class="post__body">
+          <div class="post__tldr">
+            <div class="post__tldr-label">TL;DR</div>
+            <p>Every hour spent on backend infrastructure is an hour not spent on the thing users actually see. Supabase is not the most powerful option, but it is the most efficient one for a solo builder.</p>
+          </div>
+
+          <nav class="post__toc" aria-label="Table of contents">
+            <div class="post__toc-label">In this post</div>
+            <ul>
+              <li><a href="#the-problem">The problem: two weeks of backend, zero features</a></li>
+              <li><a href="#what-i-gave-up">What I gave up</a></li>
+              <li><a href="#what-i-gained">What I gained</a></li>
+              <li><a href="#the-trade-off">The trade off</a></li>
+              <li><a href="#the-lesson">The lesson</a></li>
+            </ul>
+          </nav>
+
+          <h2 id="the-problem">The problem: two weeks of backend, zero features</h2>
+
           <p>For the first two weeks of building Propeida, I was convinced I needed a custom backend. I set up a Node server with Express, connected it to Postgres, wrote authentication middleware, built CRUD endpoints for every table, and configured row-level security by hand. It was going well until I realized I had not shipped a single user facing feature in fourteen days. All I had was a working API that nobody could use.</p>
 
           <p>That was the moment I decided to rewrite everything on Supabase in one weekend. The decision felt like giving up at the time. I had already invested two weeks into the custom backend, and starting over felt wasteful. But looking back, it was the single most important technical decision I made on the project.</p>
 
-          <h2>What I gave up</h2>
+          <h2 id="what-i-gave-up">What I gave up</h2>
 
           <p>A custom API gives you full control over every layer. I could structure the database exactly how I wanted, optimize every query, write custom validation logic, and design the API around the specific needs of the product. With Supabase, I had to accept their conventions. Authentication works their way. Row level security uses their policy syntax. The database schema has to fit their tooling. For someone who likes control, this felt like a real sacrifice.</p>
 
           <p>I also gave up the ability to customize performance. With a custom backend, I could add caching layers, write complex joins, and fine tune every database call. Supabase handles most of this for you, but it does not give you the same level of control over the details. For a project that needs to squeeze every millisecond out of the database, a custom backend is still the better choice.</p>
 
-          <h2>What I gained</h2>
+          <h2 id="what-i-gained">What I gained</h2>
 
           <p>Speed. That is the honest answer. With Supabase, I had authentication working in an afternoon. The user could sign up, log in, and start using the product the same day. With my custom backend, I had spent two weeks and still not shipped anything users could touch.</p>
 
@@ -57,17 +75,46 @@
 
           <p>The SDK was the final piece. Instead of writing fetch calls and parsing responses, I queried the database directly from the frontend. Supabase generated TypeScript types from my schema, so I got autocomplete and type safety without writing a single interface by hand. It felt like the database and the frontend were speaking the same language, because they were.</p>
 
-          <h2>The trade off</h2>
+          <h2 id="the-trade-off">The trade off</h2>
 
           <p>Supabase is not the right choice for every project. If you are building something that needs complex business logic on the server, heavy data processing, or fine grained control over performance, a custom backend is still the better option. If you are part of a large team with dedicated backend engineers, the conventions of Supabase might feel limiting rather than helpful.</p>
 
           <p>But for a solo builder, the math is simple. Every hour spent on backend infrastructure is an hour not spent on the thing users actually see. Supabase is not the most powerful option. It is the most efficient option when you are building alone and speed matters more than control.</p>
 
-          <h2>The lesson</h2>
+          <h2 id="the-lesson">The lesson</h2>
 
           <p>The lesson is not that Supabase is good and custom backends are bad. The lesson is that your stack should match your constraints. A startup with twenty engineers should not build on Supabase. A solo developer with limited time absolutely should.</p>
 
           <p>I chose Supabase because I wanted to ship a product, not maintain an infrastructure. Two weeks of user facing work beat two weeks of backend plumbing every time. The best stack is not the most powerful one. It is the one that lets you ship the fastest while still being able to sleep at night knowing the thing will not fall apart.</p>
+
+          <div class="post__faq">
+            <div class="post__faq-label">Frequently asked questions</div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">Is Supabase free to use?</div>
+              <p class="post__faq-a">Supabase has a generous free tier that includes 500MB of database storage, 1GB of file storage, and 50,000 monthly active users. For most solo projects, this is more than enough.</p>
+            </div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">Can I migrate away from Supabase later?</div>
+              <p class="post__faq-a">Yes. Supabase is built on Postgres, so you can export your data and move to a custom backend if your needs outgrow the platform. The migration path is straightforward.</p>
+            </div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">What are the main limitations of Supabase?</div>
+              <p class="post__faq-a">You give up fine-grained control over performance optimization, custom middleware, and complex server-side logic. For highly specialized use cases, a custom backend is still better.</p>
+            </div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">How long did the migration take?</div>
+              <p class="post__faq-a">I rewrote the entire backend on Supabase in one weekend. The hardest part was unlearning the custom backend patterns and accepting the Supabase conventions.</p>
+            </div>
+          </div>
+
+          <div class="post__author">
+            <div class="post__author-avatar">A</div>
+            <p class="post__author-bio"><span class="post__author-name">Arem</span> — Fullstack developer and electrical engineering student based in Nigeria. Building products end to end, from architecture to shipped code.</p>
+          </div>
         </div>
       </article>
     </div>

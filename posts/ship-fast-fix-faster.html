@@ -37,9 +37,22 @@
         </header>
 
         <div class="post__body">
-          <p>I spend most of my day building projects. School takes some hours, but the rest goes to code. For a long time, I thought working this much meant I would build good things. It did not. Working a lot just meant I made more mistakes faster. I had to learn to ship fast and fix faster. That skill mattered more than the hours I put in.</p>
+          <div class="post__tldr">
+            <div class="post__tldr-label">TL;DR</div>
+            <p>Ten fast iterations teach you more than one long month of building alone. Shipping is a skill, not just about writing code.</p>
+          </div>
 
-          <h2>What ship fast means</h2>
+          <nav class="post__toc" aria-label="Table of contents">
+            <div class="post__toc-label">In this post</div>
+            <ul>
+              <li><a href="#ship-fast">What ship fast means</a></li>
+              <li><a href="#fix-faster">What fix faster means</a></li>
+              <li><a href="#student-advantage">Why spending all day helps and hurts</a></li>
+              <li><a href="#the-lesson">The real lesson</a></li>
+            </ul>
+          </nav>
+
+          <h2 id="ship-fast">What ship fast means</h2>
 
           <p>Ship fast does not mean shipping bad work. It means shipping the smallest version of your idea that still helps people. When I launched Propeida, the look was plain. It had no animations, no fancy design, and no admin panel. But it worked. Students could practice questions, see their scores, and compare with others. That was enough.</p>
 
@@ -47,23 +60,52 @@
 
           <p>Ship fast also means cutting features without mercy. Every feature I add is a promise. I have to keep it working, fix it when it breaks, and explain it to users forever. When you spend all day on a project, it feels like you can build everything. You cannot. Every feature you add takes time away from the ones that already exist. The referral tracking system I cut from Propeida would have been fun to build, but it would not have helped students practice. Cutting it was not a loss. It was the right choice.</p>
 
-          <h2>What fix faster means</h2>
+          <h2 id="fix-faster">What fix faster means</h2>
 
           <p>Fix faster means treating every bug as a lesson. When users reported that leaderboard scores were not updating, I did not just fix the bug. I added logging so the next problem would be easy to find. When the practice flow felt confusing, I watched someone use the platform and rewrote the confusing part the same day. Every fix makes the product better, but every fix also teaches you how to avoid the next one.</p>
 
           <p>The rhythm is simple. Send out something small. Watch how people use it. Fix what breaks or confuses. Do it again. This cycle works much better than spending weeks building in secret and hoping everything works when you finally show it.</p>
 
-          <h2>Why spending all day helps and hurts</h2>
+          <h2 id="student-advantage">Why spending all day helps and hurts</h2>
 
           <p>Spending all day on projects sounds like a big advantage, and it is, but it has risks. The main risk is losing sight of what matters. When you are deep in the code, every feature feels important. You lose the ability to see what users actually care about. I had to learn to step back and ask: does this help the user, or does it just feel like progress?</p>
 
           <p>The advantage is speed. When you have time, you can ship a feature, get feedback, fix it, and ship again all in one day. That cycle is where real learning happens. Each pass teaches you something the last one missed. The students who build the most are not always the ones with the most talent. They are the ones who go through the most cycles.</p>
 
-          <h2>The real lesson</h2>
+          <h2 id="the-lesson">The real lesson</h2>
 
           <p>The real lesson is that shipping is a skill. It is not just about writing code. It is about making choices, cutting scope, and accepting that the first version will not be perfect. It is about trusting that you will make it better after real users start using it.</p>
 
           <p>Spending all day on projects taught me that hours do not matter as much as cycles. Ten fast iterations teach you more than one long month of building alone. Ship fast, fix faster, and let the rhythm of building and learning carry you further than hard work alone ever could.</p>
+
+          <div class="post__faq">
+            <div class="post__faq-label">Frequently asked questions</div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">How do you decide when something is ready to ship?</div>
+              <p class="post__faq-a">When it solves a real problem for real users, even if the design is rough or some features are missing. Good enough beats perfect every time.</p>
+            </div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">What is the biggest mistake student builders make?</div>
+              <p class="post__faq-a">Waiting too long to launch. They spend weeks polishing features nobody asked for instead of shipping something small and learning from real users.</p>
+            </div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">How do you avoid burnout when spending all day on projects?</div>
+              <p class="post__faq-a">By shipping small wins often. Each iteration gives you feedback and a sense of progress, which keeps the work sustainable over time.</p>
+            </div>
+
+            <div class="post__faq-item">
+              <div class="post__faq-q">Should you always cut features from your first version?</div>
+              <p class="post__faq-a">Yes, especially as a solo builder. Cut anything that does not directly serve the core value of the product. You can always add it later based on user feedback.</p>
+            </div>
+          </div>
+
+          <div class="post__author">
+            <div class="post__author-avatar">A</div>
+            <p class="post__author-bio"><span class="post__author-name">Arem</span> — Fullstack developer and electrical engineering student based in Nigeria. Building products end to end, from architecture to shipped code.</p>
+          </div>
         </div>
       </article>
     </div>
