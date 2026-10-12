@@ -32,6 +32,7 @@ let ctx = null;
 let swapping = false;
 let fwdArmed = false;
 let backArmed = false;
+let swappingTimeout = null;
 
 /**
  * SECTION 1 - Single source of truth for the first screen
@@ -338,7 +339,8 @@ function mountProject(slug, { animateIntro = false } = {}) {
   fwdArmed = false;
   backArmed = false;
 
-  setTimeout(() => { swapping = false; }, 100);
+        if (swappingTimeout) clearTimeout(swappingTimeout);
+        swappingTimeout = setTimeout(() => { swapping = false; }, 100);
 
   if (typeof gsap !== "undefined") {
     ctx = gsap.context(() => {
@@ -393,7 +395,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
           ScrollTrigger.create({
             trigger: portalBackEl,
             start: "top top",
-            end: () => "+=" + (H - window.innerHeight),
+            end: () => "+=" + Math.max(H - window.innerHeight, 1),
             onUpdate: (self) => {
               if (swapping) return;
               const openness = 1 - self.progress;
@@ -497,6 +499,8 @@ function mountProject(slug, { animateIntro = false } = {}) {
           }
         }
       } else if (prefersReducedMotion) {
+  if (swappingTimeout) clearTimeout(swappingTimeout);
+  swappingTimeout = setTimeout(() => { swapping = false; }, 100);
         const prevLink = document.getElementById("portal-reduced-prev");
         if (prevLink) {
           prevLink.addEventListener("click", (e) => {
