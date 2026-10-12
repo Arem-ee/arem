@@ -158,11 +158,10 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 function triggerAppInit() {
   const characterImg = document.querySelector(".hero__character-img");
   const characterReady = prepareCharacterImage(characterImg);
-  const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
   const readyTimeout = new Promise((resolve) => setTimeout(resolve, 2500));
 
   Promise.race([
-    Promise.all([fontsReady, characterReady]),
+    characterReady,
     readyTimeout
   ]).then(() => {
     document.documentElement.classList.add("is-ready");
