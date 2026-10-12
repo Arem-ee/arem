@@ -27,7 +27,7 @@ window.SITE = {
 
   remainingBody: {
     statement: "I build things that ship — and keep working after they do.",
-    paragraph: "Sole builder of Propeida, the exam-prep platform that served 250+ active users in its launch week, alongside shipped Web3, e-commerce, and design work. Studying electrical engineering at the University of Ilorin, and open to the right project."
+    paragraph: "I'm Toromade, a fullstack developer and electrical engineering student based in Nigeria. I work across the entire product lifecycle — from architecture and design to deployment and iteration — because I believe the best builders are the ones who stay around after the launch. Propeida, my exam-prep platform, served 250+ active users in its first week. I've shipped Web3 hackathon projects, e-commerce storefronts, and full marketing sites — each one taught me something about what actually matters in a build: clarity over cleverness, speed over perfection, and the discipline to keep maintaining long after the excitement fades. I'm studying engineering by day and shipping projects by night. If you need someone who treats your product like their own — from the first commit to the hundredth fix — I'm open to the right collaboration."
   },
 
   footer: {
