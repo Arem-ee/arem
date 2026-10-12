@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ship fast, fix faster: my approach to building as a student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../writing.css">
+</head>
+<body class="page-writing">
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="../index.html#hero" class="nav__logo"><img src="../assets/logo.svg" alt="" class="nav__logo-mark" width="22" height="22"><span class="nav__logo-text">Arem</span></a>
+      <ul class="nav__list">
+        <li><a href="../index.html#work" class="nav__link">Work</a></li>
+        <li><a href="../design.html" class="nav__link">Design</a></li>
+        <li><a href="../writing.html" class="nav__link is-active" aria-current="page">Writing</a></li>
+        <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="writing-main">
+    <div class="writing-container">
+      <article class="post">
+        <header class="post__header">
+          <a href="../writing.html" class="post__back">&larr; All writing</a>
+          <h1 class="post__title">Ship fast, fix faster: my approach to building as a student</h1>
+          <div class="post__meta">
+            <time datetime="2026-10-12">Oct 2026</time>
+            <span class="post__read">5 min read</span>
+          </div>
+        </header>
+
+        <div class="post__body">
+          <p>I spend most of my day building projects. School takes some hours, but the rest goes to code. For a long time, I thought working this much meant I would build good things. It did not. Working a lot just meant I made more mistakes faster. I had to learn to ship fast and fix faster. That skill mattered more than the hours I put in.</p>
+
+          <h2>What ship fast means</h2>
+
+          <p>Ship fast does not mean shipping bad work. It means shipping the smallest version of your idea that still helps people. When I launched Propeida, the look was plain. It had no animations, no fancy design, and no admin panel. But it worked. Students could practice questions, see their scores, and compare with others. That was enough.</p>
+
+          <p>The mistake most builders make is waiting until everything is perfect before showing anyone. They spend weeks making things look nice that users might not even want. By the time they launch, they are tired and the project dies. I learned to launch when the product is good enough, not when it is perfect. Good enough means it solves a real problem for real people. Perfect means it solves the problem with no flaws at all. Only one of those is worth sending out.</p>
+
+          <p>Ship fast also means cutting features without mercy. Every feature I add is a promise. I have to keep it working, fix it when it breaks, and explain it to users forever. When you spend all day on a project, it feels like you can build everything. You cannot. Every feature you add takes time away from the ones that already exist. The referral tracking system I cut from Propeida would have been fun to build, but it would not have helped students practice. Cutting it was not a loss. It was the right choice.</p>
+
+          <h2>What fix faster means</h2>
+
+          <p>Fix faster means treating every bug as a lesson. When users reported that leaderboard scores were not updating, I did not just fix the bug. I added logging so the next problem would be easy to find. When the practice flow felt confusing, I watched someone use the platform and rewrote the confusing part the same day. Every fix makes the product better, but every fix also teaches you how to avoid the next one.</p>
+
+          <p>The rhythm is simple. Send out something small. Watch how people use it. Fix what breaks or confuses. Do it again. This cycle works much better than spending weeks building in secret and hoping everything works when you finally show it.</p>
+
+          <h2>Why spending all day helps and hurts</h2>
+
+          <p>Spending all day on projects sounds like a big advantage, and it is, but it has risks. The main risk is losing sight of what matters. When you are deep in the code, every feature feels important. You lose the ability to see what users actually care about. I had to learn to step back and ask: does this help the user, or does it just feel like progress?</p>
+
+          <p>The advantage is speed. When you have time, you can ship a feature, get feedback, fix it, and ship again all in one day. That cycle is where real learning happens. Each pass teaches you something the last one missed. The students who build the most are not always the ones with the most talent. They are the ones who go through the most cycles.</p>
+
+          <h2>The real lesson</h2>
+
+          <p>The real lesson is that shipping is a skill. It is not just about writing code. It is about making choices, cutting scope, and accepting that the first version will not be perfect. It is about trusting that you will make it better after real users start using it.</p>
+
+          <p>Spending all day on projects taught me that hours do not matter as much as cycles. Ten fast iterations teach you more than one long month of building alone. Ship fast, fix faster, and let the rhythm of building and learning carry you further than hard work alone ever could.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contact"></footer>
+
+  <script src="../content.js"></script>
+  <script src="../shared.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const footerEl = document.getElementById("contact");
+      if (footerEl && window.buildFooter) window.buildFooter(footerEl);
+    });
+  </script>
+</body>
+</html>
