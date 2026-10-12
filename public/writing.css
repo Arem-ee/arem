@@ -105,6 +105,71 @@
   opacity: 1;
 }
 
+/* Single Post Page */
+.post {
+  max-width: 720px;
+}
+
+.post__back {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ink);
+  opacity: 0.6;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: opacity 0.2s ease;
+}
+
+.post__back:hover {
+  opacity: 1;
+}
+
+.post__header {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.post__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.post__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+.post__read::before {
+  content: "\2022";
+  margin-right: 16px;
+}
+
+.post__body p {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--ink);
+  margin-bottom: 28px;
+  opacity: 0.9;
+}
+
+.post__body p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   .writing-main {
     padding: 120px 24px 80px;
