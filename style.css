@@ -1058,6 +1058,7 @@ body {
   }
 
   .statement-title {
+    font-family: 'Fredoka', sans-serif !important;
     font-size: clamp(28px, 8vw, 40px) !important;
     text-align: left !important;
     line-height: 1.15;

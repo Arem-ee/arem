@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What building Propeida solo taught me about product decisions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../writing.css">
+</head>
+<body class="page-writing">
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="../index.html#hero" class="nav__logo"><img src="../assets/logo.svg" alt="" class="nav__logo-mark" width="22" height="22"><span class="nav__logo-text">Arem</span></a>
+      <ul class="nav__list">
+        <li><a href="../index.html#work" class="nav__link">Work</a></li>
+        <li><a href="../design.html" class="nav__link">Design</a></li>
+        <li><a href="../writing.html" class="nav__link is-active" aria-current="page">Writing</a></li>
+        <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="writing-main">
+    <div class="writing-container">
+      <article class="post">
+        <header class="post__header">
+          <a href="../writing.html" class="post__back">&larr; All writing</a>
+          <h1 class="post__title">What building Propeida solo taught me about product decisions</h1>
+          <div class="post__meta">
+            <time datetime="2026-10-12">Oct 2026</time>
+            <span class="post__read">6 min read</span>
+          </div>
+        </header>
+
+        <div class="post__body">
+          <p>When I started building Propeida, I believed the hardest part would be writing the code. I was wrong. The hardest part was deciding what not to build. Every feature I imagined felt essential in my head, but building alone meant every yes cost me hours I did not have. I had to learn that product decisions are not about what you can build, but about what you should build, and more importantly, what you should refuse to build.</p>
+
+          <p>Propeida is an exam preparation platform for Nigerian students. It offers practice questions, leaderboards, and admin tools for publishing content. In my first plan, I listed fourteen features. I thought I needed all of them to make the product complete. Two weeks in, I had built nothing users could touch. I was stuck in planning mode, adding more features to the list instead of shipping the ones that mattered.</p>
+
+          <p>The turning point came when I started asking three questions before every feature. The first question was: does this directly help a student prepare for an exam? The second question was: can I ship a basic version of this in a single day? The third question was: will I still want to maintain this six months from now? These three questions changed how I thought about building. They forced me to separate what felt important from what actually was.</p>
+
+          <p>The referral tracking feature almost made it into the first launch. It felt like a growth lever. I imagined students sharing the platform with friends, tracking referrals, and unlocking rewards. It sounded good on paper. But when I looked at it honestly, it added enormous surface area. I would need share links, a tracking page, reconciliation logic, and a rewards system. None of that helped a student practice for an exam. I cut it. The platform launched without it, and nobody asked for it. The students who came in that first week wanted one thing: to practice questions and see how they ranked against others. That was the core loop, and that was what I should have been building all along.</p>
+
+          <p>The leaderboard taught me another lesson. I wanted it to be perfect. I wanted real-time updates, tie-breaking rules, weekly resets, and historical rankings. I spent three days designing the logic before I wrote a single line of code. When I finally shipped a simple version, just a SQL query that ranked users by score, it worked fine. Students used it every day. The fancy features I had imagined would have added complexity without adding value. The simple version was enough, and it taught me that done is better than perfect, especially when you are building alone.</p>
+
+          <p>I also learned that every feature is a bet against your own future time. When you build a feature, you are not just writing code once. You are committing to maintaining it, debugging it, and explaining it to users forever. A solo builder cannot afford that commitment lightly. Every feature I add to Propeida is a weight I carry. Some weights are worth it. The practice loop was worth it. The leaderboard was worth it. The referral system would have been a weight I carried for no reason.</p>
+
+          <p>The hardest product decision I made was cutting the admin dashboard. I wanted a full admin panel where teachers could upload questions, manage users, and view analytics. It was the feature I was most excited about. But building it properly would have taken weeks. So I shipped without it. I managed questions directly in the database, which was ugly but functional. Teachers could email me questions and I would add them manually. It was not scalable, but it was honest. The platform worked, students used it, and I learned what they actually needed before I built the admin tools. When I finally built the dashboard, I built it based on real usage, not assumptions.</p>
+
+          <p>Building solo also taught me that product decisions are not just about features. They are about focus. When you are alone, you cannot do everything. You have to choose one thing and do it well. Propeida chose to be the best practice platform for Nigerian entrance exams. It did not try to be a social network, a tutoring service, or a marketplace. That focus made every decision easier. When a new idea came up, I could ask: does this make Propeida better at helping students practice? If the answer was no, it was out.</p>
+
+          <p>The biggest lesson I took from building Propeida is that constraints are not limitations. They are design tools. My limited time forced me to make decisions I might have avoided if I had more resources. I could not afford to build everything, so I built only what mattered. The result was a product that was smaller than I originally imagined, but sharper. It did one thing well instead of fourteen things poorly. That is what product decisions are really about: the courage to say no to good ideas so you can say yes to the right ones.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contact"></footer>
+
+  <script src="../content.js"></script>
+  <script src="../shared.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const footerEl = document.getElementById("contact");
+      if (footerEl && window.buildFooter) window.buildFooter(footerEl);
+    });
+  </script>
+</body>
+</html>
