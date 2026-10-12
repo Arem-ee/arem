@@ -338,6 +338,8 @@ function mountProject(slug, { animateIntro = false } = {}) {
   fwdArmed = false;
   backArmed = false;
 
+  setTimeout(() => { swapping = false; }, 100);
+
   if (typeof gsap !== "undefined") {
     ctx = gsap.context(() => {
       if (!prefersReducedMotion && typeof ScrollTrigger !== "undefined") {
@@ -524,8 +526,6 @@ function mountProject(slug, { animateIntro = false } = {}) {
       if (Math.abs(window.scrollY - LAND) > 2) {
         window.scrollTo({ top: LAND, left: 0, behavior: "instant" });
       }
-      swapping = false;
-
       if (animateIntro && !prefersReducedMotion && typeof gsap !== "undefined") {
         const introTl = gsap.timeline({ defaults: { ease: "power2.out" } });
         introTl
