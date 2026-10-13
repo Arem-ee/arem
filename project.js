@@ -527,6 +527,9 @@ function mountProject(slug, { animateIntro = false } = {}) {
     `;
   }
 
+  // Initialize displacement transition WebGL
+  initDisplacementTransition();
+
   // Set document.title
   document.title = `${project.title} — ${SITE.brand.name}`;
   document.documentElement.style.setProperty("--project-accent", project.accent || "#9BAA97");
