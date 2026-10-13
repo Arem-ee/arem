@@ -259,8 +259,26 @@ function mountProject(slug, { animateIntro = false } = {}) {
       });
     }
 
-    // Load displacement map (noise texture)
-    const dispUrl = "assets/displacement-noise.png";
+    // Generate displacement noise texture as data URL
+    function generateNoiseTexture(width, height) {
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      const imageData = ctx.createImageData(width, height);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const noise = Math.random() * 255;
+        data[i] = noise;     // R
+        data[i + 1] = noise; // G
+        data[i + 2] = noise; // B
+        data[i + 3] = 255;   // A
+      }
+      ctx.putImageData(imageData, 0, 0);
+      return canvas.toDataURL("image/png");
+    }
+
+    const dispUrl = generateNoiseTexture(512, 512);
     
     Promise.all([
       loadTexture(backGL.gl, project.image),
