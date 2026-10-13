@@ -153,15 +153,42 @@ function mountProject(slug, { animateIntro = false } = {}) {
   let displacementTextures = {};
 
   function initDisplacementTransition() {
-    if (typeof WebGLRenderingContext === "undefined") return;
+    // Always define render functions with no-op fallbacks, in case WebGL unavailable
+    window.renderDisplacementBack = (progress) => {
+      const fromEl = document.getElementById("displacement-canvas-back");
+      const toEl = document.getElementById("displacement-canvas-forward");
+      if (fromEl && toEl) {
+        fromEl.style.opacity = 1 - progress;
+        toEl.style.opacity = progress;
+      }
+    };
+    window.renderDisplacementForward = (progress) => {
+      const fromEl = document.getElementById("displacement-canvas-back");
+      const toEl = document.getElementById("displacement-canvas-forward");
+      if (fromEl && toEl) {
+        fromEl.style.opacity = 1 - progress;
+        toEl.style.opacity = progress;
+      }
+    };
+
+    if (typeof WebGLRenderingContext === "undefined") {
+      console.warn("WebGL not supported, skipping displacement transition");
+      return;
+    }
 
     const backCanvas = document.getElementById("displacement-canvas-back");
     const forwardCanvas = document.getElementById("displacement-canvas-forward");
-    if (!backCanvas || !forwardCanvas) return;
+    if (!backCanvas || !forwardCanvas) {
+      console.warn("Displacement canvas elements not found");
+      return;
+    }
 
     function createGL(canvas) {
       const gl = canvas.getContext("webgl", { alpha: true, antialias: true, preserveDrawingBuffer: false });
-      if (!gl) return null;
+      if (!gl) {
+        console.warn("WebGL context creation failed");
+        return null;
+      }
       return gl;
     }
 
@@ -324,10 +351,51 @@ function mountProject(slug, { animateIntro = false } = {}) {
         gl.drawArrays(gl.TRIANGLES, 0, 6);
       }
 
-      // Store render functions for ScrollTrigger
-      window.renderDisplacementBack = (progress) => render(backGL, displacementTextures.back, progress);
-      window.renderDisplacementForward = (progress) => render(forwardGL, displacementTextures.forward, progress);
-    }).catch(err => console.error("Displacement texture load error:", err));
+      // Store render functions for ScrollTrigger — always defined, no-op if WebGL failed
+      window.renderDisplacementBack = (progress) => {
+        if (backGL && displacementTextures.back?.disp) {
+          return render(backGL, displacementTextures.back, progress);
+        }
+        // Fallback: simple crossfade when displacement unavailable
+        const fromEl = document.getElementById("displacement-canvas-back");
+        const toEl = document.getElementById("displacement-canvas-forward");
+        if (fromEl && toEl) {
+          fromEl.style.opacity = 1 - progress;
+          toEl.style.opacity = progress;
+        }
+      };
+      window.renderDisplacementForward = (progress) => {
+        if (forwardGL && displacementTextures.forward?.disp) {
+          return render(forwardGL, displacementTextures.forward, progress);
+        }
+        // Fallback: simple crossfade when displacement unavailable
+        const fromEl = document.getElementById("displacement-canvas-back");
+        const toEl = document.getElementById("displacement-canvas-forward");
+        if (fromEl && toEl) {
+          fromEl.style.opacity = 1 - progress;
+          toEl.style.opacity = progress;
+        }
+      };
+    }).catch(err => {
+      console.error("Displacement texture load error:", err);
+      // Ensure render functions fall back to simple crossfade
+      window.renderDisplacementBack = (progress) => {
+        const fromEl = document.getElementById("displacement-canvas-back");
+        const toEl = document.getElementById("displacement-canvas-forward");
+        if (fromEl && toEl) {
+          fromEl.style.opacity = 1 - progress;
+          toEl.style.opacity = progress;
+        }
+      };
+      window.renderDisplacementForward = (progress) => {
+        const fromEl = document.getElementById("displacement-canvas-back");
+        const toEl = document.getElementById("displacement-canvas-forward");
+        if (fromEl && toEl) {
+          fromEl.style.opacity = 1 - progress;
+          toEl.style.opacity = progress;
+        }
+      };
+    });
   }
 
   // (a) set swapping = true, call ctx.revert() and ScrollTrigger.clearScrollMemory()
@@ -527,8 +595,14 @@ function mountProject(slug, { animateIntro = false } = {}) {
     `;
   }
 
-  // Initialize displacement transition WebGL
-  initDisplacementTransition();
+  // Initialize displacement transition WebGL (with fallback)
+  let displacementReady = false;
+  try {
+    initDisplacementTransition();
+    displacementReady = true;
+  } catch (e) {
+    console.warn("Displacement transition failed, falling back to circle gates:", e);
+  }
 
   // Set document.title
   document.title = `${project.title} — ${SITE.brand.name}`;
@@ -617,29 +691,8 @@ function mountProject(slug, { animateIntro = false } = {}) {
                 swapTo(prevProject.slug);
               }
             }
-          });
-                backBorder.style.height = `${R * 2}px`;
-                backBorder.style.opacity = Math.max(0, 1 - factor * 2.5);
-              }
-              if (backLabel) {
-                backLabel.style.opacity = Math.max(0, 1 - factor * 3);
-              }
-
-              if (openness >= 0.99 && backArmed) {
-                swapTo(prevProject.slug);
-              }
-            }
-          });
-
-        }
-
-        root.onclick = (e) => {
-          const backLink = e.target.closest(".portal-focus-link--back");
-          if (backLink) {
-            e.preventDefault();
-            swapTo(prevProject.slug);
+});
           }
-        };
 
         // PROBLEM 2.4: Forward gate ScrollTrigger (displacement reveal)
         const portalSection = document.getElementById("portal");
@@ -674,9 +727,15 @@ function mountProject(slug, { animateIntro = false } = {}) {
           });
         }
 
+        // (c) gate click handler — outside gsap.context so it survives ctx.revert()
         root.onclick = (e) => {
+          const backLink = e.target.closest(".portal-focus-link--back");
           const fwdLink = e.target.closest(".portal-focus-link:not(.portal-focus-link--back)");
-          if (fwdLink) {
+
+          if (backLink) {
+            e.preventDefault();
+            swapTo(prevProject.slug);
+          } else if (fwdLink) {
             e.preventDefault();
             swapTo(nextProject.slug);
           }
