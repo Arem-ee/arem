@@ -86,19 +86,23 @@ function swapTo(nextSlug) {
  * Exactly builds any of the 5 projects and dual gates (previous and next)
  */
 function mountProject(slug, { animateIntro = false } = {}) {
+  console.log('[mountProject] Starting for slug:', slug);
   try {
     const SITE = window.SITE;
     if (!SITE || !SITE.projects || SITE.projects.length === 0) {
+      console.error('[mountProject] No SITE data, redirecting to 404');
       window.location.href = "404.html";
       return;
     }
 
     const project = SITE.projects.find((p) => p.slug === slug);
     if (!project) {
+      console.error('[mountProject] Project not found for slug:', slug);
       window.location.href = "404.html";
       return;
     }
 
+    console.log('[mountProject] Project found:', project.title);
     const currentIndex = SITE.projects.findIndex((p) => p.slug === slug);
     const nextIndex = (currentIndex + 1) % SITE.projects.length;
     const nextProject = SITE.projects[nextIndex];
@@ -407,6 +411,8 @@ function mountProject(slug, { animateIntro = false } = {}) {
     ScrollTrigger.clearScrollMemory();
   }
 
+  console.log('[mountProject] Setting root.innerHTML, prefersReducedMotion:', prefersReducedMotion);
+
   if (prefersReducedMotion) {
     // Problem 2.5: Reduced motion - do not render portal-back (LAND = 0)
     root.innerHTML = `
@@ -474,6 +480,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
         </a>
       </div>
     `;
+    console.log('[mountProject] Reduced motion innerHTML set, length:', root.innerHTML.length);
   } else {
     root.innerHTML = `
       <!-- PROBLEM 2: PORTAL BACK (DISPLACEMENT REVEAL GATE FOR PREVIOUS PROJECT) -->
@@ -485,6 +492,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
           <canvas class="displacement-canvas" id="displacement-canvas-back" width="1920" height="1080"></canvas>
           <div class="portal-next-label" id="portal-back-label">
             Previous: ${prevProject.title}
+          </div>
           </div>
         </div>
       </section>
@@ -593,6 +601,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
         </div>
       </section>
     `;
+    console.log('[mountProject] Full innerHTML set, length:', root.innerHTML.length);
   }
 
   // Initialize displacement transition WebGL (with fallback)
@@ -805,6 +814,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
     console.error("mountProject error:", e);
     swapping = false;
   }
+  console.log('[mountProject] Completed for slug:', slug);
 }
 
 /**
