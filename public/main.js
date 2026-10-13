@@ -485,7 +485,7 @@ function setupProjectEntrance(prefersReducedMotion) {
         scrollTrigger: {
           trigger: row,
           start: "top 80%",
-          toggleActions: "play none none none"
+          toggleActions: "play none none reset"
         }
       }
     );
