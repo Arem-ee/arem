@@ -594,3 +594,23 @@ body,
     margin-top: 0 !important;
   }
 }
+
+/* Displacement canvas */
+.displacement-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  display: block;
+}
+
+.portal-section.portal-back .displacement-canvas {
+  z-index: 3;
+}
+
+#portal .displacement-canvas {
+  z-index: 3;
+}

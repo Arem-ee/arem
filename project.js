@@ -117,6 +117,201 @@ function mountProject(slug, { animateIntro = false } = {}) {
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Displacement transition shaders
+  const displacementVertexShader = `
+    attribute vec2 aPosition;
+    attribute vec2 aTexCoord;
+    varying vec2 vTexCoord;
+    void main() {
+      vTexCoord = aTexCoord;
+      gl_Position = vec4(aPosition, 0.0, 1.0);
+    }
+  `;
+
+  const displacementFragmentShader = `
+    precision highp float;
+    uniform sampler2D uFrom;
+    uniform sampler2D uTo;
+    uniform sampler2D uDisp;
+    uniform float uProgress;
+    varying vec2 vTexCoord;
+
+    void main() {
+      float d = texture2D(uDisp, vTexCoord).r;
+      vec2 fromUv = vTexCoord + vec2(d * uProgress * 0.15, 0.0);
+      vec2 toUv = vTexCoord - vec2(d * (1.0 - uProgress) * 0.15, 0.0);
+      vec4 from = texture2D(uFrom, fromUv);
+      vec4 to = texture2D(uTo, toUv);
+      gl_FragColor = mix(from, to, smoothstep(0.0, 1.0, uProgress));
+    }
+  `;
+
+  // Displacement transition setup
+  let displacementGL = null;
+  let displacementProgram = null;
+  let displacementUniforms = null;
+  let displacementTextures = {};
+
+  function initDisplacementTransition() {
+    if (typeof WebGLRenderingContext === "undefined") return;
+
+    const backCanvas = document.getElementById("displacement-canvas-back");
+    const forwardCanvas = document.getElementById("displacement-canvas-forward");
+    if (!backCanvas || !forwardCanvas) return;
+
+    function createGL(canvas) {
+      const gl = canvas.getContext("webgl", { alpha: true, antialias: true, preserveDrawingBuffer: false });
+      if (!gl) return null;
+      return gl;
+    }
+
+    function createShader(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+        gl.deleteShader(shader);
+        return null;
+      }
+      return shader;
+    }
+
+    function createProgram(gl, vertexShader, fragmentShader) {
+      const program = gl.createProgram();
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.error("Program link error:", gl.getProgramInfoLog(program));
+        return null;
+      }
+      return program;
+    }
+
+    function initCanvasGL(canvas) {
+      const gl = createGL(canvas);
+      if (!gl) return null;
+
+      const vertexShader = createShader(gl, gl.VERTEX_SHADER, displacementVertexShader);
+      const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, displacementFragmentShader);
+      if (!vertexShader || !fragmentShader) return null;
+
+      const program = createProgram(gl, vertexShader, fragmentShader);
+      if (!program) return null;
+
+      const positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1, -1,  1, -1,  -1, 1,
+        -1, 1,   1, -1,   1, 1
+      ]), gl.STATIC_DRAW);
+
+      const texCoordBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        0, 1,  1, 1,  0, 0,
+        0, 0,   1, 1,   1, 0
+      ]), gl.STATIC_DRAW);
+
+      const positionLoc = gl.getAttribLocation(program, "aPosition");
+      const texCoordLoc = gl.getAttribLocation(program, "aTexCoord");
+      const uFromLoc = gl.getUniformLocation(program, "uFrom");
+      const uToLoc = gl.getUniformLocation(program, "uTo");
+      const uDispLoc = gl.getUniformLocation(program, "uDisp");
+      const uProgressLoc = gl.getUniformLocation(program, "uProgress");
+
+      return {
+        gl,
+        program,
+        positionBuffer,
+        texCoordBuffer,
+        positionLoc,
+        texCoordLoc,
+        uFromLoc,
+        uToLoc,
+        uDispLoc,
+        uProgressLoc
+      };
+    }
+
+    const backGL = initCanvasGL(backCanvas);
+    const forwardGL = initCanvasGL(forwardCanvas);
+
+    if (!backGL || !forwardGL) return;
+
+    function loadTexture(gl, url) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          const texture = gl.createTexture();
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+          resolve(texture);
+        };
+        img.onerror = reject;
+        img.src = url;
+      });
+    }
+
+    // Load displacement map (noise texture)
+    const dispUrl = "assets/displacement-noise.png";
+    
+    Promise.all([
+      loadTexture(backGL.gl, project.image),
+      loadTexture(backGL.gl, prevProject.image),
+      loadTexture(backGL.gl, dispUrl),
+      loadTexture(forwardGL.gl, project.image),
+      loadTexture(forwardGL.gl, nextProject.image),
+      loadTexture(forwardGL.gl, dispUrl)
+    ]).then(([backFrom, backTo, backDisp, fwdFrom, fwdTo, fwdDisp]) => {
+      displacementTextures.back = { from: backFrom, to: backTo, disp: backDisp };
+      displacementTextures.forward = { from: fwdFrom, to: fwdTo, disp: fwdDisp };
+
+      function render(canvasGL, textures, progress) {
+        const { gl, program, positionBuffer, texCoordBuffer, positionLoc, texCoordLoc,
+                uFromLoc, uToLoc, uDispLoc, uProgressLoc } = canvasGL;
+
+        gl.useProgram(program);
+        gl.viewport(0, 0, canvasGL.gl.drawingBufferWidth, canvasGL.gl.drawingBufferHeight);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.enableVertexAttribArray(positionLoc);
+        gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
+        gl.enableVertexAttribArray(texCoordLoc);
+        gl.vertexAttribPointer(texCoordLoc, 2, gl.FLOAT, false, 0, 0);
+
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, textures.from);
+        gl.uniform1i(uFromLoc, 0);
+
+        gl.activeTexture(gl.TEXTURE1);
+        gl.bindTexture(gl.TEXTURE_2D, textures.to);
+        gl.uniform1i(uToLoc, 1);
+
+        gl.activeTexture(gl.TEXTURE2);
+        gl.bindTexture(gl.TEXTURE_2D, textures.disp);
+        gl.uniform1i(uDispLoc, 2);
+
+        gl.uniform1f(uProgressLoc, progress);
+
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      }
+
+      // Store render functions for ScrollTrigger
+      window.renderDisplacementBack = (progress) => render(backGL, displacementTextures.back, progress);
+      window.renderDisplacementForward = (progress) => render(forwardGL, displacementTextures.forward, progress);
+    }).catch(err => console.error("Displacement texture load error:", err));
+  }
+
   // (a) set swapping = true, call ctx.revert() and ScrollTrigger.clearScrollMemory()
   swapping = true;
   if (ctx) {
@@ -195,16 +390,13 @@ function mountProject(slug, { animateIntro = false } = {}) {
     `;
   } else {
     root.innerHTML = `
-      <!-- PROBLEM 2: PORTAL BACK (MIRROR OF FORWARD GATE FOR PREVIOUS PROJECT) -->
+      <!-- PROBLEM 2: PORTAL BACK (DISPLACEMENT REVEAL GATE FOR PREVIOUS PROJECT) -->
       <section class="portal-section portal-back" id="portal-back">
         <div class="portal-sticky-stage" id="portal-back-stage">
           <a href="project.html?p=${prevProject.slug}" class="portal-focus-link portal-focus-link--back" id="portal-back-focus-link">
             Previous project: ${prevProject.title} &larr;
           </a>
-          <div class="portal-circle-border" id="portal-back-circle-border"></div>
-          <div class="portal-replica-wrap" id="portal-back-replica">
-            ${renderHero(prevProject, prevIndex)}
-          </div>
+          <canvas class="displacement-canvas" id="displacement-canvas-back" width="1920" height="1080"></canvas>
           <div class="portal-next-label" id="portal-back-label">
             Previous: ${prevProject.title}
           </div>
@@ -269,16 +461,13 @@ function mountProject(slug, { animateIntro = false } = {}) {
         </section>
       </div>
 
-      <!-- SECTION 3: SCROLL-DRIVEN FORWARD PORTAL TO NEXT PROJECT -->
+      <!-- SECTION 3: SCROLL-DRIVEN FORWARD PORTAL TO NEXT PROJECT (DISPLACEMENT REVEAL) -->
       <section class="portal-section" id="portal">
         <div class="portal-sticky-stage" id="portal-stage">
           <a href="project.html?p=${nextProject.slug}" class="portal-focus-link" id="portal-focus-link">
             Next project: ${nextProject.title} &rarr;
           </a>
-          <div class="portal-circle-border" id="portal-circle-border"></div>
-          <div class="portal-replica-wrap" id="portal-replica">
-            ${renderHero(nextProject, nextIndex)}
-          </div>
+          <canvas class="displacement-canvas" id="displacement-canvas-forward" width="1920" height="1080"></canvas>
           <div class="portal-next-label" id="portal-next-label">
             Next: ${nextProject.title}
           </div>
@@ -376,25 +565,13 @@ function mountProject(slug, { animateIntro = false } = {}) {
         };
         window.addEventListener("resize", handleResize, { passive: true });
 
-        // PROBLEM 2.3: Back gate ScrollTrigger
+        // PROBLEM 2.3: Back gate ScrollTrigger (displacement reveal)
         if (portalBackEl) {
-          const backReplica = document.getElementById("portal-back-replica");
-          const backBorder = document.getElementById("portal-back-circle-border");
-          const backLabel = document.getElementById("portal-back-label");
           const H = portalBackEl.offsetHeight;
 
-          // Initial circle state
-          if (backReplica) {
-            backReplica.style.clipPath = `circle(90px at 50% 50%)`;
-            backReplica.style.webkitClipPath = `circle(90px at 50% 50%)`;
-          }
-          if (backBorder) {
-            backBorder.style.width = "180px";
-            backBorder.style.height = "180px";
-            backBorder.style.opacity = "1";
-          }
-          if (backLabel) {
-            backLabel.style.opacity = "1";
+          // Initial displacement state
+          if (typeof window.renderDisplacementBack === "function") {
+            window.renderDisplacementBack(0);
           }
 
           ScrollTrigger.create({
@@ -403,21 +580,23 @@ function mountProject(slug, { animateIntro = false } = {}) {
             end: () => "+=" + Math.max(H, window.innerHeight * 1.5),
             onUpdate: (self) => {
               if (swapping) return;
-              const openness = 1 - self.progress;
+              const progress = 1 - self.progress; // 0 at top, 1 at bottom of portal-back
 
-              if (openness < 0.3) {
+              if (progress < 0.3) {
                 backArmed = true;
               }
 
-              const factor = Math.min(openness / 0.85, 1);
-              const R = 90 + (Rmax - 90) * factor;
+              const progressClamped = Math.min(progress / 0.85, 1);
 
-              if (backReplica) {
-                backReplica.style.clipPath = `circle(${R}px at 50% 50%)`;
-                backReplica.style.webkitClipPath = `circle(${R}px at 50% 50%)`;
+              if (typeof window.renderDisplacementBack === "function") {
+                window.renderDisplacementBack(progressClamped);
               }
-              if (backBorder) {
-                backBorder.style.width = `${R * 2}px`;
+
+              if (progress >= 0.99 && backArmed) {
+                swapTo(prevProject.slug);
+              }
+            }
+          });
                 backBorder.style.height = `${R * 2}px`;
                 backBorder.style.opacity = Math.max(0, 1 - factor * 2.5);
               }
@@ -441,26 +620,12 @@ function mountProject(slug, { animateIntro = false } = {}) {
           }
         };
 
-        // PROBLEM 2.4: Forward gate ScrollTrigger (direct clip-path, armed guard)
+        // PROBLEM 2.4: Forward gate ScrollTrigger (displacement reveal)
         const portalSection = document.getElementById("portal");
         if (portalSection) {
-          const fwdReplica = document.getElementById("portal-replica");
-          const fwdBorder = document.getElementById("portal-circle-border");
-          const fwdLabel = document.getElementById("portal-next-label");
-          const fwdFocusLink = document.getElementById("portal-focus-link");
-
-          // Initial circle state
-          if (fwdReplica) {
-            fwdReplica.style.clipPath = `circle(90px at 50% 50%)`;
-            fwdReplica.style.webkitClipPath = `circle(90px at 50% 50%)`;
-          }
-          if (fwdBorder) {
-            fwdBorder.style.width = "180px";
-            fwdBorder.style.height = "180px";
-            fwdBorder.style.opacity = "1";
-          }
-          if (fwdLabel) {
-            fwdLabel.style.opacity = "1";
+          // Initial displacement state
+          if (typeof window.renderDisplacementForward === "function") {
+            window.renderDisplacementForward(0);
           }
 
           ScrollTrigger.create({
@@ -469,29 +634,19 @@ function mountProject(slug, { animateIntro = false } = {}) {
             end: "top top",
             onUpdate: (self) => {
               if (swapping) return;
-              const openness = self.progress;
+              const progress = self.progress; // 0 at bottom, 1 at top of portal
 
-              if (openness < 0.3) {
+              if (progress < 0.3) {
                 fwdArmed = true;
               }
 
-              const factor = Math.min(openness / 0.85, 1);
-              const R = 90 + (Rmax - 90) * factor;
+              const progressClamped = Math.min(progress / 0.85, 1);
 
-              if (fwdReplica) {
-                fwdReplica.style.clipPath = `circle(${R}px at 50% 50%)`;
-                fwdReplica.style.webkitClipPath = `circle(${R}px at 50% 50%)`;
-              }
-              if (fwdBorder) {
-                fwdBorder.style.width = `${R * 2}px`;
-                fwdBorder.style.height = `${R * 2}px`;
-                fwdBorder.style.opacity = Math.max(0, 1 - factor * 2.5);
-              }
-              if (fwdLabel) {
-                fwdLabel.style.opacity = Math.max(0, 1 - factor * 3);
+              if (typeof window.renderDisplacementForward === "function") {
+                window.renderDisplacementForward(progressClamped);
               }
 
-              if (openness >= 0.99 && fwdArmed) {
+              if (progress >= 0.99 && fwdArmed) {
                 swapTo(nextProject.slug);
               }
             }
