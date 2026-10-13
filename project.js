@@ -431,14 +431,15 @@ function mountProject(slug, { animateIntro = false } = {}) {
             }
           });
 
-          root.addEventListener("click", (e) => {
-            const backLink = e.target.closest(".portal-focus-link--back");
-            if (backLink) {
-              e.preventDefault();
-              swapTo(prevProject.slug);
-            }
-          });
         }
+
+        root.onclick = (e) => {
+          const backLink = e.target.closest(".portal-focus-link--back");
+          if (backLink) {
+            e.preventDefault();
+            swapTo(prevProject.slug);
+          }
+        };
 
         // PROBLEM 2.4: Forward gate ScrollTrigger (direct clip-path, armed guard)
         const portalSection = document.getElementById("portal");
@@ -495,15 +496,15 @@ function mountProject(slug, { animateIntro = false } = {}) {
               }
             }
           });
-
-          root.addEventListener("click", (e) => {
-            const fwdLink = e.target.closest(".portal-focus-link:not(.portal-focus-link--back)");
-            if (fwdLink) {
-              e.preventDefault();
-              swapTo(nextProject.slug);
-            }
-          });
         }
+
+        root.onclick = (e) => {
+          const fwdLink = e.target.closest(".portal-focus-link:not(.portal-focus-link--back)");
+          if (fwdLink) {
+            e.preventDefault();
+            swapTo(nextProject.slug);
+          }
+        };
       } else if (prefersReducedMotion) {
   if (swappingTimeout) clearTimeout(swappingTimeout);
   swappingTimeout = setTimeout(() => { swapping = false; }, 100);
