@@ -565,6 +565,10 @@ function mountProject(slug, { animateIntro = false } = {}) {
       }
     });
   });
+  } catch (e) {
+    console.error("mountProject error:", e);
+    swapping = false;
+  }
 }
 
 /**
