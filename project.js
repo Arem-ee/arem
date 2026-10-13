@@ -99,21 +99,21 @@ function mountProject(slug, { animateIntro = false } = {}) {
       return;
     }
 
-  const currentIndex = SITE.projects.findIndex((p) => p.slug === slug);
-  const nextIndex = (currentIndex + 1) % SITE.projects.length;
-  const nextProject = SITE.projects[nextIndex];
-  const prevIndex = (currentIndex - 1 + SITE.projects.length) % SITE.projects.length;
-  const prevProject = SITE.projects[prevIndex];
+    const currentIndex = SITE.projects.findIndex((p) => p.slug === slug);
+    const nextIndex = (currentIndex + 1) % SITE.projects.length;
+    const nextProject = SITE.projects[nextIndex];
+    const prevIndex = (currentIndex - 1 + SITE.projects.length) % SITE.projects.length;
+    const prevProject = SITE.projects[prevIndex];
 
-  const root = document.getElementById("project-root");
-  if (!root) return;
+    const root = document.getElementById("project-root");
+    if (!root) return;
 
-  // Case-study image slots: overview (Block A), two process shots (Block C), result (Block D).
-  // Falls back to the cover image until dedicated screenshots are provided in content.js.
-  const imgOverview = project.overviewImage || project.image;
-  const imgProcess1 = project.processImage1 || project.image;
-  const imgProcess2 = project.processImage2 || project.image;
-  const imgResult = project.resultImage || project.image;
+    // Case-study image slots: overview (Block A), two process shots (Block C), result (Block D).
+    // Falls back to the cover image until dedicated screenshots are provided in content.js.
+    const imgOverview = project.overviewImage || project.image;
+    const imgProcess1 = project.processImage1 || project.image;
+    const imgProcess2 = project.processImage2 || project.image;
+    const imgResult = project.resultImage || project.image;
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
