@@ -43,7 +43,7 @@ function renderHero(project, index) {
   const heroBg = `radial-gradient(130% 100% at 50% 0%, ${accent}16 0%, var(--bg) 62%)`;
   const num = typeof index === "number" ? String(index + 1).padStart(2, "0") : "";
   return `
-    <section class="project-hero-screen" style="background: ${heroBg};">
+    <section class="project-hero-screen" id="hero" style="background: ${heroBg};">
       <div class="project-hero-content">
         <div class="project-hero-main">
           <div class="project-hero-title-wrap">
@@ -86,18 +86,18 @@ function swapTo(nextSlug) {
  * Exactly builds any of the 5 projects and dual gates (previous and next)
  */
 function mountProject(slug, { animateIntro = false } = {}) {
-  const SITE = window.SITE;
-  if (!SITE || !SITE.projects || SITE.projects.length === 0) {
-    window.location.href = "404.html";
-    return;
-  }
+  try {
+    const SITE = window.SITE;
+    if (!SITE || !SITE.projects || SITE.projects.length === 0) {
+      window.location.href = "404.html";
+      return;
+    }
 
-  // Find project in SITE.projects by slug (if missing, go to 404.html)
-  const project = SITE.projects.find((p) => p.slug === slug);
-  if (!project) {
-    window.location.href = "404.html";
-    return;
-  }
+    const project = SITE.projects.find((p) => p.slug === slug);
+    if (!project) {
+      window.location.href = "404.html";
+      return;
+    }
 
   const currentIndex = SITE.projects.findIndex((p) => p.slug === slug);
   const nextIndex = (currentIndex + 1) % SITE.projects.length;
@@ -125,9 +125,6 @@ function mountProject(slug, { animateIntro = false } = {}) {
   if (typeof ScrollTrigger !== "undefined") {
     ScrollTrigger.clearScrollMemory();
   }
-
-  // (b) clear the root and render the whole new page into the DOM WITHOUT creating any ScrollTrigger yet
-  root.innerHTML = "";
 
   if (prefersReducedMotion) {
     // Problem 2.5: Reduced motion - do not render portal-back (LAND = 0)
@@ -300,17 +297,17 @@ function mountProject(slug, { animateIntro = false } = {}) {
               <h4 class="footer-nav-title">Pages</h4>
               <ul class="footer-link-list" id="footer-pages-list">
                 <li><a href="index.html#work" class="footer-link">Work</a></li>
-                <li><a href="/design.html" class="footer-link">Design</a></li>
-                <li><a href="/writing.html" class="footer-link">Writing</a></li>
+                <li><a href="design.html" class="footer-link">Design</a></li>
+                <li><a href="writing.html" class="footer-link">Writing</a></li>
                 <li><a href="#contact" class="footer-link">Contact</a></li>
               </ul>
             </div>
             <div class="footer-nav-col">
               <h4 class="footer-nav-title">Social</h4>
               <ul class="footer-link-list" id="footer-social-list">
-                <li><a href="https://github.com/Arem-ee" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/toromadeabdulrahman" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://x.com/Arem_ee" class="footer-link" target="_blank" rel="noopener noreferrer">X</a></li>
+                <li><a href="https://github.com/Arem-ee" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new window)">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/toromadeabdulrahman" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new window)">LinkedIn</a></li>
+                <li><a href="https://x.com/Arem_ee" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="X (opens in new window)">X</a></li>
               </ul>
             </div>
           </div>
@@ -366,10 +363,18 @@ function mountProject(slug, { animateIntro = false } = {}) {
           );
         });
 
-        const Rmax =
+        const getRmax = () =>
           Math.sqrt(
             Math.pow(window.innerWidth / 2, 2) + Math.pow(window.innerHeight / 2, 2)
           ) + 40;
+
+        let Rmax = getRmax();
+
+        const handleResize = () => {
+          Rmax = getRmax();
+          if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+        };
+        window.addEventListener("resize", handleResize, { passive: true });
 
         // PROBLEM 2.3: Back gate ScrollTrigger
         if (portalBackEl) {
@@ -395,7 +400,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
           ScrollTrigger.create({
             trigger: portalBackEl,
             start: "top top",
-            end: () => "+=" + Math.max(H - window.innerHeight, 1),
+            end: () => "+=" + Math.max(H, window.innerHeight * 1.5),
             onUpdate: (self) => {
               if (swapping) return;
               const openness = 1 - self.progress;
@@ -426,13 +431,13 @@ function mountProject(slug, { animateIntro = false } = {}) {
             }
           });
 
-          const backFocusLink = document.getElementById("portal-back-focus-link");
-          if (backFocusLink) {
-            backFocusLink.addEventListener("click", (e) => {
+          root.addEventListener("click", (e) => {
+            const backLink = e.target.closest(".portal-focus-link--back");
+            if (backLink) {
               e.preventDefault();
               swapTo(prevProject.slug);
-            });
-          }
+            }
+          });
         }
 
         // PROBLEM 2.4: Forward gate ScrollTrigger (direct clip-path, armed guard)
@@ -491,12 +496,13 @@ function mountProject(slug, { animateIntro = false } = {}) {
             }
           });
 
-          if (fwdFocusLink) {
-            fwdFocusLink.addEventListener("click", (e) => {
+          root.addEventListener("click", (e) => {
+            const fwdLink = e.target.closest(".portal-focus-link:not(.portal-focus-link--back)");
+            if (fwdLink) {
               e.preventDefault();
               swapTo(nextProject.slug);
-            });
-          }
+            }
+          });
         }
       } else if (prefersReducedMotion) {
   if (swappingTimeout) clearTimeout(swappingTimeout);
@@ -564,7 +570,7 @@ function mountProject(slug, { animateIntro = false } = {}) {
 /**
  * Initial Page Load & History Orchestrator
  */
-document.addEventListener("DOMContentLoaded", () => {
+function init() {
   if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
   }
@@ -583,10 +589,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // First load mounts requested project with animated intro
   mountProject(slugFromUrl, { animateIntro: true });
 
-  // PROBLEM 2.6: Popstate handler calls mountProject with same order and lands at LAND, no animation
   window.addEventListener("popstate", () => {
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("p") || params.get("slug");
@@ -594,7 +598,13 @@ document.addEventListener("DOMContentLoaded", () => {
       mountProject(slug, { animateIntro: false });
     }
   });
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
 
 /**
  * TEST HELPERS

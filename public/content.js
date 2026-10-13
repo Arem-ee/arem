@@ -60,7 +60,7 @@ window.SITE = {
   projects: [
     {
       id: 1,
-      slug: "propeida",
+      slug: "project-one",
       title: "Propeida",
       summary: "General entrance exam prep platform, rebranded from PrepIQ. Practice questions, per-exam leaderboards, referral tracking, and admin question management.",
       role: "Sole builder & founder — product, architecture, and engineering",
@@ -86,7 +86,7 @@ window.SITE = {
     },
     {
       id: 2,
-      slug: "redact",
+      slug: "project-two",
       title: "Redact",
       summary: "Non-custodial stablecoin privacy app built on Monad for a hackathon. ZK privacy layer for private balance management, client-side duress mode.",
       role: "Solo hackathon build — contract, frontend, and submission",
@@ -112,7 +112,7 @@ window.SITE = {
     },
     {
       id: 3,
-      slug: "stylearem",
+      slug: "project-three",
       title: "StyleArem",
       summary: "Men's fashion e-commerce landing page. Full storefront layout with collections, a working bag, and social proof built in.",
       role: "Designed & built end to end",
@@ -138,7 +138,7 @@ window.SITE = {
     },
     {
       id: 4,
-      slug: "oralcare",
+      slug: "project-four",
       title: "Oralcare",
       summary: "A dental clinic site. Booking flow, a team directory, a four-step process explainer, and patient testimonials, built as a full marketing site rather than a single landing page.",
       role: "Designed & built end to end",
@@ -164,7 +164,7 @@ window.SITE = {
     },
     {
       id: 5,
-      slug: "mobile-landing-page",
+      slug: "project-five",
       title: "Buzz Kitchen",
       summary: "Conversion-focused mobile landing page designed and prototyped in Figma: clear hierarchy, persuasive flow, clickable end to end.",
       role: "Solo design exercise — mobile-first canvas, interactive prototype",
