@@ -39,10 +39,11 @@ let swappingTimeout = null;
  * Also used to build the nav-less replica inside the portal (Section 3 & Problem 2)
  */
 function renderHero(project, index) {
-  const accent = project.accent || "#9BAA97";
-  const heroBg = `radial-gradient(130% 100% at 50% 0%, ${accent}16 0%, var(--bg) 62%)`;
-  const num = typeof index === "number" ? String(index + 1).padStart(2, "0") : "";
-  return `
+  try {
+    const accent = project.accent || "#9BAA97";
+    const heroBg = `radial-gradient(130% 100% at 50% 0%, ${accent}16 0%, var(--bg) 62%)`;
+    const num = typeof index === "number" ? String(index + 1).padStart(2, "0") : "";
+    return `
     <section class="project-hero-screen" id="hero" style="background: ${heroBg};">
       <div class="project-hero-content">
         <div class="project-hero-main">
@@ -69,6 +70,10 @@ function renderHero(project, index) {
       </div>
     </section>
   `;
+  } catch (e) {
+    console.error("[renderHero] Error:", e);
+    return '<section class="project-hero-screen"><h1>Project</h1></section>';
+  }
 }
 
 /**
@@ -109,8 +114,11 @@ function mountProject(slug, { animateIntro = false } = {}) {
     const prevIndex = (currentIndex - 1 + SITE.projects.length) % SITE.projects.length;
     const prevProject = SITE.projects[prevIndex];
 
-    const root = document.getElementById("project-root");
-    if (!root) return;
+const root = document.getElementById("project-root");
+  if (!root) {
+    console.error("[mountProject] #project-root element not found");
+    return;
+  }
 
     // Case-study image slots: overview (Block A), two process shots (Block C), result (Block D).
     // Falls back to the cover image until dedicated screenshots are provided in content.js.
@@ -151,9 +159,6 @@ function mountProject(slug, { animateIntro = false } = {}) {
   `;
 
   // Displacement transition setup
-  let displacementGL = null;
-  let displacementProgram = null;
-  let displacementUniforms = null;
   let displacementTextures = {};
 
   function initDisplacementTransition() {
@@ -605,12 +610,12 @@ function mountProject(slug, { animateIntro = false } = {}) {
   }
 
   // Initialize displacement transition WebGL (with fallback)
-  let displacementReady = false;
-  try {
-    initDisplacementTransition();
-    displacementReady = true;
-  } catch (e) {
-    console.warn("Displacement transition failed, falling back to circle gates:", e);
+  if (!prefersReducedMotion) {
+    try {
+      initDisplacementTransition();
+    } catch (e) {
+      console.warn("Displacement transition failed, falling back to circle gates:", e);
+    }
   }
 
   // Set document.title
@@ -750,8 +755,6 @@ function mountProject(slug, { animateIntro = false } = {}) {
           }
         };
       } else if (prefersReducedMotion) {
-  if (swappingTimeout) clearTimeout(swappingTimeout);
-  swappingTimeout = setTimeout(() => { swapping = false; }, 100);
         const prevLink = document.getElementById("portal-reduced-prev");
         if (prevLink) {
           prevLink.addEventListener("click", (e) => {
@@ -813,6 +816,9 @@ function mountProject(slug, { animateIntro = false } = {}) {
   } catch (e) {
     console.error("mountProject error:", e);
     swapping = false;
+    if (root && root.innerHTML.length === 0) {
+      root.innerHTML = '<div style="padding:48px;text-align:center;font-family:sans-serif;"><h2>Something went wrong loading this project.</h2><p><a href="index.html#work">← Back to all projects</a></p></div>';
+    }
   }
   console.log('[mountProject] Completed for slug:', slug);
 }
