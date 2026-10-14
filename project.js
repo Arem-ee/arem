@@ -823,44 +823,10 @@ const root = document.getElementById("project-root");
   console.log('[mountProject] Completed for slug:', slug);
 }
 
-/**
- * Initial Page Load & History Orchestrator
- */
-function init() {
-  if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-  }
-
-  const SITE = window.SITE;
-  if (!SITE || !SITE.projects || SITE.projects.length === 0) {
-    window.location.href = "404.html";
-    return;
-  }
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const slugFromUrl = urlParams.get("p") || urlParams.get("slug");
-
-  if (!slugFromUrl) {
-    window.location.href = "404.html";
-    return;
-  }
-
-  mountProject(slugFromUrl, { animateIntro: true });
-
-  window.addEventListener("popstate", () => {
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get("p") || params.get("slug");
-    if (slug) {
-      mountProject(slug, { animateIntro: false });
-    }
-  });
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
-} else {
-  init();
-}
+(function init() {
+  var slug = new URLSearchParams(window.location.search).get("p") || "project-one";
+  mountProject(slug, { animateIntro: true });
+})();
 
 /**
  * TEST HELPERS
