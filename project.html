@@ -41,5 +41,11 @@
   <script src="content.js"></script>
   <script src="shared.js"></script>
   <script src="project.js"></script>
+  <script>
+    (function () {
+      var slug = new URLSearchParams(window.location.search).get("p") || "project-one";
+      mountProject(slug, { animateIntro: true });
+    })();
+  </script>
 </body>
 </html>
