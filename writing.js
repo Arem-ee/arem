@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .join("");
 
   // Initialize shared footer if buildFooter exists
-  const footerEl = document.getElementById("contact");
+  const footerEl = document.querySelector(".site-footer");
   if (footerEl && window.buildFooter) {
     window.buildFooter(footerEl);
   }

@@ -30,6 +30,18 @@ async function submitForm(data) {
 }
 
 /**
+ * Resolve relative URL prefixes (pages nested under /posts/ need "../")
+ */
+function siteBase() {
+  return /\/posts\//.test(window.location.pathname) ? "../" : "";
+}
+
+function withBase(href) {
+  if (/^(https?:|\/|#|mailto:)/.test(href)) return href;
+  return siteBase() + href;
+}
+
+/**
  * Universal Header & Navigation Synchronization
  */
 function initSharedNav() {
@@ -47,7 +59,7 @@ function initSharedNav() {
     } else if (!logoEl.querySelector("img")) {
       logoEl.textContent = SITE.brand.name;
     }
-    logoEl.setAttribute("href", "index.html#hero");
+    logoEl.setAttribute("href", withBase("index.html#hero"));
   }
 
   const navList = navContainer.querySelector(".nav__list");
@@ -74,7 +86,7 @@ function initSharedNav() {
       }
 
       const activeAttr = isCurrent ? ' aria-current="page" class="nav__link is-active"' : ' class="nav__link"';
-      return `<li><a href="${item.href}"${activeAttr}>${item.label}</a></li>`;
+      return `<li><a href="${withBase(item.href)}"${activeAttr}>${item.label}</a></li>`;
     })
     .join("");
 
@@ -121,9 +133,10 @@ function initSharedNav() {
  */
 function buildFooter(container) {
   const SITE = window.SITE || {};
-  const footerEl = container || document.querySelector(".site-footer") || document.getElementById("contact");
+  const footerEl = container || document.querySelector(".site-footer");
   if (!footerEl) return;
 
+  const base = siteBase();
   const currentYear = new Date().getFullYear();
   const brandName = SITE.brand ? SITE.brand.name : "Your Name";
   const footerDesc = SITE.footer ? SITE.footer.description : "A brief concluding sentence about your work and availability.";
@@ -140,42 +153,15 @@ function buildFooter(container) {
       <option value="option-4">Option Four</option>
     `;
 
-  footerEl.innerHTML = `
-    <!-- Left side footer content (at most 46% width) -->
-    <div class="footer-content">
-      <div class="footer-top">
-        <span class="footer-logo">${brandName}</span>
-        <p class="footer-sentence">${footerDesc}</p>
-        
-        <div class="footer-links-grid">
-          <div class="footer-nav-col">
-            <h4 class="footer-nav-title">Pages</h4>
-            <ul class="footer-link-list" id="footer-pages-list">
-              <li><a href="index.html#work" class="footer-link">Work</a></li>
-              <li><a href="/design.html" class="footer-link">Design</a></li>
-              <li><a href="/writing.html" class="footer-link">Writing</a></li>
-              <li><a href="#contact" class="footer-link">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h4 class="footer-nav-title">Social</h4>
-            <ul class="footer-link-list" id="footer-social-list">
-              <li><a href="https://github.com/Arem-ee" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-              <li><a href="https://www.linkedin.com/in/toromadeabdulrahman" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="https://x.com/Arem_ee" class="footer-link" target="_blank" rel="noopener noreferrer">X</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p class="footer-copyright" id="copyright-text">&copy; <span id="copyright-year">${currentYear}</span> ${copyrightText}</p>
-        <a href="#hero" class="footer-back-top" id="back-to-top">Back to top <span aria-hidden="true">&uarr;</span></a>
-      </div>
-    </div>
-
-    <!-- Absolutely positioned paper-stack on top of footer -->
-    <div class="paper-stack" id="paper-stack">
+  // 1) Contact section with the paper-stack form — inserted before the footer
+  //    so the white card straddles the cream/black boundary like the home page.
+  if (!document.getElementById("contact")) {
+    const section = document.createElement("section");
+    section.className = "contact-section";
+    section.id = "contact";
+    section.innerHTML = `
+      <div class="contact-inner">
+        <div class="paper-stack" id="paper-stack">
       <!-- paper--back: empty sheet shifted and rotated -->
       <div class="paper-sheet paper--back" aria-hidden="true"></div>
 
@@ -217,7 +203,7 @@ function buildFooter(container) {
           </div>
 
           <!-- Message -->
-          <div class="form-field">
+          <div class="form-field form-field--message">
             <div class="floating-group">
               <textarea id="field-message" name="message" class="form-textarea" placeholder=" " required minlength="10"></textarea>
               <label for="field-message" class="floating-label">Message</label>
@@ -245,6 +231,52 @@ function buildFooter(container) {
           <h3 class="success-title">Message received.</h3>
           <p class="success-body">Thank you for reaching out. I will get back to you shortly.</p>
         </div>
+      </div>
+    </div>
+      </div>
+    `;
+    footerEl.parentNode.insertBefore(section, footerEl);
+  }
+
+  // 2) Footer content — same structure and classes as the home page footer
+  const pages = (SITE.footer && SITE.footer.pages) || [
+    { label: "Work", href: "index.html#work" },
+    { label: "Design", href: "/design.html" },
+    { label: "Writing", href: "/writing.html" },
+    { label: "Contact", href: "index.html#contact" }
+  ];
+  const social = (SITE.footer && SITE.footer.social) || [
+    { label: "GitHub", href: "https://github.com/Arem-ee" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/toromadeabdulrahman" },
+    { label: "X", href: "https://x.com/Arem_ee" }
+  ];
+
+  const pagesHtml = pages
+    .map((p) => `<li><a href="${p.href.includes("#contact") ? "#contact" : withBase(p.href)}" class="footer-link">${p.label}</a></li>`)
+    .join("");
+  const socialHtml = social
+    .map((s) => `<li><a href="${s.href}" class="footer-link" target="_blank" rel="noopener noreferrer">${s.label}</a></li>`)
+    .join("");
+
+  footerEl.innerHTML = `
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo"><img src="${base}assets/logo.svg" alt="" class="footer-logo-mark" width="24" height="24"><span class="footer-logo-text">${brandName}</span></span>
+        <p class="footer-sentence">${footerDesc}</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-title">Pages</h4>
+          <ul class="footer-link-list" id="footer-pages-list">${pagesHtml}</ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-title">Social</h4>
+          <ul class="footer-link-list" id="footer-social-list">${socialHtml}</ul>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p class="footer-copyright" id="copyright-text">&copy; <span id="copyright-year">${currentYear}</span> ${copyrightText}</p>
+        <a href="#hero" class="footer-back-top" id="back-to-top">Back to top <span aria-hidden="true">&uarr;</span></a>
       </div>
     </div>
   `;
@@ -380,9 +412,9 @@ function initForm() {
   // Paper stack drop-in entrance animation
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const paperStack = document.getElementById("paper-stack");
-  const footer = document.querySelector(".site-footer");
+  const contactSection = document.getElementById("contact");
 
-  if (paperStack && footer) {
+  if (paperStack && contactSection) {
     if (prefersReducedMotion || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
       paperStack.style.opacity = "1";
       paperStack.style.transform = "none";
@@ -391,18 +423,18 @@ function initForm() {
         paperStack,
         {
           opacity: 0,
-          y: 48,
-          rotation: 3
+          y: 64,
+          rotation: 4
         },
         {
           opacity: 1,
           y: 0,
           rotation: 0,
-          duration: 0.9,
-          ease: "power2.out",
+          duration: 1,
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: footer,
-            start: "top 80%",
+            trigger: contactSection,
+            start: "top 85%",
             toggleActions: "play none none none"
           }
         }

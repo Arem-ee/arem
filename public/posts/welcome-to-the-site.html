@@ -4,84 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to the site — Arem</title>
-  <meta name="description" content="A short placeholder sentence about this post.">
+  <meta name="description" content="First post on the new site: documenting processes, reflecting on craft, and building physical and digital software systems with attention to detail.">
 
   <!-- Google Fonts: Space Grotesk & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- Core, Shared & Post Stylesheets -->
+  <!-- Core & Writing Stylesheets -->
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../posts.css">
+  <link rel="stylesheet" href="../writing.css">
 
   <!-- GSAP for shared footer -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
-<body class="page-post">
+<body class="page-writing">
 
-  <!-- Shared Nav Fixed at Top -->
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a href="../index.html#hero" class="nav__logo"><img src="../assets/logo.svg" alt="" class="nav__logo-mark" width="22" height="22"><span class="nav__logo-text">Arem</span></a>
       <ul class="nav__list">
         <li><a href="../index.html#work" class="nav__link">Work</a></li>
-        <li><a href="/design.html" class="nav__link">Design</a></li>
+        <li><a href="../design.html" class="nav__link">Design</a></li>
         <li><a href="../writing.html" class="nav__link is-active" aria-current="page">Writing</a></li>
         <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Post Content -->
-  <main class="post-main">
-    <article class="post-container">
-      <header class="post-header">
-        <a href="../writing.html" class="post-back-link">
-          <span aria-hidden="true">&larr;</span> Back to Writing
-        </a>
-        <h1 class="post-title">Welcome to the site</h1>
-        <div class="post-meta">
-          <time class="post-date" datetime="2026-10-07">October 7, 2026</time>
-        </div>
-      </header>
+  <main class="writing-main">
+    <div class="writing-container">
+      <article class="post">
+        <header class="post__header">
+          <a href="../writing.html" class="post__back">&larr; All writing</a>
+          <h1 class="post__title">Welcome to the site</h1>
+          <div class="post__meta">
+            <time datetime="2026-10-07">Oct 2026</time>
+            <span class="post__read">1 min read</span>
+          </div>
+        </header>
 
-      <div class="post-body">
-        <p>This is a first post on the new site. The intention here is simple: to document processes, reflect on craft, and write about building physical and digital software systems with rigorous attention to detail.</p>
+        <div class="post__body">
+          <p>This is a first post on the new site. The intention here is simple: to document processes, reflect on craft, and write about building physical and digital software systems with rigorous attention to detail.</p>
 
-        <h2>Intentional Architecture</h2>
-        <p>A good digital experience is built upon structural clarity rather than ornamental excess. When layouts are clear and performance is immediate, the user feels respected and unburdened.</p>
+          <h2>Intentional Architecture</h2>
+          <p>A good digital experience is built upon structural clarity rather than ornamental excess. When layouts are clear and performance is immediate, the user feels respected and unburdened.</p>
 
-        <blockquote>
-          Good architecture feels inevitable in retrospect.
-        </blockquote>
+          <blockquote>
+            Good architecture feels inevitable in retrospect.
+          </blockquote>
 
-        <p>We believe in building tools where interaction feels tactile and direct. Code and structure should mirror one another:</p>
+          <p>We believe in building tools where interaction feels tactile and direct. Code and structure should mirror one another:</p>
 
-        <pre><code>function init() {
+          <pre><code>function init() {
   console.log("Ready.");
 }</code></pre>
 
-        <p>More thoughts and field notes will be published here regularly.</p>
-      </div>
+          <p>More thoughts and field notes will be published here regularly.</p>
 
-      <footer class="post-footer-nav">
-        <a href="../writing.html" class="post-footer-link">
-          <span aria-hidden="true">&larr;</span> All posts
-        </a>
-      </footer>
-    </article>
+          <div class="post__author">
+            <div class="post__author-avatar">A</div>
+            <p class="post__author-bio"><span class="post__author-name">Arem</span> — Fullstack developer and electrical engineering student based in Nigeria. Building products end to end, from architecture to shipped code.</p>
+          </div>
+        </div>
+      </article>
+    </div>
   </main>
 
-  <!-- Shared Footer -->
-  <footer class="site-footer" id="contact">
-    <!-- Populated by shared.js buildFooter() -->
-  </footer>
+  <footer class="site-footer"></footer>
 
-  <!-- Scripts -->
   <script src="../content.js"></script>
-  <script src="../writings-data.js"></script>
   <script src="../shared.js"></script>
   <script src="../posts.js"></script>
 </body>
