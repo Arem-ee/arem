@@ -5,55 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project — Arem</title>
   <meta name="description" content="Selected project detail case study.">
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Core & Project Stylesheets -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="project.css">
+
+  <!-- GSAP & ScrollTrigger from cdnjs CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body class="page-project">
+
+  <!-- Shared Nav Fixed at Top -->
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a href="index.html#hero" class="nav__logo"><img src="assets/logo.svg" alt="" class="nav__logo-mark" width="22" height="22"><span class="nav__logo-text">Arem</span></a>
       <ul class="nav__list">
         <li><a href="index.html#work" class="nav__link">Work</a></li>
-        <li><a href="design.html" class="nav__link">Design</a></li>
+        <li><a href="/design.html" class="nav__link">Design</a></li>
         <li><a href="writing.html" class="nav__link">Writing</a></li>
         <li><a href="index.html#contact" class="nav__link">Contact</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Dynamic Project Root -->
   <main id="project-root"></main>
 
+  <!-- Content, Shared & Project Scripts -->
   <script src="content.js"></script>
   <script src="shared.js"></script>
+  <script src="project.js"></script>
   <script>
-    (function() {
+    (function () {
       var slug = new URLSearchParams(window.location.search).get("p") || "project-one";
-      var site = window.SITE;
-      var projects = site && site.projects ? site.projects : [];
-      var p = projects.find(function(x){ return x.slug === slug; });
-      var root = document.getElementById("project-root");
-      if (!root) return;
-      if (!p) {
-        root.innerHTML = '<section style="padding:4rem 1.5rem;max-width:720px;margin:0 auto;font-family:Inter,sans-serif;"><h1>Not found</h1><p><a href="index.html#work">Back to work</a></p></section>';
-        return;
-      }
-      var problemHtml = (p.problem || []).map(function(t){ return '<p style="line-height:1.7;margin-bottom:0.75rem;">' + t + '</p>'; }).join('');
-      var processHtml = (p.process || []).map(function(t){ return '<p style="line-height:1.7;margin-bottom:0.75rem;">' + t + '</p>'; }).join('');
-      root.innerHTML =
-        '<section style="padding:3rem 1.5rem 6rem;max-width:780px;margin:0 auto;font-family:Inter,sans-serif;color:#0a0a0a;">' +
-          '<a href="index.html#work" style="font-size:0.875rem;color:#5c5c5c;text-decoration:none;">← Back to all projects</a>' +
-          '<h1 style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);margin:1rem 0 0.25rem;line-height:1.1;letter-spacing:-0.03em;">' + p.title + '</h1>' +
-          '<p style="color:#5c5c5c;font-size:0.95rem;margin-bottom:2rem;">' + (p.year || '') + (p.role ? ' · ' + p.role : '') + '</p>' +
-          '<img src="' + (p.image || p.overviewImage || '') + '" alt="' + (p.alt || p.title) + '" style="width:100%;border-radius:0.75rem;display:block;margin-bottom:2.5rem;">' +
-          '<p style="font-size:1.125rem;line-height:1.7;margin-bottom:2rem;">' + (p.summary || '') + '</p>' +
-          (problemHtml ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Problem</h2>' + problemHtml : '') +
-          (processHtml ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Process</h2>' + processHtml : '') +
-          (p.result ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Result</h2><p style="line-height:1.7;">' + p.result + '</p>' : '') +
-          (p.tools ? '<p style="margin-top:2rem;font-size:0.875rem;color:#5c5c5c;"><strong>Tools:</strong> ' + p.tools + '</p>' : '') +
-        '</section>';
+      mountProject(slug, { animateIntro: true });
     })();
   </script>
 </body>
