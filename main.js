@@ -158,7 +158,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 function triggerAppInit() {
   const characterImg = document.querySelector(".hero__character-img");
   const characterReady = prepareCharacterImage(characterImg);
-  const readyTimeout = new Promise((resolve) => setTimeout(resolve, 2500));
+  const readyTimeout = new Promise((resolve) => setTimeout(resolve, 1200));
 
   Promise.race([
     characterReady,
