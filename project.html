@@ -3,16 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project — Arem</title>
-  <meta name="description" content="Selected project detail case study.">
+  <title>Case study — Arem</title>
+  <meta name="description" content="Selected project case study.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="project.css">
+  <style>
+    /* ===== Case study layout (project.html only) ===== */
+    #splash { position: fixed; inset: 0; background: #0d0c0a; z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease; }
+    #splash img { filter: brightness(0) invert(1); animation: csPulse 1.4s ease-in-out infinite; }
+    #splash.is-hidden { opacity: 0; }
+    @keyframes csPulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+
+    .cs { --cs-accent: #0a0a0a; --cs-border: #e3ded2; --cs-muted: #8a8578; font-family: Inter, sans-serif; color: #0a0a0a; }
+    .cs-wrap { max-width: 920px; margin: 0 auto; padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 48px) 140px; }
+    .cs-eyebrow { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cs-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .cs-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cs-accent); }
+    .cs-title { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: clamp(2.5rem, 6.5vw, 4.25rem); line-height: 1.02; letter-spacing: -0.035em; margin: 18px 0 10px; }
+    .cs-sub { color: var(--cs-muted); font-size: 1rem; margin: 0 0 22px; }
+    .cs-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .cs-chip { font-size: 13px; padding: 6px 14px; border: 1px solid var(--cs-border); border-radius: 999px; background: rgba(255, 255, 255, 0.55); }
+    .cs-figure { margin: 0 0 8px; }
+    .cs-figure img { width: 100%; aspect-ratio: 1350 / 767; object-fit: cover; display: block; border-radius: 14px; border: 1px solid var(--cs-border); background: #fff; }
+    .cs-cap { display: flex; gap: 10px; font-size: 12.5px; color: var(--cs-muted); letter-spacing: 0.08em; text-transform: uppercase; margin: 10px 2px 0; }
+    .cs-cap b { color: var(--cs-accent); font-weight: 600; }
+    .cs-lede { font-size: 1.2rem; line-height: 1.75; margin: 40px 0 0; }
+    .cs-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 28px 0 8px; }
+    .cs-metric { border: 1px solid var(--cs-border); border-radius: 14px; padding: 18px 16px; background: rgba(255, 255, 255, 0.55); }
+    .cs-metric b { display: block; font-family: "Space Grotesk", sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--cs-accent); letter-spacing: -0.02em; }
+    .cs-metric span { font-size: 12.5px; color: var(--cs-muted); }
+    .cs-section { margin-top: 72px; }
+    .cs-sec-head { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid var(--cs-border); padding-top: 22px; margin-bottom: 22px; }
+    .cs-sec-num { font-family: "Space Grotesk", sans-serif; font-size: 13px; color: var(--cs-accent); font-weight: 700; letter-spacing: 0.12em; }
+    .cs-sec-title { font-family: "Space Grotesk", sans-serif; font-size: 1.35rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+    .cs-section p { line-height: 1.78; margin: 0 0 1rem; }
+    .cs-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 6px; }
+    .cs-gate { display: block; margin-top: 96px; position: relative; border-radius: 18px; overflow: hidden; text-decoration: none; color: #fff; border: 1px solid var(--cs-border); }
+    .cs-gate img { width: 100%; aspect-ratio: 1350 / 767; object-fit: cover; display: block; transition: transform 0.8s ease; }
+    .cs-gate:hover img { transform: scale(1.025); }
+    .cs-gate-veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.25) 45%, rgba(10, 10, 10, 0.05) 70%); }
+    .cs-gate-copy { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 4vw, 40px); display: block; }
+    .cs-gate-k { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; opacity: 0.85; }
+    .cs-gate-t { font-family: "Space Grotesk", sans-serif; font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; display: block; margin: 6px 0 4px; }
+    .cs-gate-h { font-size: 14px; color: rgba(255, 255, 255, 0.75); display: block; }
+    .cs-foot { display: flex; justify-content: space-between; gap: 16px; margin-top: 64px; font-size: 14px; }
+    .cs-foot a { color: #0a0a0a; text-decoration: none; border-bottom: 1px solid transparent; }
+    .cs-foot a:hover { border-bottom-color: var(--cs-accent); }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (max-width: 720px) {
+      .cs-duo { grid-template-columns: 1fr; }
+      .cs-section { margin-top: 56px; }
+      .cs-foot { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .cs-gate img { transition: none; }
+      #splash img { animation: none; }
+    }
+  </style>
 </head>
 <body class="page-project">
-  <div id="splash" style="position:fixed;inset:0;background:#0a0a0a;z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 0.6s;"><img src="assets/logo.svg" alt="Arem" width="48" height="48" style="filter:brightness(0) invert(1);"></div>
+  <noscript><style>#splash { display: none !important; }</style></noscript>
+  <div id="splash" aria-hidden="true"><img src="assets/logo.svg" alt="" width="44" height="44"></div>
+
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a href="index.html#hero" class="nav__logo"><img src="assets/logo.svg" alt="" class="nav__logo-mark" width="22" height="22"><span class="nav__logo-text">Arem</span></a>
@@ -30,56 +86,109 @@
   <script src="content.js"></script>
   <script src="shared.js"></script>
   <script>
-    (function() {
+    (function () {
       var slug = new URLSearchParams(window.location.search).get("p") || "project-one";
-      var site = window.SITE;
-      var projects = site && site.projects ? site.projects : [];
-      var p = projects.find(function(x){ return x.slug === slug; });
+      var site = window.SITE || {};
+      var projects = site.projects || [];
+      var index = -1;
+      for (var k = 0; k < projects.length; k++) { if (projects[k].slug === slug) { index = k; break; } }
       var root = document.getElementById("project-root");
       if (!root) return;
-      if (!p) {
-        root.innerHTML = '<section style="padding:4rem 1.5rem;max-width:720px;margin:0 auto;font-family:Inter,sans-serif;"><h1>Not found</h1><p><a href="index.html#work">Back to work</a></p></section>';
+
+      function esc(s) {
+        return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+      function pad(n) { return (n < 10 ? "0" : "") + n; }
+
+      if (index === -1) {
+        root.innerHTML = '<div class="cs"><div class="cs-wrap"><h1 class="cs-title">Not found</h1><p><a href="index.html#work">← Back to all work</a></p></div></div>';
         return;
       }
-      var problemHtml = (p.problem || []).map(function(t){ return '<p style="line-height:1.7;margin-bottom:0.75rem;">' + t + '</p>'; }).join('');
-      var processHtml = (p.process || []).map(function(t){ return '<p style="line-height:1.7;margin-bottom:0.75rem;">' + t + '</p>'; }).join('');
-      var images = [
-        { src: p.overviewImage || p.image, alt: (p.alt || p.title) + ' overview' },
-        { src: p.processImage1 || p.image, alt: (p.alt || p.title) + ' process 1' },
-        { src: p.processImage2 || p.image, alt: (p.alt || p.title) + ' process 2' },
-        { src: p.resultImage || p.image, alt: (p.alt || p.title) + ' result' }
-      ];
-      var imgGrid = images.map(function(im){ return '<img src="' + im.src + '" alt="' + im.alt + '" style="width:100%;border-radius:0.75rem;display:block;">'; }).join('');
-      var currentIndex = (site && site.projects) ? site.projects.findIndex(function(x){return x.slug===slug;}) : -1;
-      var prev = (currentIndex > 0) ? site.projects[currentIndex-1] : null;
-      var next = (currentIndex >= 0 && currentIndex < site.projects.length-1) ? site.projects[currentIndex+1] : null;
+
+      var p = projects[index];
+      var prev = index > 0 ? projects[index - 1] : null;
+      var next = index < projects.length - 1 ? projects[index + 1] : null;
+      var num = pad(index + 1);
+      var total = pad(projects.length);
+      document.title = p.title + " — Case study — Arem";
+
+      function paras(a) {
+        return (a || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("");
+      }
+      function figure(src, alt, capNum, capLabel) {
+        return '<figure class="cs-figure reveal"><img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"><figcaption class="cs-cap"><b>' + capNum + '</b> ' + capLabel + '</figcaption></figure>';
+      }
+
+      var chipHtml = p.tools ? p.tools.split(",").map(function (t) { return '<span class="cs-chip">' + esc(t.trim()) + '</span>'; }).join("") : "";
+      var metricHtml = (p.metrics || []).map(function (m) {
+        return '<div class="cs-metric"><b>' + esc(m.value) + '</b><span>' + esc(m.label) + '</span></div>';
+      }).join("");
+
+      var gateHtml;
+      if (next) {
+        gateHtml = '<a class="cs-gate reveal" href="project.html?p=' + esc(next.slug) + '">' +
+          '<img src="' + esc(next.image || next.overviewImage || "") + '" alt="" loading="lazy" decoding="async">' +
+          '<span class="cs-gate-veil"></span>' +
+          '<span class="cs-gate-copy"><span class="cs-gate-k">Next case study — ' + pad(index + 2) + " / " + total + '</span>' +
+          '<span class="cs-gate-t">' + esc(next.title) + '</span>' +
+          '<span class="cs-gate-h">Scroll or click to enter →</span></span></a>';
+      } else {
+        gateHtml = '<a class="cs-gate reveal" href="index.html#work">' +
+          '<img src="' + esc(p.image || "") + '" alt="" loading="lazy" decoding="async">' +
+          '<span class="cs-gate-veil"></span>' +
+          '<span class="cs-gate-copy"><span class="cs-gate-k">End of case studies</span>' +
+          '<span class="cs-gate-t">See all work</span>' +
+          '<span class="cs-gate-h">Back to the homepage grid →</span></span></a>';
+      }
+
       root.innerHTML =
-        '<section class="design-section" style="padding:3rem 1.5rem 6rem;max-width:900px;margin:0 auto;font-family:Inter,sans-serif;color:#0a0a0a;">' +
-          '<a href="index.html#work" style="font-size:0.875rem;color:#5c5c5c;text-decoration:none;">← Back to all projects</a>' +
-          '<h1 style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);margin:1rem 0 0.25rem;line-height:1.1;letter-spacing:-0.03em;">' + p.title + '</h1>' +
-          '<p style="color:#5c5c5c;font-size:0.95rem;margin-bottom:2rem;">' + (p.year || '') + (p.role ? ' · ' + p.role : '') + '</p>' +
-          '<div style="display:grid;gap:1rem;margin-bottom:2rem;">' + imgGrid + '</div>' +
-          '<p style="font-size:1.125rem;line-height:1.7;margin-bottom:2rem;">' + (p.summary || '') + '</p>' +
-          (problemHtml ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Problem</h2>' + problemHtml : '') +
-          (processHtml ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Process</h2>' + processHtml : '') +
-          (p.result ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Result</h2><p style="line-height:1.7;">' + p.result + '</p>' : '') +
-          (p.tools ? '<p style="margin-top:2rem;font-size:0.875rem;color:#5c5c5c;"><strong>Tools:</strong> ' + p.tools + '</p>' : '') +
-          '<div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #e3e3e3;display:flex;justify-content:space-between;align-items:center;">' +
-            (prev ? '<a href="project.html?p=' + prev.slug + '" style="font-family:Space Grotesk,sans-serif;font-weight:600;color:#0a0a0a;text-decoration:none;">← ' + prev.title + '</a>' : '<span></span>') +
-            (next ? '<a href="project.html?p=' + next.slug + '" style="font-family:Space Grotesk,sans-serif;font-weight:600;color:#0a0a0a;text-decoration:none;">' + next.title + ' →</a>' : '<span></span>') +
+        '<div class="cs" style="--cs-accent:' + esc(p.accent || "#0a0a0a") + '">' +
+          '<div class="cs-wrap">' +
+            '<a class="cs-eyebrow" href="index.html#work">All work — case study ' + num + " / " + total + '</a>' +
+            '<h1 class="cs-title">' + esc(p.title) + '</h1>' +
+            '<p class="cs-sub">' + [p.year, p.role].filter(Boolean).map(esc).join(" · ") + '</p>' +
+            '<div class="cs-chips">' + chipHtml + '</div>' +
+            figure(p.overviewImage || p.image, p.alt || p.title, "01", "Overview") +
+            '<p class="cs-lede">' + esc(p.summary || "") + '</p>' +
+            (metricHtml ? '<div class="cs-metrics reveal">' + metricHtml + '</div>' : '') +
+            '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">01</span><h2 class="cs-sec-title">Problem</h2></div>' + paras(p.problem) + '</section>' +
+            '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">02</span><h2 class="cs-sec-title">Process</h2></div>' + paras(p.process) +
+              '<div class="cs-duo">' + figure(p.processImage1 || p.image, (p.alt || p.title) + " — process", "02", "Process") + figure(p.processImage2 || p.image, (p.alt || p.title) + " — process", "03", "Process") + '</div></section>' +
+            '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">03</span><h2 class="cs-sec-title">Result</h2></div><p>' + esc(p.result || "") + '</p>' +
+              figure(p.resultImage || p.image, (p.alt || p.title) + " — shipped", "04", "Shipped") + '</section>' +
+            gateHtml +
+            '<div class="cs-foot"><a href="index.html#work">← All work</a>' + (prev ? '<a href="project.html?p=' + esc(prev.slug) + '">Previous: ' + esc(prev.title) + '</a>' : '<span></span>') + '</div>' +
           '</div>' +
-          (next ? '<a href="project.html?p=' + next.slug + '" style="display:block;margin-top:4rem;text-decoration:none;color:inherit;">' +
-            '<div style="position:relative;width:100%;padding-bottom:50%;border-radius:1rem;overflow:hidden;background:#0a0a0a;">' +
-              '<img src="' + (next.image || next.overviewImage || '') + '" alt="' + (next.alt || next.title) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.9;">' +
-              '<div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;">' +
-                '<span style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.5rem;color:#fff;">Continue to ' + next.title + '</span>' +
-                '<span style="color:#ccc;font-size:0.875rem;margin-top:0.25rem;">Scroll / click to enter the next case study</span>' +
-              '</div>' +
-            '</div>' +
-          '</a>' : '') +
-        '</section>';
+        '</div>';
+
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var items = root.querySelectorAll(".reveal");
+      if (reduce || !("IntersectionObserver" in window)) {
+        for (var j = 0; j < items.length; j++) { items[j].classList.add("is-visible"); }
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+        for (var m = 0; m < items.length; m++) { io.observe(items[m]); }
+      }
     })();
-    window.addEventListener('load', function(){ setTimeout(function(){ var s=document.getElementById('splash'); if(s){ s.style.opacity='0'; setTimeout(function(){ s.style.display='none'; }, 600); } }, 300); });
+
+    (function () {
+      var splash = document.getElementById("splash");
+      if (!splash) return;
+      var loadFired = false, minDone = false, hidden = false;
+      function hide() {
+        if (hidden || !loadFired || !minDone) return;
+        hidden = true;
+        splash.classList.add("is-hidden");
+        setTimeout(function () { splash.style.display = "none"; }, 700);
+      }
+      window.addEventListener("load", function () { loadFired = true; hide(); });
+      setTimeout(function () { minDone = true; hide(); }, 450);
+      setTimeout(function () { loadFired = true; minDone = true; hide(); }, 3500);
+    })();
   </script>
 </body>
 </html>

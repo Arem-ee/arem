@@ -66,6 +66,12 @@ window.SITE = {
       role: "Sole builder & founder — product, architecture, and engineering",
       year: "2025",
       tools: "Next.js, Supabase, Paystack, Tailwind CSS",
+      metrics: [
+        { value: "250+", label: "active users in launch week" },
+        { value: "87%", label: "retention through exam date" },
+        { value: "1,200+", label: "practice attempts, first 3 weeks" },
+        { value: "Minutes", label: "admin publishing, down from hours" }
+      ],
       world: "sage",
       accent: "#2F6BFF",
       image: "assets/propeida-card.png",
@@ -92,6 +98,11 @@ window.SITE = {
       role: "Solo hackathon build — contract, frontend, and submission",
       year: "2026",
       tools: "TypeScript, Solidity, ZK, Monad",
+      metrics: [
+        { value: "120+", label: "GitHub stars" },
+        { value: "Live", label: "contract verified on Monad testnet" },
+        { value: "Non-custodial", label: "keys generated client-side" }
+      ],
       world: "cream",
       accent: "#6D28D9",
       image: "assets/redact-card.png",
@@ -118,6 +129,12 @@ window.SITE = {
       role: "Designed & built end to end",
       year: "2026",
       tools: "React, Vite, Tailwind CSS",
+      metrics: [
+        { value: "98", label: "Lighthouse performance" },
+        { value: "100", label: "accessibility" },
+        { value: "100", label: "SEO" },
+        { value: "40+", label: "products with quick view" }
+      ],
       world: "sage",
       accent: "#A07850",
       image: "assets/stylearem-card.png",
@@ -144,6 +161,12 @@ window.SITE = {
       role: "Designed & built end to end",
       year: "2026",
       tools: "React, Vite, Tailwind CSS",
+      metrics: [
+        { value: "96", label: "Lighthouse performance" },
+        { value: "100", label: "accessibility" },
+        { value: "100", label: "SEO" },
+        { value: "12+", label: "reusable components" }
+      ],
       world: "cream",
       accent: "#C1121F",
       image: "assets/oralcare-card.png",
@@ -170,6 +193,11 @@ window.SITE = {
       role: "Solo design exercise — mobile-first canvas, interactive prototype",
       year: "2026",
       tools: "Figma, Prototyping",
+      metrics: [
+        { value: "14", label: "screens prototyped" },
+        { value: "8", label: "design-system components" },
+        { value: "End-to-end", label: "clickable flow in Figma" }
+      ],
       world: "sage",
       accent: "#E8772E",
       image: "assets/mobile-landing-page-card.png",
