@@ -3,43 +3,415 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project — Arem</title>
-  <meta name="description" content="Selected project detail case study.">
-
-  <!-- Google Fonts: Space Grotesk & Inter -->
+  <title>Case study — Arem</title>
+  <meta name="description" content="Selected project case study.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Core & Project Stylesheets -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="project.css">
+  <style>
+    /* ===== Case study layout (project.html only) ===== */
+    #splash { position: fixed; inset: 0; background: #ece5da; z-index: 9999; overflow: hidden; transition: opacity 0.5s ease; }
+    #splash.is-hidden { opacity: 0; pointer-events: none; }
+    .splash-logo, .splash-ghost { position: absolute; top: 0; left: 0; width: 72px; height: 72px; will-change: transform; }
+    .splash-ghost { opacity: 0.16; }
 
-  <!-- GSAP & ScrollTrigger from cdnjs CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    .cs { --cs-accent: #0a0a0a; --cs-tint: #ece5da; --cs-fg: #0a0a0a; --cs-border: #e3ded2; --cs-muted: #8a8578; font-family: Inter, sans-serif; color: #0a0a0a; background: var(--cs-tint); }
+    .cs-hero { background: var(--cs-accent); color: var(--cs-fg); padding: 150px clamp(20px, 5vw, 48px) clamp(52px, 8vw, 88px); }
+    .cs-hero-inner { max-width: 920px; margin: 0 auto; }
+    .cs-hero .cs-eyebrow { color: var(--cs-fg); }
+    .cs-hero .cs-eyebrow::before { background: var(--cs-fg); }
+    .cs-hero .cs-title { color: var(--cs-fg); margin-bottom: 14px; }
+    .cs-hero .cs-sub { color: var(--cs-fg); margin-bottom: 0; }
+    .cs-wrap { max-width: 920px; margin: 0 auto; padding: clamp(44px, 6vw, 72px) clamp(20px, 5vw, 48px) 120px; }
+    .cs-eyebrow { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cs-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .cs-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cs-accent); }
+    .cs-title { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: clamp(2.5rem, 6.5vw, 4.25rem); line-height: 1.02; letter-spacing: -0.035em; margin: 18px 0 10px; }
+    .cs-sub { color: var(--cs-muted); font-size: 1rem; margin: 0 0 22px; }
+    .cs-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .cs-chip { font-size: 13px; padding: 6px 14px; border: 1px solid var(--cs-border); border-radius: 999px; background: rgba(255, 255, 255, 0.55); }
+    .cs-figure { margin: 0 0 8px; }
+    .cs-figure img { width: 100%; aspect-ratio: 1350 / 767; object-fit: cover; display: block; border-radius: 14px; border: 1px solid var(--cs-border); background: #fff; }
+    .cs-cap { display: flex; gap: 10px; font-size: 12.5px; color: var(--cs-muted); letter-spacing: 0.08em; text-transform: uppercase; margin: 10px 2px 0; }
+    .cs-cap b { color: var(--cs-accent); font-weight: 600; }
+    .cs-lede { font-size: 1.2rem; line-height: 1.75; margin: 40px 0 0; }
+    .cs-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 28px 0 8px; }
+    .cs-metric { border: 1px solid var(--cs-border); border-radius: 14px; padding: 18px 16px; background: rgba(255, 255, 255, 0.55); }
+    .cs-metric b { display: block; font-family: "Space Grotesk", sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--cs-accent); letter-spacing: -0.02em; }
+    .cs-metric span { font-size: 12.5px; color: var(--cs-muted); }
+    .cs-section { margin-top: 72px; }
+    .cs-sec-head { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid var(--cs-border); padding-top: 22px; margin-bottom: 22px; }
+    .cs-sec-num { font-family: "Space Grotesk", sans-serif; font-size: 13px; color: var(--cs-accent); font-weight: 700; letter-spacing: 0.12em; }
+    .cs-sec-title { font-family: "Space Grotesk", sans-serif; font-size: 1.35rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+    .cs-section p { line-height: 1.78; margin: 0 0 1rem; }
+    .cs-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 6px; }
+    .cs-gate-zone { position: relative; height: 240vh; }
+    .cs-gate-stage { position: sticky; top: 0; height: 100svh; overflow: clip; display: flex; align-items: center; justify-content: center; background: var(--gate-bg, transparent); }
+    .cs-gate { position: relative; display: block; width: min(880px, calc(100vw - 48px)); border-radius: 18px; overflow: hidden; text-decoration: none; color: #fff; border: 1px solid var(--cs-border); transform-origin: 50% 50%; will-change: transform, border-radius; box-shadow: 0 30px 70px -34px rgba(10, 10, 10, 0.5); }
+    .cs-gate img { width: 100%; aspect-ratio: 1350 / 767; object-fit: cover; display: block; }
+    .cs-gate-progress { position: absolute; left: 50%; bottom: clamp(18px, 4vh, 44px); transform: translateX(-50%); width: min(280px, 60vw); height: 3px; border-radius: 99px; background: var(--gate-fg-soft, rgba(10, 10, 10, 0.14)); overflow: hidden; }
+    .cs-gate-progress span { display: block; width: 0%; height: 100%; background: var(--gate-fg, var(--cs-accent)); }
+    #cs-transition { position: fixed; inset: 0; z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    #cs-transition.is-on { opacity: 1; pointer-events: auto; }
+    .cs-gate-veil { position: absolute; inset: 0; opacity: 0.5; background: linear-gradient(to top, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.25) 45%, rgba(10, 10, 10, 0.05) 70%); }
+    .cs-gate-copy { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 4vw, 40px); display: block; }
+    .cs-gate-k { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; opacity: 0.85; }
+    .cs-gate-t { font-family: "Space Grotesk", sans-serif; font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; display: block; margin: 6px 0 4px; }
+    .cs-gate-h { font-size: 14px; color: rgba(255, 255, 255, 0.75); display: block; }
+    .cs-foot { display: flex; justify-content: space-between; gap: 16px; margin-top: 64px; font-size: 14px; }
+    .cs-foot a { color: #0a0a0a; text-decoration: none; border-bottom: 1px solid transparent; }
+    .cs-foot a:hover { border-bottom-color: var(--cs-accent); }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (max-width: 720px) {
+      .cs-hero { padding-top: 128px; }
+      .cs-duo { grid-template-columns: 1fr; }
+      .cs-section { margin-top: 56px; }
+      .cs-foot { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .cs-gate-zone { height: auto; margin-top: 80px; }
+      .cs-gate-stage { position: static; height: auto; overflow: visible; padding: 20px 0 40px; }
+      .cs-gate-progress, .splash-ghost { display: none; }
+      #cs-transition { display: none; }
+    }
+  </style>
 </head>
 <body class="page-project">
+  <noscript><style>#splash { display: none !important; }</style></noscript>
+  <div id="splash" aria-hidden="true"><img src="assets/logo.svg" class="splash-logo" alt="" width="72" height="72"></div>
 
-  <!-- Shared Nav Fixed at Top -->
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a href="index.html#hero" class="nav__logo"><img src="assets/logo.svg" alt="" class="nav__logo-mark" width="22" height="22"><span class="nav__logo-text">Arem</span></a>
       <ul class="nav__list">
         <li><a href="index.html#work" class="nav__link">Work</a></li>
-        <li><a href="/design.html" class="nav__link">Design</a></li>
+        <li><a href="design.html" class="nav__link">Design</a></li>
         <li><a href="writing.html" class="nav__link">Writing</a></li>
         <li><a href="index.html#contact" class="nav__link">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Dynamic Project Root -->
   <main id="project-root"></main>
+  <div id="cs-transition" aria-hidden="true"></div>
 
-  <!-- Content, Shared & Project Scripts -->
   <script src="content.js"></script>
   <script src="shared.js"></script>
-  <script src="project.js"></script>
+  <script>
+    (function () {
+      var slug = new URLSearchParams(window.location.search).get("p") || "project-one";
+      var site = window.SITE || {};
+      var projects = site.projects || [];
+      var index = -1;
+      for (var k = 0; k < projects.length; k++) { if (projects[k].slug === slug) { index = k; break; } }
+      var root = document.getElementById("project-root");
+      if (!root) return;
+
+      function esc(s) {
+        return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+      function pad(n) { return (n < 10 ? "0" : "") + n; }
+
+      if (index === -1) {
+        root.innerHTML = '<div class="cs"><div class="cs-wrap"><h1 class="cs-title">Not found</h1><p><a href="index.html#work">← Back to all work</a></p></div></div>';
+        return;
+      }
+
+      var p = projects[index];
+      var prev = index > 0 ? projects[index - 1] : null;
+      var next = index < projects.length - 1 ? projects[index + 1] : null;
+      var num = pad(index + 1);
+      var total = pad(projects.length);
+      document.title = p.title + ": Case study: Arem";
+
+      function paras(a) {
+        return (a || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("");
+      }
+      function figure(src, alt, capNum, capLabel) {
+        return '<figure class="cs-figure reveal"><img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"><figcaption class="cs-cap"><b>' + capNum + '</b> ' + capLabel + '</figcaption></figure>';
+      }
+
+      function hexToRgb(hex) {
+        var h = String(hex || "").replace("#", "");
+        if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+        if (h.length !== 6) h = "0a0a0a";
+        return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+      }
+      function lum(rgb) {
+        var v = rgb.map(function (c) { c = c / 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); });
+        return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+      }
+      function pickFg(rgb) {
+        var l = lum(rgb);
+        return 1.05 / (l + 0.05) >= (l + 0.05) / (lum([20, 18, 16]) + 0.05) ? [255, 255, 255] : [20, 18, 16];
+      }
+      function mixRgb(a, b, t) {
+        return [Math.round(a[0] + (b[0] - a[0]) * t), Math.round(a[1] + (b[1] - a[1]) * t), Math.round(a[2] + (b[2] - a[2]) * t)];
+      }
+      function rgbStr(rgb, alpha) { return "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + alpha + ")"; }
+
+      var chipHtml = p.tools ? p.tools.split(",").map(function (t) { return '<span class="cs-chip">' + esc(t.trim()) + '</span>'; }).join("") : "";
+      var metricHtml = (p.metrics || []).map(function (m) {
+        return '<div class="cs-metric"><b>' + esc(m.value) + '</b><span>' + esc(m.label) + '</span></div>';
+      }).join("");
+
+      var gateHref, gateImg, gateLabel, gateTitle, gateEnter, gateHint;
+      if (next) {
+        gateHref = "project.html?p=" + next.slug;
+        gateImg = next.image || next.overviewImage || "";
+        gateLabel = "Next case study: " + pad(index + 2) + " / " + total;
+        gateTitle = next.title;
+        gateEnter = "Entering " + next.title + "…";
+        gateHint = "Scroll to enter →";
+      } else {
+        gateHref = "index.html#work";
+        gateImg = p.image || "";
+        gateLabel = "End of case studies";
+        gateTitle = "See all work";
+        gateEnter = "Returning to all work…";
+        gateHint = "Scroll to return →";
+      }
+      var gateAccent = next ? (next.accent || "#0a0a0a") : (p.accent || "#0a0a0a");
+      var gateFg = pickFg(hexToRgb(gateAccent));
+      var gateStyle = "--gate-bg:" + esc(gateAccent) + ";--gate-fg:" + rgbStr(gateFg, 1) + ";--gate-fg-soft:" + rgbStr(gateFg, 0.32);
+      var gateHtml =
+        '<div class="cs-gate-zone" id="gate-zone" data-href="' + esc(gateHref) + '" data-enter="' + esc(gateEnter) + '" data-accent="' + esc(gateAccent) + '" style="' + gateStyle + '">' +
+          '<div class="cs-gate-stage">' +
+            '<a class="cs-gate" id="gate-card" href="' + esc(gateHref) + '">' +
+              '<img src="' + esc(gateImg) + '" alt="" loading="lazy" decoding="async">' +
+              '<span class="cs-gate-veil"></span>' +
+              '<span class="cs-gate-copy"><span class="cs-gate-k">' + esc(gateLabel) + '</span>' +
+              '<span class="cs-gate-t">' + esc(gateTitle) + '</span>' +
+              '<span class="cs-gate-h" id="gate-hint">' + esc(gateHint) + '</span></span>' +
+            '</a>' +
+            '<div class="cs-gate-progress" aria-hidden="true"><span id="gate-bar"></span></div>' +
+          '</div>' +
+        '</div>';
+
+      var accentRgb = hexToRgb(p.accent || "#0a0a0a");
+      var tintRgb = mixRgb([236, 229, 218], accentRgb, 0.12);
+      var csFg = pickFg(accentRgb);
+      var csStyle = "--cs-accent:" + esc(p.accent || "#0a0a0a") +
+        ";--cs-tint:rgb(" + tintRgb.join(",") + ")" +
+        ";--cs-fg:" + rgbStr(csFg, 1);
+
+      root.innerHTML =
+        '<div class="cs" style="' + csStyle + '">' +
+          '<header class="cs-hero"><div class="cs-hero-inner">' +
+            '<a class="cs-eyebrow" href="index.html#work">All work: case study ' + num + " / " + total + '</a>' +
+            '<h1 class="cs-title">' + esc(p.title) + '</h1>' +
+            '<p class="cs-sub">' + [p.year, p.role].filter(Boolean).map(esc).join(" · ") + '</p>' +
+          '</div></header>' +
+          '<div class="cs-wrap">' +
+            '<div class="cs-chips">' + chipHtml + '</div>' +
+            figure(p.overviewImage || p.image, p.alt || p.title, "01", "Overview") +
+            '<p class="cs-lede">' + esc(p.summary || "") + '</p>' +
+            (metricHtml ? '<div class="cs-metrics reveal">' + metricHtml + '</div>' : '') +
+            '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">01</span><h2 class="cs-sec-title">Problem</h2></div>' + paras(p.problem) + '</section>' +
+            '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">02</span><h2 class="cs-sec-title">Process</h2></div>' + paras(p.process) +
+              '<div class="cs-duo">' +               figure(p.processImage1 || p.image, (p.alt || p.title) + ": process", "02", "Process") + figure(p.processImage2 || p.image, (p.alt || p.title) + ": process", "03", "Process") + '</div></section>' +
+            '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">03</span><h2 class="cs-sec-title">Result</h2></div><p>' + esc(p.result || "") + '</p>' +
+              figure(p.resultImage || p.image, (p.alt || p.title) + ": shipped", "04", "Shipped") + '</section>' +
+            '<div class="cs-foot"><a href="index.html#work">← All work</a>' + (prev ? '<a href="project.html?p=' + esc(prev.slug) + '">Previous: ' + esc(prev.title) + '</a>' : '<span></span>') + '</div>' +
+          '</div>' +
+          gateHtml +
+        '</div>';
+
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var items = root.querySelectorAll(".reveal");
+      if (reduce || !("IntersectionObserver" in window)) {
+        for (var j = 0; j < items.length; j++) { items[j].classList.add("is-visible"); }
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+        for (var m = 0; m < items.length; m++) { io.observe(items[m]); }
+      }
+    })();
+
+    (function () {
+      var zone = document.getElementById("gate-zone");
+      var card = document.getElementById("gate-card");
+      var overlay = document.getElementById("cs-transition");
+      if (!zone || !card) return;
+
+      var bar = document.getElementById("gate-bar");
+      var hint = document.getElementById("gate-hint");
+      var veil = card.querySelector(".cs-gate-veil");
+      var href = zone.getAttribute("data-href") || card.getAttribute("href");
+      var enterLabel = zone.getAttribute("data-enter") || "Entering…";
+      var hintScroll = hint ? hint.textContent : "Scroll to enter →";
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var navigated = false, armed = true, rafId = 0;
+      var maxScale = 1;
+
+      if (overlay) overlay.style.background = zone.getAttribute("data-accent") || "#0d0c0a";
+
+      function computeMaxScale() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        var w = Math.min(880, vw - 48);
+        var h = w * 767 / 1350;
+        var maxCardH = vh * 0.82;
+        if (h > maxCardH) { h = maxCardH; w = h * 1350 / 767; }
+        maxScale = Math.max(vw / w, vh / h) * 1.04;
+      }
+
+      function progress() {
+        var rect = zone.getBoundingClientRect();
+        var total = rect.height - window.innerHeight;
+        if (total <= 0) return 0;
+        var p = -rect.top / total;
+        return p < 0 ? 0 : (p > 1 ? 1 : p);
+      }
+
+      function apply(p) {
+        var eased = Math.pow(p, 1.55);
+        var scale = 1 + (maxScale - 1) * eased;
+        card.style.transform = "scale(" + scale.toFixed(4) + ")";
+        card.style.borderRadius = (18 * (1 - p)).toFixed(2) + "px";
+        if (veil) veil.style.opacity = (0.5 + 0.38 * p).toFixed(3);
+        if (bar) bar.style.width = (p * 100).toFixed(1) + "%";
+        if (hint) {
+          var label = p < 0.5 ? hintScroll : (p < 0.9 ? "Keep going…" : enterLabel);
+          if (hint.textContent !== label) hint.textContent = label;
+        }
+      }
+
+      function triggerNav() {
+        if (navigated) return;
+        navigated = true;
+        if (overlay) overlay.classList.add("is-on");
+        window.setTimeout(function () { window.location.href = href; }, 380);
+      }
+
+      function tick() {
+        rafId = 0;
+        var p = progress();
+        apply(p);
+        if (p < 0.9) armed = true;
+        if (p >= 0.985 && armed) triggerNav();
+      }
+
+      function onScroll() {
+        if (rafId) return;
+        rafId = window.requestAnimationFrame(tick);
+      }
+
+      card.addEventListener("click", function (e) {
+        e.preventDefault();
+        triggerNav();
+      });
+
+      window.addEventListener("pageshow", function (e) {
+        if (e.persisted) {
+          navigated = false;
+          armed = false;
+          if (overlay) overlay.classList.remove("is-on");
+          onScroll();
+        }
+      });
+
+      if (reduce) {
+        if (hint) hint.textContent = "Tap to open →";
+        return;
+      }
+
+      computeMaxScale();
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", function () { computeMaxScale(); onScroll(); });
+    })();
+
+    (function () {
+      var splash = document.getElementById("splash");
+      if (!splash) return;
+      var logo = splash.querySelector(".splash-logo");
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var loadFired = false, minDone = false, hidden = false;
+
+      function hide() {
+        if (hidden || !loadFired || !minDone) return;
+        hidden = true;
+        splash.classList.add("is-hidden");
+        window.setTimeout(function () { splash.style.display = "none"; }, 650);
+      }
+      window.addEventListener("load", function () { loadFired = true; hide(); });
+      window.setTimeout(function () { minDone = true; hide(); }, reduce ? 300 : 1400);
+      window.setTimeout(function () { loadFired = true; minDone = true; hide(); }, 4000);
+
+      if (!logo || reduce) return;
+
+      var vw = 0, vh = 0, size = 72;
+      var x = 0, y = 0, vx = 0, vy = 0;
+      var speed = 1900;
+      var ghosts = [];
+      var trail = [];
+      var TRAIL_LEN = 48;
+      var last = 0;
+
+      function setup() {
+        size = Math.round(Math.min(76, Math.max(44, window.innerWidth * 0.12)));
+        logo.style.width = size + "px";
+        logo.style.height = size + "px";
+        for (var i = 0; i < ghosts.length; i++) {
+          ghosts[i].style.width = size + "px";
+          ghosts[i].style.height = size + "px";
+        }
+        vw = window.innerWidth - size;
+        vh = window.innerHeight - size;
+        if (x > vw) x = vw;
+        if (y > vh) y = vh;
+      }
+
+      for (var g = 0; g < 3; g++) {
+        var ghost = logo.cloneNode(true);
+        ghost.className = "splash-ghost";
+        splash.appendChild(ghost);
+        ghosts.push(ghost);
+      }
+
+      function frame(now) {
+        var dt = (now - last) / 1000;
+        last = now;
+        if (dt > 0.05) dt = 0.05;
+        x += vx * dt;
+        y += vy * dt;
+        var hit = false;
+        if (x <= 0) { x = 0; vx = Math.abs(vx); hit = true; }
+        else if (x >= vw) { x = vw; vx = -Math.abs(vx); hit = true; }
+        if (y <= 0) { y = 0; vy = Math.abs(vy); hit = true; }
+        else if (y >= vh) { y = vh; vy = -Math.abs(vy); hit = true; }
+        if (hit) {
+          speed = Math.min(speed * 1.07, 3400);
+          var mag = Math.sqrt(vx * vx + vy * vy) || 1;
+          vx = (vx / mag) * speed;
+          vy = (vy / mag) * speed;
+        }
+        logo.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
+        trail.unshift({ x: x, y: y });
+        if (trail.length > TRAIL_LEN) trail.pop();
+        for (var i = 0; i < ghosts.length; i++) {
+          var t = trail[Math.min(trail.length - 1, (i + 1) * 6)];
+          ghosts[i].style.transform = "translate3d(" + t.x.toFixed(1) + "px," + t.y.toFixed(1) + "px,0)";
+        }
+        if (splash.style.display !== "none") window.requestAnimationFrame(frame);
+      }
+
+      setup();
+      var angle = Math.PI / 6 + Math.random() * (Math.PI / 3);
+      vx = Math.cos(angle) * speed * (Math.random() < 0.5 ? 1 : -1);
+      vy = Math.sin(angle) * speed * (Math.random() < 0.5 ? 1 : -1);
+      x = Math.random() * vw;
+      y = Math.random() * vh;
+      window.addEventListener("resize", setup);
+      window.requestAnimationFrame(function (t) { last = t; frame(t); });
+    })();
+  </script>
 </body>
 </html>

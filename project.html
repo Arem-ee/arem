@@ -125,7 +125,7 @@
       var next = index < projects.length - 1 ? projects[index + 1] : null;
       var num = pad(index + 1);
       var total = pad(projects.length);
-      document.title = p.title + " — Case study — Arem";
+      document.title = p.title + ": Case study: Arem";
 
       function paras(a) {
         return (a || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("");
@@ -162,7 +162,7 @@
       if (next) {
         gateHref = "project.html?p=" + next.slug;
         gateImg = next.image || next.overviewImage || "";
-        gateLabel = "Next case study — " + pad(index + 2) + " / " + total;
+        gateLabel = "Next case study: " + pad(index + 2) + " / " + total;
         gateTitle = next.title;
         gateEnter = "Entering " + next.title + "…";
         gateHint = "Scroll to enter →";
@@ -201,7 +201,7 @@
       root.innerHTML =
         '<div class="cs" style="' + csStyle + '">' +
           '<header class="cs-hero"><div class="cs-hero-inner">' +
-            '<a class="cs-eyebrow" href="index.html#work">All work — case study ' + num + " / " + total + '</a>' +
+            '<a class="cs-eyebrow" href="index.html#work">All work: case study ' + num + " / " + total + '</a>' +
             '<h1 class="cs-title">' + esc(p.title) + '</h1>' +
             '<p class="cs-sub">' + [p.year, p.role].filter(Boolean).map(esc).join(" · ") + '</p>' +
           '</div></header>' +
@@ -212,9 +212,9 @@
             (metricHtml ? '<div class="cs-metrics reveal">' + metricHtml + '</div>' : '') +
             '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">01</span><h2 class="cs-sec-title">Problem</h2></div>' + paras(p.problem) + '</section>' +
             '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">02</span><h2 class="cs-sec-title">Process</h2></div>' + paras(p.process) +
-              '<div class="cs-duo">' + figure(p.processImage1 || p.image, (p.alt || p.title) + " — process", "02", "Process") + figure(p.processImage2 || p.image, (p.alt || p.title) + " — process", "03", "Process") + '</div></section>' +
+              '<div class="cs-duo">' +               figure(p.processImage1 || p.image, (p.alt || p.title) + ": process", "02", "Process") + figure(p.processImage2 || p.image, (p.alt || p.title) + ": process", "03", "Process") + '</div></section>' +
             '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">03</span><h2 class="cs-sec-title">Result</h2></div><p>' + esc(p.result || "") + '</p>' +
-              figure(p.resultImage || p.image, (p.alt || p.title) + " — shipped", "04", "Shipped") + '</section>' +
+              figure(p.resultImage || p.image, (p.alt || p.title) + ": shipped", "04", "Shipped") + '</section>' +
             '<div class="cs-foot"><a href="index.html#work">← All work</a>' + (prev ? '<a href="project.html?p=' + esc(prev.slug) + '">Previous: ' + esc(prev.title) + '</a>' : '<span></span>') + '</div>' +
           '</div>' +
           gateHtml +

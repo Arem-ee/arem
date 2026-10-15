@@ -26,8 +26,8 @@ window.SITE = {
   },
 
   remainingBody: {
-    statement: "I build things that ship — and keep working after they do.",
-    paragraph: "I'm Toromade, a fullstack developer and electrical engineering student based in Nigeria. I work across the entire product lifecycle — from architecture and design to deployment and iteration — because I believe the best builders are the ones who stay around after the launch. Propeida, my exam-prep platform, served 250+ active users in its first week. I've shipped Web3 hackathon projects, e-commerce storefronts, and full marketing sites — each one taught me something about what actually matters in a build: clarity over cleverness, speed over perfection, and the discipline to keep maintaining long after the excitement fades. I'm studying engineering by day and shipping projects by night. If you need someone who treats your product like their own — from the first commit to the hundredth fix — I'm open to the right collaboration."
+    statement: "I build things that ship, and keep working after they do.",
+    paragraph: "I'm Toromade, a fullstack developer and electrical engineering student based in Nigeria. I work across the entire product lifecycle: from architecture and design to deployment and iteration, because I believe the best builders are the ones who stay around after the launch. Propeida, my exam-prep platform, served 250+ active users in its first week. I've shipped Web3 hackathon projects, e-commerce storefronts, and full marketing sites; each one taught me something about what actually matters in a build: clarity over cleverness, speed over perfection, and the discipline to keep maintaining long after the excitement fades. I'm studying engineering by day and shipping projects by night. If you need someone who treats your product like their own, from the first commit to the hundredth fix, I'm open to the right collaboration."
   },
 
   footer: {
@@ -63,7 +63,7 @@ window.SITE = {
       slug: "project-one",
       title: "Propeida",
       summary: "General entrance exam prep platform, rebranded from PrepIQ. Practice questions, per-exam leaderboards, referral tracking, and admin question management.",
-      role: "Sole builder & founder — product, architecture, and engineering",
+      role: "Sole builder & founder: product, architecture, and engineering",
       year: "2025",
       tools: "Next.js, Supabase, Paystack, Tailwind CSS",
       metrics: [
@@ -95,7 +95,7 @@ window.SITE = {
       slug: "project-two",
       title: "Redact",
       summary: "Non-custodial stablecoin privacy app built on Monad for a hackathon. ZK privacy layer for private balance management, client-side duress mode.",
-      role: "Solo hackathon build — contract, frontend, and submission",
+      role: "Solo hackathon build: contract, frontend, and submission",
       year: "2026",
       tools: "TypeScript, Solidity, ZK, Monad",
       metrics: [
@@ -117,9 +117,9 @@ window.SITE = {
       ],
       process: [
         "A smart contract on Monad stores encrypted balance commitments: deposits commit a hidden amount, withdrawals reveal only what moves. Keys are generated and held client-side in a React app using Wagmi.",
-        "Duress mode lives in the client — a PIN change flips the UI to a decoy balance while real funds stay behind the contract. Encrypted commitments were chosen over a full zk-SNARK pipeline to fit the hackathon timeline without custody."
+        "Duress mode lives in the client: a PIN change flips the UI to a decoy balance while real funds stay behind the contract. Encrypted commitments were chosen over a full zk-SNARK pipeline to fit the hackathon timeline without custody."
       ],
-      result: "Non-custodial privacy contract deployed and verified on Monad testnet, client-side duress mode implemented, 120+ GitHub stars. Did not win — a last-day SDK version mismatch blocked the deposit flow; it was documented in the submission rather than hidden, and judges cited the transparency."
+      result: "Non-custodial privacy contract deployed and verified on Monad testnet, client-side duress mode implemented, 120+ GitHub stars. Did not win: a last-day SDK version mismatch blocked the deposit flow; it was documented in the submission rather than hidden, and judges cited the transparency."
     },
     {
       id: 3,
@@ -149,7 +149,7 @@ window.SITE = {
       ],
       process: [
         "React single-page storefront built with Vite and Tailwind. Catalog, quick-view modal, bag drawer, FAQ, and newsletter sections share one client-side product model: items with sizes, colors, prices, ratings, and reviews.",
-        "Category pills keep every product two clicks away, quick view opens over the grid so comparing never loses scroll position, and the bag runs as a slide-over drawer with promo codes and a free-shipping progress bar — all browser state, no backend."
+        "Category pills keep every product two clicks away, quick view opens over the grid so comparing never loses scroll position, and the bag runs as a slide-over drawer with promo codes and a free-shipping progress bar: all browser state, no backend."
       ],
       result: "Lighthouse 98/100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO. Six lifestyle categories, 40+ products with quick view and reviews, and a component-based design system ready for backend integration."
     },
@@ -190,7 +190,7 @@ window.SITE = {
       slug: "project-five",
       title: "Buzz Kitchen",
       summary: "Conversion-focused mobile landing page designed and prototyped in Figma: clear hierarchy, persuasive flow, clickable end to end.",
-      role: "Solo design exercise — mobile-first canvas, interactive prototype",
+      role: "Solo design exercise: mobile-first canvas, interactive prototype",
       year: "2026",
       tools: "Figma, Prototyping",
       metrics: [
@@ -211,7 +211,7 @@ window.SITE = {
         "The work needed a conversion-focused landing page on a mobile canvas, a clear information hierarchy for a small screen, and a prototype where the interactions are testable, not assumed."
       ],
       process: [
-        "A Figma design system with components for each section — hero, value proposition, social proof, call to action — with the primary flow wired end to end, including form states and error handling.",
+        "A Figma design system with components for each section: hero, value proposition, social proof, and call to action, with the primary flow wired end to end, including form states and error handling.",
         "Each section carries one message and one action; anything that did not serve the conversion goal was cut. Auto-layout and variants keep the file ready for developer handoff."
       ],
       result: "A 14-screen clickable prototype covering hero → value → social proof → CTA → form → success, an 8-component design system with prototyped validation states, and a flow settled end to end in Figma."
