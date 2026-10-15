@@ -42,17 +42,31 @@
       }
       var problemHtml = (p.problem || []).map(function(t){ return '<p style="line-height:1.7;margin-bottom:0.75rem;">' + t + '</p>'; }).join('');
       var processHtml = (p.process || []).map(function(t){ return '<p style="line-height:1.7;margin-bottom:0.75rem;">' + t + '</p>'; }).join('');
+      var images = [
+        { src: p.overviewImage || p.image, alt: (p.alt || p.title) + ' overview' },
+        { src: p.processImage1 || p.image, alt: (p.alt || p.title) + ' process 1' },
+        { src: p.processImage2 || p.image, alt: (p.alt || p.title) + ' process 2' },
+        { src: p.resultImage || p.image, alt: (p.alt || p.title) + ' result' }
+      ];
+      var imgGrid = images.map(function(im){ return '<img src="' + im.src + '" alt="' + im.alt + '" style="width:100%;border-radius:0.75rem;display:block;">'; }).join('');
+      var currentIndex = (site && site.projects) ? site.projects.findIndex(function(x){return x.slug===slug;}) : -1;
+      var prev = (currentIndex > 0) ? site.projects[currentIndex-1] : null;
+      var next = (currentIndex >= 0 && currentIndex < site.projects.length-1) ? site.projects[currentIndex+1] : null;
       root.innerHTML =
-        '<section style="padding:3rem 1.5rem 6rem;max-width:780px;margin:0 auto;font-family:Inter,sans-serif;color:#0a0a0a;">' +
+        '<section class="design-section" style="padding:3rem 1.5rem 6rem;max-width:900px;margin:0 auto;font-family:Inter,sans-serif;color:#0a0a0a;">' +
           '<a href="index.html#work" style="font-size:0.875rem;color:#5c5c5c;text-decoration:none;">← Back to all projects</a>' +
           '<h1 style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);margin:1rem 0 0.25rem;line-height:1.1;letter-spacing:-0.03em;">' + p.title + '</h1>' +
           '<p style="color:#5c5c5c;font-size:0.95rem;margin-bottom:2rem;">' + (p.year || '') + (p.role ? ' · ' + p.role : '') + '</p>' +
-          '<img src="' + (p.image || p.overviewImage || '') + '" alt="' + (p.alt || p.title) + '" style="width:100%;border-radius:0.75rem;display:block;margin-bottom:2.5rem;">' +
+          '<div style="display:grid;gap:1rem;margin-bottom:2rem;">' + imgGrid + '</div>' +
           '<p style="font-size:1.125rem;line-height:1.7;margin-bottom:2rem;">' + (p.summary || '') + '</p>' +
           (problemHtml ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Problem</h2>' + problemHtml : '') +
           (processHtml ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Process</h2>' + processHtml : '') +
           (p.result ? '<h2 style="font-family:Space Grotesk,sans-serif;font-weight:600;font-size:1.25rem;margin:2.5rem 0 1rem;">Result</h2><p style="line-height:1.7;">' + p.result + '</p>' : '') +
           (p.tools ? '<p style="margin-top:2rem;font-size:0.875rem;color:#5c5c5c;"><strong>Tools:</strong> ' + p.tools + '</p>' : '') +
+          '<div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #e3e3e3;display:flex;justify-content:space-between;align-items:center;">' +
+            (prev ? '<a href="project.html?p=' + prev.slug + '" style="font-family:Space Grotesk,sans-serif;font-weight:600;color:#0a0a0a;text-decoration:none;">← ' + prev.title + '</a>' : '<span></span>') +
+            (next ? '<a href="project.html?p=' + next.slug + '" style="font-family:Space Grotesk,sans-serif;font-weight:600;color:#0a0a0a;text-decoration:none;">' + next.title + ' →</a>' : '<span></span>') +
+          '</div>' +
         '</section>';
     })();
   </script>
