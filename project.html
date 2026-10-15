@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="project.css">
   <style>
     /* ===== Case study layout (project.html only) ===== */
-    #splash { position: fixed; inset: 0; background: #0d0c0a; z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease; }
-    #splash img { filter: brightness(0) invert(1); animation: csPulse 1.4s ease-in-out infinite; }
-    #splash.is-hidden { opacity: 0; }
-    @keyframes csPulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+    #splash { position: fixed; inset: 0; background: #ece5da; z-index: 9999; overflow: hidden; transition: opacity 0.5s ease; }
+    #splash.is-hidden { opacity: 0; pointer-events: none; }
+    .splash-logo, .splash-ghost { position: absolute; top: 0; left: 0; width: 72px; height: 72px; will-change: transform; }
+    .splash-ghost { opacity: 0.16; }
 
     .cs { --cs-accent: #0a0a0a; --cs-border: #e3ded2; --cs-muted: #8a8578; font-family: Inter, sans-serif; color: #0a0a0a; }
-    .cs-wrap { max-width: 920px; margin: 0 auto; padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 48px) 140px; }
+    .cs-wrap { max-width: 920px; margin: 0 auto; padding: 124px clamp(20px, 5vw, 48px) 120px; }
     .cs-eyebrow { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cs-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
     .cs-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cs-accent); }
     .cs-title { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: clamp(2.5rem, 6.5vw, 4.25rem); line-height: 1.02; letter-spacing: -0.035em; margin: 18px 0 10px; }
@@ -40,10 +40,15 @@
     .cs-sec-title { font-family: "Space Grotesk", sans-serif; font-size: 1.35rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
     .cs-section p { line-height: 1.78; margin: 0 0 1rem; }
     .cs-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 6px; }
-    .cs-gate { display: block; margin-top: 96px; position: relative; border-radius: 18px; overflow: hidden; text-decoration: none; color: #fff; border: 1px solid var(--cs-border); }
-    .cs-gate img { width: 100%; aspect-ratio: 1350 / 767; object-fit: cover; display: block; transition: transform 0.8s ease; }
-    .cs-gate:hover img { transform: scale(1.025); }
-    .cs-gate-veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.25) 45%, rgba(10, 10, 10, 0.05) 70%); }
+    .cs-gate-zone { position: relative; height: 240vh; }
+    .cs-gate-stage { position: sticky; top: 0; height: 100svh; overflow: clip; display: flex; align-items: center; justify-content: center; }
+    .cs-gate { position: relative; display: block; width: min(880px, calc(100vw - 48px)); border-radius: 18px; overflow: hidden; text-decoration: none; color: #fff; border: 1px solid var(--cs-border); transform-origin: 50% 50%; will-change: transform, border-radius; box-shadow: 0 30px 70px -34px rgba(10, 10, 10, 0.5); }
+    .cs-gate img { width: 100%; aspect-ratio: 1350 / 767; object-fit: cover; display: block; }
+    .cs-gate-progress { position: absolute; left: 50%; bottom: clamp(18px, 4vh, 44px); transform: translateX(-50%); width: min(280px, 60vw); height: 3px; border-radius: 99px; background: rgba(10, 10, 10, 0.14); overflow: hidden; }
+    .cs-gate-progress span { display: block; width: 0%; height: 100%; background: var(--cs-accent); }
+    #cs-transition { position: fixed; inset: 0; z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    #cs-transition.is-on { opacity: 1; pointer-events: auto; }
+    .cs-gate-veil { position: absolute; inset: 0; opacity: 0.5; background: linear-gradient(to top, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.25) 45%, rgba(10, 10, 10, 0.05) 70%); }
     .cs-gate-copy { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 4vw, 40px); display: block; }
     .cs-gate-k { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; opacity: 0.85; }
     .cs-gate-t { font-family: "Space Grotesk", sans-serif; font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; display: block; margin: 6px 0 4px; }
@@ -60,14 +65,16 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .cs-gate img { transition: none; }
-      #splash img { animation: none; }
+      .cs-gate-zone { height: auto; margin-top: 80px; }
+      .cs-gate-stage { position: static; height: auto; overflow: visible; padding: 20px 0 40px; }
+      .cs-gate-progress, .splash-ghost { display: none; }
+      #cs-transition { display: none; }
     }
   </style>
 </head>
 <body class="page-project">
   <noscript><style>#splash { display: none !important; }</style></noscript>
-  <div id="splash" aria-hidden="true"><img src="assets/logo.svg" alt="" width="44" height="44"></div>
+  <div id="splash" aria-hidden="true"><img src="assets/logo.svg" class="splash-logo" alt="" width="72" height="72"></div>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
@@ -82,6 +89,7 @@
   </header>
 
   <main id="project-root"></main>
+  <div id="cs-transition" aria-hidden="true"></div>
 
   <script src="content.js"></script>
   <script src="shared.js"></script>
@@ -124,22 +132,36 @@
         return '<div class="cs-metric"><b>' + esc(m.value) + '</b><span>' + esc(m.label) + '</span></div>';
       }).join("");
 
-      var gateHtml;
+      var gateHref, gateImg, gateLabel, gateTitle, gateEnter, gateHint;
       if (next) {
-        gateHtml = '<a class="cs-gate reveal" href="project.html?p=' + esc(next.slug) + '">' +
-          '<img src="' + esc(next.image || next.overviewImage || "") + '" alt="" loading="lazy" decoding="async">' +
-          '<span class="cs-gate-veil"></span>' +
-          '<span class="cs-gate-copy"><span class="cs-gate-k">Next case study — ' + pad(index + 2) + " / " + total + '</span>' +
-          '<span class="cs-gate-t">' + esc(next.title) + '</span>' +
-          '<span class="cs-gate-h">Scroll or click to enter →</span></span></a>';
+        gateHref = "project.html?p=" + next.slug;
+        gateImg = next.image || next.overviewImage || "";
+        gateLabel = "Next case study — " + pad(index + 2) + " / " + total;
+        gateTitle = next.title;
+        gateEnter = "Entering " + next.title + "…";
+        gateHint = "Scroll to enter →";
       } else {
-        gateHtml = '<a class="cs-gate reveal" href="index.html#work">' +
-          '<img src="' + esc(p.image || "") + '" alt="" loading="lazy" decoding="async">' +
-          '<span class="cs-gate-veil"></span>' +
-          '<span class="cs-gate-copy"><span class="cs-gate-k">End of case studies</span>' +
-          '<span class="cs-gate-t">See all work</span>' +
-          '<span class="cs-gate-h">Back to the homepage grid →</span></span></a>';
+        gateHref = "index.html#work";
+        gateImg = p.image || "";
+        gateLabel = "End of case studies";
+        gateTitle = "See all work";
+        gateEnter = "Returning to all work…";
+        gateHint = "Scroll to return →";
       }
+      var gateAccent = next ? (next.accent || "#0a0a0a") : (p.accent || "#0a0a0a");
+      var gateHtml =
+        '<div class="cs-gate-zone" id="gate-zone" data-href="' + esc(gateHref) + '" data-enter="' + esc(gateEnter) + '" data-accent="' + esc(gateAccent) + '">' +
+          '<div class="cs-gate-stage">' +
+            '<a class="cs-gate" id="gate-card" href="' + esc(gateHref) + '">' +
+              '<img src="' + esc(gateImg) + '" alt="" loading="lazy" decoding="async">' +
+              '<span class="cs-gate-veil"></span>' +
+              '<span class="cs-gate-copy"><span class="cs-gate-k">' + esc(gateLabel) + '</span>' +
+              '<span class="cs-gate-t">' + esc(gateTitle) + '</span>' +
+              '<span class="cs-gate-h" id="gate-hint">' + esc(gateHint) + '</span></span>' +
+            '</a>' +
+            '<div class="cs-gate-progress" aria-hidden="true"><span id="gate-bar"></span></div>' +
+          '</div>' +
+        '</div>';
 
       root.innerHTML =
         '<div class="cs" style="--cs-accent:' + esc(p.accent || "#0a0a0a") + '">' +
@@ -156,9 +178,9 @@
               '<div class="cs-duo">' + figure(p.processImage1 || p.image, (p.alt || p.title) + " — process", "02", "Process") + figure(p.processImage2 || p.image, (p.alt || p.title) + " — process", "03", "Process") + '</div></section>' +
             '<section class="cs-section reveal"><div class="cs-sec-head"><span class="cs-sec-num">03</span><h2 class="cs-sec-title">Result</h2></div><p>' + esc(p.result || "") + '</p>' +
               figure(p.resultImage || p.image, (p.alt || p.title) + " — shipped", "04", "Shipped") + '</section>' +
-            gateHtml +
             '<div class="cs-foot"><a href="index.html#work">← All work</a>' + (prev ? '<a href="project.html?p=' + esc(prev.slug) + '">Previous: ' + esc(prev.title) + '</a>' : '<span></span>') + '</div>' +
           '</div>' +
+          gateHtml +
         '</div>';
 
       var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -176,18 +198,182 @@
     })();
 
     (function () {
+      var zone = document.getElementById("gate-zone");
+      var card = document.getElementById("gate-card");
+      var overlay = document.getElementById("cs-transition");
+      if (!zone || !card) return;
+
+      var bar = document.getElementById("gate-bar");
+      var hint = document.getElementById("gate-hint");
+      var veil = card.querySelector(".cs-gate-veil");
+      var href = zone.getAttribute("data-href") || card.getAttribute("href");
+      var enterLabel = zone.getAttribute("data-enter") || "Entering…";
+      var hintScroll = hint ? hint.textContent : "Scroll to enter →";
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var navigated = false, armed = true, rafId = 0;
+      var maxScale = 1;
+
+      if (overlay) overlay.style.background = zone.getAttribute("data-accent") || "#0d0c0a";
+
+      function computeMaxScale() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        var w = Math.min(880, vw - 48);
+        var h = w * 767 / 1350;
+        var maxCardH = vh * 0.82;
+        if (h > maxCardH) { h = maxCardH; w = h * 1350 / 767; }
+        maxScale = Math.max(vw / w, vh / h) * 1.04;
+      }
+
+      function progress() {
+        var rect = zone.getBoundingClientRect();
+        var total = rect.height - window.innerHeight;
+        if (total <= 0) return 0;
+        var p = -rect.top / total;
+        return p < 0 ? 0 : (p > 1 ? 1 : p);
+      }
+
+      function apply(p) {
+        var eased = Math.pow(p, 1.55);
+        var scale = 1 + (maxScale - 1) * eased;
+        card.style.transform = "scale(" + scale.toFixed(4) + ")";
+        card.style.borderRadius = (18 * (1 - p)).toFixed(2) + "px";
+        if (veil) veil.style.opacity = (0.5 + 0.38 * p).toFixed(3);
+        if (bar) bar.style.width = (p * 100).toFixed(1) + "%";
+        if (hint) {
+          var label = p < 0.5 ? hintScroll : (p < 0.9 ? "Keep going…" : enterLabel);
+          if (hint.textContent !== label) hint.textContent = label;
+        }
+      }
+
+      function triggerNav() {
+        if (navigated) return;
+        navigated = true;
+        if (overlay) overlay.classList.add("is-on");
+        window.setTimeout(function () { window.location.href = href; }, 380);
+      }
+
+      function tick() {
+        rafId = 0;
+        var p = progress();
+        apply(p);
+        if (p < 0.9) armed = true;
+        if (p >= 0.985 && armed) triggerNav();
+      }
+
+      function onScroll() {
+        if (rafId) return;
+        rafId = window.requestAnimationFrame(tick);
+      }
+
+      card.addEventListener("click", function (e) {
+        e.preventDefault();
+        triggerNav();
+      });
+
+      window.addEventListener("pageshow", function (e) {
+        if (e.persisted) {
+          navigated = false;
+          armed = false;
+          if (overlay) overlay.classList.remove("is-on");
+          onScroll();
+        }
+      });
+
+      if (reduce) {
+        if (hint) hint.textContent = "Tap to open →";
+        return;
+      }
+
+      computeMaxScale();
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", function () { computeMaxScale(); onScroll(); });
+    })();
+
+    (function () {
       var splash = document.getElementById("splash");
       if (!splash) return;
+      var logo = splash.querySelector(".splash-logo");
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var loadFired = false, minDone = false, hidden = false;
+
       function hide() {
         if (hidden || !loadFired || !minDone) return;
         hidden = true;
         splash.classList.add("is-hidden");
-        setTimeout(function () { splash.style.display = "none"; }, 700);
+        window.setTimeout(function () { splash.style.display = "none"; }, 650);
       }
       window.addEventListener("load", function () { loadFired = true; hide(); });
-      setTimeout(function () { minDone = true; hide(); }, 450);
-      setTimeout(function () { loadFired = true; minDone = true; hide(); }, 3500);
+      window.setTimeout(function () { minDone = true; hide(); }, reduce ? 300 : 1400);
+      window.setTimeout(function () { loadFired = true; minDone = true; hide(); }, 4000);
+
+      if (!logo || reduce) return;
+
+      var vw = 0, vh = 0, size = 72;
+      var x = 0, y = 0, vx = 0, vy = 0;
+      var speed = 1900;
+      var ghosts = [];
+      var trail = [];
+      var TRAIL_LEN = 48;
+      var last = 0;
+
+      function setup() {
+        size = Math.round(Math.min(76, Math.max(44, window.innerWidth * 0.12)));
+        logo.style.width = size + "px";
+        logo.style.height = size + "px";
+        for (var i = 0; i < ghosts.length; i++) {
+          ghosts[i].style.width = size + "px";
+          ghosts[i].style.height = size + "px";
+        }
+        vw = window.innerWidth - size;
+        vh = window.innerHeight - size;
+        if (x > vw) x = vw;
+        if (y > vh) y = vh;
+      }
+
+      for (var g = 0; g < 3; g++) {
+        var ghost = logo.cloneNode(true);
+        ghost.className = "splash-ghost";
+        splash.appendChild(ghost);
+        ghosts.push(ghost);
+      }
+
+      function frame(now) {
+        var dt = (now - last) / 1000;
+        last = now;
+        if (dt > 0.05) dt = 0.05;
+        x += vx * dt;
+        y += vy * dt;
+        var hit = false;
+        if (x <= 0) { x = 0; vx = Math.abs(vx); hit = true; }
+        else if (x >= vw) { x = vw; vx = -Math.abs(vx); hit = true; }
+        if (y <= 0) { y = 0; vy = Math.abs(vy); hit = true; }
+        else if (y >= vh) { y = vh; vy = -Math.abs(vy); hit = true; }
+        if (hit) {
+          speed = Math.min(speed * 1.07, 3400);
+          var mag = Math.sqrt(vx * vx + vy * vy) || 1;
+          vx = (vx / mag) * speed;
+          vy = (vy / mag) * speed;
+        }
+        logo.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
+        trail.unshift({ x: x, y: y });
+        if (trail.length > TRAIL_LEN) trail.pop();
+        for (var i = 0; i < ghosts.length; i++) {
+          var t = trail[Math.min(trail.length - 1, (i + 1) * 6)];
+          ghosts[i].style.transform = "translate3d(" + t.x.toFixed(1) + "px," + t.y.toFixed(1) + "px,0)";
+        }
+        if (splash.style.display !== "none") window.requestAnimationFrame(frame);
+      }
+
+      setup();
+      var angle = Math.PI / 6 + Math.random() * (Math.PI / 3);
+      vx = Math.cos(angle) * speed * (Math.random() < 0.5 ? 1 : -1);
+      vy = Math.sin(angle) * speed * (Math.random() < 0.5 ? 1 : -1);
+      x = Math.random() * vw;
+      y = Math.random() * vh;
+      window.addEventListener("resize", setup);
+      window.requestAnimationFrame(function (t) { last = t; frame(t); });
     })();
   </script>
 </body>

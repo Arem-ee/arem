@@ -24,8 +24,11 @@ body,
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 32px 48px;
-  background: transparent;
+  padding: 18px 48px;
+  background: rgba(236, 229, 218, 0.9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
   pointer-events: auto;
 }
 

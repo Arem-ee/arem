@@ -41,7 +41,12 @@ function initSharedNav() {
 
   const logoEl = navContainer.querySelector(".nav__logo");
   if (logoEl && SITE.brand) {
-    logoEl.textContent = SITE.brand.name;
+    const logoText = logoEl.querySelector(".nav__logo-text");
+    if (logoText) {
+      logoText.textContent = SITE.brand.name;
+    } else if (!logoEl.querySelector("img")) {
+      logoEl.textContent = SITE.brand.name;
+    }
     logoEl.setAttribute("href", "index.html#hero");
   }
 
