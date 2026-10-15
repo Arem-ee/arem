@@ -17,8 +17,14 @@
     .splash-logo, .splash-ghost { position: absolute; top: 0; left: 0; width: 72px; height: 72px; will-change: transform; }
     .splash-ghost { opacity: 0.16; }
 
-    .cs { --cs-accent: #0a0a0a; --cs-border: #e3ded2; --cs-muted: #8a8578; font-family: Inter, sans-serif; color: #0a0a0a; }
-    .cs-wrap { max-width: 920px; margin: 0 auto; padding: 124px clamp(20px, 5vw, 48px) 120px; }
+    .cs { --cs-accent: #0a0a0a; --cs-tint: #ece5da; --cs-fg: #0a0a0a; --cs-border: #e3ded2; --cs-muted: #8a8578; font-family: Inter, sans-serif; color: #0a0a0a; background: var(--cs-tint); }
+    .cs-hero { background: var(--cs-accent); color: var(--cs-fg); padding: 150px clamp(20px, 5vw, 48px) clamp(52px, 8vw, 88px); }
+    .cs-hero-inner { max-width: 920px; margin: 0 auto; }
+    .cs-hero .cs-eyebrow { color: var(--cs-fg); }
+    .cs-hero .cs-eyebrow::before { background: var(--cs-fg); }
+    .cs-hero .cs-title { color: var(--cs-fg); margin-bottom: 14px; }
+    .cs-hero .cs-sub { color: var(--cs-fg); margin-bottom: 0; }
+    .cs-wrap { max-width: 920px; margin: 0 auto; padding: clamp(44px, 6vw, 72px) clamp(20px, 5vw, 48px) 120px; }
     .cs-eyebrow { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cs-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
     .cs-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cs-accent); }
     .cs-title { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: clamp(2.5rem, 6.5vw, 4.25rem); line-height: 1.02; letter-spacing: -0.035em; margin: 18px 0 10px; }
@@ -41,11 +47,11 @@
     .cs-section p { line-height: 1.78; margin: 0 0 1rem; }
     .cs-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 6px; }
     .cs-gate-zone { position: relative; height: 240vh; }
-    .cs-gate-stage { position: sticky; top: 0; height: 100svh; overflow: clip; display: flex; align-items: center; justify-content: center; }
+    .cs-gate-stage { position: sticky; top: 0; height: 100svh; overflow: clip; display: flex; align-items: center; justify-content: center; background: var(--gate-bg, transparent); }
     .cs-gate { position: relative; display: block; width: min(880px, calc(100vw - 48px)); border-radius: 18px; overflow: hidden; text-decoration: none; color: #fff; border: 1px solid var(--cs-border); transform-origin: 50% 50%; will-change: transform, border-radius; box-shadow: 0 30px 70px -34px rgba(10, 10, 10, 0.5); }
     .cs-gate img { width: 100%; aspect-ratio: 1350 / 767; object-fit: cover; display: block; }
-    .cs-gate-progress { position: absolute; left: 50%; bottom: clamp(18px, 4vh, 44px); transform: translateX(-50%); width: min(280px, 60vw); height: 3px; border-radius: 99px; background: rgba(10, 10, 10, 0.14); overflow: hidden; }
-    .cs-gate-progress span { display: block; width: 0%; height: 100%; background: var(--cs-accent); }
+    .cs-gate-progress { position: absolute; left: 50%; bottom: clamp(18px, 4vh, 44px); transform: translateX(-50%); width: min(280px, 60vw); height: 3px; border-radius: 99px; background: var(--gate-fg-soft, rgba(10, 10, 10, 0.14)); overflow: hidden; }
+    .cs-gate-progress span { display: block; width: 0%; height: 100%; background: var(--gate-fg, var(--cs-accent)); }
     #cs-transition { position: fixed; inset: 0; z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
     #cs-transition.is-on { opacity: 1; pointer-events: auto; }
     .cs-gate-veil { position: absolute; inset: 0; opacity: 0.5; background: linear-gradient(to top, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.25) 45%, rgba(10, 10, 10, 0.05) 70%); }
@@ -59,6 +65,7 @@
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.is-visible { opacity: 1; transform: none; }
     @media (max-width: 720px) {
+      .cs-hero { padding-top: 128px; }
       .cs-duo { grid-template-columns: 1fr; }
       .cs-section { margin-top: 56px; }
       .cs-foot { flex-direction: column; }
@@ -127,6 +134,25 @@
         return '<figure class="cs-figure reveal"><img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"><figcaption class="cs-cap"><b>' + capNum + '</b> ' + capLabel + '</figcaption></figure>';
       }
 
+      function hexToRgb(hex) {
+        var h = String(hex || "").replace("#", "");
+        if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+        if (h.length !== 6) h = "0a0a0a";
+        return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+      }
+      function lum(rgb) {
+        var v = rgb.map(function (c) { c = c / 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); });
+        return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+      }
+      function pickFg(rgb) {
+        var l = lum(rgb);
+        return 1.05 / (l + 0.05) >= (l + 0.05) / (lum([20, 18, 16]) + 0.05) ? [255, 255, 255] : [20, 18, 16];
+      }
+      function mixRgb(a, b, t) {
+        return [Math.round(a[0] + (b[0] - a[0]) * t), Math.round(a[1] + (b[1] - a[1]) * t), Math.round(a[2] + (b[2] - a[2]) * t)];
+      }
+      function rgbStr(rgb, alpha) { return "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + alpha + ")"; }
+
       var chipHtml = p.tools ? p.tools.split(",").map(function (t) { return '<span class="cs-chip">' + esc(t.trim()) + '</span>'; }).join("") : "";
       var metricHtml = (p.metrics || []).map(function (m) {
         return '<div class="cs-metric"><b>' + esc(m.value) + '</b><span>' + esc(m.label) + '</span></div>';
@@ -149,8 +175,10 @@
         gateHint = "Scroll to return →";
       }
       var gateAccent = next ? (next.accent || "#0a0a0a") : (p.accent || "#0a0a0a");
+      var gateFg = pickFg(hexToRgb(gateAccent));
+      var gateStyle = "--gate-bg:" + esc(gateAccent) + ";--gate-fg:" + rgbStr(gateFg, 1) + ";--gate-fg-soft:" + rgbStr(gateFg, 0.32);
       var gateHtml =
-        '<div class="cs-gate-zone" id="gate-zone" data-href="' + esc(gateHref) + '" data-enter="' + esc(gateEnter) + '" data-accent="' + esc(gateAccent) + '">' +
+        '<div class="cs-gate-zone" id="gate-zone" data-href="' + esc(gateHref) + '" data-enter="' + esc(gateEnter) + '" data-accent="' + esc(gateAccent) + '" style="' + gateStyle + '">' +
           '<div class="cs-gate-stage">' +
             '<a class="cs-gate" id="gate-card" href="' + esc(gateHref) + '">' +
               '<img src="' + esc(gateImg) + '" alt="" loading="lazy" decoding="async">' +
@@ -163,12 +191,21 @@
           '</div>' +
         '</div>';
 
+      var accentRgb = hexToRgb(p.accent || "#0a0a0a");
+      var tintRgb = mixRgb([236, 229, 218], accentRgb, 0.12);
+      var csFg = pickFg(accentRgb);
+      var csStyle = "--cs-accent:" + esc(p.accent || "#0a0a0a") +
+        ";--cs-tint:rgb(" + tintRgb.join(",") + ")" +
+        ";--cs-fg:" + rgbStr(csFg, 1);
+
       root.innerHTML =
-        '<div class="cs" style="--cs-accent:' + esc(p.accent || "#0a0a0a") + '">' +
-          '<div class="cs-wrap">' +
+        '<div class="cs" style="' + csStyle + '">' +
+          '<header class="cs-hero"><div class="cs-hero-inner">' +
             '<a class="cs-eyebrow" href="index.html#work">All work — case study ' + num + " / " + total + '</a>' +
             '<h1 class="cs-title">' + esc(p.title) + '</h1>' +
             '<p class="cs-sub">' + [p.year, p.role].filter(Boolean).map(esc).join(" · ") + '</p>' +
+          '</div></header>' +
+          '<div class="cs-wrap">' +
             '<div class="cs-chips">' + chipHtml + '</div>' +
             figure(p.overviewImage || p.image, p.alt || p.title, "01", "Overview") +
             '<p class="cs-lede">' + esc(p.summary || "") + '</p>' +
