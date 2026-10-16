@@ -131,6 +131,8 @@ function prepareCharacterImage(imgEl) {
         }
 
         ctx.putImageData(imgData, 0, 0);
+        const heroPic = imgEl.closest("picture");
+        if (heroPic) heroPic.querySelectorAll("source").forEach((s) => s.remove());
         imgEl.src = canvas.toDataURL("image/png");
         try {
           imgEl.decode().then(resolve).catch(resolve);
