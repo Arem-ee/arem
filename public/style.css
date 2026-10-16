@@ -37,6 +37,11 @@
   padding: 0;
 }
 
+/* <picture> stays layout-neutral; the inner <img> keeps its own box */
+picture {
+  display: contents;
+}
+
 html {
   background-color: var(--bg);
   color: var(--ink);

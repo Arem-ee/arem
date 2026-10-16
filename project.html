@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Case study — Arem</title>
   <meta name="description" content="Selected project case study.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,11 +128,14 @@
       var total = pad(projects.length);
       document.title = p.title + ": Case study: Arem";
 
+      function webp(src) {
+        return String(src || "").replace(/\.(png|jpe?g)(\?.*)?$/i, ".webp");
+      }
       function paras(a) {
         return (a || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("");
       }
       function figure(src, alt, capNum, capLabel) {
-        return '<figure class="cs-figure reveal"><img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"><figcaption class="cs-cap"><b>' + capNum + '</b> ' + capLabel + '</figcaption></figure>';
+        return '<figure class="cs-figure reveal"><picture><source type="image/webp" srcset="' + esc(webp(src)) + '"><img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"></picture><figcaption class="cs-cap"><b>' + capNum + '</b> ' + capLabel + '</figcaption></figure>';
       }
 
       function hexToRgb(hex) {
@@ -181,7 +185,7 @@
         '<div class="cs-gate-zone" id="gate-zone" data-href="' + esc(gateHref) + '" data-enter="' + esc(gateEnter) + '" data-accent="' + esc(gateAccent) + '" style="' + gateStyle + '">' +
           '<div class="cs-gate-stage">' +
             '<a class="cs-gate" id="gate-card" href="' + esc(gateHref) + '">' +
-              '<img src="' + esc(gateImg) + '" alt="" loading="lazy" decoding="async">' +
+              '<picture><source type="image/webp" srcset="' + esc(webp(gateImg)) + '"><img src="' + esc(gateImg) + '" alt="" loading="lazy" decoding="async"></picture>' +
               '<span class="cs-gate-veil"></span>' +
               '<span class="cs-gate-copy"><span class="cs-gate-k">' + esc(gateLabel) + '</span>' +
               '<span class="cs-gate-t">' + esc(gateTitle) + '</span>' +

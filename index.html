@@ -20,7 +20,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
   <!-- Preload hero character image -->
-  <link rel="preload" as="image" href="assets/character.png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/character.webp" type="image/webp" fetchpriority="high">
 
   <!-- Google Fonts: Space Grotesk (Headings) & Inter (Body) with display=block -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,22 +99,30 @@
         <!-- 3D character centered between the two headline columns -->
         <div class="hero__character-wrapper">
           <div class="hero__figure">
-            <img
-              src="assets/character.png"
-              alt="Character illustration"
-              class="hero__character-img"
-              width="480"
-              height="800"
-            >
-            <img
-              src="assets/cat.png"
-              alt="Small brown tabby cat"
-              class="hero__cat-img"
-              width="200"
-              height="200"
-              loading="lazy"
-              decoding="async"
-            >
+            <picture>
+              <source type="image/webp" srcset="assets/character.webp">
+              <img
+                src="assets/character.png"
+                alt="Character illustration"
+                class="hero__character-img"
+                width="480"
+                height="800"
+                decoding="async"
+                fetchpriority="high"
+              >
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="assets/cat.webp">
+              <img
+                src="assets/cat.png"
+                alt="Small brown tabby cat"
+                class="hero__cat-img"
+                width="200"
+                height="200"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
           </div>
           <div class="hero__shadow" aria-hidden="true"></div>
         </div>
@@ -139,14 +147,18 @@
         <article class="project-row project-row--left" data-index="1" data-slug="project-one">
           <div class="project-card">
             <div class="project-card__media">
-              <img 
-                src="assets/propeida-card.png" 
-                alt="Project One overview" 
-                class="project-card__img"
-                width="1280" 
-                height="800"
-                loading="lazy"
-              >
+              <picture>
+                <source type="image/webp" srcset="assets/propeida-card.webp">
+                <img 
+                  src="assets/propeida-card.png" 
+                  alt="Project One overview" 
+                  class="project-card__img"
+                  width="1280" 
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
           <div class="project-info">
@@ -160,14 +172,18 @@
         <article class="project-row project-row--right" data-index="2" data-slug="project-two">
           <div class="project-card">
             <div class="project-card__media">
-              <img 
-                src="assets/redact-card.png" 
-                alt="Project Two overview" 
-                class="project-card__img"
-                width="1280" 
-                height="800"
-                loading="lazy"
-              >
+              <picture>
+                <source type="image/webp" srcset="assets/redact-card.webp">
+                <img 
+                  src="assets/redact-card.png" 
+                  alt="Project Two overview" 
+                  class="project-card__img"
+                  width="1280" 
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
           <div class="project-info">
@@ -181,14 +197,18 @@
         <article class="project-row project-row--left" data-index="3" data-slug="project-three">
           <div class="project-card">
             <div class="project-card__media">
-              <img 
-                src="assets/stylearem-card.png" 
-                alt="Project Three overview" 
-                class="project-card__img"
-                width="1280" 
-                height="800"
-                loading="lazy"
-              >
+              <picture>
+                <source type="image/webp" srcset="assets/stylearem-card.webp">
+                <img 
+                  src="assets/stylearem-card.png" 
+                  alt="Project Three overview" 
+                  class="project-card__img"
+                  width="1280" 
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
           <div class="project-info">
@@ -202,14 +222,18 @@
         <article class="project-row project-row--right" data-index="4" data-slug="project-four">
           <div class="project-card">
             <div class="project-card__media">
-              <img 
-                src="assets/oralcare-card.png" 
-                alt="Project Four overview" 
-                class="project-card__img"
-                width="1280" 
-                height="800"
-                loading="lazy"
-              >
+              <picture>
+                <source type="image/webp" srcset="assets/oralcare-card.webp">
+                <img 
+                  src="assets/oralcare-card.png" 
+                  alt="Project Four overview" 
+                  class="project-card__img"
+                  width="1280" 
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
           <div class="project-info">
@@ -223,14 +247,18 @@
         <article class="project-row project-row--left" data-index="5" data-slug="project-five">
           <div class="project-card">
             <div class="project-card__media">
-              <img 
-                src="assets/mobile-landing-page-card.png" 
-                alt="Project Five overview" 
-                class="project-card__img"
-                width="1280" 
-                height="800"
-                loading="lazy"
-              >
+              <picture>
+                <source type="image/webp" srcset="assets/mobile-landing-page-card.webp">
+                <img 
+                  src="assets/mobile-landing-page-card.png" 
+                  alt="Project Five overview" 
+                  class="project-card__img"
+                  width="1280" 
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
           <div class="project-info">
